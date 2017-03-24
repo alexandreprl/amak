@@ -13,8 +13,8 @@
                 <attribute name="Class-Path" value="."/>
             </manifest>-->
             <fileset dir="${dir.buildfile}/bin"/>
-            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/lx-plot-standalone.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/avt.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/lx-plot-standalone.jar"/>
+            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/avt.jar"/>
         </jar>
         <jar destfile="${dir.jarfile}/AmakFramework.jar" filesetmanifest="mergewithoutmain">
             <!--<manifest>
