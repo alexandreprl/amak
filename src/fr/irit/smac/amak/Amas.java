@@ -5,55 +5,55 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class Amas<T extends Environment> {
+public class Amas<E extends Environment> {
 
-	protected List<Agent<? extends Amas<T>>> agents = new ArrayList<>();
+	protected List<Agent<?,E>> agents = new ArrayList<>();
 	protected int cycle;
-	protected T environment;
+	protected E environment;
 
-	public Amas(T env) {
+	public Amas(E env) {
 		this.environment = env;
 		this.onInitialAgentsCreation();
-		for (Agent<? extends Amas<T>> agent : agents) {
+		for (Agent<?,E> agent : agents) {
 			agent.onReady();
 		}
 	}
 	protected void onInitialAgentsCreation() {
 	}
-	public final void addAgent(Agent<? extends Amas<T>> _agent) {
+	public final void _addAgent(Agent<?,E> _agent) {
 		agents.add(_agent);
 	}
 	public final void cycle() {
 		cycle++;
-		onCycleBegin();
 		Collections.shuffle(agents);
-		for (Agent<? extends Amas<T>> agent : agents) {
-			agent.onGlobalCycleBegin();
+		onSystemCycleBegin();
+		for (Agent<?,E> agent : agents) {
+			agent.onSystemCycleBegin();
 		}
-		for (Agent<? extends Amas<T>> agent : agents) {
+		for (Agent<?,E> agent : agents) {
 			agent.cycle();
 		}
-		for (Agent<? extends Amas<T>> agent : agents) {
-			agent.onGlobalCycleEnd();
+		for (Agent<?,E> agent : agents) {
+			agent.onSystemCycleEnd();
 		}
-		onCycleEnd();
+		onSystemCycleEnd();
 	}
-	protected void onCycleEnd() {
+	protected void onSystemCycleEnd() {
 		
 	}
-	protected void onCycleBegin() {
+	protected void onSystemCycleBegin() {
 		
 	}
 	public final int getCycle() {
 		return cycle;
 	}
-	public final T getEnvironment() {
+	public final E getEnvironment() {
 		return environment;
 	}
 	public boolean stopCondition() {
 		return false;
 	}
-	public List<Agent<? extends Amas<T>>> getAgents() {
+	public List<Agent<?,E>> getAgents() {
 		return agents;
 	}
 }

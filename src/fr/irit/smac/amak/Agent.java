@@ -6,23 +6,23 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-public abstract class Agent<T extends Amas> {
-	protected List<Agent<T>> neighborhood;
-	protected Map<Agent<T>, Double> criticalities = new HashMap<>();
+public abstract class Agent<A extends Amas<E>, E extends Environment> {
+	protected List<Agent<A,E>> neighborhood;
+	protected Map<Agent<A,E>, Double> criticalities = new HashMap<>();
 	private double criticality;
-	protected T amas;
+	protected A amas;
 
-	public Agent(T amas) {
+	public Agent(A amas) {
 		this.amas = amas;
-		this.amas.addAgent(this);
+		this.amas._addAgent(this);
 		neighborhood = new ArrayList<>();
 		neighborhood.add(this);
 		onInitialize();
 	}
 
 	@SuppressWarnings("unchecked")
-	public final void addNeighbor(Agent<T>... agents) {
-		for (Agent<T> agent : agents) {
+	public final void addNeighbor(Agent<A,E>... agents) {
+		for (Agent<A,E> agent : agents) {
 			neighborhood.add(agent);
 			criticalities.put(agent, Double.NEGATIVE_INFINITY);
 		}
@@ -31,7 +31,12 @@ public abstract class Agent<T extends Amas> {
 	protected double computeCriticality() {
 		return Double.NEGATIVE_INFINITY;
 	}
-
+	protected void onAgentCycleBegin() {
+		
+	}
+	protected void onAgentCycleEnd() {
+		
+	}
 	protected void onPerceive() {
 
 	}
@@ -52,7 +57,7 @@ public abstract class Agent<T extends Amas> {
 	}
 
 	/**
-	 * Called when all agents have been created and are ready to be started
+	 * Called when all initial agents have been created and are ready to be started
 	 */
 	protected void onReady() {
 
@@ -66,22 +71,24 @@ public abstract class Agent<T extends Amas> {
 	}
 
 
-	protected void onGlobalCycleBegin() {
+	protected void onSystemCycleBegin() {
 
 	}
 
-	protected void onGlobalCycleEnd() {
+	protected void onSystemCycleEnd() {
 
 	}
 
 	public final void cycle() {
-		for (Agent<T> agent : neighborhood) {
+		onAgentCycleBegin();
+		for (Agent<A,E> agent : neighborhood) {
 			criticalities.put(agent, agent.criticality);
 		}
 		onPerceiveDecideAct();
 		criticality = computeCriticality();
 		onExpose();
 		onDraw();
+		onAgentCycleEnd();
 	}
 
 	protected void onPerceiveDecideAct() {
@@ -90,15 +97,15 @@ public abstract class Agent<T extends Amas> {
 		onAct();
 	}
 
-	protected final Agent<T> getMostCriticalNeighbor(boolean includingMe) {
-		List<Agent<T>> criticalest = new ArrayList<>();
+	protected final Agent<A,E> getMostCriticalNeighbor(boolean includingMe) {
+		List<Agent<A,E>> criticalest = new ArrayList<>();
 		double maxCriticality = Double.NEGATIVE_INFINITY;
 
 		if (includingMe) {
 			criticalest.add(this);
 			maxCriticality = criticalities.getOrDefault(criticalest, Double.NEGATIVE_INFINITY);
 		}
-		for (Entry<Agent<T>, Double> e : criticalities.entrySet()) {
+		for (Entry<Agent<A,E>, Double> e : criticalities.entrySet()) {
 			if (e.getValue() > maxCriticality) {
 				criticalest.clear();
 				maxCriticality = e.getValue();
