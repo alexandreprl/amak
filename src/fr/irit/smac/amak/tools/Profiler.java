@@ -1,4 +1,4 @@
-package fr.irit.smac.amak.profiling;
+package fr.irit.smac.amak.tools;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -4,12 +4,17 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import fr.irit.smac.amak.ui.SchedulerToolbar;
+import fr.irit.smac.amak.ui.ToolbarWindow;
+
 
 public class Amas<E extends Environment> {
 
 	protected List<Agent<?,E>> agents = new ArrayList<>();
 	protected int cycle;
 	protected E environment;
+	private ToolbarWindow toolbarWindow;
+	private Scheduler scheduler;
 
 	public Amas(E env) {
 		this.environment = env;
@@ -17,6 +22,12 @@ public class Amas<E extends Environment> {
 		for (Agent<?,E> agent : agents) {
 			agent.onReady();
 		}
+		this.scheduler = new Scheduler(this, false);
+		toolbarWindow = new ToolbarWindow();
+		toolbarWindow.addToolbar(new SchedulerToolbar(this.scheduler));
+	}
+	public ToolbarWindow getToolbarWindow() {
+		return toolbarWindow;
 	}
 	protected void onInitialAgentsCreation() {
 	}
