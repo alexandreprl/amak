@@ -15,7 +15,7 @@ All of these methods are called at the right time by the scheduler, you only hav
 
 The scheduling of agents is loaded automatically when you create an instance of your multi-agent system.
 
-Amak is packaged with other useful libraries (lx-plot, avt, ...). Also, if you need to draw something easily, have a look at the abstract class DynamicUI.
+Amak is packaged with other useful libraries (lx-plot, avt, ...). Also, if you need to draw something easily, have a look at the abstract class DrawableUI.
 
 # Quick start (with eclipse)#
 
