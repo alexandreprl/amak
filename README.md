@@ -1,11 +1,19 @@
-# README #
-
 This repository contains a framework made to facilitate the development of multi-agent system. 
 
 Examples are available at [https://bitbucket.org/perlesa/amak-examples](https://bitbucket.org/perlesa/amak-examples)
 
 # [Click here to download the latest standalone version](https://bitbucket.org/perlesa/amak/raw/master/Release/AmakFramework-standalone.jar?at=master) #
 
+# General #
+
+Amak is a framework aiming at facilitating the development of multi-agent systems.
+For the framework to work properly, you need to create a type of environment, a type of agent and a type of multi-agent system.
+
+Once you've created your three classes, you have to complete them by overriding methods present in higher level classes. Go into your classes, start typing "on" and press ctrl+space, a list of the most useful methods to override will show.
+At first, you will probably need to override onPerceive, onDecide and onAct in your agents, and onInitialAgentsCreation in your multi-agent system.
+All of these methods are called at the right time by the scheduler, you only have to implement them.
+
+The scheduling of agents is loaded automatically when you create an instance of your multi-agent system.
 
 # Quick start (with eclipse)#
 
