@@ -21,6 +21,37 @@ Right click on it, Build path ... -> Add to build path
 
 In order to work, the Amak framework needs a type of environment, a type of agent and a type of multi-agent system.
 
+### Create resources ###
+
+Create the resource Fork. A fork can be took or released.
+
+
+```
+#!Java
+
+public class Fork {
+	private Philosopher takenBy;
+
+	public synchronized boolean tryTake(Philosopher asker) {
+		if (takenBy != null)
+			return false;
+		takenBy = asker;
+		return true;
+	}
+
+	public synchronized void release(Philosopher asker) {
+		if (takenBy == asker) {
+			takenBy = null;
+		}
+	}
+
+	public synchronized boolean owned(Philosopher asker) {
+		return takenBy == asker;
+	}
+}
+```
+
+
 ### Create your first environment ###
 
 Create a new class named "Table" which extends the abstract class "Environment".
