@@ -23,7 +23,7 @@ In order to work, the Amak framework needs a type of environment, a type of agen
 
 ### Create resources ###
 
-Create the resource Fork. A fork can be took or released.
+Create the resource Fork. A fork can be took or released by a philosopher.
 
 
 ```
@@ -186,5 +186,20 @@ Create a class "Philosopher" which extends the class Agent<MyAMAS, Environment>.
 	@Override
 	protected void onDraw() {
 		LxPlot.getChart("Eaten Pastas", ChartType.BAR, false).add(id, eatenPastas);
+	}
+```
+
+
+### Launch your system ###
+
+In any class, create the environment and then the multi-agent system and launch it.
+
+
+```
+#!Java
+
+public static void main(String[] args) {
+		TableEnvironment env = new TableEnvironment();
+		new MyAMAS(env);
 	}
 ```
