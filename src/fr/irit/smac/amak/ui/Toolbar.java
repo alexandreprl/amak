@@ -5,29 +5,37 @@ import java.awt.FlowLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
-import javax.swing.border.EmptyBorder;
 
-public class ToolbarWindow extends JFrame {
+public class Toolbar extends JFrame {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2607956693857748227L;
 	private JPanel contentPane;
-
+	private static Toolbar instance;
 
 	/**
 	 * Create the frame.
 	 */
-	public ToolbarWindow() {
+	private Toolbar() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		setVisible(true);
 			
 	}
-	public void addToolbar(JToolBar toolbar) {
-		contentPane.add(toolbar);
-		pack();
-		setVisible(true);
+	public static void add(JToolBar toolbar) {
+		instance().getContentPane().add(toolbar);
+		instance().pack();
+		instance().setVisible(true);
+	}
+	private static Toolbar instance() {
+		if (instance == null) {
+			instance = new Toolbar();
+		}
+		return instance;
 	}
 }

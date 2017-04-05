@@ -6,6 +6,15 @@
     <property name="dir.buildfile" value="."/>
     <property name="dir.workspace" value="${dir.buildfile}/.."/>
     <property name="dir.jarfile" value="${dir.buildfile}/Release"/>
+	<property name="javadoc.dir" value="javadoc" />
+
+	<target name="build-javadoc">
+		<javadoc packagenames="fr.irit.smac.amak.*" sourcepath="src"
+			 destdir="${javadoc.dir}" version="true" 
+			windowtitle="Amak">
+			<arg value="-notimestamp" />
+		</javadoc>
+	</target>
     <target name="create_run_jar">
         <jar destfile="${dir.jarfile}/AmakFramework-standalone.jar" filesetmanifest="mergewithoutmain">
             <!--<manifest>

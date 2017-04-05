@@ -6,12 +6,43 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * This class must be overridden by all agents
+ * 
+ * @author Alexandre Perles
+ *
+ * @param <A>
+ *            The kind of Amas the agent refers to
+ * @param <E>
+ *            The kind of Environment the agent AND the Amas refer to
+ */
 public abstract class Agent<A extends Amas<E>, E extends Environment> {
-	protected List<Agent<A,E>> neighborhood;
-	protected Map<Agent<A,E>, Double> criticalities = new HashMap<>();
+	/**
+	 * Neighborhood of the agent (must refer to the same couple amas,
+	 * environment
+	 */
+	protected final List<Agent<A, E>> neighborhood;
+	/**
+	 * Criticalities of the neighbors (and it self) as perceived at the
+	 * beginning of the agent's cycle
+	 */
+	protected final Map<Agent<A, E>, Double> criticalities = new HashMap<>();
+	/**
+	 * Last calculated criticality of the agent
+	 */
 	private double criticality;
-	protected A amas;
+	/**
+	 * Amas the agent belongs to
+	 */
+	protected final A amas;
 
+	/**
+	 * The constructor automatically add the agent to the corresponding amas and
+	 * initialize the agent
+	 * 
+	 * @param amas
+	 *            Amas the agent belongs to
+	 */
 	public Agent(A amas) {
 		this.amas = amas;
 		this.amas._addAgent(this);
@@ -20,44 +51,84 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 		onInitialize();
 	}
 
-	@SuppressWarnings("unchecked")
-	public final void addNeighbor(Agent<A,E>... agents) {
-		for (Agent<A,E> agent : agents) {
+	/**
+	 * Add neighbors to the agent
+	 * 
+	 * @param agents
+	 *            The list of agent that should be considered as neighbor
+	 */
+	public final void addNeighbor(Agent<A, E>... agents) {
+		for (Agent<A, E> agent : agents) {
 			neighborhood.add(agent);
 			criticalities.put(agent, Double.NEGATIVE_INFINITY);
 		}
 	}
 
+	/**
+	 * Thie method must be overridden by the agents
+	 * 
+	 * @return the criticality at a given moment
+	 */
 	protected double computeCriticality() {
 		return Double.NEGATIVE_INFINITY;
 	}
+
+	/**
+	 * This method is called at the beginning of an agent's cycle
+	 */
 	protected void onAgentCycleBegin() {
-		
+
 	}
+
+	/**
+	 * This method is called at the end of an agent's cycle
+	 */
 	protected void onAgentCycleEnd() {
-		
+
 	}
+
+	/**
+	 * This method corresponds to the perception phase of the agents and must be
+	 * overridden
+	 */
 	protected void onPerceive() {
 
 	}
 
+	/**
+	 * This method corresponds to the decision phase of the agents and must be
+	 * overridden
+	 */
 	protected void onDecide() {
 
 	}
 
+	/**
+	 * This method corresponds to the action phase of the agents and must be
+	 * overridden
+	 */
 	protected void onAct() {
 
 	}
 
+	/**
+	 * In this method the agent should expose some variables with its neighbor
+	 */
 	protected void onExpose() {
 
 	}
+
+	/**
+	 * This method is essentially intended for debugging purpose. For example,
+	 * it is a good place to display the criticality of the agent.
+	 */
 	protected void onDraw() {
-		
+
 	}
 
 	/**
-	 * Called when all initial agents have been created and are ready to be started
+	 * Called when all initial agents have been created and are ready to be
+	 * started
 	 */
 	protected void onReady() {
 
@@ -70,18 +141,27 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 
 	}
 
-
+	/**
+	 * Called before the cycle of the system starts
+	 */
 	protected void onSystemCycleBegin() {
 
 	}
 
+	/**
+	 * Called each time the cycle of the system is over
+	 */
 	protected void onSystemCycleEnd() {
 
 	}
 
+	/**
+	 * This method is called automatically and corresponds to a full cycle of an
+	 * agent
+	 */
 	public final void cycle() {
 		onAgentCycleBegin();
-		for (Agent<A,E> agent : neighborhood) {
+		for (Agent<A, E> agent : neighborhood) {
 			criticalities.put(agent, agent.criticality);
 		}
 		onPerceiveDecideAct();
@@ -91,31 +171,41 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 		onAgentCycleEnd();
 	}
 
+	/**
+	 * Perceive, decide and act
+	 */
 	protected void onPerceiveDecideAct() {
 		onPerceive();
 		onDecide();
 		onAct();
 	}
 
-	protected final Agent<A,E> getMostCriticalNeighbor(boolean includingMe) {
-		List<Agent<A,E>> criticalest = new ArrayList<>();
+	/**
+	 * Convenient method giving the most critical neighbor at a given moment
+	 * 
+	 * @param includingMe
+	 *            Should the agent also consider its own criticality
+	 * @return the most critical agent
+	 */
+	protected final Agent<A, E> getMostCriticalNeighbor(boolean includingMe) {
+		List<Agent<A, E>> criticalest = new ArrayList<>();
 		double maxCriticality = Double.NEGATIVE_INFINITY;
 
 		if (includingMe) {
 			criticalest.add(this);
 			maxCriticality = criticalities.getOrDefault(criticalest, Double.NEGATIVE_INFINITY);
 		}
-		for (Entry<Agent<A,E>, Double> e : criticalities.entrySet()) {
+		for (Entry<Agent<A, E>, Double> e : criticalities.entrySet()) {
 			if (e.getValue() > maxCriticality) {
 				criticalest.clear();
 				maxCriticality = e.getValue();
 				criticalest.add(e.getKey());
-			}else if (e.getValue()==maxCriticality) {
+			} else if (e.getValue() == maxCriticality) {
 				criticalest.add(e.getKey());
 			}
 		}
 		if (criticalest.isEmpty())
 			return null;
-		return criticalest.get((int) (Math.random()*criticalest.size()));
+		return criticalest.get((int) (Math.random() * criticalest.size()));
 	}
 }
