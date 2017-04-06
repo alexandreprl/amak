@@ -97,7 +97,7 @@ During the initialization, we want to create a philosopher per fork and let them
 #!Java
 
 	public MyAMAS(TableEnvironment env) {
-		super(env);
+		super(env, Scheduling.MANUAL);
 	}
 	@Override
 	protected void onInitialAgentsCreation() {
