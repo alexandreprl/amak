@@ -109,6 +109,12 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">Profiler</span>
 extends java.lang.Object</pre>
+<div class="block">This tool allows to measure the amount of time required for an action. For
+ example, to measure the time of an execution or the time of a cycle.</div>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Alexandre Perles</dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -146,11 +152,15 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static long</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Profiler.html#end-java.lang.String-">end</a></span>(java.lang.String&nbsp;name)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Profiler.html#end-java.lang.String-">end</a></span>(java.lang.String&nbsp;name)</code>
+<div class="block">Stop the stopwatch</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Profiler.html#start-java.lang.String-">start</a></span>(java.lang.String&nbsp;name)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Profiler.html#start-java.lang.String-">start</a></span>(java.lang.String&nbsp;name)</code>
+<div class="block">Start the stopwatch</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -198,6 +208,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>start</h4>
 <pre>public static&nbsp;void&nbsp;start(java.lang.String&nbsp;name)</pre>
+<div class="block">Start the stopwatch</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - Unique name for time measure</dd>
+</dl>
 </li>
 </ul>
 <a name="end-java.lang.String-">
@@ -207,6 +222,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>end</h4>
 <pre>public static&nbsp;long&nbsp;end(java.lang.String&nbsp;name)</pre>
+<div class="block">Stop the stopwatch</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>name</code> - Unique name for time measure (use the same as in start)</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the amount of time since the start in milli seconds</dd>
+</dl>
 </li>
 </ul>
 </li>

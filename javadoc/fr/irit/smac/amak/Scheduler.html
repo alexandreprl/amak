@@ -114,6 +114,11 @@ var activeTableTab = "activeTableTab";
 <pre>public class <span class="typeNameLabel">Scheduler</span>
 extends java.lang.Object
 implements java.lang.Runnable</pre>
+<div class="block">A scheduler associated to a MAS</div>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Alexandre Perles</dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -134,7 +139,9 @@ implements java.lang.Runnable</pre>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.State.html" title="enum in fr.irit.smac.amak">Scheduler.State</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.State.html" title="enum in fr.irit.smac.amak">Scheduler.State</a></span></code>
+<div class="block">State of the scheduler</div>
+</td>
 </tr>
 </table>
 </li>
@@ -151,8 +158,10 @@ implements java.lang.Runnable</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#Scheduler-fr.irit.smac.amak.Amas-boolean-">Scheduler</a></span>(<a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;? extends <a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt;&nbsp;amas,
-         boolean&nbsp;_autorun)</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#Scheduler-fr.irit.smac.amak.Amas-boolean-">Scheduler</a></span>(<a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;? extends <a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt;&nbsp;_amas,
+         boolean&nbsp;_autorun)</code>
+<div class="block">Constructor which set the initial state and auto start if requested</div>
+</td>
 </tr>
 </table>
 </li>
@@ -171,31 +180,46 @@ implements java.lang.Runnable</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#isAutorun--">isAutorun</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#isAutorun--">isAutorun</a></span>()</code>
+<div class="block">Should the scheduler starts automatically ?</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#run--">run</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#run--">run</a></span>()</code>
+<div class="block">Threaded run method</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#setOnStop-java.util.function.Consumer-">setOnStop</a></span>(java.util.function.Consumer&lt;<a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a>&gt;&nbsp;_onStop)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#setOnStop-java.util.function.Consumer-">setOnStop</a></span>(java.util.function.Consumer&lt;<a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a>&gt;&nbsp;_onStop)</code>
+<div class="block">Set the method that must be executed when the system is stopped</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#start--">start</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#start--">start</a></span>()</code>
+<div class="block">Start (or continue) with no delay between cycles</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#startWithSleep-int-">startWithSleep</a></span>(int&nbsp;i)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#startWithSleep-int-">startWithSleep</a></span>(int&nbsp;i)</code>
+<div class="block">Set the delay between two cycles and launch the scheduler if it is not
+ running</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#step--">step</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#step--">step</a></span>()</code>
+<div class="block">Execute one cycle</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#stop--">stop</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#stop--">stop</a></span>()</code>
+<div class="block">Stop the scheduler if it is running</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -225,8 +249,14 @@ implements java.lang.Runnable</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Scheduler</h4>
-<pre>public&nbsp;Scheduler(<a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;? extends <a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt;&nbsp;amas,
+<pre>public&nbsp;Scheduler(<a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;? extends <a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt;&nbsp;_amas,
                  boolean&nbsp;_autorun)</pre>
+<div class="block">Constructor which set the initial state and auto start if requested</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_amas</code> - the corresponding amas</dd>
+<dd><code>_autorun</code> - should the scheduler automatically starts</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -244,6 +274,12 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>startWithSleep</h4>
 <pre>public&nbsp;void&nbsp;startWithSleep(int&nbsp;i)</pre>
+<div class="block">Set the delay between two cycles and launch the scheduler if it is not
+ running</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>i</code> - the delay between two cycles</dd>
+</dl>
 </li>
 </ul>
 <a name="start--">
@@ -253,6 +289,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>start</h4>
 <pre>public&nbsp;void&nbsp;start()</pre>
+<div class="block">Start (or continue) with no delay between cycles</div>
 </li>
 </ul>
 <a name="step--">
@@ -262,6 +299,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>step</h4>
 <pre>public&nbsp;void&nbsp;step()</pre>
+<div class="block">Execute one cycle</div>
 </li>
 </ul>
 <a name="stop--">
@@ -271,6 +309,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>stop</h4>
 <pre>public&nbsp;void&nbsp;stop()</pre>
+<div class="block">Stop the scheduler if it is running</div>
 </li>
 </ul>
 <a name="run--">
@@ -280,6 +319,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>run</h4>
 <pre>public&nbsp;void&nbsp;run()</pre>
+<div class="block">Threaded run method</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>run</code>&nbsp;in interface&nbsp;<code>java.lang.Runnable</code></dd>
@@ -293,6 +333,11 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>isAutorun</h4>
 <pre>public&nbsp;boolean&nbsp;isAutorun()</pre>
+<div class="block">Should the scheduler starts automatically ?</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>whether or not the autorun is activated</dd>
+</dl>
 </li>
 </ul>
 <a name="setOnStop-java.util.function.Consumer-">
@@ -301,7 +346,12 @@ implements java.lang.Runnable</pre>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>setOnStop</h4>
-<pre>public&nbsp;void&nbsp;setOnStop(java.util.function.Consumer&lt;<a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a>&gt;&nbsp;_onStop)</pre>
+<pre>public final&nbsp;void&nbsp;setOnStop(java.util.function.Consumer&lt;<a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a>&gt;&nbsp;_onStop)</pre>
+<div class="block">Set the method that must be executed when the system is stopped</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_onStop</code> - Consumer method</dd>
+</dl>
 </li>
 </ul>
 </li>

@@ -109,6 +109,11 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public abstract class <span class="typeNameLabel">Environment</span>
 extends java.lang.Object</pre>
+<div class="block">This class must be overridden by environments</div>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Alexandre Perles</dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -127,7 +132,9 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#Environment--">Environment</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#Environment--">Environment</a></span>()</code>
+<div class="block">Constructor</div>
+</td>
 </tr>
 </table>
 </li>
@@ -146,15 +153,21 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onCycleBegin--">onCycleBegin</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onCycleBegin--">onCycleBegin</a></span>()</code>
+<div class="block">This method is called before each cycle of the system</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onCycleEnd-fr.irit.smac.amak.Amas-">onCycleEnd</a></span>(<a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;? extends <a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt;&nbsp;amas)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onCycleEnd--">onCycleEnd</a></span>()</code>
+<div class="block">This method is called after each cycle of the system</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onInitialization--">onInitialization</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onInitialization--">onInitialization</a></span>()</code>
+<div class="block">This method is called during the initialization process of the environment</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -185,6 +198,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>Environment</h4>
 <pre>public&nbsp;Environment()</pre>
+<div class="block">Constructor</div>
 </li>
 </ul>
 </li>
@@ -202,6 +216,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>onInitialization</h4>
 <pre>public&nbsp;void&nbsp;onInitialization()</pre>
+<div class="block">This method is called during the initialization process of the environment</div>
 </li>
 </ul>
 <a name="onCycleBegin--">
@@ -211,15 +226,17 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>onCycleBegin</h4>
 <pre>public&nbsp;void&nbsp;onCycleBegin()</pre>
+<div class="block">This method is called before each cycle of the system</div>
 </li>
 </ul>
-<a name="onCycleEnd-fr.irit.smac.amak.Amas-">
+<a name="onCycleEnd--">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>onCycleEnd</h4>
-<pre>public&nbsp;void&nbsp;onCycleEnd(<a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;? extends <a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt;&nbsp;amas)</pre>
+<pre>public&nbsp;void&nbsp;onCycleEnd()</pre>
+<div class="block">This method is called after each cycle of the system</div>
 </li>
 </ul>
 </li>

@@ -139,7 +139,11 @@ var activeTableTab = "activeTableTab";
 <pre>public class <span class="typeNameLabel">DrawableUI</span>
 extends javax.swing.JFrame
 implements java.lang.Runnable</pre>
+<div class="block">This class should be overridden by classes aiming at rendering stuffs on a
+ canvas</div>
 <dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Alexandre Perles</dd>
 <dt><span class="seeLabel">See Also:</span></dt>
 <dd><a href="../../../../../serialized-form.html#fr.irit.smac.amak.ui.DrawableUI">Serialized Form</a></dd>
 </dl>
@@ -247,7 +251,9 @@ implements java.lang.Runnable</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#DrawableUI--">DrawableUI</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#DrawableUI--">DrawableUI</a></span>()</code>
+<div class="block">Create and initialize the frame and the canvas</div>
+</td>
 </tr>
 </table>
 </li>
@@ -266,19 +272,27 @@ implements java.lang.Runnable</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onDraw-java.awt.Graphics2D-">onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics2D)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onDraw-java.awt.Graphics2D-">onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics2D)</code>
+<div class="block">This method is called when the canvas must be drawn again</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onInitialization--">onInitialization</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onInitialization--">onInitialization</a></span>()</code>
+<div class="block">This method aims at initializing the rendering system</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onStoppedRunning--">onStoppedRunning</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onStoppedRunning--">onStoppedRunning</a></span>()</code>
+<div class="block">This method is called when the rendering loop stops</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#run--">run</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#run--">run</a></span>()</code>
+<div class="block">Rendering loop</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -351,6 +365,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>DrawableUI</h4>
 <pre>public&nbsp;DrawableUI()</pre>
+<div class="block">Create and initialize the frame and the canvas</div>
 </li>
 </ul>
 </li>
@@ -367,7 +382,8 @@ implements java.lang.Runnable</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>run</h4>
-<pre>public&nbsp;void&nbsp;run()</pre>
+<pre>public final&nbsp;void&nbsp;run()</pre>
+<div class="block">Rendering loop</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code>run</code>&nbsp;in interface&nbsp;<code>java.lang.Runnable</code></dd>
@@ -381,6 +397,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>onStoppedRunning</h4>
 <pre>protected&nbsp;void&nbsp;onStoppedRunning()</pre>
+<div class="block">This method is called when the rendering loop stops</div>
 </li>
 </ul>
 <a name="onDraw-java.awt.Graphics2D-">
@@ -390,6 +407,11 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>onDraw</h4>
 <pre>protected&nbsp;void&nbsp;onDraw(java.awt.Graphics2D&nbsp;graphics2D)</pre>
+<div class="block">This method is called when the canvas must be drawn again</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>graphics2D</code> - Object used for drawing on the canvas</dd>
+</dl>
 </li>
 </ul>
 <a name="onInitialization--">
@@ -399,6 +421,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>onInitialization</h4>
 <pre>protected&nbsp;void&nbsp;onInitialization()</pre>
+<div class="block">This method aims at initializing the rendering system</div>
 </li>
 </ul>
 </li>

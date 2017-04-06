@@ -134,7 +134,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static class&nbsp;</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a></span></code>
+<div class="block">Comparable logging level</div>
+</td>
 </tr>
 </table>
 </li>
@@ -153,15 +155,21 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static java.lang.String</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#debugFilter">debugFilter</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#debugTagFilter">debugTagFilter</a></span></code>
+<div class="block">Regexp aiming at filtering log lines with debug level by tag</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>static boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#enabled">enabled</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#enabled">enabled</a></span></code>
+<div class="block">Is logging globally activated ?</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#minLevel">minLevel</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#minLevel">minLevel</a></span></code>
+<div class="block">The minimum level that should be displayed</div>
+</td>
 </tr>
 </table>
 </li>
@@ -199,41 +207,55 @@ extends java.lang.Object</pre>
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#debug-java.lang.String-java.lang.String-java.lang.Object...-">debug</a></span>(java.lang.String&nbsp;_tag,
      java.lang.String&nbsp;_text,
-     java.lang.Object...&nbsp;params)</code>&nbsp;</td>
+     java.lang.Object...&nbsp;params)</code>
+<div class="block">Log a line with log level set to debug</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#error-java.lang.String-java.lang.String-java.lang.Object...-">error</a></span>(java.lang.String&nbsp;_tag,
      java.lang.String&nbsp;_text,
-     java.lang.Object...&nbsp;params)</code>&nbsp;</td>
+     java.lang.Object...&nbsp;params)</code>
+<div class="block">Log a line with log level set to error</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#fatal-java.lang.String-java.lang.String-java.lang.Object...-">fatal</a></span>(java.lang.String&nbsp;_tag,
      java.lang.String&nbsp;_text,
-     java.lang.Object...&nbsp;params)</code>&nbsp;</td>
+     java.lang.Object...&nbsp;params)</code>
+<div class="block">Log a line with log level set to fatal</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#important-java.lang.String-java.lang.String-java.lang.Object...-">important</a></span>(java.lang.String&nbsp;_tag,
          java.lang.String&nbsp;_text,
-         java.lang.Object...&nbsp;params)</code>&nbsp;</td>
+         java.lang.Object...&nbsp;params)</code>
+<div class="block">Log a line with log level set to warning</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#inform-java.lang.String-java.lang.String-java.lang.Object...-">inform</a></span>(java.lang.String&nbsp;_tag,
       java.lang.String&nbsp;_text,
-      java.lang.Object...&nbsp;params)</code>&nbsp;</td>
+      java.lang.Object...&nbsp;params)</code>
+<div class="block">Log a line with log level set to inform</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#setCallback-java.util.function.Consumer-">setCallback</a></span>(java.util.function.Consumer&lt;java.lang.String&gt;&nbsp;_action)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#setCallback-java.util.function.Consumer-">setCallback</a></span>(java.util.function.Consumer&lt;java.lang.String&gt;&nbsp;_action)</code>
+<div class="block">Set the action that must be used for logging lines</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.html#warning-java.lang.String-java.lang.String-java.lang.Object...-">warning</a></span>(java.lang.String&nbsp;_tag,
        java.lang.String&nbsp;_text,
-       java.lang.Object...&nbsp;params)</code>&nbsp;</td>
+       java.lang.Object...&nbsp;params)</code>
+<div class="block">Log a line with log level set to warning</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -264,15 +286,17 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>enabled</h4>
 <pre>public static&nbsp;boolean enabled</pre>
+<div class="block">Is logging globally activated ?</div>
 </li>
 </ul>
-<a name="debugFilter">
+<a name="debugTagFilter">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>debugFilter</h4>
-<pre>public static&nbsp;java.lang.String debugFilter</pre>
+<h4>debugTagFilter</h4>
+<pre>public static&nbsp;java.lang.String debugTagFilter</pre>
+<div class="block">Regexp aiming at filtering log lines with debug level by tag</div>
 </li>
 </ul>
 <a name="minLevel">
@@ -282,6 +306,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>minLevel</h4>
 <pre>public static&nbsp;<a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a> minLevel</pre>
+<div class="block">The minimum level that should be displayed</div>
 </li>
 </ul>
 </li>
@@ -318,6 +343,13 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;debug(java.lang.String&nbsp;_tag,
                          java.lang.String&nbsp;_text,
                          java.lang.Object...&nbsp;params)</pre>
+<div class="block">Log a line with log level set to debug</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_tag</code> - Tag of the line</dd>
+<dd><code>_text</code> - Text of the log</dd>
+<dd><code>params</code> - Parameters for the text (as in String.format)</dd>
+</dl>
 </li>
 </ul>
 <a name="error-java.lang.String-java.lang.String-java.lang.Object...-">
@@ -329,6 +361,13 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;error(java.lang.String&nbsp;_tag,
                          java.lang.String&nbsp;_text,
                          java.lang.Object...&nbsp;params)</pre>
+<div class="block">Log a line with log level set to error</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_tag</code> - Tag of the line</dd>
+<dd><code>_text</code> - Text of the log</dd>
+<dd><code>params</code> - Parameters for the text (as in String.format)</dd>
+</dl>
 </li>
 </ul>
 <a name="fatal-java.lang.String-java.lang.String-java.lang.Object...-">
@@ -340,6 +379,13 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;fatal(java.lang.String&nbsp;_tag,
                          java.lang.String&nbsp;_text,
                          java.lang.Object...&nbsp;params)</pre>
+<div class="block">Log a line with log level set to fatal</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_tag</code> - Tag of the line</dd>
+<dd><code>_text</code> - Text of the log</dd>
+<dd><code>params</code> - Parameters for the text (as in String.format)</dd>
+</dl>
 </li>
 </ul>
 <a name="important-java.lang.String-java.lang.String-java.lang.Object...-">
@@ -351,6 +397,13 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;important(java.lang.String&nbsp;_tag,
                              java.lang.String&nbsp;_text,
                              java.lang.Object...&nbsp;params)</pre>
+<div class="block">Log a line with log level set to warning</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_tag</code> - Tag of the line</dd>
+<dd><code>_text</code> - Text of the log</dd>
+<dd><code>params</code> - Parameters for the text (as in String.format)</dd>
+</dl>
 </li>
 </ul>
 <a name="inform-java.lang.String-java.lang.String-java.lang.Object...-">
@@ -362,6 +415,13 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;inform(java.lang.String&nbsp;_tag,
                           java.lang.String&nbsp;_text,
                           java.lang.Object...&nbsp;params)</pre>
+<div class="block">Log a line with log level set to inform</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_tag</code> - Tag of the line</dd>
+<dd><code>_text</code> - Text of the log</dd>
+<dd><code>params</code> - Parameters for the text (as in String.format)</dd>
+</dl>
 </li>
 </ul>
 <a name="setCallback-java.util.function.Consumer-">
@@ -371,6 +431,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setCallback</h4>
 <pre>public static&nbsp;void&nbsp;setCallback(java.util.function.Consumer&lt;java.lang.String&gt;&nbsp;_action)</pre>
+<div class="block">Set the action that must be used for logging lines</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_action</code> - the action used for logging</dd>
+</dl>
 </li>
 </ul>
 <a name="warning-java.lang.String-java.lang.String-java.lang.Object...-">
@@ -382,6 +447,13 @@ extends java.lang.Object</pre>
 <pre>public static&nbsp;void&nbsp;warning(java.lang.String&nbsp;_tag,
                            java.lang.String&nbsp;_text,
                            java.lang.Object...&nbsp;params)</pre>
+<div class="block">Log a line with log level set to warning</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_tag</code> - Tag of the line</dd>
+<dd><code>_text</code> - Text of the log</dd>
+<dd><code>params</code> - Parameters for the text (as in String.format)</dd>
+</dl>
 </li>
 </ul>
 </li>

@@ -59,17 +59,37 @@ public class Amas<E extends Environment> {
 			Toolbar.add(new SchedulerToolbar(getScheduler()));
 	}
 
+	/**
+	 * Getter for the scheduler
+	 * 
+	 * @return the scheduler
+	 */
 	public Scheduler getScheduler() {
 		return scheduler;
 	}
 
+	/**
+	 * This method should be overridden, the agents should be created in this
+	 * method
+	 */
 	protected void onInitialAgentsCreation() {
 	}
 
+	/**
+	 * Add an agent to the MAS. This method is called by the agent itself during
+	 * its creation
+	 * 
+	 * @param _agent
+	 *            the agent to addto the system
+	 */
 	public final void _addAgent(Agent<?, E> _agent) {
+		// TODO add the agent at the end of a cycle (pending add agent)
 		agents.add(_agent);
 	}
 
+	/**
+	 * Cycle of the system
+	 */
 	public final void cycle() {
 		cycle++;
 		Collections.shuffle(agents);
@@ -86,26 +106,52 @@ public class Amas<E extends Environment> {
 		onSystemCycleEnd();
 	}
 
+	/**
+	 * This method is called when all agents have executed a cycle
+	 */
 	protected void onSystemCycleEnd() {
 
 	}
 
+	/**
+	 * This method is called before all agents have executed a cycle
+	 */
 	protected void onSystemCycleBegin() {
 
 	}
 
+	/**
+	 * Getter for the current cycle number
+	 * 
+	 * @return the current cycle
+	 */
 	public final int getCycle() {
 		return cycle;
 	}
 
+	/**
+	 * Getter for the environment
+	 * 
+	 * @return the environment
+	 */
 	public final E getEnvironment() {
 		return environment;
 	}
 
+	/**
+	 * This method allows the system to stop the scheduler on certain conditions
+	 * 
+	 * @return whether or not the scheduler must stop.
+	 */
 	public boolean stopCondition() {
 		return false;
 	}
 
+	/**
+	 * Getter for the list of agents
+	 * 
+	 * @return the list of agents
+	 */
 	public List<Agent<?, E>> getAgents() {
 		return agents;
 	}
