@@ -12,6 +12,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import fr.irit.smac.amak.Schedulable;
+import fr.irit.smac.amak.Scheduler;
+import fr.irit.smac.amak.Scheduling;
+
 /**
  * This class should be overridden by classes aiming at rendering stuffs on a
  * canvas
@@ -19,21 +23,12 @@ import javax.swing.border.EmptyBorder;
  * @author Alexandre Perles
  *
  */
-public class DrawableUI extends JFrame implements Runnable {
+public abstract class DrawableUI extends JFrame implements Schedulable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7895752986790657855L;
-
-	/**
-	 * Refresh delay
-	 */
-	private long sleepTime = 100;
-	/**
-	 * Is rendering loop running ?
-	 */
-	private boolean running = true;
 
 	/**
 	 * Buffer strategy aiming at increasing the performance of the rendering
@@ -50,9 +45,28 @@ public class DrawableUI extends JFrame implements Runnable {
 	private final Canvas canvas;
 
 	/**
-	 * Create and initialize the frame and the canvas
+	 * Scheduler for the drawing frame
 	 */
-	public DrawableUI() {
+	private Scheduler scheduler;
+
+	/**
+	 * Unique index for giving unique id to each drawable ui
+	 */
+	private static int uniqueIndex;
+
+	/**
+	 * Unique id of the drawable ui
+	 */
+	private final int id = uniqueIndex++;
+
+	/**
+	 * Create and initialize the frame and the canvas
+	 * 
+	 * @param _scheduling
+	 *            the scheduling mode
+	 */
+	public DrawableUI(Scheduling _scheduling) {
+		setTitle("Drawable #" + id);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 611, 466);
 		contentPane = new JPanel();
@@ -70,51 +84,28 @@ public class DrawableUI extends JFrame implements Runnable {
 		canvas.createBufferStrategy(2);
 		bufferStrategy = canvas.getBufferStrategy();
 
-		new Thread(this).start();
+		scheduler = new Scheduler(this, _scheduling == Scheduling.AUTO);
+
+		if (_scheduling == Scheduling.MANUAL)
+			Toolbar.add(new SchedulerToolbar("Drawable #" + id, scheduler));
 	}
 
-	/**
-	 * Rendering loop
-	 */
 	@Override
-	public final void run() {
-		onInitialization();
-		while (running) {
-			Graphics2D current = (Graphics2D) bufferStrategy.getDrawGraphics();
-			current.setColor(Color.BLACK);
-			current.fillRect(0, 0, 800, 600);
-			onDraw(current);
-			bufferStrategy.show(); // flip back buffer with front buffer?
-			current.dispose();
-			Toolkit.getDefaultToolkit().sync();
-			try {
-				Thread.sleep(sleepTime);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		onStoppedRunning();
-	}
-
-	/**
-	 * This method is called when the rendering loop stops
-	 */
-	protected void onStoppedRunning() {
+	public final void cycle() {
+		Graphics2D current = (Graphics2D) bufferStrategy.getDrawGraphics();
+		current.setColor(Color.BLACK);
+		current.fillRect(0, 0, 800, 600);
+		onDraw(current);
+		bufferStrategy.show(); // flip back buffer with front buffer?
+		current.dispose();
+		Toolkit.getDefaultToolkit().sync();
 	}
 
 	/**
 	 * This method is called when the canvas must be drawn again
 	 * 
-	 * @param graphics2D Object used for drawing on the canvas
+	 * @param graphics2D
+	 *            Object used for drawing on the canvas
 	 */
-	protected void onDraw(Graphics2D graphics2D) {
-	}
-
-	/**
-	 * This method aims at initializing the rendering system
-	 */
-	protected void onInitialization() {
-	}
-
+	protected abstract void onDraw(Graphics2D graphics2D);
 }

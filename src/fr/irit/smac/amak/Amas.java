@@ -15,7 +15,7 @@ import fr.irit.smac.amak.ui.Toolbar;
  * @param <E>
  *            The environment of the MAS
  */
-public class Amas<E extends Environment> {
+public class Amas<E extends Environment> implements Schedulable {
 	/**
 	 * List of agents present in the system
 	 */
@@ -34,11 +34,14 @@ public class Amas<E extends Environment> {
 	private final Scheduler scheduler;
 
 	/**
-	 * The scheduling of a system can be manual or automatic
+	 * Unique index to give unique id to each amas
 	 */
-	public enum Scheduling {
-		MANUAL, AUTO
-	}
+	private static int uniqueIndex;
+
+	/**
+	 * The id of the amas
+	 */
+	private final int id = uniqueIndex++;
 
 	/**
 	 * Constructor of the MAS
@@ -56,7 +59,7 @@ public class Amas<E extends Environment> {
 		}
 		this.scheduler = new Scheduler(this, scheduling == Scheduling.AUTO);
 		if (scheduling == Scheduling.MANUAL)
-			Toolbar.add(new SchedulerToolbar(getScheduler()));
+			Toolbar.add(new SchedulerToolbar("Amas #" + id, getScheduler()));
 	}
 
 	/**
@@ -92,6 +95,7 @@ public class Amas<E extends Environment> {
 	 */
 	public final void cycle() {
 		cycle++;
+		getEnvironment().onCycleBegin();
 		Collections.shuffle(agents);
 		onSystemCycleBegin();
 		for (Agent<?, E> agent : agents) {
@@ -104,6 +108,7 @@ public class Amas<E extends Environment> {
 			agent.onSystemCycleEnd();
 		}
 		onSystemCycleEnd();
+		getEnvironment().onCycleEnd();
 	}
 
 	/**

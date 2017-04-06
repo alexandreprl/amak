@@ -99,13 +99,9 @@
 <dd>
 <div class="block">This class must be overridden by multi-agent systems</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#Amas-E-fr.irit.smac.amak.Amas.Scheduling-">Amas(E, Amas.Scheduling)</a></span> - Constructor for class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#Amas-E-fr.irit.smac.amak.Scheduling-">Amas(E, Scheduling)</a></span> - Constructor for class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
 <div class="block">Constructor of the MAS</div>
-</dd>
-<dt><a href="fr/irit/smac/amak/Amas.Scheduling.html" title="enum in fr.irit.smac.amak"><span class="typeNameLink">Amas.Scheduling</span></a> - Enum in <a href="fr/irit/smac/amak/package-summary.html">fr.irit.smac.amak</a></dt>
-<dd>
-<div class="block">The scheduling of a system can be manual or automatic</div>
 </dd>
 </dl>
 <a name="I:C">
@@ -135,6 +131,12 @@
 <dd>
 <div class="block">Cycle of the system</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Schedulable.html#cycle--">cycle()</a></span> - Method in interface fr.irit.smac.amak.<a href="fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></dt>
+<dd>
+<div class="block">A cycle of the schedulable system</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#cycle--">cycle()</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:D">
 <!--   -->
@@ -154,7 +156,7 @@
 <div class="block">This class should be overridden by classes aiming at rendering stuffs on a
  canvas</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#DrawableUI--">DrawableUI()</a></span> - Constructor for class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#DrawableUI-fr.irit.smac.amak.Scheduling-">DrawableUI(Scheduling)</a></span> - Constructor for class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
 <dd>
 <div class="block">Create and initialize the frame and the canvas</div>
 </dd>
@@ -348,10 +350,6 @@
 <dd>
 <div class="block">This method is called during the initialization process of the environment</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#onInitialization--">onInitialization()</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
-<dd>
-<div class="block">This method aims at initializing the rendering system</div>
-</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
 <div class="block">Called before all agents are created</div>
@@ -369,10 +367,6 @@
 <dd>
 <div class="block">Called when all initial agents have been created and are ready to be
  started</div>
-</dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#onStoppedRunning--">onStoppedRunning()</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
-<dd>
-<div class="block">This method is called when the rendering loop stops</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">onSystemCycleBegin()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
@@ -412,21 +406,21 @@
 <dd>
 <div class="block">Threaded run method</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#run--">run()</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
-<dd>
-<div class="block">Rendering loop</div>
-</dd>
 </dl>
 <a name="I:S">
 <!--   -->
 </a>
 <h2 class="title">S</h2>
 <dl>
+<dt><a href="fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak"><span class="typeNameLink">Schedulable</span></a> - Interface in <a href="fr/irit/smac/amak/package-summary.html">fr.irit.smac.amak</a></dt>
+<dd>
+<div class="block">A schedulable object can be controlled by a scheduler</div>
+</dd>
 <dt><a href="fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Scheduler</span></a> - Class in <a href="fr/irit/smac/amak/package-summary.html">fr.irit.smac.amak</a></dt>
 <dd>
 <div class="block">A scheduler associated to a MAS</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduler.html#Scheduler-fr.irit.smac.amak.Amas-boolean-">Scheduler(Amas&lt;? extends Environment&gt;, boolean)</a></span> - Constructor for class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduler.html#Scheduler-fr.irit.smac.amak.Schedulable-boolean-">Scheduler(Schedulable, boolean)</a></span> - Constructor for class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></dt>
 <dd>
 <div class="block">Constructor which set the initial state and auto start if requested</div>
 </dd>
@@ -438,8 +432,12 @@
 <dd>
 <div class="block">Runner to control manually the execution of the mas</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/SchedulerToolbar.html#SchedulerToolbar-fr.irit.smac.amak.Scheduler-">SchedulerToolbar(Scheduler)</a></span> - Constructor for class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/SchedulerToolbar.html" title="class in fr.irit.smac.amak.ui">SchedulerToolbar</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/SchedulerToolbar.html#SchedulerToolbar-java.lang.String-fr.irit.smac.amak.Scheduler-">SchedulerToolbar(String, Scheduler)</a></span> - Constructor for class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/SchedulerToolbar.html" title="class in fr.irit.smac.amak.ui">SchedulerToolbar</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak"><span class="typeNameLink">Scheduling</span></a> - Enum in <a href="fr/irit/smac/amak/package-summary.html">fr.irit.smac.amak</a></dt>
+<dd>
+<div class="block">The scheduling of a system can be manual or automatic</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tools/Log.html#setCallback-java.util.function.Consumer-">setCallback(Consumer&lt;String&gt;)</a></span> - Static method in class fr.irit.smac.amak.tools.<a href="fr/irit/smac/amak/tools/Log.html" title="class in fr.irit.smac.amak.tools">Log</a></dt>
 <dd>
 <div class="block">Set the action that must be used for logging lines</div>
@@ -487,11 +485,11 @@
 </a>
 <h2 class="title">V</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.Scheduling.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.Scheduling.html" title="enum in fr.irit.smac.amak">Amas.Scheduling</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduler.State.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduler.State.html" title="enum in fr.irit.smac.amak">Scheduler.State</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this type with the specified name.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduler.State.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduler.State.html" title="enum in fr.irit.smac.amak">Scheduler.State</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduling.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this type with the specified name.</div>
 </dd>
@@ -499,12 +497,12 @@
 <dd>
 <div class="block">Returns the enum constant of this type with the specified name.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.Scheduling.html#values--">values()</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.Scheduling.html" title="enum in fr.irit.smac.amak">Amas.Scheduling</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduler.State.html#values--">values()</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduler.State.html" title="enum in fr.irit.smac.amak">Scheduler.State</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum type, in
 the order they are declared.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduler.State.html#values--">values()</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduler.State.html" title="enum in fr.irit.smac.amak">Scheduler.State</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduling.html#values--">values()</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a></dt>
 <dd>
 <div class="block">Returns an array containing the constants of this enum type, in
 the order they are declared.</div>

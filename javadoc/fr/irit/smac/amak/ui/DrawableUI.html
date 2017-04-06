@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":10,"i1":6};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -132,13 +132,13 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd>java.awt.image.ImageObserver, java.awt.MenuContainer, java.io.Serializable, java.lang.Runnable, javax.accessibility.Accessible, javax.swing.RootPaneContainer, javax.swing.WindowConstants</dd>
+<dd><a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>, java.awt.image.ImageObserver, java.awt.MenuContainer, java.io.Serializable, javax.accessibility.Accessible, javax.swing.RootPaneContainer, javax.swing.WindowConstants</dd>
 </dl>
 <hr>
 <br>
-<pre>public class <span class="typeNameLabel">DrawableUI</span>
+<pre>public abstract class <span class="typeNameLabel">DrawableUI</span>
 extends javax.swing.JFrame
-implements java.lang.Runnable</pre>
+implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></pre>
 <div class="block">This class should be overridden by classes aiming at rendering stuffs on a
  canvas</div>
 <dl>
@@ -251,7 +251,7 @@ implements java.lang.Runnable</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#DrawableUI--">DrawableUI</a></span>()</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#DrawableUI-fr.irit.smac.amak.Scheduling-">DrawableUI</a></span>(<a href="../../../../../fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a>&nbsp;_scheduling)</code>
 <div class="block">Create and initialize the frame and the canvas</div>
 </td>
 </tr>
@@ -265,33 +265,21 @@ implements java.lang.Runnable</pre>
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
-<td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onDraw-java.awt.Graphics2D-">onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics2D)</code>
-<div class="block">This method is called when the canvas must be drawn again</div>
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#cycle--">cycle</a></span>()</code>
+<div class="block">A cycle of the schedulable system</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
-<td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onInitialization--">onInitialization</a></span>()</code>
-<div class="block">This method aims at initializing the rendering system</div>
-</td>
-</tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onStoppedRunning--">onStoppedRunning</a></span>()</code>
-<div class="block">This method is called when the rendering loop stops</div>
-</td>
-</tr>
-<tr id="i3" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#run--">run</a></span>()</code>
-<div class="block">Rendering loop</div>
+<td class="colFirst"><code>protected abstract void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onDraw-java.awt.Graphics2D-">onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics2D)</code>
+<div class="block">This method is called when the canvas must be drawn again</div>
 </td>
 </tr>
 </table>
@@ -358,14 +346,18 @@ implements java.lang.Runnable</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="DrawableUI--">
+<a name="DrawableUI-fr.irit.smac.amak.Scheduling-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>DrawableUI</h4>
-<pre>public&nbsp;DrawableUI()</pre>
+<pre>public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a>&nbsp;_scheduling)</pre>
 <div class="block">Create and initialize the frame and the canvas</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_scheduling</code> - the scheduling mode</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -376,52 +368,33 @@ implements java.lang.Runnable</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="run--">
+<a name="cycle--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>run</h4>
-<pre>public final&nbsp;void&nbsp;run()</pre>
-<div class="block">Rendering loop</div>
+<h4>cycle</h4>
+<pre>public final&nbsp;void&nbsp;cycle()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Schedulable.html#cycle--">Schedulable</a></code></span></div>
+<div class="block">A cycle of the schedulable system</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code>run</code>&nbsp;in interface&nbsp;<code>java.lang.Runnable</code></dd>
+<dd><code><a href="../../../../../fr/irit/smac/amak/Schedulable.html#cycle--">cycle</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
 </dl>
-</li>
-</ul>
-<a name="onStoppedRunning--">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>onStoppedRunning</h4>
-<pre>protected&nbsp;void&nbsp;onStoppedRunning()</pre>
-<div class="block">This method is called when the rendering loop stops</div>
 </li>
 </ul>
 <a name="onDraw-java.awt.Graphics2D-">
 <!--   -->
 </a>
-<ul class="blockList">
+<ul class="blockListLast">
 <li class="blockList">
 <h4>onDraw</h4>
-<pre>protected&nbsp;void&nbsp;onDraw(java.awt.Graphics2D&nbsp;graphics2D)</pre>
+<pre>protected abstract&nbsp;void&nbsp;onDraw(java.awt.Graphics2D&nbsp;graphics2D)</pre>
 <div class="block">This method is called when the canvas must be drawn again</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>graphics2D</code> - Object used for drawing on the canvas</dd>
 </dl>
-</li>
-</ul>
-<a name="onInitialization--">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>onInitialization</h4>
-<pre>protected&nbsp;void&nbsp;onInitialization()</pre>
-<div class="block">This method aims at initializing the rendering system</div>
 </li>
 </ul>
 </li>

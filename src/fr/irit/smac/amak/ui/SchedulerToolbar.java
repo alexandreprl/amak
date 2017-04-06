@@ -27,22 +27,26 @@ public class SchedulerToolbar extends JToolBar {
 
 	private Scheduler scheduler;
 
-	public SchedulerToolbar(Scheduler scheduler) {
+	private String title;
+
+	public SchedulerToolbar(String _title, Scheduler scheduler) {
+		this.title = _title;
 		this.scheduler = scheduler;
-		this.scheduler.setOnStop(s->{
+		this.scheduler.setOnStop(s -> {
 			getSlider().setValue(1);
 		});
 		add(getSlider());
 		if (this.scheduler.isAutorun()) {
-			getSlider().setValue(6);
+			getSlider().setValue(7);
 		}
+		setPreferredSize(new Dimension(300, 100));
 	}
 
 	public JSlider getSlider() {
 		if (runController == null) {
-			runController = new JSlider(SwingConstants.HORIZONTAL, 0, 6, 1);
-			runController.setBorder(BorderFactory.createTitledBorder("Speed"));
-			runController.setSize(new Dimension(300, 100));
+			runController = new JSlider(SwingConstants.HORIZONTAL, 0, 7, 1);
+			runController.setBorder(BorderFactory.createTitledBorder(this.title));
+			
 			final Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
 			labelTable.put(new Integer(0), new JLabel("Step"));
 			labelTable.put(new Integer(1), new JLabel("Stop"));
@@ -50,7 +54,8 @@ public class SchedulerToolbar extends JToolBar {
 			labelTable.put(new Integer(3), new JLabel("x10"));
 			labelTable.put(new Integer(4), new JLabel("x50"));
 			labelTable.put(new Integer(5), new JLabel("x100"));
-			labelTable.put(new Integer(6), new JLabel("MAX"));
+			labelTable.put(new Integer(6), new JLabel("x500"));
+			labelTable.put(new Integer(7), new JLabel("MAX"));
 			runController.setLabelTable(labelTable);
 
 			runController.setPaintLabels(true);
@@ -75,6 +80,9 @@ public class SchedulerToolbar extends JToolBar {
 					scheduler.startWithSleep(10);
 					break;
 				case 6:
+					scheduler.startWithSleep(2);
+					break;
+				case 7:
 					scheduler.startWithSleep(0);
 					break;
 				}

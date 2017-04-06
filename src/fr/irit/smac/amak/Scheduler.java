@@ -10,7 +10,7 @@ import java.util.function.Consumer;
  *
  */
 public class Scheduler implements Runnable {
-	private final Amas<? extends Environment> amas;
+	private final Schedulable schedulable;
 	private State state;
 	private int sleep;
 	private final ReentrantLock stateLock = new ReentrantLock();
@@ -29,14 +29,14 @@ public class Scheduler implements Runnable {
 	/**
 	 * Constructor which set the initial state and auto start if requested
 	 * 
-	 * @param _amas
-	 *            the corresponding amas
+	 * @param _schedulable
+	 *            the corresponding schedulable
 	 * @param _autorun
 	 *            should the scheduler automatically starts
 	 */
-	public Scheduler(Amas<? extends Environment> _amas, boolean _autorun) {
+	public Scheduler(Schedulable _schedulable, boolean _autorun) {
 		this.autorun = _autorun;
-		this.amas = _amas;
+		this.schedulable = _schedulable;
 		this.state = State.IDLE;
 		if (this.autorun)
 			this.start();
@@ -111,9 +111,7 @@ public class Scheduler implements Runnable {
 	@Override
 	public void run() {
 		do {
-			amas.getEnvironment().onCycleBegin();
-			amas.cycle();
-			amas.getEnvironment().onCycleEnd();
+			schedulable.cycle();
 			if (sleep != 0) {
 				try {
 					Thread.sleep(sleep);
