@@ -87,6 +87,8 @@ public class Amas<E extends Environment> implements Schedulable {
 	 */
 	public final void _addAgent(Agent<?, E> _agent) {
 		// TODO add the agent at the end of a cycle (pending add agent)
+		// TODO call initialization
+		// TODO same on destroy
 		agents.add(_agent);
 	}
 
