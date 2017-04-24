@@ -75,5 +75,10 @@ public class Philosopher extends Agent<MyAMAS, TableEnvironment> {
 	@Override
 	protected void onDraw() {
 		LxPlot.getChart("Eaten Pastas", ChartType.BAR).add(id, eatenPastas);
+		amas.getCurrentSnapshot().addEntity(""+hashCode(), "Philosopher");
+//		for (Agent<MyAMAS, TableEnvironment> agent : neighborhood) {
+//			
+//		}
 	}
+	
 }

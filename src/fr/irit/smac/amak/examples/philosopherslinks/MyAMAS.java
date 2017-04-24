@@ -15,6 +15,7 @@ public class MyAMAS extends Amas<TableEnvironment> {
 	private Links links;
 	private JLabel comp;
 	private Philosopher[] ps;
+	private Snapshot currentSnapshot;
 
 	public MyAMAS(TableEnvironment env) {
 		super(env, Scheduling.MANUAL);
@@ -51,14 +52,13 @@ public class MyAMAS extends Amas<TableEnvironment> {
 	@Override
 	protected void onSystemCycleBegin() {
 		comp.setText("Cycle " + getCycle());
+		currentSnapshot = new Snapshot();
 	}
-
+	public Snapshot getCurrentSnapshot() {
+		return currentSnapshot;
+	}
 	@Override
 	protected void onSystemCycleEnd() {
-		Snapshot s = new Snapshot();
-		for (Philosopher p : ps) {
-			s.addEntity("" + p.hashCode(), "philo");
-		}
-		links.addSnapshot(s);
+		links.addSnapshot(currentSnapshot);
 	}
 }
