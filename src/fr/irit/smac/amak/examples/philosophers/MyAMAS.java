@@ -11,7 +11,6 @@ import fr.irit.smac.amak.ui.Toolbar;
 import fr.irit.smac.core.Links;
 
 public class MyAMAS extends Amas<TableEnvironment> {
-	private Links links;
 	private JLabel comp;
 	private Philosopher[] ps;
 
