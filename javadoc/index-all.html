@@ -125,12 +125,17 @@
 <dl>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#computeCriticality--">computeCriticality()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
-<div class="block">Thie method must be overridden by the agents</div>
+<div class="block">This method must be overridden by the agents</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/Philosopher.html#computeCriticality--">computeCriticality()</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/Philosopher.html" title="class in fr.irit.smac.amak.examples.philosophers">Philosopher</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosopherslinks/Philosopher.html#computeCriticality--">computeCriticality()</a></span> - Method in class fr.irit.smac.amak.examples.philosopherslinks.<a href="fr/irit/smac/amak/examples/philosopherslinks/Philosopher.html" title="class in fr.irit.smac.amak.examples.philosopherslinks">Philosopher</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#computeExecutionOrder--">computeExecutionOrder()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
+<dd>
+<div class="block">This method must be overriden if you need to specify an execution order
+ between agents</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#criticalities">criticalities</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
 <div class="block">Criticalities of the neighbors (and it self) as perceived at the
@@ -272,6 +277,12 @@
 <dd>
 <div class="block">Getter for the list of agents</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#getAmas--">getAmas()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
+<dd>
+<div class="block">Getter for the AMAS</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosopherslinks/MyAMAS.html#getCurrentSnapshot--">getCurrentSnapshot()</a></span> - Method in class fr.irit.smac.amak.examples.philosopherslinks.<a href="fr/irit/smac/amak/examples/philosopherslinks/MyAMAS.html" title="class in fr.irit.smac.amak.examples.philosopherslinks">MyAMAS</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#getCycle--">getCycle()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
 <div class="block">Getter for the current cycle number</div>
@@ -279,6 +290,10 @@
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#getEnvironment--">getEnvironment()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
 <div class="block">Getter for the environment</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#getExecutionOrder--">getExecutionOrder()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
+<dd>
+<div class="block">Get the latest computed execution order</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/TableEnvironment.html#getForks--">getForks()</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/TableEnvironment.html" title="class in fr.irit.smac.amak.examples.philosophers">TableEnvironment</a></dt>
 <dd>&nbsp;</dd>
@@ -697,6 +712,11 @@ the order they are declared.</div>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#Z:Z_addAgent-fr.irit.smac.amak.Agent-">_addAgent(Agent&lt;?, E&gt;)</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
 <div class="block">Add an agent to the MAS.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#Z:Z_onBeforeReady--">_onBeforeReady()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
+<dd>
+<div class="block">Called by the framework when all initial agents have been created and are almost ready to be
+ started</div>
 </dd>
 </dl>
 <a href="#I:A">A</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:E">E</a>&nbsp;<a href="#I:F">F</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:L">L</a>&nbsp;<a href="#I:M">M</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;<a href="#I:T">T</a>&nbsp;<a href="#I:V">V</a>&nbsp;<a href="#I:W">W</a>&nbsp;<a href="#I:Z:Z_">_</a>&nbsp;</div>

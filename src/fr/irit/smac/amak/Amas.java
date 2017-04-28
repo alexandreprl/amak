@@ -2,6 +2,7 @@ package fr.irit.smac.amak;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import fr.irit.smac.amak.ui.SchedulerToolbar;
@@ -55,6 +56,7 @@ public class Amas<E extends Environment> implements Schedulable {
 		this.environment = env;
 		this.onInitialAgentsCreation();
 		for (Agent<?, E> agent : agents) {
+			agent._onBeforeReady();
 			agent.onReady();
 		}
 		this.scheduler = new Scheduler(this, scheduling == Scheduling.AUTO);
@@ -98,7 +100,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	public final void cycle() {
 		cycle++;
 		getEnvironment().onCycleBegin();
-		Collections.shuffle(agents);
+		Collections.sort(agents, new AgentOrderComparator());
 		onSystemCycleBegin();
 		for (Agent<?, E> agent : agents) {
 			agent.onSystemCycleBegin();
@@ -161,5 +163,17 @@ public class Amas<E extends Environment> implements Schedulable {
 	 */
 	public List<Agent<?, E>> getAgents() {
 		return agents;
+	}
+	
+	private class AgentOrderComparator implements Comparator<Agent> {
+
+		@Override
+		public int compare(Agent o1, Agent o2) {
+			if (o1.getExecutionOrder() == o2.getExecutionOrder())
+				return (int)(Math.random()*3)-1;
+			else
+				return o1.getExecutionOrder()-o2.getExecutionOrder();
+		}
+		
 	}
 }

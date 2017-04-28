@@ -35,6 +35,10 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * Amas the agent belongs to
 	 */
 	protected final A amas;
+	/**
+	 * Execution order of the agent
+	 */
+	private int executionOrder;
 
 	/**
 	 * The constructor automatically add the agent to the corresponding amas and
@@ -65,12 +69,22 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	}
 
 	/**
-	 * Thie method must be overridden by the agents
+	 * This method must be overridden by the agents
 	 * 
 	 * @return the criticality at a given moment
 	 */
 	protected double computeCriticality() {
 		return Double.NEGATIVE_INFINITY;
+	}
+
+	/**
+	 * This method must be overriden if you need to specify an execution order
+	 * between agents
+	 * 
+	 * @return the execution order
+	 */
+	protected int computeExecutionOrder() {
+		return 0;
 	}
 
 	/**
@@ -133,6 +147,14 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	protected void onReady() {
 
 	}
+	/**
+	 * Called by the framework when all initial agents have been created and are almost ready to be
+	 * started
+	 */
+	protected final void _onBeforeReady() {
+		criticality = computeCriticality();
+		executionOrder = computeExecutionOrder();
+	}
 
 	/**
 	 * Called before all agents are created
@@ -166,6 +188,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 		}
 		onPerceiveDecideAct();
 		criticality = computeCriticality();
+		executionOrder = computeExecutionOrder();
 		onExpose();
 		onDraw();
 		onAgentCycleEnd();
@@ -207,5 +230,23 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 		if (criticalest.isEmpty())
 			return null;
 		return criticalest.get((int) (Math.random() * criticalest.size()));
+	}
+
+	/**
+	 * Get the latest computed execution order
+	 * 
+	 * @return the execution order
+	 */
+	public int getExecutionOrder() {
+		return executionOrder;
+	}
+
+	/**
+	 * Getter for the AMAS
+	 * 
+	 * @return the amas
+	 */
+	public A getAmas() {
+		return amas;
 	}
 }
