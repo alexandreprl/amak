@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Random;
 
 import fr.irit.smac.amak.ui.SchedulerToolbar;
 import fr.irit.smac.amak.ui.Toolbar;
@@ -40,6 +41,11 @@ public class Amas<E extends Environment> implements Schedulable {
 	private static int uniqueIndex;
 
 	/**
+	 * Random object common to the amas
+	 */
+	private final Random random = new Random();
+
+	/**
 	 * The id of the amas
 	 */
 	private final int id = uniqueIndex++;
@@ -59,9 +65,19 @@ public class Amas<E extends Environment> implements Schedulable {
 			agent._onBeforeReady();
 			agent.onReady();
 		}
-		this.scheduler = new Scheduler(this, scheduling == Scheduling.AUTO);
-		if (scheduling == Scheduling.MANUAL)
+		this.scheduler = new Scheduler(this,
+				Scheduling.hasAutostart(scheduling));
+		if (Scheduling.isManual(scheduling))
 			Toolbar.add(new SchedulerToolbar("Amas #" + id, getScheduler()));
+	}
+
+	/**
+	 * Getter for the random object
+	 * 
+	 * @return the random object
+	 */
+	public Random getRandom() {
+		return random;
 	}
 
 	/**
@@ -164,16 +180,16 @@ public class Amas<E extends Environment> implements Schedulable {
 	public List<Agent<?, E>> getAgents() {
 		return agents;
 	}
-	
+
 	private class AgentOrderComparator implements Comparator<Agent> {
 
 		@Override
 		public int compare(Agent o1, Agent o2) {
 			if (o1.getExecutionOrder() == o2.getExecutionOrder())
-				return (int)(Math.random()*3)-1;
+				return 0;
 			else
-				return o1.getExecutionOrder()-o2.getExecutionOrder();
+				return o1.getExecutionOrder() - o2.getExecutionOrder();
 		}
-		
+
 	}
 }

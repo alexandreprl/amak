@@ -83,10 +83,11 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 
 		canvas.createBufferStrategy(2);
 		bufferStrategy = canvas.getBufferStrategy();
+		
 
-		scheduler = new Scheduler(this, _scheduling == Scheduling.AUTO);
+		scheduler = new Scheduler(this, Scheduling.hasAutostart(_scheduling));
 
-		if (_scheduling == Scheduling.MANUAL)
+		if (Scheduling.isManual(_scheduling))
 			Toolbar.add(new SchedulerToolbar("Drawable #" + id, scheduler));
 	}
 
