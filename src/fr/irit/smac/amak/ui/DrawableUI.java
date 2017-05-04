@@ -4,8 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Toolkit;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 import java.awt.image.BufferStrategy;
 
 import javax.swing.JFrame;
@@ -31,18 +36,13 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 	private static final long serialVersionUID = 7895752986790657855L;
 
 	/**
-	 * Buffer strategy aiming at increasing the performance of the rendering
-	 * system
-	 */
-	private final BufferStrategy bufferStrategy;
-	/**
 	 * Panel for the canvas
 	 */
 	private final JPanel contentPane;
 	/**
 	 * Drawable canvas
 	 */
-	private final Canvas canvas;
+	private final JPanel canvas;
 
 	/**
 	 * Scheduler for the drawing frame
@@ -59,6 +59,7 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 	 */
 	private final int id = uniqueIndex++;
 
+
 	/**
 	 * Create and initialize the frame and the canvas
 	 * 
@@ -68,22 +69,68 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 	public DrawableUI(Scheduling _scheduling) {
 		setTitle("Drawable #" + id);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 611, 466);
+		setBounds(100, 300, 611, 466);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		canvas = new Canvas();
+		canvas = new JPanel() {
+			protected void paintComponent(java.awt.Graphics g) {
+
+				Image buffer = createImage(800, 600);
+				Graphics graphics = buffer.getGraphics();
+				graphics.setColor(Color.BLACK);
+				graphics.fillRect(0, 0, 800, 600);
+				onDraw((Graphics2D) graphics);
+				g.drawImage(buffer, 0, 0, null);
+			}
+		};
+		canvas.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseReleased(MouseEvent e) {
+			}
+
+			@Override
+			public void mousePressed(MouseEvent e) {
+			}
+
+			@Override
+			public void mouseExited(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				onClick(e.getX(), e.getY());
+			}
+		});
+		canvas.addMouseMotionListener(new MouseMotionListener() {
+			
+			@Override
+			public void mouseMoved(MouseEvent e) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void mouseDragged(MouseEvent e) {
+				onMouseDragged(e.getX(), e.getY());
+			}
+		});
 		canvas.setPreferredSize(new Dimension(800, 600));
 		contentPane.add(canvas, BorderLayout.CENTER);
 
 		pack();
 		setVisible(true);
-
-		canvas.createBufferStrategy(2);
-		bufferStrategy = canvas.getBufferStrategy();
-		
 
 		scheduler = new Scheduler(this, Scheduling.hasAutostart(_scheduling));
 
@@ -93,13 +140,8 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 
 	@Override
 	public final void cycle() {
-		Graphics2D current = (Graphics2D) bufferStrategy.getDrawGraphics();
-		current.setColor(Color.BLACK);
-		current.fillRect(0, 0, 800, 600);
-		onDraw(current);
-		bufferStrategy.show(); // flip back buffer with front buffer?
-		current.dispose();
-		Toolkit.getDefaultToolkit().sync();
+		canvas.repaint();
+
 	}
 
 	/**
@@ -109,4 +151,28 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 	 *            Object used for drawing on the canvas
 	 */
 	protected abstract void onDraw(Graphics2D graphics2D);
+
+	/**
+	 * This method is called when the mouse is clicked on the canvas
+	 * 
+	 * @param x
+	 *            X position of the mouse
+	 * @param y
+	 *            Y position of the mouse
+	 */
+	protected void onClick(int x, int y) {
+		
+	}
+
+	/**
+	 * This method is called when the mouse is dragged on the canvas
+	 * 
+	 * @param x
+	 *            X position of the mouse
+	 * @param y
+	 *            Y position of the mouse
+	 */
+	protected void onMouseDragged(int x, int y) {
+		
+	}
 }
