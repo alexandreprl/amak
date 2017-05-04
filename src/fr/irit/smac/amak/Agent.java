@@ -69,10 +69,13 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	}
 
 	/**
-	 * This method must be overridden by the agents
+	 * This method must be overridden by the agents. This method shouldn't make
+	 * any calls to internal representation an agent has on its environment
+	 * because these information maybe outdated.
 	 * 
 	 * @return the criticality at a given moment
 	 */
+	//TODO change the moment the criticality is being calculated
 	protected double computeCriticality() {
 		return Double.NEGATIVE_INFINITY;
 	}
@@ -147,9 +150,10 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	protected void onReady() {
 
 	}
+
 	/**
-	 * Called by the framework when all initial agents have been created and are almost ready to be
-	 * started
+	 * Called by the framework when all initial agents have been created and are
+	 * almost ready to be started
 	 */
 	protected final void _onBeforeReady() {
 		criticality = computeCriticality();
