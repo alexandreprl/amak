@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -206,54 +206,66 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#Z:Z_removeAgent-fr.irit.smac.amak.Agent-">_removeAgent</a></span>(<a href="../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;?,<a href="../../../../fr/irit/smac/amak/Amas.html" title="type parameter in Amas">E</a>&gt;&nbsp;_agent)</code>
+<div class="block">Remove an agent from the MAS</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#cycle--">cycle</a></span>()</code>
 <div class="block">Cycle of the system</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.List&lt;<a href="../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;?,<a href="../../../../fr/irit/smac/amak/Amas.html" title="type parameter in Amas">E</a>&gt;&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#getAgents--">getAgents</a></span>()</code>
 <div class="block">Getter for the list of agents</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#getCycle--">getCycle</a></span>()</code>
 <div class="block">Getter for the current cycle number</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code><a href="../../../../fr/irit/smac/amak/Amas.html" title="type parameter in Amas">E</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#getEnvironment--">getEnvironment</a></span>()</code>
 <div class="block">Getter for the environment</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>java.util.Random</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#getRandom--">getRandom</a></span>()</code>
+<div class="block">Getter for the random object</div>
+</td>
+</tr>
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#getScheduler--">getScheduler</a></span>()</code>
 <div class="block">Getter for the scheduler</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onInitialAgentsCreation--">onInitialAgentsCreation</a></span>()</code>
 <div class="block">This method should be overridden, the agents should be created in this
  method</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSystemCycleBegin--">onSystemCycleBegin</a></span>()</code>
 <div class="block">This method is called before all agents have executed a cycle</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSystemCycleEnd--">onSystemCycleEnd</a></span>()</code>
 <div class="block">This method is called when all agents have executed a cycle</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#stopCondition--">stopCondition</a></span>()</code>
 <div class="block">This method allows the system to stop the scheduler on certain conditions</div>
@@ -345,6 +357,20 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="getRandom--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getRandom</h4>
+<pre>public&nbsp;java.util.Random&nbsp;getRandom()</pre>
+<div class="block">Getter for the random object</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the random object</dd>
+</dl>
+</li>
+</ul>
 <a name="getScheduler--">
 <!--   -->
 </a>
@@ -381,7 +407,21 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
  its creation</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>_agent</code> - the agent to addto the system</dd>
+<dd><code>_agent</code> - the agent to add to the system</dd>
+</dl>
+</li>
+</ul>
+<a name="Z:Z_removeAgent-fr.irit.smac.amak.Agent-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>_removeAgent</h4>
+<pre>public final&nbsp;void&nbsp;_removeAgent(<a href="../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;?,<a href="../../../../fr/irit/smac/amak/Amas.html" title="type parameter in Amas">E</a>&gt;&nbsp;_agent)</pre>
+<div class="block">Remove an agent from the MAS</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_agent</code> - the agent to remove from the system</dd>
 </dl>
 </li>
 </ul>

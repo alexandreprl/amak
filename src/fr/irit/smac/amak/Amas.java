@@ -3,8 +3,11 @@ package fr.irit.smac.amak;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+
+import javax.swing.JToolBar;
 
 import fr.irit.smac.amak.ui.SchedulerToolbar;
 import fr.irit.smac.amak.ui.Toolbar;
@@ -49,6 +52,8 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * The id of the amas
 	 */
 	private final int id = uniqueIndex++;
+	private LinkedList<Agent<?, E>> agentsPendingRemoval = new LinkedList<>();
+	private LinkedList<Agent<?, E>> agentsPendingAddition = new LinkedList<>();
 
 	/**
 	 * Constructor of the MAS
@@ -65,8 +70,7 @@ public class Amas<E extends Environment> implements Schedulable {
 			agent._onBeforeReady();
 			agent.onReady();
 		}
-		this.scheduler = new Scheduler(this,
-				Scheduling.hasAutostart(scheduling));
+		this.scheduler = new Scheduler(this, Scheduling.hasAutostart(scheduling));
 		if (Scheduling.isManual(scheduling))
 			Toolbar.add(new SchedulerToolbar("Amas #" + id, getScheduler()));
 	}
@@ -101,13 +105,20 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * its creation
 	 * 
 	 * @param _agent
-	 *            the agent to addto the system
+	 *            the agent to add to the system
 	 */
 	public final void _addAgent(Agent<?, E> _agent) {
-		// TODO add the agent at the end of a cycle (pending add agent)
-		// TODO call initialization
-		// TODO same on destroy
-		agents.add(_agent);
+		agentsPendingAddition.add(_agent);
+	}
+
+	/**
+	 * Remove an agent from the MAS
+	 * 
+	 * @param _agent
+	 *            the agent to remove from the system
+	 */
+	public final void _removeAgent(Agent<?, E> _agent) {
+		agentsPendingRemoval.add(_agent);
 	}
 
 	/**
@@ -126,6 +137,18 @@ public class Amas<E extends Environment> implements Schedulable {
 		}
 		for (Agent<?, E> agent : agents) {
 			agent.onSystemCycleEnd();
+		}
+		while (!agentsPendingRemoval.isEmpty())
+			agents.remove(agentsPendingRemoval.poll());
+		for (Agent<?, E> agent : agentsPendingAddition) {
+			agents.add(agent);
+		}
+		Agent<?, E> agent2;
+		while (!agentsPendingAddition.isEmpty()) {
+			agent2 = agentsPendingAddition.poll();
+			agent2._onBeforeReady();
+			agent2.onReady();
+
 		}
 		onSystemCycleEnd();
 		getEnvironment().onCycleEnd();

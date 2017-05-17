@@ -253,4 +253,11 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	public A getAmas() {
 		return amas;
 	}
+
+	/**
+	 * Remove the agent from the system
+	 */
+	public void destroy() {
+		getAmas()._removeAgent(this);
+	}
 }

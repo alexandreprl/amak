@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -199,8 +199,8 @@ extends java.lang.Object</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#Z:Z_onBeforeReady--">_onBeforeReady</a></span>()</code>
-<div class="block">Called by the framework when all initial agents have been created and are almost ready to be
- started</div>
+<div class="block">Called by the framework when all initial agents have been created and are
+ almost ready to be started</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
@@ -212,7 +212,7 @@ extends java.lang.Object</pre>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>protected double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#computeCriticality--">computeCriticality</a></span>()</code>
-<div class="block">This method must be overridden by the agents</div>
+<div class="block">This method must be overridden by the agents.</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
@@ -230,94 +230,100 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#destroy--">destroy</a></span>()</code>
+<div class="block">Remove the agent from the system</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../fr/irit/smac/amak/Agent.html" title="type parameter in Agent">A</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#getAmas--">getAmas</a></span>()</code>
 <div class="block">Getter for the AMAS</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#getExecutionOrder--">getExecutionOrder</a></span>()</code>
 <div class="block">Get the latest computed execution order</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>protected <a href="../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../fr/irit/smac/amak/Agent.html" title="type parameter in Agent">A</a>,<a href="../../../../fr/irit/smac/amak/Agent.html" title="type parameter in Agent">E</a>&gt;</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#getMostCriticalNeighbor-boolean-">getMostCriticalNeighbor</a></span>(boolean&nbsp;includingMe)</code>
 <div class="block">Convenient method giving the most critical neighbor at a given moment</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onAct--">onAct</a></span>()</code>
 <div class="block">This method corresponds to the action phase of the agents and must be
  overridden</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onAgentCycleBegin--">onAgentCycleBegin</a></span>()</code>
 <div class="block">This method is called at the beginning of an agent's cycle</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onAgentCycleEnd--">onAgentCycleEnd</a></span>()</code>
 <div class="block">This method is called at the end of an agent's cycle</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onDecide--">onDecide</a></span>()</code>
 <div class="block">This method corresponds to the decision phase of the agents and must be
  overridden</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onDraw--">onDraw</a></span>()</code>
 <div class="block">This method is essentially intended for debugging purpose.</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onExpose--">onExpose</a></span>()</code>
 <div class="block">In this method the agent should expose some variables with its neighbor</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize</a></span>()</code>
 <div class="block">Called before all agents are created</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onPerceive--">onPerceive</a></span>()</code>
 <div class="block">This method corresponds to the perception phase of the agents and must be
  overridden</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onPerceiveDecideAct--">onPerceiveDecideAct</a></span>()</code>
 <div class="block">Perceive, decide and act</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onReady--">onReady</a></span>()</code>
 <div class="block">Called when all initial agents have been created and are ready to be
  started</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">onSystemCycleBegin</a></span>()</code>
 <div class="block">Called before the cycle of the system starts</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onSystemCycleEnd--">onSystemCycleEnd</a></span>()</code>
 <div class="block">Called each time the cycle of the system is over</div>
@@ -431,7 +437,9 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>computeCriticality</h4>
 <pre>protected&nbsp;double&nbsp;computeCriticality()</pre>
-<div class="block">This method must be overridden by the agents</div>
+<div class="block">This method must be overridden by the agents. This method shouldn't make
+ any calls to internal representation an agent has on its environment
+ because these information maybe outdated.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the criticality at a given moment</dd>
@@ -545,8 +553,8 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>_onBeforeReady</h4>
 <pre>protected final&nbsp;void&nbsp;_onBeforeReady()</pre>
-<div class="block">Called by the framework when all initial agents have been created and are almost ready to be
- started</div>
+<div class="block">Called by the framework when all initial agents have been created and are
+ almost ready to be started</div>
 </li>
 </ul>
 <a name="onInitialize--">
@@ -633,7 +641,7 @@ extends java.lang.Object</pre>
 <a name="getAmas--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getAmas</h4>
 <pre>public&nbsp;<a href="../../../../fr/irit/smac/amak/Agent.html" title="type parameter in Agent">A</a>&nbsp;getAmas()</pre>
@@ -642,6 +650,16 @@ extends java.lang.Object</pre>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the amas</dd>
 </dl>
+</li>
+</ul>
+<a name="destroy--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>destroy</h4>
+<pre>public&nbsp;void&nbsp;destroy()</pre>
+<div class="block">Remove the agent from the system</div>
 </li>
 </ul>
 </li>

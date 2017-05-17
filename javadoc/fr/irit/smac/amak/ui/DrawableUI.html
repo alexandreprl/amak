@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":6};
+var methods = {"i0":10,"i1":10,"i2":6,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -281,9 +281,23 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onClick-int-int-">onClick</a></span>(int&nbsp;x,
+       int&nbsp;y)</code>
+<div class="block">This method is called when the mouse is clicked on the canvas</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>protected abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onDraw-java.awt.Graphics2D-">onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics2D)</code>
 <div class="block">This method is called when the canvas must be drawn again</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onMouseDragged-int-int-">onMouseDragged</a></span>(int&nbsp;x,
+              int&nbsp;y)</code>
+<div class="block">This method is called when the mouse is dragged on the canvas</div>
 </td>
 </tr>
 </table>
@@ -390,7 +404,7 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <a name="onDraw-java.awt.Graphics2D-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>onDraw</h4>
 <pre>protected abstract&nbsp;void&nbsp;onDraw(java.awt.Graphics2D&nbsp;graphics2D)</pre>
@@ -398,6 +412,38 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>graphics2D</code> - Object used for drawing on the canvas</dd>
+</dl>
+</li>
+</ul>
+<a name="onClick-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onClick</h4>
+<pre>protected&nbsp;void&nbsp;onClick(int&nbsp;x,
+                       int&nbsp;y)</pre>
+<div class="block">This method is called when the mouse is clicked on the canvas</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - X position of the mouse</dd>
+<dd><code>y</code> - Y position of the mouse</dd>
+</dl>
+</li>
+</ul>
+<a name="onMouseDragged-int-int-">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>onMouseDragged</h4>
+<pre>protected&nbsp;void&nbsp;onMouseDragged(int&nbsp;x,
+                              int&nbsp;y)</pre>
+<div class="block">This method is called when the mouse is dragged on the canvas</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - X position of the mouse</dd>
+<dd><code>y</code> - Y position of the mouse</dd>
 </dl>
 </li>
 </ul>
