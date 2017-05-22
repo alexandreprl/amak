@@ -23,7 +23,7 @@ public class Profiler {
 	 *            Unique name for time measure
 	 */
 	public static void start(String name) {
-		starts.put(name, System.currentTimeMillis());
+		starts.put(name, System.nanoTime());
 	}
 
 	/**
@@ -34,6 +34,6 @@ public class Profiler {
 	 * @return the amount of time since the start in milli seconds
 	 */
 	public static long end(String name) {
-		return System.currentTimeMillis() - starts.get(name);
+		return System.nanoTime() - starts.get(name);
 	}
 }
