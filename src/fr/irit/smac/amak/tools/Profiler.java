@@ -31,7 +31,7 @@ public class Profiler {
 	 * 
 	 * @param name
 	 *            Unique name for time measure (use the same as in start)
-	 * @return the amount of time since the start in milli seconds
+	 * @return the amount of time since the start in nano seconds
 	 */
 	public static long end(String name) {
 		return System.nanoTime() - starts.get(name);
