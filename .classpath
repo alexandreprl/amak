@@ -4,6 +4,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="AdditionalLibraries/avt.jar"/>
 	<classpathentry kind="lib" path="AdditionalLibraries/lx-plot-standalone.jar"/>
-	<classpathentry kind="lib" path="AdditionalLibraries/Links.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

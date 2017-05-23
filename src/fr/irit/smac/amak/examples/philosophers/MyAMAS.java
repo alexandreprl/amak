@@ -8,7 +8,6 @@ import javax.swing.JToolBar;
 import fr.irit.smac.amak.Amas;
 import fr.irit.smac.amak.Scheduling;
 import fr.irit.smac.amak.ui.Toolbar;
-import fr.irit.smac.core.Links;
 
 public class MyAMAS extends Amas<TableEnvironment> {
 	private JLabel comp;

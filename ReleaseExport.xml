@@ -24,7 +24,6 @@
             <fileset dir="${dir.buildfile}/bin"/>
             <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/lx-plot-standalone.jar"/>
             <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/avt.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/Links.jar"/>
         </jar>
         <jar destfile="${dir.jarfile}/AmakFramework.jar" filesetmanifest="mergewithoutmain">
             <!--<manifest>
