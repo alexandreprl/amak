@@ -87,7 +87,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * @return the execution order
 	 */
 	protected int computeExecutionOrder() {
-		return 0;
+		return amas.getRandom().nextInt(1000);
 	}
 
 	/**
