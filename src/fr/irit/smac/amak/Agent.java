@@ -75,7 +75,6 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * 
 	 * @return the criticality at a given moment
 	 */
-	//TODO change the moment the criticality is being calculated
 	protected double computeCriticality() {
 		return Double.NEGATIVE_INFINITY;
 	}
