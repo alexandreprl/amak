@@ -15,6 +15,10 @@ public class MyAMAS extends Amas<TableEnvironment> {
 
 	public MyAMAS(TableEnvironment env) {
 		super(env, Scheduling.MANUAL);
+	}
+
+	@Override
+	protected void onInitialConfiguration() {
 		JToolBar toolbar = new JToolBar();
 		comp = new JLabel("Cycle");
 		comp.setPreferredSize(new Dimension(200, 100));

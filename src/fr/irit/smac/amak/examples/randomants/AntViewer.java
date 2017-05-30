@@ -14,11 +14,10 @@ public class AntViewer extends DrawableUI {
 	 * 
 	 */
 	private static final long serialVersionUID = -3703452662387302999L;
-	private AntHill antHill;
+	protected AntHill antHill;
 
-	public AntViewer(AntHill antHill) {
+	public AntViewer() {
 		super(Scheduling.MANUAL);
-		this.antHill = antHill;
 	}
 
 	@Override

@@ -58,21 +58,43 @@ public class Amas<E extends Environment> implements Schedulable {
 	/**
 	 * Constructor of the MAS
 	 * 
-	 * @param env
+	 * @param environment
 	 *            Environment of the system
 	 * @param scheduling
 	 *            Scheduling mode
 	 */
-	public Amas(E env, Scheduling scheduling) {
-		this.environment = env;
+	public Amas(E environment, Scheduling scheduling) {
+		this.environment = environment;
+		this.onInitialConfiguration();
 		this.onInitialAgentsCreation();
-		for (Agent<?, E> agent : agents) {
+		
+		for (Agent<?, E> agent : agentsPendingAddition) {
+			agents.add(agent);
+		}
+		Agent<?, E> agent;
+		while (!agentsPendingAddition.isEmpty()) {
+			agent = agentsPendingAddition.poll();
 			agent._onBeforeReady();
 			agent.onReady();
+
 		}
+		this.onReady();
 		this.scheduler = new Scheduler(this, Scheduling.hasAutostart(scheduling));
 		if (Scheduling.isManual(scheduling))
 			Toolbar.add(new SchedulerToolbar("Amas #" + id, getScheduler()));
+	}
+
+	/**
+	 * This method is called at the very beginning of the amas creation. Any
+	 * configuration should be made here.
+	 */
+	protected void onInitialConfiguration() {
+	}
+
+	/**
+	 * This method is called when all agents are ready
+	 */
+	protected void onReady() {
 	}
 
 	/**

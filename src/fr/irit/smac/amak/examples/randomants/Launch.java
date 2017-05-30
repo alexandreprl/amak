@@ -4,6 +4,12 @@ public class Launch {
 
 	public static void main(String[] args) {
 		World env = new World();
-		new AntHill(env);
+		
+		AntHill _antHill = new AntHill(env);
+		new AntViewer(){
+			protected void onInitialConfiguration() {
+				this.antHill = _antHill;
+			}
+		};
 	}
 }

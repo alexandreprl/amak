@@ -59,7 +59,6 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 	 */
 	private final int id = uniqueIndex++;
 
-
 	/**
 	 * Create and initialize the frame and the canvas
 	 * 
@@ -67,6 +66,7 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 	 *            the scheduling mode
 	 */
 	public DrawableUI(Scheduling _scheduling) {
+		onInitialConfiguration();
 		setTitle("Drawable #" + id);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 300, 611, 466);
@@ -98,13 +98,10 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
 
 			}
 
@@ -114,18 +111,19 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 			}
 		});
 		canvas.addMouseMotionListener(new MouseMotionListener() {
-			
+
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				
+
 			}
-			
+
 			@Override
 			public void mouseDragged(MouseEvent e) {
 				onMouseDragged(e.getX(), e.getY());
 			}
 		});
+
+		canvas.setIgnoreRepaint(true);
 		canvas.setPreferredSize(new Dimension(800, 600));
 		contentPane.add(canvas, BorderLayout.CENTER);
 
@@ -136,8 +134,15 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 
 		if (Scheduling.isManual(_scheduling))
 			Toolbar.add(new SchedulerToolbar("Drawable #" + id, scheduler));
+
 	}
 
+	/**
+	 * This method is called at the very beginning of the DrawableUI creation. Any
+	 * configuration should be made here.
+	 */
+	protected void onInitialConfiguration() {
+	}
 	@Override
 	public final void cycle() {
 		canvas.repaint();
@@ -161,7 +166,7 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 	 *            Y position of the mouse
 	 */
 	protected void onClick(int x, int y) {
-		
+
 	}
 
 	/**
@@ -173,6 +178,6 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 	 *            Y position of the mouse
 	 */
 	protected void onMouseDragged(int x, int y) {
-		
+
 	}
 }
