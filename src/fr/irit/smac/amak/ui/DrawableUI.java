@@ -28,17 +28,13 @@ import fr.irit.smac.amak.Scheduling;
  * @author Alexandre Perles
  *
  */
-public abstract class DrawableUI extends JFrame implements Schedulable {
+public abstract class DrawableUI implements Schedulable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 7895752986790657855L;
 
-	/**
-	 * Panel for the canvas
-	 */
-	private final JPanel contentPane;
 	/**
 	 * Drawable canvas
 	 */
@@ -67,13 +63,13 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 	 */
 	public DrawableUI(Scheduling _scheduling) {
 		onInitialConfiguration();
-		setTitle("Drawable #" + id);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 300, 611, 466);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
+//		setTitle("Drawable #" + id);
+//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//		setBounds(100, 300, 611, 466);
+//		contentPane = new JPanel();
+//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+//		contentPane.setLayout(new BorderLayout(0, 0));
+//		setContentPane(contentPane);
 
 		canvas = new JPanel() {
 			protected void paintComponent(java.awt.Graphics g) {
@@ -125,15 +121,15 @@ public abstract class DrawableUI extends JFrame implements Schedulable {
 
 		canvas.setIgnoreRepaint(true);
 		canvas.setPreferredSize(new Dimension(800, 600));
-		contentPane.add(canvas, BorderLayout.CENTER);
-
-		pack();
-		setVisible(true);
+//		contentPane.add(canvas, BorderLayout.CENTER);
+		MainWindow.addTabbedPanel("Drawable #" + id, canvas);
+//		pack();
+//		setVisible(true);
 
 		scheduler = new Scheduler(this, Scheduling.hasAutostart(_scheduling));
 
 		if (Scheduling.isManual(_scheduling))
-			Toolbar.add(new SchedulerToolbar("Drawable #" + id, scheduler));
+			MainWindow.addToolbar(new SchedulerToolbar("Drawable #" + id, scheduler));
 
 	}
 

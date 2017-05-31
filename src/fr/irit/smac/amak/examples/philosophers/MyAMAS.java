@@ -7,7 +7,7 @@ import javax.swing.JToolBar;
 
 import fr.irit.smac.amak.Amas;
 import fr.irit.smac.amak.Scheduling;
-import fr.irit.smac.amak.ui.Toolbar;
+import fr.irit.smac.amak.ui.MainWindow;
 
 public class MyAMAS extends Amas<TableEnvironment> {
 	private JLabel comp;
@@ -23,7 +23,7 @@ public class MyAMAS extends Amas<TableEnvironment> {
 		comp = new JLabel("Cycle");
 		comp.setPreferredSize(new Dimension(200, 100));
 		toolbar.add(comp);
-		Toolbar.add(toolbar);
+		MainWindow.addToolbar(toolbar);
 	}
 
 	@Override

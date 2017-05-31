@@ -10,7 +10,7 @@ import java.util.Random;
 import javax.swing.JToolBar;
 
 import fr.irit.smac.amak.ui.SchedulerToolbar;
-import fr.irit.smac.amak.ui.Toolbar;
+import fr.irit.smac.amak.ui.MainWindow;
 
 /**
  * This class must be overridden by multi-agent systems
@@ -81,7 +81,7 @@ public class Amas<E extends Environment> implements Schedulable {
 		this.onReady();
 		this.scheduler = new Scheduler(this, Scheduling.hasAutostart(scheduling));
 		if (Scheduling.isManual(scheduling))
-			Toolbar.add(new SchedulerToolbar("Amas #" + id, getScheduler()));
+			MainWindow.addToolbar(new SchedulerToolbar("Amas #" + id, getScheduler()));
 	}
 
 	/**
