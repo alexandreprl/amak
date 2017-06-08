@@ -68,6 +68,14 @@ public class Amas<E extends Environment> implements Schedulable {
 		this.onInitialConfiguration();
 		this.onInitialAgentsCreation();
 		
+		addPendingAgents();
+		this.onReady();
+		this.scheduler = new Scheduler(this, Scheduling.hasAutostart(scheduling));
+		if (Scheduling.isManual(scheduling))
+			MainWindow.addToolbar(new SchedulerToolbar("Amas #" + id, getScheduler()));
+	}
+
+	private void addPendingAgents() {
 		for (Agent<?, E> agent : agentsPendingAddition) {
 			agents.add(agent);
 		}
@@ -78,10 +86,6 @@ public class Amas<E extends Environment> implements Schedulable {
 			agent.onReady();
 
 		}
-		this.onReady();
-		this.scheduler = new Scheduler(this, Scheduling.hasAutostart(scheduling));
-		if (Scheduling.isManual(scheduling))
-			MainWindow.addToolbar(new SchedulerToolbar("Amas #" + id, getScheduler()));
 	}
 
 	/**
@@ -162,16 +166,7 @@ public class Amas<E extends Environment> implements Schedulable {
 		}
 		while (!agentsPendingRemoval.isEmpty())
 			agents.remove(agentsPendingRemoval.poll());
-		for (Agent<?, E> agent : agentsPendingAddition) {
-			agents.add(agent);
-		}
-		Agent<?, E> agent2;
-		while (!agentsPendingAddition.isEmpty()) {
-			agent2 = agentsPendingAddition.poll();
-			agent2._onBeforeReady();
-			agent2.onReady();
-
-		}
+		addPendingAgents();
 		onSystemCycleEnd();
 		getEnvironment().onCycleEnd();
 	}
