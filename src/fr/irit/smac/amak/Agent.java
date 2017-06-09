@@ -36,8 +36,24 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 */
 	protected final A amas;
 	/**
-	 * Execution order of the agent
+	 * Execution order layer of the agent
 	 */
+	private int executionOrderLayer;
+
+	/**
+	 * This attribute aims at sorting randomly agents with the same
+	 * executionOrder value
+	 */
+	private int executionOrderRandomIndex;
+	/**
+	 * Unique index to give unique id to each agent
+	 */
+	private static int uniqueIndex;
+
+	/**
+	 * The id of the agent
+	 */
+	private final int id = uniqueIndex++;
 	private int executionOrder;
 
 	/**
@@ -80,13 +96,12 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	}
 
 	/**
-	 * This method must be overriden if you need to specify an execution order
-	 * between agents
+	 * This method must be overriden if you need to specify an execution order layer
 	 * 
-	 * @return the execution order
+	 * @return the execution order layer
 	 */
-	protected int computeExecutionOrder() {
-		return amas.getRandom().nextInt(1000);
+	protected int computeExecutionOrderLayer() {
+		return 0;
 	}
 
 	/**
@@ -195,6 +210,14 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 		onExpose();
 		onDraw();
 		onAgentCycleEnd();
+	}
+
+	/**
+	 * Compute the execution order from the layer and a random value
+	 * @return
+	 */
+	private int computeExecutionOrder() {
+		return computeExecutionOrderLayer()*10000+amas.getRandom().nextInt(10000);
 	}
 
 	/**

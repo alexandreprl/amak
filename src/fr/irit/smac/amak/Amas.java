@@ -44,14 +44,14 @@ public class Amas<E extends Environment> implements Schedulable {
 	private static int uniqueIndex;
 
 	/**
-	 * Random object common to the amas
-	 */
-	private final Random random = new Random();
-
-	/**
 	 * The id of the amas
 	 */
 	private final int id = uniqueIndex++;
+
+	/**
+	 * Random object common to the amas
+	 */
+	private final Random random = new Random();
 	private LinkedList<Agent<?, E>> agentsPendingRemoval = new LinkedList<>();
 	private LinkedList<Agent<?, E>> agentsPendingAddition = new LinkedList<>();
 
