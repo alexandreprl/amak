@@ -67,11 +67,11 @@ public class Amas<E extends Environment> implements Schedulable {
 		this.environment = environment;
 		this.onInitialConfiguration();
 		this.onInitialAgentsCreation();
-		
+
 		addPendingAgents();
 		this.onReady();
-		this.scheduler = new Scheduler(this, Scheduling.hasAutostart(scheduling));
-		if (Scheduling.isManual(scheduling))
+		this.scheduler = new Scheduler(this);
+		if (scheduling == Scheduling.UI)
 			MainWindow.addToolbar(new SchedulerToolbar("Amas #" + id, getScheduler()));
 	}
 
@@ -221,6 +221,12 @@ public class Amas<E extends Environment> implements Schedulable {
 		return agents;
 	}
 
+	/**
+	 * Comparator to sort agents for execution
+	 * 
+	 * @author Alexandre Perles
+	 *
+	 */
 	private class AgentOrderComparator implements Comparator<Agent> {
 
 		@Override
@@ -231,5 +237,12 @@ public class Amas<E extends Environment> implements Schedulable {
 				return o1.getExecutionOrder() - o2.getExecutionOrder();
 		}
 
+	}
+
+	/**
+	 * Helper method to launch the scheduler
+	 */
+	public void start() {
+		getScheduler().start();
 	}
 }

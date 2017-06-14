@@ -36,9 +36,6 @@ public class SchedulerToolbar extends JToolBar {
 			getSlider().setValue(1);
 		});
 		add(getSlider());
-		if (this.scheduler.isAutorun()) {
-			getSlider().setValue(7);
-		}
 		setPreferredSize(new Dimension(300, 100));
 	}
 

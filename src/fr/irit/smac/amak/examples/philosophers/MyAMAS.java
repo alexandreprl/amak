@@ -14,7 +14,7 @@ public class MyAMAS extends Amas<TableEnvironment> {
 	private Philosopher[] ps;
 
 	public MyAMAS(TableEnvironment env) {
-		super(env, Scheduling.MANUAL);
+		super(env, Scheduling.UI);
 	}
 
 	@Override

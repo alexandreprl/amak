@@ -14,7 +14,6 @@ public class Scheduler implements Runnable {
 	private State state;
 	private int sleep;
 	private final ReentrantLock stateLock = new ReentrantLock();
-	private boolean autorun;
 	private Consumer<Scheduler> onStop;
 
 	/**
@@ -31,15 +30,10 @@ public class Scheduler implements Runnable {
 	 * 
 	 * @param _schedulable
 	 *            the corresponding schedulable
-	 * @param _autorun
-	 *            should the scheduler automatically starts
 	 */
-	public Scheduler(Schedulable _schedulable, boolean _autorun) {
-		this.autorun = _autorun;
+	public Scheduler(Schedulable _schedulable) {
 		this.schedulable = _schedulable;
 		this.state = State.IDLE;
-		if (this.autorun)
-			this.start();
 	}
 
 	/**
@@ -125,15 +119,6 @@ public class Scheduler implements Runnable {
 			onStop.accept(this);
 		state = State.IDLE;
 		stateLock.unlock();
-	}
-
-	/**
-	 * Should the scheduler starts automatically ?
-	 * 
-	 * @return whether or not the autorun is activated
-	 */
-	public boolean isAutorun() {
-		return autorun;
 	}
 
 	/**

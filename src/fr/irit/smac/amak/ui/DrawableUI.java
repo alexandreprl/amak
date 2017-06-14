@@ -63,13 +63,13 @@ public abstract class DrawableUI implements Schedulable {
 	 */
 	public DrawableUI(Scheduling _scheduling) {
 		onInitialConfiguration();
-//		setTitle("Drawable #" + id);
-//		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//		setBounds(100, 300, 611, 466);
-//		contentPane = new JPanel();
-//		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-//		contentPane.setLayout(new BorderLayout(0, 0));
-//		setContentPane(contentPane);
+		// setTitle("Drawable #" + id);
+		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		// setBounds(100, 300, 611, 466);
+		// contentPane = new JPanel();
+		// contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		// contentPane.setLayout(new BorderLayout(0, 0));
+		// setContentPane(contentPane);
 
 		canvas = new JPanel() {
 			protected void paintComponent(java.awt.Graphics g) {
@@ -121,24 +121,25 @@ public abstract class DrawableUI implements Schedulable {
 
 		canvas.setIgnoreRepaint(true);
 		canvas.setPreferredSize(new Dimension(800, 600));
-//		contentPane.add(canvas, BorderLayout.CENTER);
+		// contentPane.add(canvas, BorderLayout.CENTER);
 		MainWindow.addTabbedPanel("Drawable #" + id, canvas);
-//		pack();
-//		setVisible(true);
+		// pack();
+		// setVisible(true);
 
-		scheduler = new Scheduler(this, Scheduling.hasAutostart(_scheduling));
+		scheduler = new Scheduler(this);
 
-		if (Scheduling.isManual(_scheduling))
+		if (_scheduling == Scheduling.UI)
 			MainWindow.addToolbar(new SchedulerToolbar("Drawable #" + id, scheduler));
 
 	}
 
 	/**
-	 * This method is called at the very beginning of the DrawableUI creation. Any
-	 * configuration should be made here.
+	 * This method is called at the very beginning of the DrawableUI creation.
+	 * Any configuration should be made here.
 	 */
 	protected void onInitialConfiguration() {
 	}
+
 	@Override
 	public final void cycle() {
 		canvas.repaint();
@@ -175,5 +176,21 @@ public abstract class DrawableUI implements Schedulable {
 	 */
 	protected void onMouseDragged(int x, int y) {
 
+	}
+
+	/**
+	 * This method gives access to the scheduler of the DrawableUI
+	 * 
+	 * @return the scheduler
+	 */
+	public Scheduler getScheduler() {
+		return scheduler;
+	}
+
+	/**
+	 * Helper method to launch the scheduler
+	 */
+	public void start() {
+		getScheduler().start();
 	}
 }

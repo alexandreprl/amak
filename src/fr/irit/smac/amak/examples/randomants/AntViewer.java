@@ -17,7 +17,7 @@ public class AntViewer extends DrawableUI {
 	protected AntHill antHill;
 
 	public AntViewer() {
-		super(Scheduling.MANUAL);
+		super(Scheduling.UI);
 	}
 
 	@Override

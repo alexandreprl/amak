@@ -10,6 +10,6 @@ public class Launch {
 			protected void onInitialConfiguration() {
 				this.antHill = _antHill;
 			}
-		};
+		}.start();
 	}
 }

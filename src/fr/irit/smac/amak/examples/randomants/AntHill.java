@@ -7,7 +7,7 @@ import fr.irit.smac.amak.Scheduling;
 public class AntHill extends Amas<World> {
 
 	public AntHill(World env) {
-		super(env, Scheduling.MANUAL);
+		super(env, Scheduling.UI);
 	}
 	@Override
 	protected void onInitialAgentsCreation() {
