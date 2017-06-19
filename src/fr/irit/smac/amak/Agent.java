@@ -216,7 +216,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * Compute the execution order from the layer and a random value
 	 * @return
 	 */
-	private int computeExecutionOrder() {
+	private final int computeExecutionOrder() {
 		return computeExecutionOrderLayer()*10000+amas.getRandom().nextInt(10000);
 	}
 

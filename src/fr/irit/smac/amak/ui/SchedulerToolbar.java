@@ -35,6 +35,34 @@ public class SchedulerToolbar extends JToolBar {
 		this.scheduler.setOnStop(s -> {
 			getSlider().setValue(1);
 		});
+		this.scheduler.setOnChange(s -> {
+			if (s.isRunning()) {
+				switch (s.getSleep()) {
+				case 1000:
+					getSlider().setValue(2);
+					break;
+				case 100:
+					getSlider().setValue(3);
+					break;
+				case 20:
+					getSlider().setValue(4);
+					break;
+				case 10:
+					getSlider().setValue(5);
+					break;
+				case 2:
+					getSlider().setValue(6);
+					break;
+				case 0:
+					getSlider().setValue(7);
+					break;
+				default:
+					getSlider().setValue(1);
+				}
+			} else {
+				getSlider().setValue(1);
+			}
+		});
 		add(getSlider());
 		setPreferredSize(new Dimension(300, 100));
 	}
@@ -43,7 +71,7 @@ public class SchedulerToolbar extends JToolBar {
 		if (runController == null) {
 			runController = new JSlider(SwingConstants.HORIZONTAL, 0, 7, 1);
 			runController.setBorder(BorderFactory.createTitledBorder(this.title));
-			
+
 			final Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
 			labelTable.put(new Integer(0), new JLabel("Step"));
 			labelTable.put(new Integer(1), new JLabel("Stop"));

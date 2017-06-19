@@ -15,6 +15,7 @@ public class Scheduler implements Runnable {
 	private int sleep;
 	private final ReentrantLock stateLock = new ReentrantLock();
 	private Consumer<Scheduler> onStop;
+	private Consumer<Scheduler> onChange;
 
 	/**
 	 * State of the scheduler
@@ -44,7 +45,7 @@ public class Scheduler implements Runnable {
 	 *            the delay between two cycles
 	 */
 	public void startWithSleep(int i) {
-		sleep = i;
+		setSleep(i);
 		stateLock.lock();
 		switch (state) {
 		case IDLE:
@@ -56,6 +57,8 @@ public class Scheduler implements Runnable {
 
 		}
 		stateLock.unlock();
+		if (onChange != null)
+			onChange.accept(this);
 	}
 
 	/**
@@ -69,7 +72,7 @@ public class Scheduler implements Runnable {
 	 * Execute one cycle
 	 */
 	public void step() {
-		this.sleep = 0;
+		this.setSleep(0);
 		stateLock.lock();
 		switch (state) {
 		case IDLE:
@@ -106,9 +109,9 @@ public class Scheduler implements Runnable {
 	public void run() {
 		do {
 			schedulable.cycle();
-			if (sleep != 0) {
+			if (getSleep() != 0) {
 				try {
-					Thread.sleep(sleep);
+					Thread.sleep(getSleep());
 				} catch (final InterruptedException e) {
 					e.printStackTrace();
 				}
@@ -129,6 +132,44 @@ public class Scheduler implements Runnable {
 	 */
 	public final void setOnStop(Consumer<Scheduler> _onStop) {
 		this.onStop = _onStop;
+	}
+
+	/**
+	 * Set the method that must be executed when the scheduler speed is changed
+	 * 
+	 * @param _onChange
+	 *            Consumer method
+	 */
+	public final void setOnChange(Consumer<Scheduler> _onChange) {
+		this.onChange = _onChange;
+	}
+
+	/**
+	 * Is the scheduler running ?
+	 * 
+	 * @return true if the scheduler is running
+	 */
+	public boolean isRunning() {
+		return state == State.RUNNING;
+	}
+
+	/**
+	 * Getter for the sleep time
+	 * 
+	 * @return the sleep time
+	 */
+
+	public int getSleep() {
+		return sleep;
+	}
+
+	/**
+	 * Setter for the sleep time
+	 * 
+	 * @param sleep
+	 */
+	public void setSleep(int sleep) {
+		this.sleep = sleep;
 	}
 
 }

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10};
+var methods = {"i0":10,"i1":10,"i2":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -177,6 +177,12 @@ extends <a href="../../../../../../fr/irit/smac/amak/Amas.html" title="class in 
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/examples/philosophers/MyAMAS.html#onInitialConfiguration--">onInitialConfiguration</a></span>()</code>
+<div class="block">This method is called at the very beginning of the amas creation.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/examples/philosophers/MyAMAS.html#onSystemCycleBegin--">onSystemCycleBegin</a></span>()</code>
 <div class="block">This method is called before all agents have executed a cycle</div>
 </td>
@@ -187,7 +193,7 @@ extends <a href="../../../../../../fr/irit/smac/amak/Amas.html" title="class in 
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;fr.irit.smac.amak.<a href="../../../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></h3>
-<code><a href="../../../../../../fr/irit/smac/amak/Amas.html#Z:Z_addAgent-fr.irit.smac.amak.Agent-">_addAgent</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#Z:Z_removeAgent-fr.irit.smac.amak.Agent-">_removeAgent</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#cycle--">cycle</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#getAgents--">getAgents</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#getCycle--">getCycle</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#getEnvironment--">getEnvironment</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#getRandom--">getRandom</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#getScheduler--">getScheduler</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#onSystemCycleEnd--">onSystemCycleEnd</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#stopCondition--">stopCondition</a></code></li>
+<code><a href="../../../../../../fr/irit/smac/amak/Amas.html#Z:Z_addAgent-fr.irit.smac.amak.Agent-">_addAgent</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#Z:Z_removeAgent-fr.irit.smac.amak.Agent-">_removeAgent</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#cycle--">cycle</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#getAgents--">getAgents</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#getCycle--">getCycle</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#getEnvironment--">getEnvironment</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#getRandom--">getRandom</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#getScheduler--">getScheduler</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#onReady--">onReady</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#onSystemCycleEnd--">onSystemCycleEnd</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#start--">start</a>, <a href="../../../../../../fr/irit/smac/amak/Amas.html#stopCondition--">stopCondition</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -227,6 +233,22 @@ extends <a href="../../../../../../fr/irit/smac/amak/Amas.html" title="class in 
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="onInitialConfiguration--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onInitialConfiguration</h4>
+<pre>protected&nbsp;void&nbsp;onInitialConfiguration()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Amas.html#onInitialConfiguration--">Amas</a></code></span></div>
+<div class="block">This method is called at the very beginning of the amas creation. Any
+ configuration should be made here.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../../fr/irit/smac/amak/Amas.html#onInitialConfiguration--">onInitialConfiguration</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/philosophers/TableEnvironment.html" title="class in fr.irit.smac.amak.examples.philosophers">TableEnvironment</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
 <a name="onInitialAgentsCreation--">
 <!--   -->
 </a>

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":6,"i3":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":6,"i4":10,"i5":10,"i6":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../fr/irit/smac/amak/ui/SchedulerToolbar.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?fr/irit/smac/amak/ui/DrawableUI.html" target="_top">Frames</a></li>
@@ -72,8 +72,8 @@ var activeTableTab = "activeTableTab";
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.classes.inherited.from.class.javax.swing.JFrame">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.javax.swing.JFrame">Field</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
@@ -98,32 +98,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>java.awt.Component</li>
-<li>
-<ul class="inheritance">
-<li>java.awt.Container</li>
-<li>
-<ul class="inheritance">
-<li>java.awt.Window</li>
-<li>
-<ul class="inheritance">
-<li>java.awt.Frame</li>
-<li>
-<ul class="inheritance">
-<li>javax.swing.JFrame</li>
-<li>
-<ul class="inheritance">
 <li>fr.irit.smac.amak.ui.DrawableUI</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -132,7 +107,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>, java.awt.image.ImageObserver, java.awt.MenuContainer, java.io.Serializable, javax.accessibility.Accessible, javax.swing.RootPaneContainer, javax.swing.WindowConstants</dd>
+<dd><a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></dd>
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
@@ -141,15 +116,13 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public abstract class <span class="typeNameLabel">DrawableUI</span>
-extends javax.swing.JFrame
+extends java.lang.Object
 implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></pre>
 <div class="block">This class should be overridden by classes aiming at rendering stuffs on a
  canvas</div>
 <dl>
 <dt><span class="simpleTagLabel">Author:</span></dt>
 <dd>Alexandre Perles</dd>
-<dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../../serialized-form.html#fr.irit.smac.amak.ui.DrawableUI">Serialized Form</a></dd>
 </dl>
 </li>
 </ul>
@@ -157,92 +130,6 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
-<!-- ======== NESTED CLASS SUMMARY ======== -->
-<ul class="blockList">
-<li class="blockList"><a name="nested.class.summary">
-<!--   -->
-</a>
-<h3>Nested Class Summary</h3>
-<ul class="blockList">
-<li class="blockList"><a name="nested.classes.inherited.from.class.javax.swing.JFrame">
-<!--   -->
-</a>
-<h3>Nested classes/interfaces inherited from class&nbsp;javax.swing.JFrame</h3>
-<code>javax.swing.JFrame.AccessibleJFrame</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="nested.classes.inherited.from.class.java.awt.Frame">
-<!--   -->
-</a>
-<h3>Nested classes/interfaces inherited from class&nbsp;java.awt.Frame</h3>
-<code>java.awt.Frame.AccessibleAWTFrame</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="nested.classes.inherited.from.class.java.awt.Window">
-<!--   -->
-</a>
-<h3>Nested classes/interfaces inherited from class&nbsp;java.awt.Window</h3>
-<code>java.awt.Window.AccessibleAWTWindow, java.awt.Window.Type</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="nested.classes.inherited.from.class.java.awt.Container">
-<!--   -->
-</a>
-<h3>Nested classes/interfaces inherited from class&nbsp;java.awt.Container</h3>
-<code>java.awt.Container.AccessibleAWTContainer</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="nested.classes.inherited.from.class.java.awt.Component">
-<!--   -->
-</a>
-<h3>Nested classes/interfaces inherited from class&nbsp;java.awt.Component</h3>
-<code>java.awt.Component.AccessibleAWTComponent, java.awt.Component.BaselineResizeBehavior, java.awt.Component.BltBufferStrategy, java.awt.Component.FlipBufferStrategy</code></li>
-</ul>
-</li>
-</ul>
-<!-- =========== FIELD SUMMARY =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.summary">
-<!--   -->
-</a>
-<h3>Field Summary</h3>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.javax.swing.JFrame">
-<!--   -->
-</a>
-<h3>Fields inherited from class&nbsp;javax.swing.JFrame</h3>
-<code>accessibleContext, EXIT_ON_CLOSE, rootPane, rootPaneCheckingEnabled</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.java.awt.Frame">
-<!--   -->
-</a>
-<h3>Fields inherited from class&nbsp;java.awt.Frame</h3>
-<code>CROSSHAIR_CURSOR, DEFAULT_CURSOR, E_RESIZE_CURSOR, HAND_CURSOR, ICONIFIED, MAXIMIZED_BOTH, MAXIMIZED_HORIZ, MAXIMIZED_VERT, MOVE_CURSOR, N_RESIZE_CURSOR, NE_RESIZE_CURSOR, NORMAL, NW_RESIZE_CURSOR, S_RESIZE_CURSOR, SE_RESIZE_CURSOR, SW_RESIZE_CURSOR, TEXT_CURSOR, W_RESIZE_CURSOR, WAIT_CURSOR</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.java.awt.Component">
-<!--   -->
-</a>
-<h3>Fields inherited from class&nbsp;java.awt.Component</h3>
-<code>BOTTOM_ALIGNMENT, CENTER_ALIGNMENT, LEFT_ALIGNMENT, RIGHT_ALIGNMENT, TOP_ALIGNMENT</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.javax.swing.WindowConstants">
-<!--   -->
-</a>
-<h3>Fields inherited from interface&nbsp;javax.swing.WindowConstants</h3>
-<code>DISPOSE_ON_CLOSE, DO_NOTHING_ON_CLOSE, HIDE_ON_CLOSE</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.java.awt.image.ImageObserver">
-<!--   -->
-</a>
-<h3>Fields inherited from interface&nbsp;java.awt.image.ImageObserver</h3>
-<code>ABORT, ALLBITS, ERROR, FRAMEBITS, HEIGHT, PROPERTIES, SOMEBITS, WIDTH</code></li>
-</ul>
-</li>
-</ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.summary">
@@ -281,74 +168,50 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getScheduler--">getScheduler</a></span>()</code>
+<div class="block">This method gives access to the scheduler of the DrawableUI</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onClick-int-int-">onClick</a></span>(int&nbsp;x,
        int&nbsp;y)</code>
 <div class="block">This method is called when the mouse is clicked on the canvas</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>protected abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onDraw-java.awt.Graphics2D-">onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics2D)</code>
 <div class="block">This method is called when the canvas must be drawn again</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onInitialConfiguration--">onInitialConfiguration</a></span>()</code>
+<div class="block">This method is called at the very beginning of the DrawableUI creation.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onMouseDragged-int-int-">onMouseDragged</a></span>(int&nbsp;x,
               int&nbsp;y)</code>
 <div class="block">This method is called when the mouse is dragged on the canvas</div>
 </td>
 </tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#start--">start</a></span>()</code>
+<div class="block">Helper method to launch the scheduler</div>
+</td>
+</tr>
 </table>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.javax.swing.JFrame">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;javax.swing.JFrame</h3>
-<code>addImpl, createRootPane, frameInit, getAccessibleContext, getContentPane, getDefaultCloseOperation, getGlassPane, getGraphics, getJMenuBar, getLayeredPane, getRootPane, getTransferHandler, isDefaultLookAndFeelDecorated, isRootPaneCheckingEnabled, paramString, processWindowEvent, remove, repaint, setContentPane, setDefaultCloseOperation, setDefaultLookAndFeelDecorated, setGlassPane, setIconImage, setJMenuBar, setLayeredPane, setLayout, setRootPane, setRootPaneCheckingEnabled, setTransferHandler, update</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.java.awt.Frame">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;java.awt.Frame</h3>
-<code>addNotify, getCursorType, getExtendedState, getFrames, getIconImage, getMaximizedBounds, getMenuBar, getState, getTitle, isResizable, isUndecorated, remove, removeNotify, setBackground, setCursor, setExtendedState, setMaximizedBounds, setMenuBar, setOpacity, setResizable, setShape, setState, setTitle, setUndecorated</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.java.awt.Window">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;java.awt.Window</h3>
-<code>addPropertyChangeListener, addPropertyChangeListener, addWindowFocusListener, addWindowListener, addWindowStateListener, applyResourceBundle, applyResourceBundle, createBufferStrategy, createBufferStrategy, dispose, getBackground, getBufferStrategy, getFocusableWindowState, getFocusCycleRootAncestor, getFocusOwner, getFocusTraversalKeys, getIconImages, getInputContext, getListeners, getLocale, getModalExclusionType, getMostRecentFocusOwner, getOpacity, getOwnedWindows, getOwner, getOwnerlessWindows, getShape, getToolkit, getType, getWarningString, getWindowFocusListeners, getWindowListeners, getWindows, getWindowStateListeners, hide, isActive, isAlwaysOnTop, isAlwaysOnTopSupported, isAutoRequestFocus, isFocusableWindow, isFocusCycleRoot, isFocused, isLocationByPlatform, isOpaque, isShowing, isValidateRoot, pack, paint, postEvent, processEvent, processWindowFocusEvent, processWindowStateEvent, removeWindowFocusListener, removeWindowListener, removeWindowStateListener, reshape, setAlwaysOnTop, setAutoRequestFocus, setBounds, setBounds, setCursor, setFocusableWindowState, setFocusCycleRoot, setIconImages, setLocation, setLocation, setLocationByPlatform, setLocationRelativeTo, setMinimumSize, setModalExclusionType, setSize, setSize, setType, setVisible, show, toBack, toFront</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.java.awt.Container">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;java.awt.Container</h3>
-<code>add, add, add, add, add, addContainerListener, applyComponentOrientation, areFocusTraversalKeysSet, countComponents, deliverEvent, doLayout, findComponentAt, findComponentAt, getAlignmentX, getAlignmentY, getComponent, getComponentAt, getComponentAt, getComponentCount, getComponents, getComponentZOrder, getContainerListeners, getFocusTraversalPolicy, getInsets, getLayout, getMaximumSize, getMinimumSize, getMousePosition, getPreferredSize, insets, invalidate, isAncestorOf, isFocusCycleRoot, isFocusTraversalPolicyProvider, isFocusTraversalPolicySet, layout, list, list, locate, minimumSize, paintComponents, preferredSize, print, printComponents, processContainerEvent, remove, removeAll, removeContainerListener, setComponentZOrder, setFocusTraversalKeys, setFocusTraversalPolicy, setFocusTraversalPolicyProvider, setFont, transferFocusDownCycle, validate, validateTree</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.java.awt.Component">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;java.awt.Component</h3>
-<code>action, add, addComponentListener, addFocusListener, addHierarchyBoundsListener, addHierarchyListener, addInputMethodListener, addKeyListener, addMouseListener, addMouseMotionListener, addMouseWheelListener, bounds, checkImage, checkImage, coalesceEvents, contains, contains, createImage, createImage, createVolatileImage, createVolatileImage, disable, disableEvents, dispatchEvent, enable, enable, enableEvents, enableInputMethods, firePropertyChange, firePropertyChange, firePropertyChange, firePropertyChange, firePropertyChange, firePropertyChange, firePropertyChange, firePropertyChange, firePropertyChange, getBaseline, getBaselineResizeBehavior, getBounds, getBounds, getColorModel, getComponentListeners, getComponentOrientation, getCursor, getDropTarget, getFocusListeners, getFocusTraversalKeysEnabled, getFont, getFontMetrics, getForeground, getGraphicsConfiguration, getHeight, getHierarchyBoundsListeners, getHierarchyListeners, getIgnoreRepaint, getInputMethodListeners, getInputMethodRequests, getKeyListeners, getLocation, getLocation, getLocationOnScreen, getMouseListeners, getMouseMotionListeners, getMousePosition, getMouseWheelListeners, getName, getParent, getPeer, getPropertyChangeListeners, getPropertyChangeListeners, getSize, getSize, getTreeLock, getWidth, getX, getY, gotFocus, handleEvent, hasFocus, imageUpdate, inside, isBackgroundSet, isCursorSet, isDisplayable, isDoubleBuffered, isEnabled, isFocusable, isFocusOwner, isFocusTraversable, isFontSet, isForegroundSet, isLightweight, isMaximumSizeSet, isMinimumSizeSet, isPreferredSizeSet, isValid, isVisible, keyDown, keyUp, list, list, list, location, lostFocus, mouseDown, mouseDrag, mouseEnter, mouseExit, mouseMove, mouseUp, move, nextFocus, paintAll, prepareImage, prepareImage, printAll, processComponentEvent, processFocusEvent, processHierarchyBoundsEvent, processHierarchyEvent, processInputMethodEvent, processKeyEvent, processMouseEvent, processMouseMotionEvent, processMouseWheelEvent, removeComponentListener, removeFocusListener, removeHierarchyBoundsListener, removeHierarchyListener, removeInputMethodListener, removeKeyListener, removeMouseListener, removeMouseMotionListener, removeMouseWheelListener, removePropertyChangeListener, removePropertyChangeListener, repaint, repaint, repaint, requestFocus, requestFocus, requestFocusInWindow, requestFocusInWindow, resize, resize, revalidate, setComponentOrientation, setDropTarget, setEnabled, setFocusable, setFocusTraversalKeysEnabled, setForeground, setIgnoreRepaint, setLocale, setMaximumSize, setName, setPreferredSize, show, size, toString, transferFocus, transferFocusBackward, transferFocusUpCycle</code></li>
-</ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
-</ul>
-<ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.java.awt.MenuContainer">
-<!--   -->
-</a>
-<h3>Methods inherited from interface&nbsp;java.awt.MenuContainer</h3>
-<code>getFont, postEvent</code></li>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -386,6 +249,17 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="onInitialConfiguration--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onInitialConfiguration</h4>
+<pre>protected&nbsp;void&nbsp;onInitialConfiguration()</pre>
+<div class="block">This method is called at the very beginning of the DrawableUI creation.
+ Any configuration should be made here.</div>
+</li>
+</ul>
 <a name="cycle--">
 <!--   -->
 </a>
@@ -434,7 +308,7 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <a name="onMouseDragged-int-int-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>onMouseDragged</h4>
 <pre>protected&nbsp;void&nbsp;onMouseDragged(int&nbsp;x,
@@ -445,6 +319,30 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <dd><code>x</code> - X position of the mouse</dd>
 <dd><code>y</code> - Y position of the mouse</dd>
 </dl>
+</li>
+</ul>
+<a name="getScheduler--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getScheduler</h4>
+<pre>public&nbsp;<a href="../../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a>&nbsp;getScheduler()</pre>
+<div class="block">This method gives access to the scheduler of the DrawableUI</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the scheduler</dd>
+</dl>
+</li>
+</ul>
+<a name="start--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>start</h4>
+<pre>public&nbsp;void&nbsp;start()</pre>
+<div class="block">Helper method to launch the scheduler</div>
 </li>
 </ul>
 </li>
@@ -475,7 +373,7 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../fr/irit/smac/amak/ui/SchedulerToolbar.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?fr/irit/smac/amak/ui/DrawableUI.html" target="_top">Frames</a></li>
@@ -499,8 +397,8 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li><a href="#nested.classes.inherited.from.class.javax.swing.JFrame">Nested</a>&nbsp;|&nbsp;</li>
-<li><a href="#fields.inherited.from.class.javax.swing.JFrame">Field</a>&nbsp;|&nbsp;</li>
+<li>Nested&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -178,7 +178,7 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#Amas-E-fr.irit.smac.amak.Scheduling-">Amas</a></span>(<a href="../../../../fr/irit/smac/amak/Amas.html" title="type parameter in Amas">E</a>&nbsp;env,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#Amas-E-fr.irit.smac.amak.Scheduling-">Amas</a></span>(<a href="../../../../fr/irit/smac/amak/Amas.html" title="type parameter in Amas">E</a>&nbsp;environment,
     <a href="../../../../fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a>&nbsp;scheduling)</code>
 <div class="block">Constructor of the MAS</div>
 </td>
@@ -255,17 +255,35 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onInitialConfiguration--">onInitialConfiguration</a></span>()</code>
+<div class="block">This method is called at the very beginning of the amas creation.</div>
+</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onReady--">onReady</a></span>()</code>
+<div class="block">This method is called when all agents are ready</div>
+</td>
+</tr>
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSystemCycleBegin--">onSystemCycleBegin</a></span>()</code>
 <div class="block">This method is called before all agents have executed a cycle</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSystemCycleEnd--">onSystemCycleEnd</a></span>()</code>
 <div class="block">This method is called when all agents have executed a cycle</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i13" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#start--">start</a></span>()</code>
+<div class="block">Helper method to launch the scheduler</div>
+</td>
+</tr>
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#stopCondition--">stopCondition</a></span>()</code>
 <div class="block">This method allows the system to stop the scheduler on certain conditions</div>
@@ -339,12 +357,12 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Amas</h4>
-<pre>public&nbsp;Amas(<a href="../../../../fr/irit/smac/amak/Amas.html" title="type parameter in Amas">E</a>&nbsp;env,
+<pre>public&nbsp;Amas(<a href="../../../../fr/irit/smac/amak/Amas.html" title="type parameter in Amas">E</a>&nbsp;environment,
             <a href="../../../../fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a>&nbsp;scheduling)</pre>
 <div class="block">Constructor of the MAS</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>env</code> - Environment of the system</dd>
+<dd><code>environment</code> - Environment of the system</dd>
 <dd><code>scheduling</code> - Scheduling mode</dd>
 </dl>
 </li>
@@ -357,6 +375,27 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="onInitialConfiguration--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onInitialConfiguration</h4>
+<pre>protected&nbsp;void&nbsp;onInitialConfiguration()</pre>
+<div class="block">This method is called at the very beginning of the amas creation. Any
+ configuration should be made here.</div>
+</li>
+</ul>
+<a name="onReady--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onReady</h4>
+<pre>protected&nbsp;void&nbsp;onReady()</pre>
+<div class="block">This method is called when all agents are ready</div>
+</li>
+</ul>
 <a name="getRandom--">
 <!--   -->
 </a>
@@ -504,7 +543,7 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <a name="getAgents--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getAgents</h4>
 <pre>public&nbsp;java.util.List&lt;<a href="../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;?,<a href="../../../../fr/irit/smac/amak/Amas.html" title="type parameter in Amas">E</a>&gt;&gt;&nbsp;getAgents()</pre>
@@ -513,6 +552,16 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the list of agents</dd>
 </dl>
+</li>
+</ul>
+<a name="start--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>start</h4>
+<pre>public&nbsp;void&nbsp;start()</pre>
+<div class="block">Helper method to launch the scheduler</div>
 </li>
 </ul>
 </li>
