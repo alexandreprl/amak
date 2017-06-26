@@ -79,8 +79,10 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 */
 	public final void addNeighbor(Agent<A, E>... agents) {
 		for (Agent<A, E> agent : agents) {
-			neighborhood.add(agent);
-			criticalities.put(agent, Double.NEGATIVE_INFINITY);
+			if (agent != null) {
+				neighborhood.add(agent);
+				criticalities.put(agent, Double.NEGATIVE_INFINITY);
+			}
 		}
 	}
 
@@ -96,7 +98,8 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	}
 
 	/**
-	 * This method must be overriden if you need to specify an execution order layer
+	 * This method must be overriden if you need to specify an execution order
+	 * layer
 	 * 
 	 * @return the execution order layer
 	 */
@@ -214,10 +217,11 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 
 	/**
 	 * Compute the execution order from the layer and a random value
+	 * 
 	 * @return
 	 */
 	private final int computeExecutionOrder() {
-		return computeExecutionOrderLayer()*10000+amas.getRandom().nextInt(10000);
+		return computeExecutionOrderLayer() * 10000 + amas.getRandom().nextInt(10000);
 	}
 
 	/**
@@ -282,4 +286,5 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	public void destroy() {
 		getAmas()._removeAgent(this);
 	}
+
 }
