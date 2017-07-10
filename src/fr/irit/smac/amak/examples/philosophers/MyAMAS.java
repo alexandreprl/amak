@@ -3,6 +3,7 @@ package fr.irit.smac.amak.examples.philosophers;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 import fr.irit.smac.amak.Amas;
@@ -24,6 +25,10 @@ public class MyAMAS extends Amas<TableEnvironment> {
 		comp.setPreferredSize(new Dimension(200, 100));
 		toolbar.add(comp);
 		MainWindow.addToolbar(toolbar);
+		JPanel panel = new JPanel();
+		MainWindow.addTabbedPanel("tabbed1",new JPanel());
+		MainWindow.addTabbedPanel("tabbed2",new JPanel());
+		MainWindow.addTabbedPanel("tabbed3",new JPanel());
 	}
 
 	@Override

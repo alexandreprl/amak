@@ -14,6 +14,11 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 
+/**
+ * 
+ * @author Marcillaud Guilhem
+ *
+ */
 public class MainWindow extends JFrame {
 
 	/**
@@ -21,7 +26,7 @@ public class MainWindow extends JFrame {
 	 */
 	private static final long serialVersionUID = 2607956693857748227L;
 	private JPanel toolbarPanel;
-	private JTabbedPane tabbedPane;
+	private DraggableTabbedPane tabbedPane;
 	private JMenuBar menuBar;
 	private JMenu optionsMenu;
 	private static MainWindow instance;
@@ -37,7 +42,7 @@ public class MainWindow extends JFrame {
 		getContentPane().add(toolbarPanel, BorderLayout.SOUTH);
 		toolbarPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
-		tabbedPane = new JTabbedPane();
+		tabbedPane = new DraggableTabbedPane();
 		getContentPane().add(tabbedPane, BorderLayout.CENTER);
 		
 		menuBar = new JMenuBar();
@@ -59,14 +64,37 @@ public class MainWindow extends JFrame {
 		menuItem.addActionListener(listener);
 		instance().optionsMenu.add(menuItem);
 	}
+	/**
+	 * Add a toolBar
+	 * 
+	 * @param toolbar
+	 * 			The ToolBar.
+	 */
 	public static void addToolbar(JToolBar toolbar) {
 		instance().toolbarPanel.add(toolbar);
 		instance().pack();
 		instance().setVisible(true);
 	}
+	
+	/**
+	 * Add a tabbedPanel
+	 * 
+	 * @param title
+	 * 			The title
+	 * @param panel
+	 * 			The panel
+	 */
 	public static void addTabbedPanel(String title, JPanel panel) {
 		instance().tabbedPane.addTab(title, panel);
+		instance().pack();
+		instance().setVisible(true);
 	}
+	
+	/**
+	 * Return the unique instance of MainWindow, may create it.
+	 * 
+	 * @return instance
+	 */
 	private static MainWindow instance() {
 		instanceLock.lock();
 		if (instance == null) {
