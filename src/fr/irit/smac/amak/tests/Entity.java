@@ -1,4 +1,4 @@
-package fr.irit.smac.amak.tests.executionorder;
+package fr.irit.smac.amak.tests;
 
 import javax.xml.bind.annotation.XmlRootElement;
 

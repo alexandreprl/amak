@@ -1,4 +1,4 @@
-package fr.irit.smac.amak.tests.executionorder;
+package fr.irit.smac.amak.tests;
 
 import java.util.ArrayList;
 import java.util.List;

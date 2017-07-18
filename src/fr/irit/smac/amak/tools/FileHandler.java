@@ -57,9 +57,9 @@ public class FileHandler {
 	 * @param line
 	 * 			The line to write
 	 */
-	public static void writeLine(String name, String line, boolean ecrase){
+	public static void writeLine(String name, String line, boolean overwrite){
 		try {
-			FileWriter fw = new FileWriter(name,ecrase);
+			FileWriter fw = new FileWriter(name,overwrite);
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(line);
 			bw.close();
@@ -77,13 +77,13 @@ public class FileHandler {
 	 * @param obj
 	 * 			The Object
 	 */
-	public static void writeJSON(String name, Object obj, boolean ecrase){
+	public static void writeJSON(String name, Object obj, boolean overwrite){
 		JsonHierarchicalStreamDriver jet = new JsonHierarchicalStreamDriver();
 		XStream xstream = new XStream(jet);
 		xstream.setMode(XStream.NO_REFERENCES);
 		FileWriter file;
 		try {
-			file = new FileWriter(name+".json",ecrase);
+			file = new FileWriter(name+".json",overwrite);
 			file.write(xstream.toXML(obj));
 			file.flush();
 			file.close();
@@ -102,12 +102,12 @@ public class FileHandler {
 	 * @param obj
 	 * 			The object
 	 */
-	public static void writeXML(String name, Object obj, boolean ecrase){
+	public static void writeXML(String name, Object obj, boolean overwrite){
 		XStream xstream = new XStream(new DomDriver());
 		String xml = xstream.toXML(obj);
 	        try {
 	        	File file = new File(name);
-	        	FileWriter fw = new FileWriter(file,ecrase);
+	        	FileWriter fw = new FileWriter(file,overwrite);
 	        	fw.write(xml);
 	        	fw.flush();
 	        	fw.close();
@@ -125,10 +125,10 @@ public class FileHandler {
 	 * @param values
 	 * 
 	 */
-	public static void writeCSV(String name, List<String> values, boolean ecrase){
+	public static void writeCSV(String name, List<String> values, boolean overwrite){
         FileWriter writer;
 		try {
-			writer = new FileWriter(name,ecrase);
+			writer = new FileWriter(name,overwrite);
 			FileHandler.writeLine(writer,values);
 			writer.flush();
 			writer.close();
