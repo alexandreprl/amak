@@ -7,10 +7,12 @@ package fr.irit.smac.amak;
  *
  */
 public abstract class Environment {
+	protected Object[] params;
 	/**
 	 * Constructor
 	 */
-	public Environment() {
+	public Environment(Object...params) {
+		this.params = params;
 		onInitialization();
 	}
 	/**

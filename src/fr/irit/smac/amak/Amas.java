@@ -54,6 +54,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	private final Random random = new Random();
 	private LinkedList<Agent<?, E>> agentsPendingRemoval = new LinkedList<>();
 	private LinkedList<Agent<?, E>> agentsPendingAddition = new LinkedList<>();
+	protected Object[] params;
 
 	/**
 	 * Constructor of the MAS
@@ -63,7 +64,8 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * @param scheduling
 	 *            Scheduling mode
 	 */
-	public Amas(E environment, Scheduling scheduling) {
+	public Amas(E environment, Scheduling scheduling, Object...params) {
+		this.params = params;
 		this.environment = environment;
 		this.onInitialConfiguration();
 		this.onInitialAgentsCreation();

@@ -55,6 +55,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 */
 	private final int id = uniqueIndex++;
 	private int executionOrder;
+	protected Object[] params;
 
 	/**
 	 * The constructor automatically add the agent to the corresponding amas and
@@ -63,7 +64,8 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * @param amas
 	 *            Amas the agent belongs to
 	 */
-	public Agent(A amas) {
+	public Agent(A amas, Object...params) {
+		this.params = params;
 		this.amas = amas;
 		this.amas._addAgent(this);
 		neighborhood = new ArrayList<>();
