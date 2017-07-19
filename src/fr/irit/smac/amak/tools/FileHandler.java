@@ -38,15 +38,7 @@ public class FileHandler {
 	 *            The name of the file
 	 */
 	public static void clearFile(String name) {
-		File file = new File(name);
-		PrintWriter writer;
-		try {
-			writer = new PrintWriter(file);
-			writer.print("");
-			writer.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		new File(name).delete();
 	}
 
 	/**
