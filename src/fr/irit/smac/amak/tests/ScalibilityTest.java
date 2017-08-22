@@ -11,7 +11,7 @@ public class ScalibilityTest {
 
 	public static void main(String[] args) {
 		new ScalibilityTest();
-		
+
 	}
 
 	private long startTime;
@@ -20,22 +20,30 @@ public class ScalibilityTest {
 		Log.minLevel = Log.Level.INFORM;
 		runAmasWithNAgents(1);
 	}
+
 	private void runAmasWithNAgents(int i) {
-		if (i>1000) {
-			Log.inform("Global state", "end");
-			return;
-		}
 		Log.inform("Global state", "start i:%d", i);
 		MyAMAS amas = new MyAMAS(new MyEnvironment(), Scheduling.HIDDEN, new Integer(i));
-		amas.getScheduler().setOnStop(s->{
+		amas.getScheduler().setOnStop(s -> {
 			int nextI = i;
-			FileHandler.writeCSVLine("scalability_results.csv", "%d;%d", i, System.currentTimeMillis()-startTime);
-			if (i<10)
-				nextI++;
-			else if (i<100)
-				nextI+=100;
-			else
-				nextI+=1000;
+			FileHandler.writeCSVLine("scalability_results.csv", "%d;%d", i, System.currentTimeMillis() - startTime);
+			switch (i) {
+			case 1:
+				nextI = 5;
+				break;
+			case 5:
+				nextI = 10;
+				break;
+			case 10:
+				nextI = 100;
+				break;
+			case 100:
+				nextI = 1000;
+				break;
+			default:
+				Log.inform("Global state", "end");
+				return;
+			}
 			runAmasWithNAgents(nextI);
 		});
 		startTime = System.currentTimeMillis();
@@ -44,31 +52,34 @@ public class ScalibilityTest {
 
 	public class MyAMAS extends Amas<MyEnvironment> {
 
-		public MyAMAS(MyEnvironment environment, Scheduling scheduling, Object...params) {
+		public MyAMAS(MyEnvironment environment, Scheduling scheduling, Object... params) {
 			super(environment, scheduling, params);
 		}
+
 		@Override
 		protected void onInitialAgentsCreation() {
-			for (int i=0;i<(Integer)params[0];i++) {
+			for (int i = 0; i < (Integer) params[0]; i++) {
 				new MyAgent(this);
 			}
 		}
+
 		@Override
 		public boolean stopCondition() {
-			return cycle==100;
+			return cycle == 100;
 		}
 	}
 
 	public class MyAgent extends Agent<MyAMAS, MyEnvironment> {
 
-		public MyAgent(MyAMAS amas, Object...params) {
+		public MyAgent(MyAMAS amas, Object... params) {
 			super(amas, params);
 		}
+
 		@Override
 		protected void onAct() {
-			//Sleep the thread to simulate a behavior
+			// Sleep the thread to simulate a behavior
 			try {
-				Thread.sleep((long) ((amas.getRandom().nextDouble()+1)*3));
+				Thread.sleep((long) ((amas.getRandom().nextDouble() + 1) * 3));
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
