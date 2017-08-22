@@ -64,7 +64,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * @param scheduling
 	 *            Scheduling mode
 	 */
-	public Amas(E environment, Scheduling scheduling, Object...params) {
+	public Amas(E environment, Scheduling scheduling, Object... params) {
 		this.params = params;
 		this.environment = environment;
 		this.onInitialConfiguration();
@@ -210,6 +210,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * 
 	 * @return whether or not the scheduler must stop.
 	 */
+	@Override
 	public boolean stopCondition() {
 		return false;
 	}

@@ -30,6 +30,7 @@ public class FileHandler {
 
 	private static final char DEFAULT_SEPARATOR = ',';
 	private static Map<String, BufferedReader> openedCsvFiles = new HashMap<>();
+	private static Map<String, PrintWriter> openedWritableCsvFiles = new HashMap<>();
 
 	/**
 	 * Clear the content of a file
@@ -224,7 +225,7 @@ public class FileHandler {
 
 	public static String readCSVLine(String filename) {
 		try {
-			if (openedCsvFiles.containsKey(filename)) {
+			if (!openedCsvFiles.containsKey(filename)) {
 				openedCsvFiles.put(filename, new BufferedReader(new FileReader(filename)));
 			}
 			BufferedReader csvReader = openedCsvFiles.get(filename);
@@ -232,10 +233,25 @@ public class FileHandler {
 			line = csvReader.readLine();
 			if (line == null) {
 				csvReader.close();
+				openedCsvFiles.remove(filename);
 				return null;
 			} else {
 				return line;
 			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	public static String writeCSVLine(String filename, String line, Object... params) {
+		try {
+			if (!openedWritableCsvFiles.containsKey(filename)) {
+				openedWritableCsvFiles.put(filename, new PrintWriter(filename));
+			}
+			PrintWriter csvWriter = openedWritableCsvFiles.get(filename);
+			csvWriter.println(String.format(line, params));
+			csvWriter.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

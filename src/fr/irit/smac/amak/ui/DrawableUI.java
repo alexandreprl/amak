@@ -29,6 +29,10 @@ import fr.irit.smac.amak.Scheduling;
  *
  */
 public abstract class DrawableUI implements Schedulable {
+	/**
+	 * set fps to 10 to avoid CPU overload
+	 */
+	public int defaultSleep = 100;
 
 	/**
 	 * 
@@ -192,5 +196,14 @@ public abstract class DrawableUI implements Schedulable {
 	 */
 	public void start() {
 		getScheduler().start();
+	}
+	/**
+	 * This method allows the system to stop the scheduler on certain conditions
+	 * 
+	 * @return whether or not the scheduler must stop.
+	 */
+	@Override
+	public boolean stopCondition() {
+		return false;
 	}
 }

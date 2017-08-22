@@ -65,7 +65,7 @@ public class Scheduler implements Runnable {
 	 * Start (or continue) with no delay between cycles
 	 */
 	public void start() {
-		startWithSleep(0);
+		startWithSleep(schedulable.defaultSleep);
 	}
 
 	/**
@@ -116,7 +116,7 @@ public class Scheduler implements Runnable {
 					e.printStackTrace();
 				}
 			}
-		} while (state == State.RUNNING);
+		} while (state == State.RUNNING&&!schedulable.stopCondition());
 		stateLock.lock();
 		if (onStop != null)
 			onStop.accept(this);
