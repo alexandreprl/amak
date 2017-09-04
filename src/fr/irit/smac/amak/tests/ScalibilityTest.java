@@ -26,7 +26,7 @@ public class ScalibilityTest {
 		MyAMAS amas = new MyAMAS(new MyEnvironment(), Scheduling.HIDDEN, new Integer(i));
 		amas.getScheduler().setOnStop(s -> {
 			int nextI = i;
-			FileHandler.writeCSVLine("scalability_results.csv", "%d;%d", i, System.currentTimeMillis() - startTime);
+			FileHandler.writeCSVLine("scalability_results.csv", i+"", (System.currentTimeMillis() - startTime)+"");
 			switch (i) {
 			case 1:
 				nextI = 5;

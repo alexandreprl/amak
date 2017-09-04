@@ -1,16 +1,12 @@
 package fr.irit.smac.amak.tools;
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.json.simple.JSONObject;
@@ -27,10 +23,8 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  *
  */
 public class FileHandler {
-
-	private static final char DEFAULT_SEPARATOR = ',';
-	private static Map<String, BufferedReader> openedCsvFiles = new HashMap<>();
-	private static Map<String, PrintWriter> openedWritableCsvFiles = new HashMap<>();
+	private static Map<String, BufferedReader> openedReadableFiles = new HashMap<>();
+	private static Map<String, PrintWriter> openedWritableFiles = new HashMap<>();
 
 	/**
 	 * Clear the content of a file
@@ -43,167 +37,42 @@ public class FileHandler {
 	}
 
 	/**
-	 * Write a line in a file
-	 * 
-	 * @param name
-	 *            The name of the file
-	 * 
-	 * @param line
-	 *            The line to write
-	 */
-	public static void writeLine(String name, String line, boolean overwrite) {
-		try {
-			FileWriter fw = new FileWriter(name, overwrite);
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(line);
-			bw.close();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-
-	/**
 	 * Write a JSONObject in the file
 	 * 
-	 * @param name
+	 * @param filename
 	 *            The name of the file
 	 * 
 	 * @param obj
 	 *            The Object
 	 */
-	public static void writeJSON(String name, Object obj, boolean overwrite) {
+	public static void writeJSON(String filename, Object obj) {
 		JsonHierarchicalStreamDriver jet = new JsonHierarchicalStreamDriver();
 		XStream xstream = new XStream(jet);
 		xstream.setMode(XStream.NO_REFERENCES);
-		FileWriter file;
-		try {
-			file = new FileWriter(name + ".json", overwrite);
-			file.write(xstream.toXML(obj));
-			file.flush();
-			file.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		writeLine(filename, xstream.toXML(obj));
 	}
 
 	/**
 	 * Write an Object in a xml file
 	 * 
-	 * @param name
+	 * @param filename
 	 *            The name of the file
 	 * 
 	 * @param obj
 	 *            The object
 	 */
-	public static void writeXML(String name, Object obj, boolean overwrite) {
+	public static void writeXML(String filename, Object obj) {
 		XStream xstream = new XStream(new DomDriver());
 		String xml = xstream.toXML(obj);
-		try {
-			File file = new File(name);
-			FileWriter fw = new FileWriter(file, overwrite);
-			fw.write(xml);
-			fw.flush();
-			fw.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		writeLine(filename, xml);
 	}
 
 	/**
-	 * Write in csv format
+	 * Read a json object from a file 
 	 * 
-	 * @param name
-	 * 
-	 * @param values
-	 * 
+	 * @param filename
+	 * @return the JSON object read
 	 */
-	public static void writeCSV(String name, List<String> values, boolean overwrite) {
-		FileWriter writer;
-		try {
-			writer = new FileWriter(name, overwrite);
-			FileHandler.writeLine(writer, values);
-			writer.flush();
-			writer.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
-	/**
-	 * 
-	 * @param w
-	 * @param values
-	 * @throws IOException
-	 */
-	private static void writeLine(Writer w, List<String> values) throws IOException {
-		writeLine(w, values, DEFAULT_SEPARATOR, ' ');
-	}
-
-	private static void writeLine(Writer w, List<String> values, char separators) throws IOException {
-		writeLine(w, values, separators, ' ');
-	}
-
-	/**
-	 * Used to foolow the csv format
-	 * 
-	 * @param value
-	 * 
-	 * @return result
-	 */
-	private static String followCVSformat(String value) {
-
-		String result = value;
-		if (result.contains("\"")) {
-			result = result.replace("\"", "\"\"");
-		}
-		return result;
-
-	}
-
-	/**
-	 * Write the line in csv format
-	 * 
-	 * @param w
-	 *            The writer
-	 * @param values
-	 *            The String to write
-	 * @param separators
-	 *            The separtors
-	 * @param customQuote
-	 *            The customQuote
-	 * @throws IOException
-	 */
-	private static void writeLine(Writer w, List<String> values, char separators, char customQuote) throws IOException {
-
-		boolean first = true;
-
-		// default customQuote is empty
-
-		if (separators == ' ') {
-			separators = DEFAULT_SEPARATOR;
-		}
-
-		StringBuilder sb = new StringBuilder();
-		for (String value : values) {
-			if (!first) {
-				sb.append(separators);
-			}
-			if (customQuote == ' ') {
-				sb.append(followCVSformat(value));
-			} else {
-				sb.append(customQuote).append(followCVSformat(value)).append(customQuote);
-			}
-
-			first = false;
-		}
-		sb.append("\n");
-		w.append(sb.toString());
-
-	}
-
 	public static JSONObject readJSONObject(String filename) {
 		JSONParser parser = new JSONParser();
 		JSONObject object;
@@ -222,18 +91,23 @@ public class FileHandler {
 		}
 		return null;
 	}
-
-	public static String readCSVLine(String filename) {
+	/**
+	 * Read a line from a file
+	 * 
+	 * @param filename
+	 * @return the content of the line
+	 */
+	public static String readLine(String filename) {
 		try {
-			if (!openedCsvFiles.containsKey(filename)) {
-				openedCsvFiles.put(filename, new BufferedReader(new FileReader(filename)));
+			if (!openedReadableFiles.containsKey(filename)) {
+				openedReadableFiles.put(filename, new BufferedReader(new FileReader(filename)));
 			}
-			BufferedReader csvReader = openedCsvFiles.get(filename);
+			BufferedReader csvReader = openedReadableFiles.get(filename);
 			String line;
 			line = csvReader.readLine();
 			if (line == null) {
 				csvReader.close();
-				openedCsvFiles.remove(filename);
+				openedReadableFiles.remove(filename);
 				return null;
 			} else {
 				return line;
@@ -244,17 +118,26 @@ public class FileHandler {
 		return null;
 	}
 
-	public static String writeCSVLine(String filename, String line, Object... params) {
+	/**
+	 * Write a line as CSV
+	 * 
+	 * @param filename
+	 * @param params
+	 * @return
+	 */
+	public static void writeCSVLine(String filename, CharSequence... params) {
+		writeLine(filename, String.join(",", params));
+	}
+	public static void writeLine(String filename, String line, Object... params) {
 		try {
-			if (!openedWritableCsvFiles.containsKey(filename)) {
-				openedWritableCsvFiles.put(filename, new PrintWriter(filename));
+			if (!openedWritableFiles.containsKey(filename)) {
+				openedWritableFiles.put(filename, new PrintWriter(filename));
 			}
-			PrintWriter csvWriter = openedWritableCsvFiles.get(filename);
+			PrintWriter csvWriter = openedWritableFiles.get(filename);
 			csvWriter.println(String.format(line, params));
 			csvWriter.flush();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return null;
 	}
 }

@@ -28,7 +28,7 @@ public class TestFileHandler {
 		list.add("je");
 		list.add("suis");
 		list.add("moi");
-		FileHandler.writeCSV("testCSV.csv", list, true);
+		FileHandler.writeCSVLine("testCSV.csv", list.toArray(new String[0]));
 
 	}
 

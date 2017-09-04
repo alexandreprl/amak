@@ -1,38 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project default="create_run_jar" name="Create Runnable Jar for Project Mask">
-    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
-    <!--ANT 1.7 is required                                        -->
-    <!--define folder properties-->
-    <property name="dir.buildfile" value="."/>
-    <property name="dir.workspace" value="${dir.buildfile}/.."/>
-    <property name="dir.jarfile" value="${dir.buildfile}/Release"/>
+	<!--this file was created by Eclipse Runnable JAR Export Wizard-->
+	<!--ANT 1.7 is required                                        -->
+	<!--define folder properties-->
+	<property name="dir.buildfile" value="." />
+	<property name="dir.workspace" value="${dir.buildfile}/.." />
+	<property name="dir.jarfile" value="${dir.buildfile}/Release" />
 	<property name="javadoc.dir" value="javadoc" />
 
 	<target name="build-javadoc">
-		<javadoc packagenames="fr.irit.smac.amak.*" sourcepath="src"
-			 destdir="${javadoc.dir}" version="true" 
-			windowtitle="Amak">
+		<javadoc packagenames="fr.irit.smac.amak.*" sourcepath="src" destdir="${javadoc.dir}" version="true" windowtitle="Amak">
 			<arg value="-notimestamp" />
 		</javadoc>
 	</target>
-    <target name="create_run_jar">
-        <jar destfile="${dir.jarfile}/AmakFramework-standalone.jar" filesetmanifest="mergewithoutmain">
-            <!--<manifest>
+	<target name="create_run_jar">
+		<jar destfile="${dir.jarfile}/AmakFramework-standalone.jar" filesetmanifest="mergewithoutmain">
+			<!--<manifest>
                 <attribute name="Main-Class" value="Test"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>-->
-            <fileset dir="${dir.buildfile}/bin"/>
-            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/lx-plot-standalone.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/avt.jar"/>
-            <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/json-simple-1.1.jar"/>
-                <zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/xstream-1.4.10.jar"/>
-        </jar>
-        <jar destfile="${dir.jarfile}/AmakFramework.jar" filesetmanifest="mergewithoutmain">
-            <!--<manifest>
+			<fileset dir="${dir.buildfile}/bin" />
+			<zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/lx-plot-standalone.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/avt.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/json-simple-1.1.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/xstream-1.4.10.jar" />
+		</jar>
+		<jar destfile="${dir.jarfile}/AmakFramework.jar" filesetmanifest="mergewithoutmain">
+			<!--<manifest>
                 <attribute name="Main-Class" value="Test"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>-->
-            <fileset dir="${dir.buildfile}/bin"/>
-        </jar>
-    </target>
+			<fileset dir="${dir.buildfile}/bin" />
+		</jar>
+	</target>
 </project>
