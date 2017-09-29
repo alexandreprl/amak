@@ -94,7 +94,7 @@ A table is initialized with 10 forks.
 ### Create your multi-agent system ###
 
 Let's call the multi-agent system "MyAMAS".
-Create a class "MyAMAS" which extends the abstract class Amas<TableEnvironment>.
+Create a class "MyAMAS" which extends the abstract class Amas<Table>.
 
 During the initialization, we want to create a philosopher per fork and let them know their neighbors.
 
@@ -102,7 +102,7 @@ During the initialization, we want to create a philosopher per fork and let them
 ```
 #!Java
 
-	public MyAMAS(TableEnvironment env) {
+	public MyAMAS(Table env) {
 		super(env, Scheduling.UI);
 	}
 	@Override
@@ -129,7 +129,7 @@ During the initialization, we want to create a philosopher per fork and let them
 
 ### Create your agent ###
 
-Create a class "Philosopher" which extends the class Agent<MyAMAS, Environment>.
+Create a class "Philosopher" which extends the class Agent<MyAMAS, Table>.
 
 
 ```
@@ -215,7 +215,7 @@ In any class, create the environment and then the multi-agent system and launch 
 #!Java
 
 public static void main(String[] args) {
-		TableEnvironment env = new TableEnvironment();
+		Table env = new Table();
 		new MyAMAS(env);
 	}
 ```
