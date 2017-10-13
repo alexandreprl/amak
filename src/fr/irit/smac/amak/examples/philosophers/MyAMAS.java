@@ -25,7 +25,7 @@ public class MyAMAS extends Amas<TableEnvironment> {
 		comp.setPreferredSize(new Dimension(200, 100));
 		toolbar.add(comp);
 		MainWindow.addToolbar(toolbar);
-		JPanel panel = new JPanel();
+
 		MainWindow.addTabbedPanel("tabbed1",new JPanel());
 		MainWindow.addTabbedPanel("tabbed2",new JPanel());
 		MainWindow.addTabbedPanel("tabbed3",new JPanel());

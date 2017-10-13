@@ -36,16 +36,6 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 */
 	protected final A amas;
 	/**
-	 * Execution order layer of the agent
-	 */
-	private int executionOrderLayer;
-
-	/**
-	 * This attribute aims at sorting randomly agents with the same
-	 * executionOrder value
-	 */
-	private int executionOrderRandomIndex;
-	/**
 	 * Unique index to give unique id to each agent
 	 */
 	private static int uniqueIndex;
@@ -79,6 +69,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * @param agents
 	 *            The list of agent that should be considered as neighbor
 	 */
+	@SafeVarargs
 	public final void addNeighbor(Agent<A, E>... agents) {
 		for (Agent<A, E> agent : agents) {
 			if (agent != null) {
@@ -288,5 +279,11 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	public void destroy() {
 		getAmas()._removeAgent(this);
 	}
-
+	/**
+	 * Agent toString
+	 */
+	@Override
+	public String toString() {
+		return String.format("Agent #%d", id);
+	}
 }

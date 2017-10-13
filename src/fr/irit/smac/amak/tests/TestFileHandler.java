@@ -3,8 +3,6 @@ package fr.irit.smac.amak.tests;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
 import org.json.simple.JSONObject;
 
 import fr.irit.smac.amak.tools.FileHandler;
@@ -13,6 +11,7 @@ public class TestFileHandler {
 
 	
 
+	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
 
 		JSONObject json = new JSONObject();

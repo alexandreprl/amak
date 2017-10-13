@@ -1,21 +1,15 @@
 package fr.irit.smac.amak.ui;
 
-import java.awt.BorderLayout;
-import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.image.BufferStrategy;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import fr.irit.smac.amak.Schedulable;
 import fr.irit.smac.amak.Scheduler;
@@ -33,11 +27,6 @@ public abstract class DrawableUI implements Schedulable {
 	 * set fps to 10 to avoid CPU overload
 	 */
 	public int defaultSleep = 100;
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 7895752986790657855L;
 
 	/**
 	 * Drawable canvas
@@ -76,6 +65,11 @@ public abstract class DrawableUI implements Schedulable {
 		// setContentPane(contentPane);
 
 		canvas = new JPanel() {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
 			protected void paintComponent(java.awt.Graphics g) {
 
 				Image buffer = createImage(800, 600);

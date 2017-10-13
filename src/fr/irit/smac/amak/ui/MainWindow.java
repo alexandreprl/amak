@@ -3,7 +3,6 @@ package fr.irit.smac.amak.ui;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
-import java.util.OptionalDouble;
 import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.JFrame;
@@ -11,12 +10,11 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
-import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 
 /**
  * 
- * @author Marcillaud Guilhem
+ * @author Alexandre Perles, Marcillaud Guilhem
  *
  */
 public class MainWindow extends JFrame {

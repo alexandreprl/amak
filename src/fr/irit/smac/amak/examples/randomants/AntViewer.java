@@ -10,10 +10,6 @@ import fr.irit.smac.amak.ui.DrawableUI;
 
 public class AntViewer extends DrawableUI {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -3703452662387302999L;
 	protected AntHill antHill;
 
 	public AntViewer() {

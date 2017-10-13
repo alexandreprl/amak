@@ -1,8 +1,5 @@
 package fr.irit.smac.amak.tests;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-
 public class Entity {
 
 	private int age = 22;

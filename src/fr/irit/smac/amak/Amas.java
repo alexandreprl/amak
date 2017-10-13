@@ -7,10 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
 
-import javax.swing.JToolBar;
-
-import fr.irit.smac.amak.ui.SchedulerToolbar;
 import fr.irit.smac.amak.ui.MainWindow;
+import fr.irit.smac.amak.ui.SchedulerToolbar;
 
 /**
  * This class must be overridden by multi-agent systems
@@ -24,7 +22,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	/**
 	 * List of agents present in the system
 	 */
-	protected final List<Agent<?, E>> agents = new ArrayList<>();
+	protected final List<Agent<? extends Amas<E>, E>> agents = new ArrayList<>();
 	/**
 	 * Number of cycles executed by the system
 	 */
@@ -220,7 +218,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * 
 	 * @return the list of agents
 	 */
-	public List<Agent<?, E>> getAgents() {
+	public List<Agent<? extends Amas<E>, E>> getAgents() {
 		return agents;
 	}
 
@@ -230,10 +228,10 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * @author Alexandre Perles
 	 *
 	 */
-	private class AgentOrderComparator implements Comparator<Agent> {
+	private class AgentOrderComparator implements Comparator<Agent<? extends Amas<E>, E>> {
 
 		@Override
-		public int compare(Agent o1, Agent o2) {
+		public int compare(Agent<? extends Amas<E>, E> o1, Agent<? extends Amas<E>, E> o2) {
 			if (o1.getExecutionOrder() == o2.getExecutionOrder())
 				return 0;
 			else

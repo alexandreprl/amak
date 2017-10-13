@@ -65,7 +65,7 @@ public class Scheduler implements Runnable {
 	 * Start (or continue) with no delay between cycles
 	 */
 	public void start() {
-		startWithSleep(schedulable.defaultSleep);
+		startWithSleep(Schedulable.defaultSleep);
 	}
 
 	/**
