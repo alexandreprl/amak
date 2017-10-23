@@ -53,7 +53,7 @@ public class Log {
 	/**
 	 * The minimum level that should be displayed
 	 */
-	public static Level minLevel = Level.IMPORTANT;
+	public static Level minLevel = Level.DEBUG;
 	/**
 	 * Global flag telling if the user has been informed about the fact that log
 	 * shouldn't be disabled
