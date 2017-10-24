@@ -68,9 +68,10 @@ public class FileHandler {
 	}
 
 	/**
-	 * Read a json object from a file 
+	 * Read a json object from a file
 	 * 
 	 * @param filename
+	 *            The name of the file that must be opened
 	 * @return the JSON object read
 	 */
 	public static JSONObject readJSONObject(String filename) {
@@ -91,10 +92,12 @@ public class FileHandler {
 		}
 		return null;
 	}
+
 	/**
 	 * Read a line from a file
 	 * 
 	 * @param filename
+	 *            The name of the file that must be read
 	 * @return the content of the line
 	 */
 	public static String readLine(String filename) {
@@ -122,12 +125,14 @@ public class FileHandler {
 	 * Write a line as CSV
 	 * 
 	 * @param filename
+	 *            The name of the file that must be read
 	 * @param params
-	 * @return
+	 *            The data that must be written
 	 */
 	public static void writeCSVLine(String filename, CharSequence... params) {
 		writeLine(filename, String.join(",", params));
 	}
+
 	public static void writeLine(String filename, String line, Object... params) {
 		try {
 			if (!openedWritableFiles.containsKey(filename)) {

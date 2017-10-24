@@ -2,18 +2,18 @@ package fr.irit.smac.amak.examples.philosophers;
 
 import fr.irit.smac.amak.Environment;
 
-public class TableEnvironment extends Environment {
-	private Fork[] forks;
+public class TableExample extends Environment {
+	private ForkExample[] forks;
 
 	@Override
 	public void onInitialization() {
 		// Set 10 forks on the table
-		forks = new Fork[10];
+		forks = new ForkExample[10];
 		for (int i = 0; i < forks.length; i++)
-			forks[i] = new Fork();
+			forks[i] = new ForkExample();
 	}
 
-	public Fork[] getForks() {
+	public ForkExample[] getForks() {
 		return forks;
 	}
 }

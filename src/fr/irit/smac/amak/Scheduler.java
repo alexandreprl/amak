@@ -116,7 +116,7 @@ public class Scheduler implements Runnable {
 					e.printStackTrace();
 				}
 			}
-		} while (state == State.RUNNING&&!schedulable.stopCondition());
+		} while (state == State.RUNNING && !schedulable.stopCondition());
 		stateLock.lock();
 		if (onStop != null)
 			onStop.accept(this);
@@ -167,6 +167,7 @@ public class Scheduler implements Runnable {
 	 * Setter for the sleep time
 	 * 
 	 * @param sleep
+	 *            The time between each cycle
 	 */
 	public void setSleep(int sleep) {
 		this.sleep = sleep;

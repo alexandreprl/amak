@@ -6,10 +6,10 @@ import fr.irit.smac.amak.Agent;
 import fr.irit.smac.lxplot.LxPlot;
 import fr.irit.smac.lxplot.commons.ChartType;
 
-public class Philosopher extends Agent<MyAMAS, TableEnvironment> {
+public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExample> {
 
-	private Fork left;
-	private Fork right;
+	private ForkExample left;
+	private ForkExample right;
 	private double hungerDuration;
 	private double eatenPastas;
 	private int id;
@@ -20,7 +20,7 @@ public class Philosopher extends Agent<MyAMAS, TableEnvironment> {
 
 	private State state = State.THINK;
 
-	public Philosopher(int id, MyAMAS amas, Fork left, Fork right) {
+	public PhilosopherExample(int id, PhilosophersAMASExample amas, ForkExample left, ForkExample right) {
 		super(amas);
 		this.id = id;
 		this.left = left;

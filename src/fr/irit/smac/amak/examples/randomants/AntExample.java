@@ -2,7 +2,7 @@ package fr.irit.smac.amak.examples.randomants;
 
 import fr.irit.smac.amak.Agent;
 
-public class Ant extends Agent<AntHill, World> {
+public class AntExample extends Agent<AntHillExample, WorldExample> {
 	/**
 	 * X coordinate of the ant in the world
 	 */
@@ -22,7 +22,7 @@ public class Ant extends Agent<AntHill, World> {
 	 * @param amas
 	 *            the amas the ant belongs to
 	 */
-	public Ant(AntHill amas) {
+	public AntExample(AntHillExample amas) {
 		super(amas);
 	}
 
@@ -31,7 +31,7 @@ public class Ant extends Agent<AntHill, World> {
 	 */
 	@Override
 	protected void onAct() {
-		double random = amas.getRandom().nextGaussian();
+		double random = amas.getEnvironment().getRandom().nextGaussian();
 		angle += random * 0.1;
 		dx += Math.cos(angle);
 		dy += Math.sin(angle);

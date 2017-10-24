@@ -1,12 +1,12 @@
 package fr.irit.smac.amak.examples.randomants;
 
-public class Launch {
+public class AntsLaunchExample {
 
 	public static void main(String[] args) {
-		World env = new World();
+		WorldExample env = new WorldExample();
 		
-		AntHill _antHill = new AntHill(env);
-		new AntViewer(){
+		AntHillExample _antHill = new AntHillExample(env);
+		new AntViewerExample(){
 			protected void onInitialConfiguration() {
 				this.antHill = _antHill;
 			}

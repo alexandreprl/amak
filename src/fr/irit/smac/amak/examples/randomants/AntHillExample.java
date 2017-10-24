@@ -5,15 +5,15 @@ import fr.irit.smac.amak.Amas;
 import fr.irit.smac.amak.Scheduling;
 import fr.irit.smac.amak.tools.FileHandler;
 
-public class AntHill extends Amas<World> {
+public class AntHillExample extends Amas<WorldExample> {
 
-	public AntHill(World env) {
+	public AntHillExample(WorldExample env) {
 		super(env, Scheduling.UI);
 	}
 	@Override
 	protected void onInitialAgentsCreation() {
 		for (int i=0;i<1000;i++)
-			new Ant(this);
+			new AntExample(this);
 	}
 	@Override
 	protected void onSystemCycleEnd() {

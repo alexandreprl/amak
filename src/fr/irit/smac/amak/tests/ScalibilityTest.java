@@ -79,7 +79,7 @@ public class ScalibilityTest {
 		protected void onAct() {
 			// Sleep the thread to simulate a behavior
 			try {
-				Thread.sleep((long) ((amas.getRandom().nextDouble() + 1) * 3));
+				Thread.sleep((long) ((amas.getEnvironment().getRandom().nextDouble() + 1) * 3));
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

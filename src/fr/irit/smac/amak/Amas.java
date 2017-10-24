@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Random;
 
 import fr.irit.smac.amak.ui.MainWindow;
 import fr.irit.smac.amak.ui.SchedulerToolbar;
@@ -46,10 +45,6 @@ public class Amas<E extends Environment> implements Schedulable {
 	 */
 	private final int id = uniqueIndex++;
 
-	/**
-	 * Random object common to the amas
-	 */
-	private final Random random = new Random();
 	private LinkedList<Agent<?, E>> agentsPendingRemoval = new LinkedList<>();
 	private LinkedList<Agent<?, E>> agentsPendingAddition = new LinkedList<>();
 	protected Object[] params;
@@ -61,6 +56,8 @@ public class Amas<E extends Environment> implements Schedulable {
 	 *            Environment of the system
 	 * @param scheduling
 	 *            Scheduling mode
+	 * @param params
+	 *            The params to initialize the amas
 	 */
 	public Amas(E environment, Scheduling scheduling, Object... params) {
 		this.params = params;
@@ -99,15 +96,6 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * This method is called when all agents are ready
 	 */
 	protected void onReady() {
-	}
-
-	/**
-	 * Getter for the random object
-	 * 
-	 * @return the random object
-	 */
-	public Random getRandom() {
-		return random;
 	}
 
 	/**

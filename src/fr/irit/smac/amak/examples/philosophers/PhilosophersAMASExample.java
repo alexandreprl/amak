@@ -10,11 +10,11 @@ import fr.irit.smac.amak.Amas;
 import fr.irit.smac.amak.Scheduling;
 import fr.irit.smac.amak.ui.MainWindow;
 
-public class MyAMAS extends Amas<TableEnvironment> {
+public class PhilosophersAMASExample extends Amas<TableExample> {
 	private JLabel comp;
-	private Philosopher[] ps;
+	private PhilosopherExample[] ps;
 
-	public MyAMAS(TableEnvironment env) {
+	public PhilosophersAMASExample(TableExample env) {
 		super(env, Scheduling.UI);
 	}
 
@@ -33,14 +33,14 @@ public class MyAMAS extends Amas<TableEnvironment> {
 
 	@Override
 	protected void onInitialAgentsCreation() {
-		ps = new Philosopher[getEnvironment().getForks().length];
+		ps = new PhilosopherExample[getEnvironment().getForks().length];
 		// Create one agent per fork
 		for (int i = 0; i < getEnvironment().getForks().length - 1; i++) {
-			ps[i] = new Philosopher(i, this, getEnvironment().getForks()[i], getEnvironment().getForks()[i + 1]);
+			ps[i] = new PhilosopherExample(i, this, getEnvironment().getForks()[i], getEnvironment().getForks()[i + 1]);
 		}
 
 		// Let the last philosopher takes the first fork (round table)
-		ps[getEnvironment().getForks().length - 1] = new Philosopher(getEnvironment().getForks().length - 1, this,
+		ps[getEnvironment().getForks().length - 1] = new PhilosopherExample(getEnvironment().getForks().length - 1, this,
 				getEnvironment().getForks()[getEnvironment().getForks().length - 1], getEnvironment().getForks()[0]);
 
 		// Add neighborhood

@@ -18,13 +18,12 @@ import java.util.Map.Entry;
  */
 public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	/**
-	 * Neighborhood of the agent (must refer to the same couple amas,
-	 * environment
+	 * Neighborhood of the agent (must refer to the same couple amas, environment
 	 */
 	protected final List<Agent<A, E>> neighborhood;
 	/**
-	 * Criticalities of the neighbors (and it self) as perceived at the
-	 * beginning of the agent's cycle
+	 * Criticalities of the neighbors (and it self) as perceived at the beginning of
+	 * the agent's cycle
 	 */
 	protected final Map<Agent<A, E>, Double> criticalities = new HashMap<>();
 	/**
@@ -53,8 +52,10 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * 
 	 * @param amas
 	 *            Amas the agent belongs to
+	 * @param params
+	 *            The params to initialize the agent
 	 */
-	public Agent(A amas, Object...params) {
+	public Agent(A amas, Object... params) {
 		this.params = params;
 		this.amas = amas;
 		this.amas._addAgent(this);
@@ -80,9 +81,9 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	}
 
 	/**
-	 * This method must be overridden by the agents. This method shouldn't make
-	 * any calls to internal representation an agent has on its environment
-	 * because these information maybe outdated.
+	 * This method must be overridden by the agents. This method shouldn't make any
+	 * calls to internal representation an agent has on its environment because
+	 * these information maybe outdated.
 	 * 
 	 * @return the criticality at a given moment
 	 */
@@ -91,8 +92,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	}
 
 	/**
-	 * This method must be overriden if you need to specify an execution order
-	 * layer
+	 * This method must be overriden if you need to specify an execution order layer
 	 * 
 	 * @return the execution order layer
 	 */
@@ -146,16 +146,15 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	}
 
 	/**
-	 * This method is essentially intended for debugging purpose. For example,
-	 * it is a good place to display the criticality of the agent.
+	 * This method is essentially intended for debugging purpose. For example, it is
+	 * a good place to display the criticality of the agent.
 	 */
 	protected void onDraw() {
 
 	}
 
 	/**
-	 * Called when all initial agents have been created and are ready to be
-	 * started
+	 * Called when all initial agents have been created and are ready to be started
 	 */
 	protected void onReady() {
 
@@ -214,7 +213,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * @return
 	 */
 	private final int computeExecutionOrder() {
-		return computeExecutionOrderLayer() * 10000 + amas.getRandom().nextInt(10000);
+		return computeExecutionOrderLayer() * 10000 + amas.getEnvironment().getRandom().nextInt(10000);
 	}
 
 	/**
@@ -279,6 +278,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	public void destroy() {
 		getAmas()._removeAgent(this);
 	}
+
 	/**
 	 * Agent toString
 	 */
