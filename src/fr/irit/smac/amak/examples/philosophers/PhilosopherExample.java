@@ -21,10 +21,13 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 	private State state = State.THINK;
 
 	public PhilosopherExample(int id, PhilosophersAMASExample amas, ForkExample left, ForkExample right) {
-		super(amas);
-		this.id = id;
-		this.left = left;
-		this.right = right;
+		super(amas,id,left,right);
+	}
+	@Override
+	protected void onInitialize() {
+		this.id = (int) params[0];
+		this.left = (ForkExample) params[1];
+		this.right = (ForkExample) params[2];
 	}
 
 	@Override
