@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -200,6 +200,12 @@ extends <a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html#onInitialize--">onInitialize</a></span>()</code>
+<div class="block">Called before all agents are created</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html#onPerceiveDecideAct--">onPerceiveDecideAct</a></span>()</code>
 <div class="block">Perceive, decide and act</div>
 </td>
@@ -210,7 +216,7 @@ extends <a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;fr.irit.smac.amak.<a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></h3>
-<code><a href="../../../../../../fr/irit/smac/amak/Agent.html#Z:Z_onBeforeReady--">_onBeforeReady</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#addNeighbor-fr.irit.smac.amak.Agent...-">addNeighbor</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#computeExecutionOrderLayer--">computeExecutionOrderLayer</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#cycle--">cycle</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#destroy--">destroy</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getAmas--">getAmas</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getExecutionOrder--">getExecutionOrder</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getMostCriticalNeighbor-boolean-">getMostCriticalNeighbor</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAct--">onAct</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleBegin--">onAgentCycleBegin</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleEnd--">onAgentCycleEnd</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onDecide--">onDecide</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onExpose--">onExpose</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onPerceive--">onPerceive</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onReady--">onReady</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">onSystemCycleBegin</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleEnd--">onSystemCycleEnd</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#toString--">toString</a></code></li>
+<code><a href="../../../../../../fr/irit/smac/amak/Agent.html#Z:Z_onBeforeReady--">_onBeforeReady</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#addNeighbor-fr.irit.smac.amak.Agent...-">addNeighbor</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#computeExecutionOrderLayer--">computeExecutionOrderLayer</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#cycle--">cycle</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#destroy--">destroy</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getAmas--">getAmas</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getExecutionOrder--">getExecutionOrder</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getMostCriticalNeighbor-boolean-">getMostCriticalNeighbor</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAct--">onAct</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleBegin--">onAgentCycleBegin</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleEnd--">onAgentCycleEnd</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onDecide--">onDecide</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onExpose--">onExpose</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onPerceive--">onPerceive</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onReady--">onReady</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">onSystemCycleBegin</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleEnd--">onSystemCycleEnd</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#toString--">toString</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -253,6 +259,21 @@ extends <a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="onInitialize--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onInitialize</h4>
+<pre>protected&nbsp;void&nbsp;onInitialize()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Agent.html#onInitialize--">Agent</a></code></span></div>
+<div class="block">Called before all agents are created</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../../fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosophersAMASExample</a>,<a href="../../../../../../fr/irit/smac/amak/examples/philosophers/TableExample.html" title="class in fr.irit.smac.amak.examples.philosophers">TableExample</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
 <a name="onPerceiveDecideAct--">
 <!--   -->
 </a>

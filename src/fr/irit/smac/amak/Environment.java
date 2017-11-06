@@ -24,6 +24,7 @@ public abstract class Environment {
 	public Environment(Object... params) {
 		this.params = params;
 		onInitialization();
+		onInitialEntitiesCreation();
 	}
 
 	/**
@@ -41,6 +42,11 @@ public abstract class Environment {
 	 * This method is called during the initialization process of the environment
 	 */
 	public void onInitialization() {
+	}
+	/**
+	 * This method is called after the initialization process of the environment to create entities
+	 */
+	public void onInitialEntitiesCreation() {
 	}
 
 	/**

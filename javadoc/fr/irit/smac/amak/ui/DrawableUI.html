@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":6,"i4":10,"i5":10,"i6":10,"i7":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":6,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -91,14 +91,14 @@ var activeTableTab = "activeTableTab";
 <!-- ======== START OF CLASS DATA ======== -->
 <div class="header">
 <div class="subTitle">fr.irit.smac.amak.ui</div>
-<h2 title="Class DrawableUI" class="title">Class DrawableUI</h2>
+<h2 title="Class DrawableUI" class="title">Class DrawableUI&lt;T extends <a href="../../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;? extends <a href="../../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt;&gt;</h2>
 </div>
 <div class="contentContainer">
 <ul class="inheritance">
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li>fr.irit.smac.amak.ui.DrawableUI</li>
+<li>fr.irit.smac.amak.ui.DrawableUI&lt;T&gt;</li>
 </ul>
 </li>
 </ul>
@@ -115,7 +115,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <hr>
 <br>
-<pre>public abstract class <span class="typeNameLabel">DrawableUI</span>
+<pre>public abstract class <span class="typeNameLabel">DrawableUI&lt;T extends <a href="../../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;? extends <a href="../../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt;&gt;</span>
 extends java.lang.Object
 implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></pre>
 <div class="block">This class should be overridden by classes aiming at rendering stuffs on a
@@ -148,6 +148,12 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <div class="block">set fps to 10 to avoid CPU overload</div>
 </td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><code>protected java.lang.Object[]</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#params">params</a></span></code>
+<div class="block">Parameters to initialize the drawable UI</div>
+</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -163,7 +169,9 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#DrawableUI-fr.irit.smac.amak.Scheduling-">DrawableUI</a></span>(<a href="../../../../../fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a>&nbsp;_scheduling)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#DrawableUI-fr.irit.smac.amak.Scheduling-T-java.lang.Object...-">DrawableUI</a></span>(<a href="../../../../../fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a>&nbsp;_scheduling,
+          <a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="type parameter in DrawableUI">T</a>&nbsp;amas,
+          java.lang.Object...&nbsp;params)</code>
 <div class="block">Create and initialize the frame and the canvas</div>
 </td>
 </tr>
@@ -189,44 +197,63 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="type parameter in DrawableUI">T</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getAmas--">getAmas</a></span>()</code>
+<div class="block">Getter for amas</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getHeight--">getHeight</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getScheduler--">getScheduler</a></span>()</code>
 <div class="block">This method gives access to the scheduler of the DrawableUI</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>int</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getWidth--">getWidth</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onClick-int-int-">onClick</a></span>(int&nbsp;x,
        int&nbsp;y)</code>
 <div class="block">This method is called when the mouse is clicked on the canvas</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>protected abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onDraw-java.awt.Graphics2D-">onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics2D)</code>
 <div class="block">This method is called when the canvas must be drawn again</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onInitialConfiguration--">onInitialConfiguration</a></span>()</code>
 <div class="block">This method is called at the very beginning of the DrawableUI creation.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onMouseDragged-int-int-">onMouseDragged</a></span>(int&nbsp;x,
               int&nbsp;y)</code>
 <div class="block">This method is called when the mouse is dragged on the canvas</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#setSize-int-int-">setSize</a></span>(int&nbsp;width,
+       int&nbsp;height)</code>&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#start--">start</a></span>()</code>
 <div class="block">Helper method to launch the scheduler</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#stopCondition--">stopCondition</a></span>()</code>
 <div class="block">This method allows the system to stop the scheduler on certain conditions</div>
@@ -257,11 +284,21 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <a name="defaultSleep">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>defaultSleep</h4>
 <pre>public&nbsp;int defaultSleep</pre>
 <div class="block">set fps to 10 to avoid CPU overload</div>
+</li>
+</ul>
+<a name="params">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>params</h4>
+<pre>protected&nbsp;java.lang.Object[] params</pre>
+<div class="block">Parameters to initialize the drawable UI</div>
 </li>
 </ul>
 </li>
@@ -272,13 +309,17 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="DrawableUI-fr.irit.smac.amak.Scheduling-">
+<a name="DrawableUI-fr.irit.smac.amak.Scheduling-fr.irit.smac.amak.Amas-java.lang.Object:A-">
+<!--   -->
+</a><a name="DrawableUI-fr.irit.smac.amak.Scheduling-T-java.lang.Object...-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>DrawableUI</h4>
-<pre>public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a>&nbsp;_scheduling)</pre>
+<pre>public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a>&nbsp;_scheduling,
+                  <a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="type parameter in DrawableUI">T</a>&nbsp;amas,
+                  java.lang.Object...&nbsp;params)</pre>
 <div class="block">Create and initialize the frame and the canvas</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -294,6 +335,24 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="getWidth--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getWidth</h4>
+<pre>public&nbsp;int&nbsp;getWidth()</pre>
+</li>
+</ul>
+<a name="getHeight--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getHeight</h4>
+<pre>public&nbsp;int&nbsp;getHeight()</pre>
+</li>
+</ul>
 <a name="onInitialConfiguration--">
 <!--   -->
 </a>
@@ -301,8 +360,18 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <li class="blockList">
 <h4>onInitialConfiguration</h4>
 <pre>protected&nbsp;void&nbsp;onInitialConfiguration()</pre>
-<div class="block">This method is called at the very beginning of the DrawableUI creation.
- Any configuration should be made here.</div>
+<div class="block">This method is called at the very beginning of the DrawableUI creation. Any
+ configuration should be made here.</div>
+</li>
+</ul>
+<a name="setSize-int-int-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setSize</h4>
+<pre>protected&nbsp;void&nbsp;setSize(int&nbsp;width,
+                       int&nbsp;height)</pre>
 </li>
 </ul>
 <a name="cycle--">
@@ -393,7 +462,7 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <a name="stopCondition--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>stopCondition</h4>
 <pre>public&nbsp;boolean&nbsp;stopCondition()</pre>
@@ -403,6 +472,20 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <dd><code><a href="../../../../../fr/irit/smac/amak/Schedulable.html#stopCondition--">stopCondition</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>whether or not the scheduler must stop.</dd>
+</dl>
+</li>
+</ul>
+<a name="getAmas--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getAmas</h4>
+<pre>public&nbsp;<a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="type parameter in DrawableUI">T</a>&nbsp;getAmas()</pre>
+<div class="block">Getter for amas</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the linked amas</dd>
 </dl>
 </li>
 </ul>

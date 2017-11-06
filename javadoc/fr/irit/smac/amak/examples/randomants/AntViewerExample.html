@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10};
+var methods = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -73,13 +73,13 @@ var activeTableTab = "activeTableTab";
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.fr.irit.smac.amak.ui.DrawableUI">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -98,7 +98,7 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">fr.irit.smac.amak.ui.DrawableUI</a></li>
+<li><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">fr.irit.smac.amak.ui.DrawableUI</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>&gt;</li>
 <li>
 <ul class="inheritance">
 <li>fr.irit.smac.amak.examples.randomants.AntViewerExample</li>
@@ -117,7 +117,7 @@ var activeTableTab = "activeTableTab";
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">AntViewerExample</span>
-extends <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></pre>
+extends <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>&gt;</pre>
 </li>
 </ul>
 </div>
@@ -130,23 +130,12 @@ extends <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="
 <!--   -->
 </a>
 <h3>Field Summary</h3>
-<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Field Summary table, listing fields, and an explanation">
-<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
-<tr>
-<th class="colFirst" scope="col">Modifier and Type</th>
-<th class="colLast" scope="col">Field and Description</th>
-</tr>
-<tr class="altColor">
-<td class="colFirst"><code>protected <a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntViewerExample.html#antHill">antHill</a></span></code>&nbsp;</td>
-</tr>
-</table>
 <ul class="blockList">
 <li class="blockList"><a name="fields.inherited.from.class.fr.irit.smac.amak.ui.DrawableUI">
 <!--   -->
 </a>
 <h3>Fields inherited from class&nbsp;fr.irit.smac.amak.ui.<a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></h3>
-<code><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#defaultSleep">defaultSleep</a></code></li>
+<code><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#defaultSleep">defaultSleep</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#params">params</a></code></li>
 </ul>
 </li>
 </ul>
@@ -162,7 +151,7 @@ extends <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntViewerExample.html#AntViewerExample--">AntViewerExample</a></span>()</code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntViewerExample.html#AntViewerExample-fr.irit.smac.amak.examples.randomants.AntHillExample-">AntViewerExample</a></span>(<a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>&nbsp;_amas)</code>&nbsp;</td>
 </tr>
 </table>
 </li>
@@ -185,13 +174,19 @@ extends <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="
 <div class="block">This method is called when the canvas must be drawn again</div>
 </td>
 </tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntViewerExample.html#onInitialConfiguration--">onInitialConfiguration</a></span>()</code>
+<div class="block">This method is called at the very beginning of the DrawableUI creation.</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.fr.irit.smac.amak.ui.DrawableUI">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;fr.irit.smac.amak.ui.<a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></h3>
-<code><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#cycle--">cycle</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getScheduler--">getScheduler</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onClick-int-int-">onClick</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onInitialConfiguration--">onInitialConfiguration</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onMouseDragged-int-int-">onMouseDragged</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#start--">start</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#stopCondition--">stopCondition</a></code></li>
+<code><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#cycle--">cycle</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getAmas--">getAmas</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getHeight--">getHeight</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getScheduler--">getScheduler</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getWidth--">getWidth</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onClick-int-int-">onClick</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onMouseDragged-int-int-">onMouseDragged</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#setSize-int-int-">setSize</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#start--">start</a>, <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#stopCondition--">stopCondition</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -208,36 +203,19 @@ extends <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
-<!-- ============ FIELD DETAIL =========== -->
-<ul class="blockList">
-<li class="blockList"><a name="field.detail">
-<!--   -->
-</a>
-<h3>Field Detail</h3>
-<a name="antHill">
-<!--   -->
-</a>
-<ul class="blockListLast">
-<li class="blockList">
-<h4>antHill</h4>
-<pre>protected&nbsp;<a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a> antHill</pre>
-</li>
-</ul>
-</li>
-</ul>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <ul class="blockList">
 <li class="blockList"><a name="constructor.detail">
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="AntViewerExample--">
+<a name="AntViewerExample-fr.irit.smac.amak.examples.randomants.AntHillExample-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>AntViewerExample</h4>
-<pre>public&nbsp;AntViewerExample()</pre>
+<pre>public&nbsp;AntViewerExample(<a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>&nbsp;_amas)</pre>
 </li>
 </ul>
 </li>
@@ -248,6 +226,22 @@ extends <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="onInitialConfiguration--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onInitialConfiguration</h4>
+<pre>protected&nbsp;void&nbsp;onInitialConfiguration()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onInitialConfiguration--">DrawableUI</a></code></span></div>
+<div class="block">This method is called at the very beginning of the DrawableUI creation. Any
+ configuration should be made here.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onInitialConfiguration--">onInitialConfiguration</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
 <a name="onDraw-java.awt.Graphics2D-">
 <!--   -->
 </a>
@@ -259,7 +253,7 @@ extends <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="
 <div class="block">This method is called when the canvas must be drawn again</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onDraw-java.awt.Graphics2D-">onDraw</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></code></dd>
+<dd><code><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onDraw-java.awt.Graphics2D-">onDraw</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>graphics2d</code> - Object used for drawing on the canvas</dd>
 </dl>
@@ -318,13 +312,13 @@ extends <a href="../../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
 <li>Nested&nbsp;|&nbsp;</li>
-<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
+<li><a href="#fields.inherited.from.class.fr.irit.smac.amak.ui.DrawableUI">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
+<li>Field&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>

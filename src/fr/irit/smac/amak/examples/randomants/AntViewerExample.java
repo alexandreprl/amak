@@ -13,14 +13,17 @@ public class AntViewerExample extends DrawableUI<AntHillExample> {
 	public AntViewerExample(AntHillExample _amas) {
 		super(Scheduling.SYNC_WITH_AMAS, _amas);
 	}
-
+	@Override
+	protected void onInitialConfiguration() {
+		setSize(getAmas().getEnvironment().getWidth(), getAmas().getEnvironment().getHeight());
+	}
 	@Override
 	protected void onDraw(Graphics2D graphics2d) {
 		graphics2d.setColor(Color.WHITE);
 		ArrayList<Agent<?, WorldExample>> renderingAgents = new ArrayList<>(getAmas().getAgents());
 		for (Agent<?, WorldExample> agent : renderingAgents) {
 			AntExample ant = (AntExample) agent;
-			graphics2d.fillRect((int) (ant.dx + 400), (int) (ant.dy + 300), 3, 3);
+			graphics2d.fillRect((int) (ant.dx + getWidth()/2), (int) (ant.dy + getHeight()/2), 3, 3);
 		}
 	}
 

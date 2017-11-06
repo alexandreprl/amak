@@ -35,14 +35,14 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 		angle += random * 0.1;
 		dx += Math.cos(angle);
 		dy += Math.sin(angle);
-		while (dx >= 400)
-			dx -= 800;
-		while (dy >= 300)
-			dy -= 600;
-		while (dx < -400)
-			dx += 800;
-		while (dy < -300)
-			dy += 600;
+		while (dx >= getAmas().getEnvironment().getWidth()/2)
+			dx -= getAmas().getEnvironment().getWidth();
+		while (dy >= getAmas().getEnvironment().getHeight()/2)
+			dy -= getAmas().getEnvironment().getHeight();
+		while (dx < -getAmas().getEnvironment().getWidth()/2)
+			dx += getAmas().getEnvironment().getWidth();
+		while (dy < -getAmas().getEnvironment().getHeight()/2)
+			dy += getAmas().getEnvironment().getHeight();
 
 	}
 }

@@ -10,9 +10,9 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
 import fr.irit.smac.amak.Amas;
+import fr.irit.smac.amak.Environment;
 import fr.irit.smac.amak.Schedulable;
 import fr.irit.smac.amak.Scheduler;
 import fr.irit.smac.amak.Scheduling;
@@ -24,7 +24,7 @@ import fr.irit.smac.amak.Scheduling;
  * @author Alexandre Perles
  *
  */
-public abstract class DrawableUI<T extends Amas> implements Schedulable {
+public abstract class DrawableUI<T extends Amas<? extends Environment>> implements Schedulable {
 	/**
 	 * set fps to 10 to avoid CPU overload
 	 */
@@ -56,6 +56,16 @@ public abstract class DrawableUI<T extends Amas> implements Schedulable {
 	protected Object[] params;
 
 	private T amas;
+	
+	private int width = 800, height = 600;
+
+	public int getWidth() {
+		return width;
+	}
+
+	public int getHeight() {
+		return height;
+	}
 
 	/**
 	 * Create and initialize the frame and the canvas
@@ -89,7 +99,7 @@ public abstract class DrawableUI<T extends Amas> implements Schedulable {
 				graphics.setColor(Color.BLACK);
 				graphics.fillRect(0, 0, this.getSize().width, this.getSize().height);
 				graphics.setColor(Color.WHITE);
-				graphics.drawRect(0, 0, this.getSize().width, this.getSize().height);
+				graphics.drawRect(0, 0, width, height);
 				onDraw((Graphics2D) graphics);
 				g.drawImage(buffer, 0, 0, null);
 			}
@@ -132,14 +142,10 @@ public abstract class DrawableUI<T extends Amas> implements Schedulable {
 		});
 
 		canvas.setIgnoreRepaint(true);
-		canvas.setPreferredSize(new Dimension(800, 600));
+		canvas.setPreferredSize(new Dimension(width, height));
 		// contentPane.add(canvas, BorderLayout.CENTER);
-		JScrollPane scrollPane = new JScrollPane(canvas);
-		scrollPane.setPreferredSize(new Dimension(850, 650));
-		
-		JPanel panel = new JPanel();
-		panel.add(scrollPane);
-		MainWindow.addTabbedPanel("Drawable #" + id, panel);
+
+		MainWindow.addTabbedPanel("Drawable #" + id, canvas);
 		// pack();
 		// setVisible(true);
 
@@ -163,7 +169,10 @@ public abstract class DrawableUI<T extends Amas> implements Schedulable {
 	 */
 	protected void onInitialConfiguration() {
 	}
-
+	protected void setSize(int width, int height) {
+		this.width = width;
+		this.height = height;
+	}
 	@Override
 	public final void cycle() {
 		canvas.repaint();
