@@ -10,7 +10,9 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
+import fr.irit.smac.amak.Amas;
 import fr.irit.smac.amak.Schedulable;
 import fr.irit.smac.amak.Scheduler;
 import fr.irit.smac.amak.Scheduling;
@@ -22,7 +24,7 @@ import fr.irit.smac.amak.Scheduling;
  * @author Alexandre Perles
  *
  */
-public abstract class DrawableUI implements Schedulable {
+public abstract class DrawableUI<T extends Amas> implements Schedulable {
 	/**
 	 * set fps to 10 to avoid CPU overload
 	 */
@@ -49,12 +51,22 @@ public abstract class DrawableUI implements Schedulable {
 	private final int id = uniqueIndex++;
 
 	/**
+	 * Parameters to initialize the drawable UI
+	 */
+	protected Object[] params;
+
+	private T amas;
+
+	/**
 	 * Create and initialize the frame and the canvas
 	 * 
 	 * @param _scheduling
 	 *            the scheduling mode
 	 */
-	public DrawableUI(Scheduling _scheduling) {
+	public DrawableUI(Scheduling _scheduling, T amas, Object... params) {
+		this.amas = amas;
+		this.params = params;
+
 		onInitialConfiguration();
 		// setTitle("Drawable #" + id);
 		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -71,11 +83,13 @@ public abstract class DrawableUI implements Schedulable {
 			private static final long serialVersionUID = 1L;
 
 			protected void paintComponent(java.awt.Graphics g) {
-
-				Image buffer = createImage(800, 600);
+				
+				Image buffer = createImage(this.getSize().width, this.getSize().height);
 				Graphics graphics = buffer.getGraphics();
 				graphics.setColor(Color.BLACK);
-				graphics.fillRect(0, 0, 800, 600);
+				graphics.fillRect(0, 0, this.getSize().width, this.getSize().height);
+				graphics.setColor(Color.WHITE);
+				graphics.drawRect(0, 0, this.getSize().width, this.getSize().height);
 				onDraw((Graphics2D) graphics);
 				g.drawImage(buffer, 0, 0, null);
 			}
@@ -120,20 +134,32 @@ public abstract class DrawableUI implements Schedulable {
 		canvas.setIgnoreRepaint(true);
 		canvas.setPreferredSize(new Dimension(800, 600));
 		// contentPane.add(canvas, BorderLayout.CENTER);
-		MainWindow.addTabbedPanel("Drawable #" + id, canvas);
+		JScrollPane scrollPane = new JScrollPane(canvas);
+		scrollPane.setPreferredSize(new Dimension(850, 650));
+		
+		JPanel panel = new JPanel();
+		panel.add(scrollPane);
+		MainWindow.addTabbedPanel("Drawable #" + id, panel);
 		// pack();
 		// setVisible(true);
 
-		scheduler = new Scheduler(this);
+		if (_scheduling == Scheduling.SYNC_WITH_AMAS) {
 
-		if (_scheduling == Scheduling.UI)
-			MainWindow.addToolbar(new SchedulerToolbar("Drawable #" + id, scheduler));
+			this.scheduler = this.amas.getScheduler();
+			this.scheduler.add(this);
+		} else {
+
+			scheduler = new Scheduler(this);
+
+			if (_scheduling == Scheduling.UI)
+				MainWindow.addToolbar(new SchedulerToolbar("Drawable #" + id, scheduler));
+		}
 
 	}
 
 	/**
-	 * This method is called at the very beginning of the DrawableUI creation.
-	 * Any configuration should be made here.
+	 * This method is called at the very beginning of the DrawableUI creation. Any
+	 * configuration should be made here.
 	 */
 	protected void onInitialConfiguration() {
 	}
@@ -191,6 +217,7 @@ public abstract class DrawableUI implements Schedulable {
 	public void start() {
 		getScheduler().start();
 	}
+
 	/**
 	 * This method allows the system to stop the scheduler on certain conditions
 	 * 
@@ -199,5 +226,12 @@ public abstract class DrawableUI implements Schedulable {
 	@Override
 	public boolean stopCondition() {
 		return false;
+	}
+	/**
+	 * Getter for amas
+	 * @return the linked amas
+	 */
+	public T getAmas() {
+		return amas;
 	}
 }

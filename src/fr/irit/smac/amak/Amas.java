@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
+import fr.irit.smac.amak.tools.Log;
 import fr.irit.smac.amak.ui.MainWindow;
 import fr.irit.smac.amak.ui.SchedulerToolbar;
 
@@ -70,6 +71,9 @@ public class Amas<E extends Environment> implements Schedulable {
 		this.scheduler = new Scheduler(this);
 		if (scheduling == Scheduling.UI)
 			MainWindow.addToolbar(new SchedulerToolbar("Amas #" + id, getScheduler()));
+		if (scheduling == Scheduling.SYNC_WITH_AMAS) {
+			Log.error("AMAS init", "AMAS scheduler shouldn't be synced with AMAS scheduler (%s)", Amas.class.toGenericString());
+		}
 	}
 
 	private void addPendingAgents() {

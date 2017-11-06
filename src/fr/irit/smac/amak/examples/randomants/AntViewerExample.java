@@ -8,18 +8,16 @@ import fr.irit.smac.amak.Agent;
 import fr.irit.smac.amak.Scheduling;
 import fr.irit.smac.amak.ui.DrawableUI;
 
-public class AntViewerExample extends DrawableUI {
+public class AntViewerExample extends DrawableUI<AntHillExample> {
 
-	protected AntHillExample antHill;
-
-	public AntViewerExample() {
-		super(Scheduling.UI);
+	public AntViewerExample(AntHillExample _amas) {
+		super(Scheduling.SYNC_WITH_AMAS, _amas);
 	}
 
 	@Override
 	protected void onDraw(Graphics2D graphics2d) {
 		graphics2d.setColor(Color.WHITE);
-		ArrayList<Agent<?, WorldExample>> renderingAgents = new ArrayList<>(antHill.getAgents());
+		ArrayList<Agent<?, WorldExample>> renderingAgents = new ArrayList<>(getAmas().getAgents());
 		for (Agent<?, WorldExample> agent : renderingAgents) {
 			AntExample ant = (AntExample) agent;
 			graphics2d.fillRect((int) (ant.dx + 400), (int) (ant.dy + 300), 3, 3);

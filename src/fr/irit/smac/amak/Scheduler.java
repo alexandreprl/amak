@@ -1,7 +1,12 @@
 package fr.irit.smac.amak;
 
+import java.net.MulticastSocket;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
+
+import fr.irit.smac.amak.ui.DrawableUI;
 
 /**
  * A scheduler associated to a MAS
@@ -10,7 +15,7 @@ import java.util.function.Consumer;
  *
  */
 public class Scheduler implements Runnable {
-	private final Schedulable schedulable;
+	private final Set<Schedulable> schedulables = new HashSet<>();
 	private State state;
 	private int sleep;
 	private final ReentrantLock stateLock = new ReentrantLock();
@@ -32,8 +37,11 @@ public class Scheduler implements Runnable {
 	 * @param _schedulable
 	 *            the corresponding schedulable
 	 */
-	public Scheduler(Schedulable _schedulable) {
-		this.schedulable = _schedulable;
+	public Scheduler(Schedulable... _schedulables) {
+
+		for (Schedulable schedulable : _schedulables) {
+			this.schedulables.add(schedulable);
+		}
 		this.state = State.IDLE;
 	}
 
@@ -107,8 +115,11 @@ public class Scheduler implements Runnable {
 	 */
 	@Override
 	public void run() {
+		boolean mustStop;
 		do {
-			schedulable.cycle();
+			for (Schedulable schedulable : schedulables) {
+				schedulable.cycle();	
+			}
 			if (getSleep() != 0) {
 				try {
 					Thread.sleep(getSleep());
@@ -116,7 +127,11 @@ public class Scheduler implements Runnable {
 					e.printStackTrace();
 				}
 			}
-		} while (state == State.RUNNING && !schedulable.stopCondition());
+			mustStop = false;
+			for (Schedulable schedulable : schedulables) {
+				mustStop|=schedulable.stopCondition();
+			}
+		} while (state == State.RUNNING && !mustStop);
 		stateLock.lock();
 		if (onStop != null)
 			onStop.accept(this);
@@ -171,6 +186,13 @@ public class Scheduler implements Runnable {
 	 */
 	public void setSleep(int sleep) {
 		this.sleep = sleep;
+	}
+
+	public void add(Schedulable _schedulable) {
+		this.schedulables.add(_schedulable);
+	}
+	public void remove(Schedulable _schedulable) {
+		this.schedulables.remove(_schedulable);
 	}
 
 }

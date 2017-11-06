@@ -5,11 +5,7 @@ public class AntsLaunchExample {
 	public static void main(String[] args) {
 		WorldExample env = new WorldExample();
 		
-		AntHillExample _antHill = new AntHillExample(env);
-		new AntViewerExample(){
-			protected void onInitialConfiguration() {
-				this.antHill = _antHill;
-			}
-		}.start();
+		AntHillExample antHill = new AntHillExample(env);
+		new AntViewerExample(antHill);
 	}
 }
