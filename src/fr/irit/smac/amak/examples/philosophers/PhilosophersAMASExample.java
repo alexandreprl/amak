@@ -25,10 +25,6 @@ public class PhilosophersAMASExample extends Amas<TableExample> {
 		comp.setPreferredSize(new Dimension(200, 100));
 		toolbar.add(comp);
 		MainWindow.addToolbar(toolbar);
-
-		MainWindow.addTabbedPanel("tabbed1",new JPanel());
-		MainWindow.addTabbedPanel("tabbed2",new JPanel());
-		MainWindow.addTabbedPanel("tabbed3",new JPanel());
 	}
 
 	@Override
