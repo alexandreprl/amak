@@ -153,9 +153,15 @@ Create a class "Philosopher" which extends the class Agent<MyAMAS, Table>.
 		this.left = left;
 		this.right = right;
 	}
-
+	
 	@Override
-	protected void onPerceiveDecideAct() {
+	protected void onPerceive() {
+		// Nothing goes here as the perception of neighbors criticality is already made
+		// by the framework
+	}
+	
+	@Override
+	protected void onDecideAct() {
 		State nextState = state;
 		switch (state) {
 		case EATING:
