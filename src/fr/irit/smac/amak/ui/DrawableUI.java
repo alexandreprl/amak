@@ -56,7 +56,7 @@ public abstract class DrawableUI<T extends Amas<? extends Environment>> implemen
 	protected Object[] params;
 
 	private T amas;
-	
+
 	private int width = 800, height = 600;
 
 	public int getWidth() {
@@ -72,6 +72,10 @@ public abstract class DrawableUI<T extends Amas<? extends Environment>> implemen
 	 * 
 	 * @param _scheduling
 	 *            the scheduling mode
+	 * @param amas
+	 *            The amas linked to the drawable UI
+	 * @param params
+	 *            the parameters that should be passed to the drawable UI
 	 */
 	public DrawableUI(Scheduling _scheduling, T amas, Object... params) {
 		this.amas = amas;
@@ -93,7 +97,7 @@ public abstract class DrawableUI<T extends Amas<? extends Environment>> implemen
 			private static final long serialVersionUID = 1L;
 
 			protected void paintComponent(java.awt.Graphics g) {
-				
+
 				Image buffer = createImage(this.getSize().width, this.getSize().height);
 				Graphics graphics = buffer.getGraphics();
 				graphics.setColor(Color.BLACK);
@@ -169,10 +173,12 @@ public abstract class DrawableUI<T extends Amas<? extends Environment>> implemen
 	 */
 	protected void onInitialConfiguration() {
 	}
+
 	protected void setSize(int width, int height) {
 		this.width = width;
 		this.height = height;
 	}
+
 	@Override
 	public final void cycle() {
 		canvas.repaint();
@@ -236,8 +242,10 @@ public abstract class DrawableUI<T extends Amas<? extends Environment>> implemen
 	public boolean stopCondition() {
 		return false;
 	}
+
 	/**
 	 * Getter for amas
+	 * 
 	 * @return the linked amas
 	 */
 	public T getAmas() {

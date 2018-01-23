@@ -19,10 +19,19 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 	}
 
 	private State state = State.THINK;
+	
+	public enum Action {
+		TRY_TAKE,
+		RELEASE,
+		DO_NOTHING
+	}
+	
+	private Action action = Action.DO_NOTHING;
 
 	public PhilosopherExample(int id, PhilosophersAMASExample amas, ForkExample left, ForkExample right) {
-		super(amas,id,left,right);
+		super(amas, id, left, right);
 	}
+
 	@Override
 	protected void onInitialize() {
 		this.id = (int) params[0];
@@ -31,7 +40,13 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 	}
 
 	@Override
-	protected void onPerceiveDecideAct() {
+	protected void onPerceive() {
+		// Nothing goes here as the perception of neighbors criticality is already made
+		// by the framework
+	}
+	
+	@Override
+	protected void onDecideAndAct() {
 		State nextState = state;
 		switch (state) {
 		case EATING:
@@ -47,7 +62,7 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 			if (getMostCriticalNeighbor(true) == this) {
 				if (left.tryTake(this) && right.tryTake(this))
 					nextState = State.EATING;
-				else{
+				else {
 					left.release(this);
 					right.release(this);
 				}
@@ -57,7 +72,7 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 			}
 			break;
 		case THINK:
-			if (new Random().nextInt(101) >50) {
+			if (new Random().nextInt(101) > 50) {
 				hungerDuration = 0;
 				nextState = State.HUNGRY;
 			}

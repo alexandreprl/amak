@@ -199,8 +199,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 		for (Agent<A, E> agent : neighborhood) {
 			criticalities.put(agent, agent.criticality);
 		}
-		onPerceiveDecideAct();
-		criticality = computeCriticality();
+		_onPerceiveDecideAct();
 		executionOrder = computeExecutionOrder();
 		onExpose();
 		onDraw();
@@ -219,8 +218,22 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	/**
 	 * Perceive, decide and act
 	 */
-	protected void onPerceiveDecideAct() {
+	private final void _onPerceiveDecideAct() {
 		onPerceive();
+		//Criticality of agent should be updated after perception AND after action
+		criticality = computeCriticality();
+		criticalities.put(this, criticality);
+		
+		onDecideAndAct();
+		
+		criticality = computeCriticality();
+	}
+
+	/**
+	 * Decide and act
+	 * These two phases can often be grouped
+	 */
+	protected void onDecideAndAct() {
 		onDecide();
 		onAct();
 	}

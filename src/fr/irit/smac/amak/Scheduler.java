@@ -1,12 +1,9 @@
 package fr.irit.smac.amak;
 
-import java.net.MulticastSocket;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
-
-import fr.irit.smac.amak.ui.DrawableUI;
 
 /**
  * A scheduler associated to a MAS
@@ -34,8 +31,8 @@ public class Scheduler implements Runnable {
 	/**
 	 * Constructor which set the initial state and auto start if requested
 	 * 
-	 * @param _schedulable
-	 *            the corresponding schedulable
+	 * @param _schedulables
+	 *            the corresponding schedulables
 	 */
 	public Scheduler(Schedulable... _schedulables) {
 

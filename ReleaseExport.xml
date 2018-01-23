@@ -11,6 +11,14 @@
 	<target name="build-javadoc">
 		<javadoc packagenames="fr.irit.smac.amak.*" sourcepath="src" destdir="${javadoc.dir}" version="true" windowtitle="Amak">
 			<arg value="-notimestamp" />
+			<classpath>
+				<fileset dir="${dir.buildfile}/AdditionalLibraries/">
+					<include name="lx-plot-standalone.jar" />
+					<include name="avt.jar" />
+					<include name="json-simple-1.1.jar" />
+					<include name="xstream-1.4.10.jar" />
+				</fileset>
+			</classpath>
 		</javadoc>
 	</target>
 	<target name="create_run_jar">
