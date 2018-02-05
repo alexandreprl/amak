@@ -20,14 +20,6 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 
 	private State state = State.THINK;
 	
-	public enum Action {
-		TRY_TAKE,
-		RELEASE,
-		DO_NOTHING
-	}
-	
-	private Action action = Action.DO_NOTHING;
-
 	public PhilosopherExample(int id, PhilosophersAMASExample amas, ForkExample left, ForkExample right) {
 		super(amas, id, left, right);
 	}
