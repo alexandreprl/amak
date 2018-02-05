@@ -3,7 +3,6 @@ package fr.irit.smac.amak.examples.philosophers;
 import java.awt.Dimension;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
 import fr.irit.smac.amak.Amas;
