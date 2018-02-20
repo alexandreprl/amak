@@ -1,8 +1,13 @@
 package fr.irit.smac.amak.examples.philosophers;
 
 import fr.irit.smac.amak.Environment;
+import fr.irit.smac.amak.Scheduling;
 
 public class TableExample extends Environment {
+	public TableExample(Object...params) {
+		super(Scheduling.DEFAULT, params);
+	}
+
 	private ForkExample[] forks;
 
 	@Override

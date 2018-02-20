@@ -72,6 +72,11 @@ public class Test {
 
 	private class MyEnvironment extends Environment {
 
+		public MyEnvironment(Object...params) {
+			super(Scheduling.DEFAULT, params);
+			// TODO Auto-generated constructor stub
+		}
+
 	}
 
 }

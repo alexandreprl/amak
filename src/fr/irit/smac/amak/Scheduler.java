@@ -5,6 +5,9 @@ import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
+import fr.irit.smac.amak.ui.MainWindow;
+import fr.irit.smac.amak.ui.SchedulerToolbar;
+
 /**
  * A scheduler associated to a MAS
  * 
@@ -18,6 +21,7 @@ public class Scheduler implements Runnable {
 	private final ReentrantLock stateLock = new ReentrantLock();
 	private Consumer<Scheduler> onStop;
 	private Consumer<Scheduler> onChange;
+	private static Scheduler defaultScheduler;
 
 	/**
 	 * State of the scheduler
@@ -41,7 +45,13 @@ public class Scheduler implements Runnable {
 		}
 		this.state = State.IDLE;
 	}
-
+	public static Scheduler getDefaultScheduler() {
+		if (defaultScheduler == null) {
+			defaultScheduler = new Scheduler();
+			MainWindow.addToolbar(new SchedulerToolbar("Default", defaultScheduler));
+		}
+		return defaultScheduler;
+	}
 	/**
 	 * Set the delay between two cycles and launch the scheduler if it is not
 	 * running

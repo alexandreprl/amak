@@ -11,7 +11,7 @@ import fr.irit.smac.amak.ui.DrawableUI;
 public class AntViewerExample extends DrawableUI<AntHillExample> {
 
 	public AntViewerExample(AntHillExample _amas) {
-		super(Scheduling.SYNC_WITH_AMAS, _amas);
+		super(Scheduling.DEFAULT, _amas);
 	}
 	@Override
 	protected void onInitialConfiguration() {

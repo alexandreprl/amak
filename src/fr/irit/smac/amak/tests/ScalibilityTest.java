@@ -90,5 +90,9 @@ public class ScalibilityTest {
 
 	public class MyEnvironment extends Environment {
 
+		public MyEnvironment(Object...params) {
+			super(Scheduling.DEFAULT, params);
+		}
+
 	}
 }

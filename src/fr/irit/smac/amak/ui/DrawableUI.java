@@ -153,9 +153,9 @@ public abstract class DrawableUI<T extends Amas<? extends Environment>> implemen
 		// pack();
 		// setVisible(true);
 
-		if (_scheduling == Scheduling.SYNC_WITH_AMAS) {
+		if (_scheduling == Scheduling.DEFAULT) {
 
-			this.scheduler = this.amas.getScheduler();
+			this.scheduler = Scheduler.getDefaultScheduler();
 			this.scheduler.add(this);
 		} else {
 

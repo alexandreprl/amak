@@ -14,7 +14,7 @@ public class PhilosophersAMASExample extends Amas<TableExample> {
 	private PhilosopherExample[] ps;
 
 	public PhilosophersAMASExample(TableExample env) {
-		super(env, Scheduling.UI);
+		super(env, Scheduling.DEFAULT);
 	}
 
 	@Override

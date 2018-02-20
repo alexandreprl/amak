@@ -34,7 +34,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	/**
 	 * Scheduler controlling the execution of the system
 	 */
-	private final Scheduler scheduler;
+	private Scheduler scheduler;
 
 	/**
 	 * Unique index to give unique id to each amas
@@ -68,11 +68,14 @@ public class Amas<E extends Environment> implements Schedulable {
 
 		addPendingAgents();
 		this.onReady();
-		this.scheduler = new Scheduler(this);
-		if (scheduling == Scheduling.UI)
-			MainWindow.addToolbar(new SchedulerToolbar("Amas #" + id, getScheduler()));
-		if (scheduling == Scheduling.SYNC_WITH_AMAS) {
-			Log.error("AMAS init", "AMAS scheduler shouldn't be synced with AMAS scheduler (%s)", Amas.class.toGenericString());
+
+		if (scheduling == Scheduling.DEFAULT) {
+			this.scheduler = Scheduler.getDefaultScheduler();
+			this.scheduler.add(this);
+		}else {
+			this.scheduler = new Scheduler(this);
+			if (scheduling == Scheduling.UI)
+				MainWindow.addToolbar(new SchedulerToolbar("Amas #" + id, getScheduler()));
 		}
 	}
 
@@ -144,7 +147,6 @@ public class Amas<E extends Environment> implements Schedulable {
 	 */
 	public final void cycle() {
 		cycle++;
-		getEnvironment().onCycleBegin();
 		Collections.sort(agents, new AgentOrderComparator());
 		onSystemCycleBegin();
 		for (Agent<?, E> agent : agents) {
@@ -160,7 +162,6 @@ public class Amas<E extends Environment> implements Schedulable {
 			agents.remove(agentsPendingRemoval.poll());
 		addPendingAgents();
 		onSystemCycleEnd();
-		getEnvironment().onCycleEnd();
 	}
 
 	/**

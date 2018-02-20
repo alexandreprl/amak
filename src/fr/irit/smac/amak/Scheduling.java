@@ -7,5 +7,5 @@ package fr.irit.smac.amak;
  * Example: amas.getScheduler().start();
  */
 public enum Scheduling {
-	UI, HIDDEN, SYNC_WITH_AMAS
+	UI, HIDDEN, DEFAULT
 }
