@@ -12,6 +12,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JToolBar;
 
+import fr.irit.smac.amak.Information;
+
 /**
  * 
  * @author Alexandre Perles, Marcillaud Guilhem
@@ -53,6 +55,8 @@ public class MainWindow extends JFrame {
 			System.exit(0);
 		});
 		optionsMenu.add(menuItem);
+
+		menuBar.add(new JMenu("AMAK v"+Information.version));
 		
 		setVisible(true);
 			
