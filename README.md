@@ -4,6 +4,23 @@ Examples are available in the package fr.irit.smac.amak.examples.
 
 # [Click here to download the latest standalone version](https://bitbucket.org/perlesa/amak/raw/master/Release/AmakFramework-standalone.jar?at=master) #
 
+# Recent changes #
+
+## 1.1.1 (02/20/2018)##
+
+Please note that the environment is now schedulable as the Amas and DrawableUI.
+To ensure compatibility, check that every constructor of your classes inheriting Amas, Environment or DrawableUI make a call to their super constructor and pass a valid Scheduling option. In most cases, it is recommend to use default scheduler.
+
+Example:
+```
+public class MyEnvironment extends Environment {
+	public MyEnvironment() {
+		super(Scheduling.DEFAULT);
+	}
+}
+```
+
+
 # General #
 
 Amak is a framework aiming at facilitating the development of multi-agent systems.
