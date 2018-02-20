@@ -77,7 +77,9 @@ A table is initialized with 10 forks.
 #!Java
 
 	private Fork[] forks;
-
+	public Table() {
+		super(Scheduling.DEFAULT);
+	}
 	@Override
 	public void onInitialization() {
 		// Set 10 forks on the table
@@ -103,7 +105,7 @@ During the initialization, we want to create a philosopher per fork and let them
 #!Java
 
 	public MyAMAS(Table env) {
-		super(env, Scheduling.UI);
+		super(env, Scheduling.DEFAULT);
 	}
 	@Override
 	protected void onInitialAgentsCreation() {
