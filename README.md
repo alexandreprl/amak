@@ -6,6 +6,20 @@ Examples are available in the package fr.irit.smac.amak.examples.
 
 # Recent changes #
 
+## 1.2 (04/09/2018) ##
+
+AMAK now includes the possibility to execute simultaneously multiple agents. By default, it is disabled.
+Before any calls, change the value of Configuration.allowedSimultaneousAgentsExecution to the amount of threads you wish to use for agent cycles.
+
+Example:
+```
+Configuration.allowedSimultaneousAgentsExecution = 4;
+MyAMAS amas = new MyAMAS(new MyEnvironment(), Scheduling.DEFAULT);
+```
+
+Also, the methods onSystemCycleBegin and onSystemCycleEnd are not called anymore. It is recommended to use onAgentCycleBegin and onAgentCycleEnd as it should produce the exact same results.
+
+
 ## 1.1.1 (02/20/2018)##
 
 Please note that the environment is now schedulable as the Amas and DrawableUI.
