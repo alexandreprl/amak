@@ -2,6 +2,7 @@ package fr.irit.smac.amak.tools;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * This tool allows to measure the amount of time required for an action. For
@@ -35,5 +36,31 @@ public class Profiler {
 	 */
 	public static long end(String name) {
 		return System.nanoTime() - starts.get(name);
+	}
+
+	/**
+	 * Format the time in more readable format
+	 * 
+	 * @param name
+	 *            Unique name for time measure (use the same as in start)
+	 * @return the amount of time since the start formatted in a human-readable way
+	 */
+	public static String endHR(String name) {
+		long nanoTime = end(name);
+
+	    long hours = TimeUnit.NANOSECONDS.toHours(nanoTime);
+	    nanoTime -= TimeUnit.HOURS.toNanos(hours);
+
+	    long minutes = TimeUnit.NANOSECONDS.toMinutes(nanoTime);
+	    nanoTime -= TimeUnit.MINUTES.toNanos(minutes);
+
+	    long seconds = TimeUnit.NANOSECONDS.toSeconds(nanoTime);
+	    nanoTime -= TimeUnit.SECONDS.toNanos(seconds);
+
+	    long milliseconds = TimeUnit.NANOSECONDS.toMillis(nanoTime);
+	    nanoTime -= TimeUnit.MILLISECONDS.toNanos(milliseconds);
+	    
+	    
+		return String.format("%d h. %d m. %d s. %d ms. %d ns.", hours, minutes, seconds, milliseconds, nanoTime);
 	}
 }

@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import fr.irit.smac.amak.tools.Log;
 import fr.irit.smac.amak.ui.MainWindow;
@@ -49,6 +52,8 @@ public class Amas<E extends Environment> implements Schedulable {
 	private LinkedList<Agent<?, E>> agentsPendingRemoval = new LinkedList<>();
 	private LinkedList<Agent<?, E>> agentsPendingAddition = new LinkedList<>();
 	protected Object[] params;
+	private ThreadPoolExecutor executor;
+	private final Semaphore threadSemaphore = new Semaphore(0);
 
 	/**
 	 * Constructor of the MAS
@@ -72,7 +77,7 @@ public class Amas<E extends Environment> implements Schedulable {
 		if (scheduling == Scheduling.DEFAULT) {
 			this.scheduler = Scheduler.getDefaultScheduler();
 			this.scheduler.add(this);
-		}else {
+		} else {
 			this.scheduler = new Scheduler(this);
 			if (scheduling == Scheduling.UI)
 				MainWindow.addToolbar(new SchedulerToolbar("Amas #" + id, getScheduler()));
@@ -90,6 +95,10 @@ public class Amas<E extends Environment> implements Schedulable {
 			agent.onReady();
 
 		}
+	}
+
+	protected final void informThatAgentCycleIsFinished() {
+		threadSemaphore.release();
 	}
 
 	/**
@@ -115,15 +124,14 @@ public class Amas<E extends Environment> implements Schedulable {
 	}
 
 	/**
-	 * This method should be overridden, the agents should be created in this
-	 * method
+	 * This method should be overridden, the agents should be created in this method
 	 */
 	protected void onInitialAgentsCreation() {
 	}
 
 	/**
-	 * Add an agent to the MAS. This method is called by the agent itself during
-	 * its creation
+	 * Add an agent to the MAS. This method is called by the agent itself during its
+	 * creation
 	 * 
 	 * @param _agent
 	 *            the agent to add to the system
@@ -149,14 +157,14 @@ public class Amas<E extends Environment> implements Schedulable {
 		cycle++;
 		Collections.sort(agents, new AgentOrderComparator());
 		onSystemCycleBegin();
+
 		for (Agent<?, E> agent : agents) {
-			agent.onSystemCycleBegin();
+			executor.execute(agent);
 		}
-		for (Agent<?, E> agent : agents) {
-			agent.cycle();
-		}
-		for (Agent<?, E> agent : agents) {
-			agent.onSystemCycleEnd();
+		try {
+			threadSemaphore.acquire(agents.size());
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 		while (!agentsPendingRemoval.isEmpty())
 			agents.remove(agentsPendingRemoval.poll());
@@ -238,5 +246,15 @@ public class Amas<E extends Environment> implements Schedulable {
 	 */
 	public void start() {
 		getScheduler().start();
+	}
+
+	@Override
+	public void onSchedulingStarts() {
+		executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(Configuration.allowedSimultaneousAgentsExecution);
+	}
+
+	@Override
+	public void onSchedulingStops() {
+		executor.shutdown();
 	}
 }

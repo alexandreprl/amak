@@ -16,7 +16,7 @@ import java.util.Map.Entry;
  * @param <E>
  *            The kind of Environment the agent AND the Amas refer to
  */
-public abstract class Agent<A extends Amas<E>, E extends Environment> {
+public abstract class Agent<A extends Amas<E>, E extends Environment> implements Runnable {
 	/**
 	 * Neighborhood of the agent (must refer to the same couple amas, environment
 	 */
@@ -177,16 +177,19 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	}
 
 	/**
-	 * Called before the cycle of the system starts
+	 * These methods are useless because the state of the agent is not supposed to
+	 * evolve before or after its cycle. Use OnAgentCycleBegin/End instead.
+	 * 
+	 * These methods are finals because they must not be implemented. Implement them
+	 * will have no effect.
 	 */
-	protected void onSystemCycleBegin() {
+	@Deprecated
+	protected final void onSystemCycleBegin() {
 
 	}
 
-	/**
-	 * Called each time the cycle of the system is over
-	 */
-	protected void onSystemCycleEnd() {
+	@Deprecated
+	protected final void onSystemCycleEnd() {
 
 	}
 
@@ -194,7 +197,8 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * This method is called automatically and corresponds to a full cycle of an
 	 * agent
 	 */
-	public final void cycle() {
+	@Override
+	public final void run() {
 		onAgentCycleBegin();
 		for (Agent<A, E> agent : neighborhood) {
 			criticalities.put(agent, agent.criticality);
@@ -204,6 +208,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 		onExpose();
 		onDraw();
 		onAgentCycleEnd();
+		amas.informThatAgentCycleIsFinished();
 	}
 
 	/**
@@ -220,18 +225,17 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 */
 	private final void _onPerceiveDecideAct() {
 		onPerceive();
-		//Criticality of agent should be updated after perception AND after action
+		// Criticality of agent should be updated after perception AND after action
 		criticality = computeCriticality();
 		criticalities.put(this, criticality);
-		
+
 		onDecideAndAct();
-		
+
 		criticality = computeCriticality();
 	}
 
 	/**
-	 * Decide and act
-	 * These two phases can often be grouped
+	 * Decide and act These two phases can often be grouped
 	 */
 	protected void onDecideAndAct() {
 		onDecide();

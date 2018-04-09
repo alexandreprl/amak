@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":6,"i1":6};
+var methods = {"i0":6,"i1":6,"i2":6,"i3":6};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -47,7 +47,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Information.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -99,7 +99,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>, <a href="../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>, <a href="../../../../fr/irit/smac/amak/examples/randomants/AntViewerExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntViewerExample</a>, <a href="../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosophersAMASExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyAMAS</a></dd>
+<dd><a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>, <a href="../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>, <a href="../../../../fr/irit/smac/amak/examples/randomants/AntViewerExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntViewerExample</a>, <a href="../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a>, <a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosophersAMASExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyAMAS</a>, <a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyEnvironment.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyEnvironment</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/TableExample.html" title="class in fr.irit.smac.amak.examples.philosophers">TableExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAMAS</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.MyEnvironment.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyEnvironment</a>, <a href="../../../../fr/irit/smac/amak/examples/randomants/WorldExample.html" title="class in fr.irit.smac.amak.examples.randomants">WorldExample</a></dd>
 </dl>
 <hr>
 <br>
@@ -153,6 +153,14 @@ var activeTableTab = "activeTableTab";
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStarts--">onSchedulingStarts</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStops--">onSchedulingStops</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Schedulable.html#stopCondition--">stopCondition</a></span>()</code>
 <div class="block">Check if the schedulable must be stopped by the scheduler.</div>
@@ -207,7 +215,7 @@ var activeTableTab = "activeTableTab";
 <a name="stopCondition--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>stopCondition</h4>
 <pre>boolean&nbsp;stopCondition()</pre>
@@ -218,6 +226,24 @@ var activeTableTab = "activeTableTab";
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>if the scheduler must stops its execution</dd>
 </dl>
+</li>
+</ul>
+<a name="onSchedulingStarts--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onSchedulingStarts</h4>
+<pre>void&nbsp;onSchedulingStarts()</pre>
+</li>
+</ul>
+<a name="onSchedulingStops--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>onSchedulingStops</h4>
+<pre>void&nbsp;onSchedulingStops()</pre>
 </li>
 </ul>
 </li>
@@ -247,7 +273,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Information.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">

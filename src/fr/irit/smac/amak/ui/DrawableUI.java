@@ -8,10 +8,13 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import javax.swing.JPanel;
 
 import fr.irit.smac.amak.Amas;
+import fr.irit.smac.amak.Configuration;
 import fr.irit.smac.amak.Environment;
 import fr.irit.smac.amak.Schedulable;
 import fr.irit.smac.amak.Scheduler;
@@ -250,5 +253,13 @@ public abstract class DrawableUI<T extends Amas<? extends Environment>> implemen
 	 */
 	public T getAmas() {
 		return amas;
+	}
+
+	@Override
+	public void onSchedulingStarts() {
+	}
+
+	@Override
+	public void onSchedulingStops() {
 	}
 }

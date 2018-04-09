@@ -1,6 +1,8 @@
 package fr.irit.smac.amak;
 
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ThreadPoolExecutor;
 
 import fr.irit.smac.amak.ui.MainWindow;
 import fr.irit.smac.amak.ui.SchedulerToolbar;
@@ -39,7 +41,7 @@ public abstract class Environment implements Schedulable {
 		this.params = params;
 		onInitialization();
 		onInitialEntitiesCreation();
-		
+
 		if (_scheduling == Scheduling.DEFAULT) {
 			this.scheduler = Scheduler.getDefaultScheduler();
 			this.scheduler.add(this);
@@ -107,5 +109,13 @@ public abstract class Environment implements Schedulable {
 	 */
 	public Random getRandom() {
 		return random;
+	}
+
+	@Override
+	public void onSchedulingStarts() {
+	}
+
+	@Override
+	public void onSchedulingStops() {
 	}
 }

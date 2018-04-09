@@ -122,6 +122,9 @@ public class Scheduler implements Runnable {
 	 */
 	@Override
 	public void run() {
+		for (Schedulable schedulable : schedulables) {
+			schedulable.onSchedulingStarts();
+		}
 		boolean mustStop;
 		do {
 			for (Schedulable schedulable : schedulables) {
@@ -144,6 +147,10 @@ public class Scheduler implements Runnable {
 			onStop.accept(this);
 		state = State.IDLE;
 		stateLock.unlock();
+
+		for (Schedulable schedulable : schedulables) {
+			schedulable.onSchedulingStops();
+		}
 	}
 
 	/**

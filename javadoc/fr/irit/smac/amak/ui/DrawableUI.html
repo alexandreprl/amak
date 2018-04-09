@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":6,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":6,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -243,17 +243,25 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 </td>
 </tr>
 <tr id="i9" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onSchedulingStarts--">onSchedulingStarts</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onSchedulingStops--">onSchedulingStops</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#setSize-int-int-">setSize</a></span>(int&nbsp;width,
        int&nbsp;height)</code>&nbsp;</td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#start--">start</a></span>()</code>
 <div class="block">Helper method to launch the scheduler</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#stopCondition--">stopCondition</a></span>()</code>
 <div class="block">This method allows the system to stop the scheduler on certain conditions</div>
@@ -480,7 +488,7 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <a name="getAmas--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getAmas</h4>
 <pre>public&nbsp;<a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="type parameter in DrawableUI">T</a>&nbsp;getAmas()</pre>
@@ -488,6 +496,32 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the linked amas</dd>
+</dl>
+</li>
+</ul>
+<a name="onSchedulingStarts--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onSchedulingStarts</h4>
+<pre>public&nbsp;void&nbsp;onSchedulingStarts()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStarts--">onSchedulingStarts</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="onSchedulingStops--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>onSchedulingStops</h4>
+<pre>public&nbsp;void&nbsp;onSchedulingStops()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStops--">onSchedulingStops</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
 </dl>
 </li>
 </ul>

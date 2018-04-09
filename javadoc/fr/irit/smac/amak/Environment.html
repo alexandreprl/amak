@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -47,8 +47,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Configuration.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Information.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?fr/irit/smac/amak/Environment.html" target="_top">Frames</a></li>
@@ -106,13 +106,18 @@ var activeTableTab = "activeTableTab";
 <ul class="blockList">
 <li class="blockList">
 <dl>
+<dt>All Implemented Interfaces:</dt>
+<dd><a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></dd>
+</dl>
+<dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyEnvironment.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyEnvironment</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/TableExample.html" title="class in fr.irit.smac.amak.examples.philosophers">TableExample</a>, <a href="../../../../fr/irit/smac/amak/examples/randomants/WorldExample.html" title="class in fr.irit.smac.amak.examples.randomants">WorldExample</a></dd>
+<dd><a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyEnvironment.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyEnvironment</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/TableExample.html" title="class in fr.irit.smac.amak.examples.philosophers">TableExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.MyEnvironment.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyEnvironment</a>, <a href="../../../../fr/irit/smac/amak/examples/randomants/WorldExample.html" title="class in fr.irit.smac.amak.examples.randomants">WorldExample</a></dd>
 </dl>
 <hr>
 <br>
 <pre>public abstract class <span class="typeNameLabel">Environment</span>
-extends java.lang.Object</pre>
+extends java.lang.Object
+implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></pre>
 <div class="block">This class must be overridden by environments</div>
 <dl>
 <dt><span class="simpleTagLabel">Author:</span></dt>
@@ -141,6 +146,13 @@ extends java.lang.Object</pre>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#params">params</a></span></code>&nbsp;</td>
 </tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.fr.irit.smac.amak.Schedulable">
+<!--   -->
+</a>
+<h3>Fields inherited from interface&nbsp;fr.irit.smac.amak.<a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></h3>
+<code><a href="../../../../fr/irit/smac/amak/Schedulable.html#defaultSleep">defaultSleep</a></code></li>
+</ul>
 </li>
 </ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -155,7 +167,8 @@ extends java.lang.Object</pre>
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#Environment-java.lang.Object...-">Environment</a></span>(java.lang.Object...&nbsp;params)</code>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#Environment-fr.irit.smac.amak.Scheduling-java.lang.Object...-">Environment</a></span>(<a href="../../../../fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a>&nbsp;_scheduling,
+           java.lang.Object...&nbsp;params)</code>
 <div class="block">Constructor</div>
 </td>
 </tr>
@@ -175,39 +188,60 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#cycle--">cycle</a></span>()</code>
+<div class="block">A cycle of the schedulable system</div>
+</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>java.util.Random</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#getRandom--">getRandom</a></span>()</code>
 <div class="block">Getter for the random object</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onCycleBegin--">onCycleBegin</a></span>()</code>
-<div class="block">This method is called before each cycle of the system</div>
-</td>
-</tr>
 <tr id="i2" class="altColor">
-<td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onCycleEnd--">onCycleEnd</a></span>()</code>
-<div class="block">This method is called after each cycle of the system</div>
+<td class="colFirst"><code><a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#getScheduler--">getScheduler</a></span>()</code>
+<div class="block">Getter for the scheduler</div>
 </td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onInitialEntitiesCreation--">onInitialEntitiesCreation</a></span>()</code>
-<div class="block">This method is called after the initialization process of the environment to create entities</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onCycle--">onCycle</a></span>()</code>
+<div class="block">This method is called at each cycle of the environment</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onInitialEntitiesCreation--">onInitialEntitiesCreation</a></span>()</code>
+<div class="block">This method is called after the initialization process of the environment to
+ create entities</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onInitialization--">onInitialization</a></span>()</code>
 <div class="block">This method is called during the initialization process of the environment</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onSchedulingStarts--">onSchedulingStarts</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#onSchedulingStops--">onSchedulingStops</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#setSeed-long-">setSeed</a></span>(long&nbsp;_seed)</code>
 <div class="block">Set the seed for the common random object.</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Environment.html#stopCondition--">stopCondition</a></span>()</code>
+<div class="block">Check if the schedulable must be stopped by the scheduler.</div>
 </td>
 </tr>
 </table>
@@ -249,13 +283,14 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="Environment-java.lang.Object...-">
+<a name="Environment-fr.irit.smac.amak.Scheduling-java.lang.Object...-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>Environment</h4>
-<pre>public&nbsp;Environment(java.lang.Object...&nbsp;params)</pre>
+<pre>public&nbsp;Environment(<a href="../../../../fr/irit/smac/amak/Scheduling.html" title="enum in fr.irit.smac.amak">Scheduling</a>&nbsp;_scheduling,
+                   java.lang.Object...&nbsp;params)</pre>
 <div class="block">Constructor</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -271,6 +306,20 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="getScheduler--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getScheduler</h4>
+<pre>public&nbsp;<a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a>&nbsp;getScheduler()</pre>
+<div class="block">Getter for the scheduler</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the scheduler</dd>
+</dl>
+</li>
+</ul>
 <a name="setSeed-long-">
 <!--   -->
 </a>
@@ -303,33 +352,58 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>onInitialEntitiesCreation</h4>
 <pre>public&nbsp;void&nbsp;onInitialEntitiesCreation()</pre>
-<div class="block">This method is called after the initialization process of the environment to create entities</div>
+<div class="block">This method is called after the initialization process of the environment to
+ create entities</div>
 </li>
 </ul>
-<a name="onCycleBegin--">
+<a name="onCycle--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>onCycleBegin</h4>
-<pre>public&nbsp;void&nbsp;onCycleBegin()</pre>
-<div class="block">This method is called before each cycle of the system</div>
+<h4>onCycle</h4>
+<pre>public&nbsp;void&nbsp;onCycle()</pre>
+<div class="block">This method is called at each cycle of the environment</div>
 </li>
 </ul>
-<a name="onCycleEnd--">
+<a name="stopCondition--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>onCycleEnd</h4>
-<pre>public&nbsp;void&nbsp;onCycleEnd()</pre>
-<div class="block">This method is called after each cycle of the system</div>
+<h4>stopCondition</h4>
+<pre>public&nbsp;boolean&nbsp;stopCondition()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../fr/irit/smac/amak/Schedulable.html#stopCondition--">Schedulable</a></code></span></div>
+<div class="block">Check if the schedulable must be stopped by the scheduler. For example, a
+ stop condition can be "cycle==5000" aiming at stopping the system at the
+ cycle 5000 in order to extract results or simply debugging.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../fr/irit/smac/amak/Schedulable.html#stopCondition--">stopCondition</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>if the scheduler must stops its execution</dd>
+</dl>
+</li>
+</ul>
+<a name="cycle--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>cycle</h4>
+<pre>public final&nbsp;void&nbsp;cycle()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../fr/irit/smac/amak/Schedulable.html#cycle--">Schedulable</a></code></span></div>
+<div class="block">A cycle of the schedulable system</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../fr/irit/smac/amak/Schedulable.html#cycle--">cycle</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
+</dl>
 </li>
 </ul>
 <a name="getRandom--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getRandom</h4>
 <pre>public&nbsp;java.util.Random&nbsp;getRandom()</pre>
@@ -337,6 +411,32 @@ extends java.lang.Object</pre>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the random object</dd>
+</dl>
+</li>
+</ul>
+<a name="onSchedulingStarts--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onSchedulingStarts</h4>
+<pre>public&nbsp;void&nbsp;onSchedulingStarts()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStarts--">onSchedulingStarts</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="onSchedulingStops--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>onSchedulingStops</h4>
+<pre>public&nbsp;void&nbsp;onSchedulingStops()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStops--">onSchedulingStops</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
 </dl>
 </li>
 </ul>
@@ -367,8 +467,8 @@ extends java.lang.Object</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Configuration.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Information.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?fr/irit/smac/amak/Environment.html" target="_top">Frames</a></li>

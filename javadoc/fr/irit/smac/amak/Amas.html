@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Configuration.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?fr/irit/smac/amak/Amas.html" target="_top">Frames</a></li>
@@ -115,7 +115,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><a href="../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosophersAMASExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyAMAS</a></dd>
+<dd><a href="../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosophersAMASExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyAMAS</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAMAS</a></dd>
 </dl>
 <hr>
 <br>
@@ -254,42 +254,53 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onInitialAgentsCreation--">onInitialAgentsCreation</a></span>()</code>
-<div class="block">This method should be overridden, the agents should be created in this
- method</div>
-</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#informThatAgentCycleIsFinished--">informThatAgentCycleIsFinished</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i8" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onInitialAgentsCreation--">onInitialAgentsCreation</a></span>()</code>
+<div class="block">This method should be overridden, the agents should be created in this method</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onInitialConfiguration--">onInitialConfiguration</a></span>()</code>
 <div class="block">This method is called at the very beginning of the amas creation.</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onReady--">onReady</a></span>()</code>
 <div class="block">This method is called when all agents are ready</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSchedulingStarts--">onSchedulingStarts</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSchedulingStops--">onSchedulingStops</a></span>()</code>&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSystemCycleBegin--">onSystemCycleBegin</a></span>()</code>
 <div class="block">This method is called before all agents have executed a cycle</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSystemCycleEnd--">onSystemCycleEnd</a></span>()</code>
 <div class="block">This method is called when all agents have executed a cycle</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#start--">start</a></span>()</code>
 <div class="block">Helper method to launch the scheduler</div>
 </td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#stopCondition--">stopCondition</a></span>()</code>
 <div class="block">This method allows the system to stop the scheduler on certain conditions</div>
@@ -392,6 +403,15 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="informThatAgentCycleIsFinished--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>informThatAgentCycleIsFinished</h4>
+<pre>protected final&nbsp;void&nbsp;informThatAgentCycleIsFinished()</pre>
+</li>
+</ul>
 <a name="onInitialConfiguration--">
 <!--   -->
 </a>
@@ -434,8 +454,7 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <li class="blockList">
 <h4>onInitialAgentsCreation</h4>
 <pre>protected&nbsp;void&nbsp;onInitialAgentsCreation()</pre>
-<div class="block">This method should be overridden, the agents should be created in this
- method</div>
+<div class="block">This method should be overridden, the agents should be created in this method</div>
 </li>
 </ul>
 <a name="Z:Z_addAgent-fr.irit.smac.amak.Agent-">
@@ -445,8 +464,8 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <li class="blockList">
 <h4>_addAgent</h4>
 <pre>public final&nbsp;void&nbsp;_addAgent(<a href="../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;?,<a href="../../../../fr/irit/smac/amak/Amas.html" title="type parameter in Amas">E</a>&gt;&nbsp;_agent)</pre>
-<div class="block">Add an agent to the MAS. This method is called by the agent itself during
- its creation</div>
+<div class="block">Add an agent to the MAS. This method is called by the agent itself during its
+ creation</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>_agent</code> - the agent to add to the system</dd>
@@ -562,11 +581,37 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <a name="start--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>start</h4>
 <pre>public&nbsp;void&nbsp;start()</pre>
 <div class="block">Helper method to launch the scheduler</div>
+</li>
+</ul>
+<a name="onSchedulingStarts--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onSchedulingStarts</h4>
+<pre>public&nbsp;void&nbsp;onSchedulingStarts()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStarts--">onSchedulingStarts</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="onSchedulingStops--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>onSchedulingStops</h4>
+<pre>public&nbsp;void&nbsp;onSchedulingStops()</pre>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStops--">onSchedulingStops</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -597,7 +642,7 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Configuration.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?fr/irit/smac/amak/Amas.html" target="_top">Frames</a></li>
