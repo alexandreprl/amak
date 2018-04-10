@@ -6,6 +6,17 @@ Examples are available in the package fr.irit.smac.amak.examples.
 
 # Recent changes #
 
+## 1.3 (04/10/2018) ##
+
+Now you can tell agents to execute in two phases. During the first phase, every agent perceives. Then, once they have all perceived, they decide and act. And finally, they wait for each other before starting the next cycle. By default, the execution policy is ONE_PHASE. 
+
+Example:
+```
+Configuration.executionPolicy = ExecutionPolicy.TWO_PHASES;
+MyAMAS amas = new MyAMAS(new MyEnvironment(), Scheduling.DEFAULT);
+```
+
+
 ## 1.2 (04/09/2018) ##
 
 AMAK now includes the possibility to execute simultaneously multiple agents. By default, it is disabled.
