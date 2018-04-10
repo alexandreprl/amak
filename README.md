@@ -81,7 +81,7 @@ In order to work, the Amak framework needs a type of environment, a type of agen
 
 ### Create resources ###
 
-Create the resource Fork. A fork can be took or released by a philosopher.
+Create the resource Fork. A fork can be taken or released by a philosopher.
 
 
 ```
