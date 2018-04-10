@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -47,8 +47,8 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../fr/irit/smac/amak/Configuration.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Agent.Phase.html" title="enum in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?fr/irit/smac/amak/Amas.html" target="_top">Frames</a></li>
@@ -72,7 +72,7 @@ var activeTableTab = "activeTableTab";
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
 <li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
@@ -133,6 +133,29 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="nested.class.summary">
+<!--   -->
+</a>
+<h3>Nested Class Summary</h3>
+<table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Nested Class Summary table, listing nested classes, and an explanation">
+<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colLast" scope="col">Class and Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak">Amas.ExecutionPolicy</a></span></code>
+<div class="block">The executionPolicy informs if agents must wait each other after the
+ perception and the decisionAndSction phases or only after the
+ decisionAndCycle phase.</div>
+</td>
+</tr>
+</table>
+</li>
+</ul>
 <!-- =========== FIELD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="field.summary">
@@ -165,7 +188,9 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected java.lang.Object[]</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#params">params</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#params">params</a></span></code>
+<div class="block">Parameters that can be passed to the constructor.</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -241,66 +266,98 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 </td>
 </tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code>java.util.concurrent.Semaphore</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#getDecisionAndActionPhasesSemaphore--">getDecisionAndActionPhasesSemaphore</a></span>()</code>
+<div class="block">Getter for the decisionAndActionPhasesSemaphore</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="../../../../fr/irit/smac/amak/Amas.html" title="type parameter in Amas">E</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#getEnvironment--">getEnvironment</a></span>()</code>
 <div class="block">Getter for the environment</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code><a href="../../../../fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak">Amas.ExecutionPolicy</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#getExecutionPolicy--">getExecutionPolicy</a></span>()</code>
+<div class="block">Getter for the execution policy</div>
+</td>
+</tr>
+<tr id="i8" class="altColor">
+<td class="colFirst"><code>java.util.concurrent.Semaphore</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#getPerceptionPhaseSemaphore--">getPerceptionPhaseSemaphore</a></span>()</code>
+<div class="block">Getter for the perceptionPhaseSemaphore</div>
+</td>
+</tr>
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code><a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#getScheduler--">getScheduler</a></span>()</code>
 <div class="block">Getter for the scheduler</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#informThatAgentCycleIsFinished--">informThatAgentCycleIsFinished</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#informThatAgentDecisionAndActionAreFinished--">informThatAgentDecisionAndActionAreFinished</a></span>()</code>
+<div class="block">Inform that agent has finished the DecisionAndAction phase</div>
+</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i11" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#informThatAgentPerceptionIsFinished--">informThatAgentPerceptionIsFinished</a></span>()</code>
+<div class="block">Inform that agent gas finished the perception phase.</div>
+</td>
+</tr>
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onInitialAgentsCreation--">onInitialAgentsCreation</a></span>()</code>
 <div class="block">This method should be overridden, the agents should be created in this method</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onInitialConfiguration--">onInitialConfiguration</a></span>()</code>
 <div class="block">This method is called at the very beginning of the amas creation.</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onReady--">onReady</a></span>()</code>
 <div class="block">This method is called when all agents are ready</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSchedulingStarts--">onSchedulingStarts</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSchedulingStarts--">onSchedulingStarts</a></span>()</code>
+<div class="block">When the scheduling starts we need to create the thread pool for agents
+ execution</div>
+</td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSchedulingStops--">onSchedulingStops</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSchedulingStops--">onSchedulingStops</a></span>()</code>
+<div class="block">When the scheduling stops we shutdown the executor so it doesn't stuck the
+ process</div>
+</td>
 </tr>
-<tr id="i13" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSystemCycleBegin--">onSystemCycleBegin</a></span>()</code>
 <div class="block">This method is called before all agents have executed a cycle</div>
 </td>
 </tr>
-<tr id="i14" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onSystemCycleEnd--">onSystemCycleEnd</a></span>()</code>
 <div class="block">This method is called when all agents have executed a cycle</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#start--">start</a></span>()</code>
 <div class="block">Helper method to launch the scheduler</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#stopCondition--">stopCondition</a></span>()</code>
 <div class="block">This method allows the system to stop the scheduler on certain conditions</div>
@@ -365,6 +422,8 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <li class="blockList">
 <h4>params</h4>
 <pre>protected&nbsp;java.lang.Object[] params</pre>
+<div class="block">Parameters that can be passed to the constructor. These parameters are meant
+ to be used only in the method onInitialConfiguration.</div>
 </li>
 </ul>
 </li>
@@ -403,13 +462,38 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a name="informThatAgentCycleIsFinished--">
+<a name="getExecutionPolicy--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
-<h4>informThatAgentCycleIsFinished</h4>
-<pre>protected final&nbsp;void&nbsp;informThatAgentCycleIsFinished()</pre>
+<h4>getExecutionPolicy</h4>
+<pre>public&nbsp;<a href="../../../../fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak">Amas.ExecutionPolicy</a>&nbsp;getExecutionPolicy()</pre>
+<div class="block">Getter for the execution policy</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the current execution policy</dd>
+</dl>
+</li>
+</ul>
+<a name="informThatAgentPerceptionIsFinished--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>informThatAgentPerceptionIsFinished</h4>
+<pre>protected final&nbsp;void&nbsp;informThatAgentPerceptionIsFinished()</pre>
+<div class="block">Inform that agent gas finished the perception phase.</div>
+</li>
+</ul>
+<a name="informThatAgentDecisionAndActionAreFinished--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>informThatAgentDecisionAndActionAreFinished</h4>
+<pre>protected final&nbsp;void&nbsp;informThatAgentDecisionAndActionAreFinished()</pre>
+<div class="block">Inform that agent has finished the DecisionAndAction phase</div>
 </li>
 </ul>
 <a name="onInitialConfiguration--">
@@ -594,7 +678,9 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <ul class="blockList">
 <li class="blockList">
 <h4>onSchedulingStarts</h4>
-<pre>public&nbsp;void&nbsp;onSchedulingStarts()</pre>
+<pre>public final&nbsp;void&nbsp;onSchedulingStarts()</pre>
+<div class="block">When the scheduling starts we need to create the thread pool for agents
+ execution</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStarts--">onSchedulingStarts</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
@@ -604,13 +690,43 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <a name="onSchedulingStops--">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>onSchedulingStops</h4>
-<pre>public&nbsp;void&nbsp;onSchedulingStops()</pre>
+<pre>public final&nbsp;void&nbsp;onSchedulingStops()</pre>
+<div class="block">When the scheduling stops we shutdown the executor so it doesn't stuck the
+ process</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStops--">onSchedulingStops</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
+</dl>
+</li>
+</ul>
+<a name="getDecisionAndActionPhasesSemaphore--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getDecisionAndActionPhasesSemaphore</h4>
+<pre>public&nbsp;java.util.concurrent.Semaphore&nbsp;getDecisionAndActionPhasesSemaphore()</pre>
+<div class="block">Getter for the decisionAndActionPhasesSemaphore</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the decisionAndActionPhasesSemaphore</dd>
+</dl>
+</li>
+</ul>
+<a name="getPerceptionPhaseSemaphore--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getPerceptionPhaseSemaphore</h4>
+<pre>public&nbsp;java.util.concurrent.Semaphore&nbsp;getPerceptionPhaseSemaphore()</pre>
+<div class="block">Getter for the perceptionPhaseSemaphore</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the perceptionPhaseSemaphore</dd>
 </dl>
 </li>
 </ul>
@@ -641,8 +757,8 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../fr/irit/smac/amak/Configuration.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Agent.Phase.html" title="enum in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../index.html?fr/irit/smac/amak/Amas.html" target="_top">Frames</a></li>
@@ -666,7 +782,7 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
 <li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>

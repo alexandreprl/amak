@@ -97,6 +97,10 @@
 <div class="block">The constructor automatically add the agent to the corresponding amas and
  initialize the agent</div>
 </dd>
+<dt><a href="fr/irit/smac/amak/Agent.Phase.html" title="enum in fr.irit.smac.amak"><span class="typeNameLink">Agent.Phase</span></a> - Enum in <a href="fr/irit/smac/amak/package-summary.html">fr.irit.smac.amak</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html#AgentPhaseDrawer-fr.irit.smac.amak.tests.ThreadTest.MyAMAS-">AgentPhaseDrawer(ThreadTest.MyAMAS)</a></span> - Constructor for class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html" title="class in fr.irit.smac.amak.tests">ThreadTest.AgentPhaseDrawer</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#agents">agents</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
 <div class="block">List of agents present in the system</div>
@@ -116,6 +120,12 @@
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#Amas-E-fr.irit.smac.amak.Scheduling-java.lang.Object...-">Amas(E, Scheduling, Object...)</a></span> - Constructor for class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
 <div class="block">Constructor of the MAS</div>
+</dd>
+<dt><a href="fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak"><span class="typeNameLink">Amas.ExecutionPolicy</span></a> - Enum in <a href="fr/irit/smac/amak/package-summary.html">fr.irit.smac.amak</a></dt>
+<dd>
+<div class="block">The executionPolicy informs if agents must wait each other after the
+ perception and the decisionAndSction phases or only after the
+ decisionAndCycle phase.</div>
 </dd>
 <dt><a href="fr/irit/smac/amak/examples/randomants/AntExample.html" title="class in fr.irit.smac.amak.examples.randomants"><span class="typeNameLink">AntExample</span></a> - Class in <a href="fr/irit/smac/amak/examples/randomants/package-summary.html">fr.irit.smac.amak.examples.randomants</a></dt>
 <dd>&nbsp;</dd>
@@ -167,6 +177,8 @@
 <div class="block">Criticalities of the neighbors (and it self) as perceived at the beginning of
  the agent's cycle</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#currentPhase">currentPhase</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#cycle">cycle</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
 <div class="block">Number of cycles executed by the system</div>
@@ -268,6 +280,10 @@
 <dd>
 <div class="block">Log a line with log level set to error</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Configuration.html#executionPolicy">executionPolicy</a></span> - Static variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Configuration.html" title="class in fr.irit.smac.amak">Configuration</a></dt>
+<dd>
+<div class="block">The execution policy refers to the synchronization between agents execution.</div>
+</dd>
 </dl>
 <a name="I:F">
 <!--   -->
@@ -334,9 +350,17 @@
 <dd>
 <div class="block">Getter for amas</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#getCurrentPhase--">getCurrentPhase()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
+<dd>
+<div class="block">Getter for the current phase of the agent</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#getCycle--">getCycle()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
 <div class="block">Getter for the current cycle number</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#getDecisionAndActionPhasesSemaphore--">getDecisionAndActionPhasesSemaphore()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
+<dd>
+<div class="block">Getter for the decisionAndActionPhasesSemaphore</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduler.html#getDefaultScheduler--">getDefaultScheduler()</a></span> - Static method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></dt>
 <dd>&nbsp;</dd>
@@ -348,6 +372,10 @@
 <dd>
 <div class="block">Get the latest computed execution order</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#getExecutionPolicy--">getExecutionPolicy()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
+<dd>
+<div class="block">Getter for the execution policy</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/Entity.html#getFirstname--">getFirstname()</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/Entity.html" title="class in fr.irit.smac.amak.tests">Entity</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/TableExample.html#getForks--">getForks()</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/TableExample.html" title="class in fr.irit.smac.amak.examples.philosophers">TableExample</a></dt>
@@ -356,9 +384,17 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#getHeight--">getHeight()</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#getId--">getId()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
+<dd>
+<div class="block">Return the id of the agent</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#getMostCriticalNeighbor-boolean-">getMostCriticalNeighbor(boolean)</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
 <div class="block">Convenient method giving the most critical neighbor at a given moment</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#getPerceptionPhaseSemaphore--">getPerceptionPhaseSemaphore()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
+<dd>
+<div class="block">Getter for the perceptionPhaseSemaphore</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Environment.html#getRandom--">getRandom()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a></dt>
 <dd>
@@ -404,8 +440,14 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Information.html#Information--">Information()</a></span> - Constructor for class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Information.html" title="class in fr.irit.smac.amak">Information</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#informThatAgentCycleIsFinished--">informThatAgentCycleIsFinished()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
-<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#informThatAgentDecisionAndActionAreFinished--">informThatAgentDecisionAndActionAreFinished()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
+<dd>
+<div class="block">Inform that agent has finished the DecisionAndAction phase</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#informThatAgentPerceptionIsFinished--">informThatAgentPerceptionIsFinished()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
+<dd>
+<div class="block">Inform that agent gas finished the perception phase.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tools/Log.Level.html#isGE-fr.irit.smac.amak.tools.Log.Level-">isGE(Log.Level)</a></span> - Method in enum fr.irit.smac.amak.tools.<a href="fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduler.html#isRunning--">isRunning()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></dt>
@@ -528,6 +570,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntViewerExample.html#onDraw-java.awt.Graphics2D-">onDraw(Graphics2D)</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntViewerExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntViewerExample</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html#onDraw-java.awt.Graphics2D-">onDraw(Graphics2D)</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html" title="class in fr.irit.smac.amak.tests">ThreadTest.AgentPhaseDrawer</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#onDraw-java.awt.Graphics2D-">onDraw(Graphics2D)</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
 <dd>
 <div class="block">This method is called when the canvas must be drawn again</div>
@@ -590,6 +634,8 @@
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html#onPerceive--">onPerceive()</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosopherExample</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ThreadTest.MyAgent.html#onPerceive--">onPerceive()</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ThreadTest.MyAgent.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAgent</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#onReady--">onReady()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
 <div class="block">Called when all initial agents have been created and are ready to be started</div>
@@ -599,7 +645,10 @@
 <div class="block">This method is called when all agents are ready</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#onSchedulingStarts--">onSchedulingStarts()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">When the scheduling starts we need to create the thread pool for agents
+ execution</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Environment.html#onSchedulingStarts--">onSchedulingStarts()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Schedulable.html#onSchedulingStarts--">onSchedulingStarts()</a></span> - Method in interface fr.irit.smac.amak.<a href="fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></dt>
@@ -607,7 +656,10 @@
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#onSchedulingStarts--">onSchedulingStarts()</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#onSchedulingStops--">onSchedulingStops()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">When the scheduling stops we shutdown the executor so it doesn't stuck the
+ process</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Environment.html#onSchedulingStops--">onSchedulingStops()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Schedulable.html#onSchedulingStops--">onSchedulingStops()</a></span> - Method in interface fr.irit.smac.amak.<a href="fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></dt>
@@ -647,7 +699,9 @@
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#params">params</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#params">params</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Parameters that can be passed to the constructor.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Environment.html#params">params</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#params">params</a></span> - Variable in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
@@ -839,6 +893,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ThreadTest.html#ThreadTest--">ThreadTest()</a></span> - Constructor for class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ThreadTest.html" title="class in fr.irit.smac.amak.tests">ThreadTest</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">ThreadTest.AgentPhaseDrawer</span></a> - Class in <a href="fr/irit/smac/amak/tests/package-summary.html">fr.irit.smac.amak.tests</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="fr/irit/smac/amak/tests/ThreadTest.MyAgent.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">ThreadTest.MyAgent</span></a> - Class in <a href="fr/irit/smac/amak/tests/package-summary.html">fr.irit.smac.amak.tests</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">ThreadTest.MyAMAS</span></a> - Class in <a href="fr/irit/smac/amak/tests/package-summary.html">fr.irit.smac.amak.tests</a></dt>
@@ -857,6 +913,14 @@
 </a>
 <h2 class="title">V</h2>
 <dl>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.Phase.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.Phase.html" title="enum in fr.irit.smac.amak">Agent.Phase</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this type with the specified name.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.ExecutionPolicy.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak">Amas.ExecutionPolicy</a></dt>
+<dd>
+<div class="block">Returns the enum constant of this type with the specified name.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.State.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.State.html" title="enum in fr.irit.smac.amak.examples.philosophers">PhilosopherExample.State</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this type with the specified name.</div>
@@ -872,6 +936,16 @@
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tools/Log.Level.html#valueOf-java.lang.String-">valueOf(String)</a></span> - Static method in enum fr.irit.smac.amak.tools.<a href="fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a></dt>
 <dd>
 <div class="block">Returns the enum constant of this type with the specified name.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.Phase.html#values--">values()</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.Phase.html" title="enum in fr.irit.smac.amak">Agent.Phase</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum type, in
+the order they are declared.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.ExecutionPolicy.html#values--">values()</a></span> - Static method in enum fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak">Amas.ExecutionPolicy</a></dt>
+<dd>
+<div class="block">Returns an array containing the constants of this enum type, in
+the order they are declared.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.State.html#values--">values()</a></span> - Static method in enum fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.State.html" title="enum in fr.irit.smac.amak.examples.philosophers">PhilosopherExample.State</a></dt>
 <dd>

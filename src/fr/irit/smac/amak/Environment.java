@@ -34,6 +34,8 @@ public abstract class Environment implements Schedulable {
 	/**
 	 * Constructor
 	 * 
+	 * @param _scheduling
+	 *            The scheduling of the environment
 	 * @param params
 	 *            The parameters to initialize the environment
 	 */

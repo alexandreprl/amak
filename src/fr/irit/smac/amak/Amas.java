@@ -48,12 +48,53 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * The id of the amas
 	 */
 	private final int id = uniqueIndex++;
-
+	/**
+	 * Agents that must be removed from the AMAS at the end of the cycle
+	 */
 	private LinkedList<Agent<?, E>> agentsPendingRemoval = new LinkedList<>();
+	/**
+	 * Agents that must be added to the AMAS at the end of the cycle
+	 */
 	private LinkedList<Agent<?, E>> agentsPendingAddition = new LinkedList<>();
+	/**
+	 * Parameters that can be passed to the constructor. These parameters are meant
+	 * to be used only in the method onInitialConfiguration.
+	 */
 	protected Object[] params;
+	/**
+	 * This thread executor is here to run the agent cycle.
+	 */
 	private ThreadPoolExecutor executor;
-	private final Semaphore threadSemaphore = new Semaphore(0);
+	/**
+	 * This semaphore is meant to synchronize the agents after the decisionAndAction
+	 * phase
+	 */
+	private final Semaphore decisionAndActionPhasesSemaphore = new Semaphore(0);
+
+	/**
+	 * This semaphore is meant to synchronize the agents after the perception phase
+	 */
+	private final Semaphore perceptionPhaseSemaphore = new Semaphore(0);
+
+	/**
+	 * The executionPolicy informs if agents must wait each other after the
+	 * perception and the decisionAndSction phases or only after the
+	 * decisionAndCycle phase.
+	 */
+	public enum ExecutionPolicy {
+		TWO_PHASES, ONE_PHASE
+	}
+
+	private ExecutionPolicy executionPolicy = Configuration.executionPolicy;
+
+	/**
+	 * Getter for the execution policy
+	 * 
+	 * @return the current execution policy
+	 */
+	public ExecutionPolicy getExecutionPolicy() {
+		return executionPolicy;
+	}
 
 	/**
 	 * Constructor of the MAS
@@ -84,6 +125,9 @@ public class Amas<E extends Environment> implements Schedulable {
 		}
 	}
 
+	/**
+	 * Effectively add agent to the system
+	 */
 	private void addPendingAgents() {
 		for (Agent<?, E> agent : agentsPendingAddition) {
 			agents.add(agent);
@@ -97,8 +141,18 @@ public class Amas<E extends Environment> implements Schedulable {
 		}
 	}
 
-	protected final void informThatAgentCycleIsFinished() {
-		threadSemaphore.release();
+	/**
+	 * Inform that agent gas finished the perception phase.
+	 */
+	protected final void informThatAgentPerceptionIsFinished() {
+		perceptionPhaseSemaphore.release();
+	}
+
+	/**
+	 * Inform that agent has finished the DecisionAndAction phase
+	 */
+	protected final void informThatAgentDecisionAndActionAreFinished() {
+		decisionAndActionPhasesSemaphore.release();
 	}
 
 	/**
@@ -158,14 +212,44 @@ public class Amas<E extends Environment> implements Schedulable {
 		Collections.sort(agents, new AgentOrderComparator());
 		onSystemCycleBegin();
 
-		for (Agent<?, E> agent : agents) {
-			executor.execute(agent);
+		switch (executionPolicy) {
+		case ONE_PHASE:
+			for (Agent<?, E> agent : agents) {
+				executor.execute(agent);
+			}
+			try {
+				perceptionPhaseSemaphore.acquire(agents.size());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			try {
+				decisionAndActionPhasesSemaphore.acquire(agents.size());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			break;
+		case TWO_PHASES:
+			// Perception
+			for (Agent<?, E> agent : agents) {
+				executor.execute(agent);
+			}
+			try {
+				perceptionPhaseSemaphore.acquire(agents.size());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			// Decision and action
+			for (Agent<?, E> agent : agents) {
+				executor.execute(agent);
+			}
+			try {
+				decisionAndActionPhasesSemaphore.acquire(agents.size());
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			break;
 		}
-		try {
-			threadSemaphore.acquire(agents.size());
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
+
 		while (!agentsPendingRemoval.isEmpty())
 			agents.remove(agentsPendingRemoval.poll());
 		addPendingAgents();
@@ -248,13 +332,39 @@ public class Amas<E extends Environment> implements Schedulable {
 		getScheduler().start();
 	}
 
+	/**
+	 * When the scheduling starts we need to create the thread pool for agents
+	 * execution
+	 */
 	@Override
-	public void onSchedulingStarts() {
+	public final void onSchedulingStarts() {
 		executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(Configuration.allowedSimultaneousAgentsExecution);
 	}
 
+	/**
+	 * When the scheduling stops we shutdown the executor so it doesn't stuck the
+	 * process
+	 */
 	@Override
-	public void onSchedulingStops() {
+	public final void onSchedulingStops() {
 		executor.shutdown();
+	}
+
+	/**
+	 * Getter for the decisionAndActionPhasesSemaphore
+	 * 
+	 * @return the decisionAndActionPhasesSemaphore
+	 */
+	public Semaphore getDecisionAndActionPhasesSemaphore() {
+		return decisionAndActionPhasesSemaphore;
+	}
+
+	/**
+	 * Getter for the perceptionPhaseSemaphore
+	 * 
+	 * @return the perceptionPhaseSemaphore
+	 */
+	public Semaphore getPerceptionPhaseSemaphore() {
+		return perceptionPhaseSemaphore;
 	}
 }

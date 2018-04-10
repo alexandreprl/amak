@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10};
+var methods = {"i0":10,"i1":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -47,7 +47,7 @@ var activeTableTab = "activeTableTab";
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../fr/irit/smac/amak/tests/ThreadTest.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -72,7 +72,7 @@ var activeTableTab = "activeTableTab";
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.classes.inherited.from.class.fr.irit.smac.amak.Agent">Nested</a>&nbsp;|&nbsp;</li>
 <li><a href="#fields.inherited.from.class.fr.irit.smac.amak.Agent">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
@@ -128,6 +128,21 @@ extends <a href="../../../../../fr/irit/smac/amak/Agent.html" title="class in fr
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<ul class="blockList">
+<li class="blockList"><a name="nested.class.summary">
+<!--   -->
+</a>
+<h3>Nested Class Summary</h3>
+<ul class="blockList">
+<li class="blockList"><a name="nested.classes.inherited.from.class.fr.irit.smac.amak.Agent">
+<!--   -->
+</a>
+<h3>Nested classes/interfaces inherited from class&nbsp;fr.irit.smac.amak.<a href="../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></h3>
+<code><a href="../../../../../fr/irit/smac/amak/Agent.Phase.html" title="enum in fr.irit.smac.amak">Agent.Phase</a></code></li>
+</ul>
+</li>
+</ul>
 <!-- =========== FIELD SUMMARY =========== -->
 <ul class="blockList">
 <li class="blockList"><a name="field.summary">
@@ -139,7 +154,7 @@ extends <a href="../../../../../fr/irit/smac/amak/Agent.html" title="class in fr
 <!--   -->
 </a>
 <h3>Fields inherited from class&nbsp;fr.irit.smac.amak.<a href="../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></h3>
-<code><a href="../../../../../fr/irit/smac/amak/Agent.html#amas">amas</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#criticalities">criticalities</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#neighborhood">neighborhood</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#params">params</a></code></li>
+<code><a href="../../../../../fr/irit/smac/amak/Agent.html#amas">amas</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#criticalities">criticalities</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#currentPhase">currentPhase</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#neighborhood">neighborhood</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#params">params</a></code></li>
 </ul>
 </li>
 </ul>
@@ -180,13 +195,20 @@ extends <a href="../../../../../fr/irit/smac/amak/Agent.html" title="class in fr
  overridden</div>
 </td>
 </tr>
+<tr id="i1" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tests/ThreadTest.MyAgent.html#onPerceive--">onPerceive</a></span>()</code>
+<div class="block">This method corresponds to the perception phase of the agents and must be
+ overridden</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.fr.irit.smac.amak.Agent">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;fr.irit.smac.amak.<a href="../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></h3>
-<code><a href="../../../../../fr/irit/smac/amak/Agent.html#Z:Z_onBeforeReady--">_onBeforeReady</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#addNeighbor-fr.irit.smac.amak.Agent...-">addNeighbor</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#computeCriticality--">computeCriticality</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#computeExecutionOrderLayer--">computeExecutionOrderLayer</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#destroy--">destroy</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#getAmas--">getAmas</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#getExecutionOrder--">getExecutionOrder</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#getMostCriticalNeighbor-boolean-">getMostCriticalNeighbor</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleBegin--">onAgentCycleBegin</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleEnd--">onAgentCycleEnd</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onDecide--">onDecide</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onDecideAndAct--">onDecideAndAct</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onDraw--">onDraw</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onExpose--">onExpose</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onPerceive--">onPerceive</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onReady--">onReady</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">onSystemCycleBegin</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleEnd--">onSystemCycleEnd</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#run--">run</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#toString--">toString</a></code></li>
+<code><a href="../../../../../fr/irit/smac/amak/Agent.html#Z:Z_onBeforeReady--">_onBeforeReady</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#addNeighbor-fr.irit.smac.amak.Agent...-">addNeighbor</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#computeCriticality--">computeCriticality</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#computeExecutionOrderLayer--">computeExecutionOrderLayer</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#destroy--">destroy</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#getAmas--">getAmas</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#getCurrentPhase--">getCurrentPhase</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#getExecutionOrder--">getExecutionOrder</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#getId--">getId</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#getMostCriticalNeighbor-boolean-">getMostCriticalNeighbor</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleBegin--">onAgentCycleBegin</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleEnd--">onAgentCycleEnd</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onDecide--">onDecide</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onDecideAndAct--">onDecideAndAct</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onDraw--">onDraw</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onExpose--">onExpose</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onReady--">onReady</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">onSystemCycleBegin</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleEnd--">onSystemCycleEnd</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#run--">run</a>, <a href="../../../../../fr/irit/smac/amak/Agent.html#toString--">toString</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -227,6 +249,22 @@ extends <a href="../../../../../fr/irit/smac/amak/Agent.html" title="class in fr
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="onPerceive--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onPerceive</h4>
+<pre>protected&nbsp;void&nbsp;onPerceive()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from class:&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Agent.html#onPerceive--">Agent</a></code></span></div>
+<div class="block">This method corresponds to the perception phase of the agents and must be
+ overridden</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
+<dd><code><a href="../../../../../fr/irit/smac/amak/Agent.html#onPerceive--">onPerceive</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../../fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAMAS</a>,<a href="../../../../../fr/irit/smac/amak/tests/ThreadTest.MyEnvironment.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyEnvironment</a>&gt;</code></dd>
+</dl>
+</li>
+</ul>
 <a name="onAct--">
 <!--   -->
 </a>
@@ -270,7 +308,7 @@ extends <a href="../../../../../fr/irit/smac/amak/Agent.html" title="class in fr
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../../fr/irit/smac/amak/tests/ThreadTest.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../../fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../../fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -295,7 +333,7 @@ extends <a href="../../../../../fr/irit/smac/amak/Agent.html" title="class in fr
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
+<li><a href="#nested.classes.inherited.from.class.fr.irit.smac.amak.Agent">Nested</a>&nbsp;|&nbsp;</li>
 <li><a href="#fields.inherited.from.class.fr.irit.smac.amak.Agent">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>

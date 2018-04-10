@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import fr.irit.smac.amak.tools.Log;
+
 /**
  * This class must be overridden by all agents
  * 
@@ -45,6 +47,12 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	private final int id = uniqueIndex++;
 	private int executionOrder;
 	protected Object[] params;
+
+	public enum Phase {
+		PERCEPTION, DECISION_AND_ACTION, INITIALIZING, PERCEPTION_DONE, DECISION_AND_ACTION_DONE
+	}
+
+	protected Phase currentPhase = Phase.INITIALIZING;
 
 	/**
 	 * The constructor automatically add the agent to the corresponding amas and
@@ -177,17 +185,24 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	}
 
 	/**
-	 * These methods are useless because the state of the agent is not supposed to
+	 * This method is useless because the state of the agent is not supposed to
 	 * evolve before or after its cycle. Use OnAgentCycleBegin/End instead.
 	 * 
-	 * These methods are finals because they must not be implemented. Implement them
-	 * will have no effect.
+	 * This method is final because it must not be implemented. Implement it will
+	 * have no effect.
 	 */
 	@Deprecated
 	protected final void onSystemCycleBegin() {
 
 	}
 
+	/**
+	 * This method is useless because the state of the agent is not supposed to
+	 * evolve before or after its cycle. Use OnAgentCycleBegin/End instead.
+	 * 
+	 * This method is final because it must not be implemented. Implement it will
+	 * have no effect.
+	 */
 	@Deprecated
 	protected final void onSystemCycleEnd() {
 
@@ -199,16 +214,68 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	@Override
 	public final void run() {
-		onAgentCycleBegin();
-		for (Agent<A, E> agent : neighborhood) {
-			criticalities.put(agent, agent.criticality);
+		switch (amas.getExecutionPolicy()) {
+		case TWO_PHASES:
+			currentPhase = nextPhase();
+			switch (currentPhase) {
+			case PERCEPTION:
+				phase1();
+				amas.informThatAgentPerceptionIsFinished();
+				break;
+			case DECISION_AND_ACTION:
+				phase2();
+				amas.informThatAgentDecisionAndActionAreFinished();
+				break;
+			default:
+				Log.fatal("AMAK", "An agent is being run in an invalid phase (%s)", currentPhase);
+			}
+			break;
+		case ONE_PHASE:
+			currentPhase = Phase.PERCEPTION;
+			phase1();
+			currentPhase = Phase.DECISION_AND_ACTION;
+			phase2();
+			amas.informThatAgentPerceptionIsFinished();
+			amas.informThatAgentDecisionAndActionAreFinished();
+			break;
 		}
-		_onPerceiveDecideAct();
+	}
+
+	/**
+	 * This method represents the perception phase of the agent
+	 */
+	private void phase1() {
+		onAgentCycleBegin();
+		perceive();
+		currentPhase = Phase.PERCEPTION_DONE;
+	}
+
+	/**
+	 * This method represents the decisionAndAction phase of the agent
+	 */
+	private void phase2() {
+		decideAndAct();
 		executionOrder = computeExecutionOrder();
 		onExpose();
 		onDraw();
 		onAgentCycleEnd();
-		amas.informThatAgentCycleIsFinished();
+		currentPhase = Phase.DECISION_AND_ACTION_DONE;
+	}
+
+	/**
+	 * Determine which phase comes after another
+	 * 
+	 * @return the next phase
+	 */
+	private Phase nextPhase() {
+		switch (currentPhase) {
+		case PERCEPTION_DONE:
+			return Phase.DECISION_AND_ACTION;
+		case INITIALIZING:
+		case DECISION_AND_ACTION_DONE:
+		default:
+			return Phase.PERCEPTION;
+		}
 	}
 
 	/**
@@ -223,12 +290,17 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	/**
 	 * Perceive, decide and act
 	 */
-	private final void _onPerceiveDecideAct() {
+	private final void perceive() {
+		for (Agent<A, E> agent : neighborhood) {
+			criticalities.put(agent, agent.criticality);
+		}
 		onPerceive();
 		// Criticality of agent should be updated after perception AND after action
 		criticality = computeCriticality();
 		criticalities.put(this, criticality);
+	}
 
+	private final void decideAndAct() {
 		onDecideAndAct();
 
 		criticality = computeCriticality();
@@ -302,5 +374,23 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	@Override
 	public String toString() {
 		return String.format("Agent #%d", id);
+	}
+
+	/**
+	 * Getter for the current phase of the agent
+	 * 
+	 * @return the current phase
+	 */
+	public Phase getCurrentPhase() {
+		return currentPhase;
+	}
+
+	/**
+	 * Return the id of the agent
+	 * 
+	 * @return the id of the agent
+	 */
+	public int getId() {
+		return id;
 	}
 }

@@ -41,7 +41,7 @@
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
@@ -133,6 +133,12 @@ extends java.lang.Object</pre>
 <div class="block">The maximal number of threads that can be executed simultaneously</div>
 </td>
 </tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static <a href="../../../../fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak">Amas.ExecutionPolicy</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Configuration.html#executionPolicy">executionPolicy</a></span></code>
+<div class="block">The execution policy refers to the synchronization between agents execution.</div>
+</td>
+</tr>
 </table>
 </li>
 </ul>
@@ -183,11 +189,25 @@ extends java.lang.Object</pre>
 <a name="allowedSimultaneousAgentsExecution">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>allowedSimultaneousAgentsExecution</h4>
 <pre>public static&nbsp;int allowedSimultaneousAgentsExecution</pre>
 <div class="block">The maximal number of threads that can be executed simultaneously</div>
+</li>
+</ul>
+<a name="executionPolicy">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>executionPolicy</h4>
+<pre>public static&nbsp;<a href="../../../../fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak">Amas.ExecutionPolicy</a> executionPolicy</pre>
+<div class="block">The execution policy refers to the synchronization between agents execution.
+ ONE_PHASE means that agents can realize simultaneous cycles and wait for each
+ other after the action. TWO_PHASES means that agents perceive simultaneously
+ then wait for each others and then decide and act simultaneously and finally
+ wait for each others.</div>
 </li>
 </ul>
 </li>
@@ -234,7 +254,7 @@ extends java.lang.Object</pre>
 </div>
 <div class="subNav">
 <ul class="navList">
-<li><a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
+<li><a href="../../../../fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
 <li><a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
