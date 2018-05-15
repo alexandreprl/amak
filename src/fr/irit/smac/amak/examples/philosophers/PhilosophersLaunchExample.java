@@ -7,6 +7,8 @@ public class PhilosophersLaunchExample {
 		
 		TableExample env = new TableExample();
 		new PhilosophersAMASExample(env);
+		
+		
 	}
 
 }

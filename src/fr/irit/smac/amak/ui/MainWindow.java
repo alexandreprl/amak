@@ -10,6 +10,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
+import javax.swing.JSplitPane;
+import javax.swing.JTabbedPane;
 import javax.swing.JToolBar;
 
 import fr.irit.smac.amak.Information;
@@ -26,9 +28,10 @@ public class MainWindow extends JFrame {
 	 */
 	private static final long serialVersionUID = 2607956693857748227L;
 	private JPanel toolbarPanel;
-	private DraggableTabbedPane tabbedPane;
+	private JSplitPane splitPane;
 	private JMenuBar menuBar;
 	private JMenu optionsMenu;
+	private JTabbedPane tabbedPanel;
 	private static MainWindow instance;
 	private static ReentrantLock instanceLock = new ReentrantLock();
 
@@ -42,8 +45,11 @@ public class MainWindow extends JFrame {
 		getContentPane().add(toolbarPanel, BorderLayout.SOUTH);
 		toolbarPanel.setLayout(new FlowLayout(FlowLayout.LEFT, 5, 5));
 		
-		tabbedPane = new DraggableTabbedPane();
-		getContentPane().add(tabbedPane, BorderLayout.CENTER);
+		splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+		getContentPane().add(splitPane, BorderLayout.CENTER);
+		
+		tabbedPanel = new JTabbedPane();
+		splitPane.setRightComponent(tabbedPanel);
 		
 		menuBar = new JMenuBar();
 		optionsMenu = new JMenu("Options");
@@ -86,8 +92,14 @@ public class MainWindow extends JFrame {
 	 * @param panel
 	 * 			The panel
 	 */
-	public static void addTabbedPanel(String title, JPanel panel) {
-		instance().tabbedPane.addTab(title, panel);
+	
+	public static void setLeftPanel(String title, JPanel panel) {
+		instance().splitPane.setLeftComponent(panel);
+		instance().pack();
+		instance().setVisible(true);
+	}
+	public static void setRightPanel(String title, JPanel panel) {
+		instance().splitPane.setRightComponent(panel);
 		instance().pack();
 		instance().setVisible(true);
 	}
@@ -104,5 +116,10 @@ public class MainWindow extends JFrame {
 		}
 		instanceLock.unlock();
 		return instance;
+	}
+	public static void addTabbedPanel(String title, JPanel panel) {
+		instance().tabbedPanel.addTab(title, panel);
+		instance().pack();
+		instance().setVisible(true);
 	}
 }

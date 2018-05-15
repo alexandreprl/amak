@@ -1,8 +1,11 @@
 package fr.irit.smac.amak.examples.philosophers;
 
+import java.awt.Color;
 import java.util.Random;
 
 import fr.irit.smac.amak.Agent;
+import fr.irit.smac.amak.ui.VUI;
+import fr.irit.smac.amak.ui.drawables.DrawableRectangle;
 import fr.irit.smac.lxplot.LxPlot;
 import fr.irit.smac.lxplot.commons.ChartType;
 
@@ -19,6 +22,7 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 	}
 
 	private State state = State.THINK;
+	private DrawableRectangle drawableRectangle;
 	
 	public PhilosopherExample(int id, PhilosophersAMASExample amas, ForkExample left, ForkExample right) {
 		super(amas, id, left, right);
@@ -29,6 +33,9 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 		this.id = (int) params[0];
 		this.left = (ForkExample) params[1];
 		this.right = (ForkExample) params[2];
+		
+		drawableRectangle = VUI.get().createRectangle(100*Math.cos(2*Math.PI*id/this.amas.getEnvironment().getForks().length), 100*Math.sin(2*Math.PI*id/this.amas.getEnvironment().getForks().length), 20, 20);
+		
 	}
 
 	@Override
@@ -73,7 +80,20 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 			break;
 
 		}
-
+		if (state != nextState) {
+			switch (nextState) {
+			case EATING:
+				drawableRectangle.setColor(Color.BLUE);
+				break;
+			case HUNGRY:
+				drawableRectangle.setColor(Color.RED);
+				break;
+			case THINK:
+				drawableRectangle.setColor(Color.GREEN);
+				break;
+			
+			}
+		}
 		state = nextState;
 	}
 
