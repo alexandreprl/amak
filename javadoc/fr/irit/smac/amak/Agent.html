@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":42,"i21":42,"i22":10,"i23":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":42,"i16":10,"i17":10,"i18":42,"i19":10,"i20":10,"i21":10,"i22":42,"i23":42,"i24":10,"i25":10,"i26":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -324,7 +324,7 @@ implements java.lang.Runnable</pre>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onDraw--">onDraw</a></span>()</code>
-<div class="block">This method is essentially intended for debugging purpose.</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
@@ -335,43 +335,61 @@ implements java.lang.Runnable</pre>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize</a></span>()</code>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onInitialization--">onInitialization</a></span>()</code>
 <div class="block">Called before all agents are created</div>
 </td>
 </tr>
 <tr id="i18" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+</td>
+</tr>
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onPerceive--">onPerceive</a></span>()</code>
 <div class="block">This method corresponds to the perception phase of the agents and must be
  overridden</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onReady--">onReady</a></span>()</code>
 <div class="block">Called when all initial agents have been created and are ready to be started</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i21" class="rowColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onRenderingInitialization--">onRenderingInitialization</a></span>()</code>
+<div class="block">Called to initialize the rendering of the agent</div>
+</td>
+</tr>
+<tr id="i22" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">onSystemCycleBegin</a></span>()</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i23" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onSystemCycleEnd--">onSystemCycleEnd</a></span>()</code>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i24" class="altColor">
+<td class="colFirst"><code>protected void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onUpdateRender--">onUpdateRender</a></span>()</code>
+<div class="block">This method should be used to update the representation of the agent for example in a VUI</div>
+</td>
+</tr>
+<tr id="i25" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#run--">run</a></span>()</code>
 <div class="block">This method is called automatically and corresponds to a full cycle of an
  agent</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i26" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#toString--">toString</a></span>()</code>
 <div class="block">Agent toString</div>
@@ -591,15 +609,26 @@ public final&nbsp;void&nbsp;addNeighbor(<a href="../../../../fr/irit/smac/amak/A
 <div class="block">In this method the agent should expose some variables with its neighbor</div>
 </li>
 </ul>
+<a name="onUpdateRender--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onUpdateRender</h4>
+<pre>protected&nbsp;void&nbsp;onUpdateRender()</pre>
+<div class="block">This method should be used to update the representation of the agent for example in a VUI</div>
+</li>
+</ul>
 <a name="onDraw--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>onDraw</h4>
-<pre>protected&nbsp;void&nbsp;onDraw()</pre>
-<div class="block">This method is essentially intended for debugging purpose. For example, it is
- a good place to display the criticality of the agent.</div>
+<pre>@Deprecated
+protected final&nbsp;void&nbsp;onDraw()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block">This method is now deprecated and should be replaced by onUpdateRender</div>
 </li>
 </ul>
 <a name="onReady--">
@@ -623,14 +652,36 @@ public final&nbsp;void&nbsp;addNeighbor(<a href="../../../../fr/irit/smac/amak/A
  almost ready to be started</div>
 </li>
 </ul>
+<a name="onInitialization--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onInitialization</h4>
+<pre>protected&nbsp;void&nbsp;onInitialization()</pre>
+<div class="block">Called before all agents are created</div>
+</li>
+</ul>
 <a name="onInitialize--">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>onInitialize</h4>
-<pre>protected&nbsp;void&nbsp;onInitialize()</pre>
-<div class="block">Called before all agents are created</div>
+<pre>@Deprecated
+protected final&nbsp;void&nbsp;onInitialize()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block">Replaced by onInitialization</div>
+</li>
+</ul>
+<a name="onRenderingInitialization--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>onRenderingInitialization</h4>
+<pre>protected&nbsp;void&nbsp;onRenderingInitialization()</pre>
+<div class="block">Called to initialize the rendering of the agent</div>
 </li>
 </ul>
 <a name="onSystemCycleBegin--">

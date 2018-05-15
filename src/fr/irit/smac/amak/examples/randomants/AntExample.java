@@ -33,6 +33,9 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 	protected void onReady() {
 		dx = 0;
 		dy = 0;
+	}
+	@Override
+	protected void onRenderingInitialization() {
 		drawablePoint = VUI.get().createPoint(dx, dy);
 		drawablePoint.setStrokeOnly();
 	}
@@ -54,6 +57,9 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 			dx += getAmas().getEnvironment().getWidth();
 		while (dy < -getAmas().getEnvironment().getHeight()/2)
 			dy += getAmas().getEnvironment().getHeight();
+	}
+	@Override
+	protected void onUpdateRender() {
 		drawablePoint.move(dx, dy);
 	}
 }

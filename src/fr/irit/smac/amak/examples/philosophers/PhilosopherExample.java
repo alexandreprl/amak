@@ -23,19 +23,25 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 
 	private State state = State.THINK;
 	private DrawableRectangle drawableRectangle;
-	
+
 	public PhilosopherExample(int id, PhilosophersAMASExample amas, ForkExample left, ForkExample right) {
 		super(amas, id, left, right);
 	}
 
 	@Override
-	protected void onInitialize() {
+	protected void onInitialization() {
 		this.id = (int) params[0];
 		this.left = (ForkExample) params[1];
 		this.right = (ForkExample) params[2];
-		
-		drawableRectangle = VUI.get().createRectangle(100*Math.cos(2*Math.PI*id/this.amas.getEnvironment().getForks().length), 100*Math.sin(2*Math.PI*id/this.amas.getEnvironment().getForks().length), 20, 20);
-		
+	}
+
+	@Override
+	protected void onRenderingInitialization() {
+
+		drawableRectangle = VUI.get().createRectangle(
+				100 * Math.cos(2 * Math.PI * id / this.amas.getEnvironment().getForks().length),
+				100 * Math.sin(2 * Math.PI * id / this.amas.getEnvironment().getForks().length), 20, 20);
+
 	}
 
 	@Override
@@ -43,7 +49,7 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 		// Nothing goes here as the perception of neighbors criticality is already made
 		// by the framework
 	}
-	
+
 	@Override
 	protected void onDecideAndAct() {
 		State nextState = state;
@@ -91,7 +97,7 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 			case THINK:
 				drawableRectangle.setColor(Color.GREEN);
 				break;
-			
+
 			}
 		}
 		state = nextState;
@@ -103,7 +109,7 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 	}
 
 	@Override
-	protected void onDraw() {
+	protected void onUpdateRender() {
 		LxPlot.getChart("Eaten Pastas", ChartType.BAR).add(id, eatenPastas);
 	}
 }

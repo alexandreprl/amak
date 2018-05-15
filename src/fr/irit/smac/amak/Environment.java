@@ -43,7 +43,7 @@ public abstract class Environment implements Schedulable {
 		this.params = params;
 		onInitialization();
 		onInitialEntitiesCreation();
-
+		onRenderingInitialization();
 		if (_scheduling == Scheduling.DEFAULT) {
 			this.scheduler = Scheduler.getDefaultScheduler();
 			this.scheduler.add(this);
@@ -52,6 +52,11 @@ public abstract class Environment implements Schedulable {
 			if (_scheduling == Scheduling.UI)
 				MainWindow.addToolbar(new SchedulerToolbar("Environment #" + id, getScheduler()));
 		}
+	}
+
+	private void onRenderingInitialization() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	/**
@@ -101,7 +106,10 @@ public abstract class Environment implements Schedulable {
 	@Override
 	public final void cycle() {
 		onCycle();
+		onUpdateRender();
+	}
 
+	protected void onUpdateRender() {		
 	}
 
 	/**

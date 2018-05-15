@@ -19,6 +19,15 @@ public abstract class Drawable {
 	protected Color color = Color.black;
 
 	protected VUI vui;
+	protected int layer = 0;
+
+	public int getLayer() {
+		return layer;
+	}
+
+	public void setLayer(int layer) {
+		this.layer = layer;
+	}
 
 	protected Drawable(VUI vui, double dx, double dy, double width, double height) {
 		this.vui = vui;

@@ -69,7 +69,8 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 		this.amas._addAgent(this);
 		neighborhood = new ArrayList<>();
 		neighborhood.add(this);
-		onInitialize();
+		onInitialization();
+		onRenderingInitialization();
 	}
 
 	/**
@@ -154,10 +155,17 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	}
 
 	/**
-	 * This method is essentially intended for debugging purpose. For example, it is
-	 * a good place to display the criticality of the agent.
+	 * This method should be used to update the representation of the agent for example in a VUI
 	 */
-	protected void onDraw() {
+	protected void onUpdateRender() {
+
+	}
+	
+	/**
+	 * This method is now deprecated and should be replaced by onUpdateRender
+	 */
+	@Deprecated
+	protected final void onDraw() {
 
 	}
 
@@ -180,7 +188,20 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	/**
 	 * Called before all agents are created
 	 */
-	protected void onInitialize() {
+	protected void onInitialization() {
+
+	}
+	/**
+	 * Replaced by onInitialization
+	 */
+	@Deprecated
+	protected final void onInitialize() {
+		
+	}
+	/**
+	 * Called to initialize the rendering of the agent
+	 */
+	protected void onRenderingInitialization() {
 
 	}
 
@@ -257,7 +278,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 		decideAndAct();
 		executionOrder = computeExecutionOrder();
 		onExpose();
-		onDraw();
+		onUpdateRender();
 		onAgentCycleEnd();
 		currentPhase = Phase.DECISION_AND_ACTION_DONE;
 	}

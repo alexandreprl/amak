@@ -11,9 +11,12 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -22,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
+import fr.irit.smac.amak.tools.Log;
 import fr.irit.smac.amak.ui.drawables.Drawable;
 import fr.irit.smac.amak.ui.drawables.DrawablePoint;
 import fr.irit.smac.amak.ui.drawables.DrawableRectangle;
@@ -31,10 +35,10 @@ public class VUI {
 
 
 	private List<Drawable> drawables = new ArrayList<>();
+	private ReentrantLock drawablesLock = new ReentrantLock();
 
 	private String title;
 	private static Map<String, VUI> instances = new HashMap<>();
-	private double worldCenterX = 0, worldCenterY = 0;
 
 	private double worldOffsetX;
 
@@ -44,11 +48,15 @@ public class VUI {
 
 	protected Integer lastDragY;
 
-	protected double zoom = 100;
 
 	private JPanel panel, canvas;
 
 	private JLabel statusLabel;
+	private double defaultZoom = 100;
+	private double defaultWorldCenterX = 0;
+	private double defaultWorldCenterY = 0;
+	protected double zoom = defaultZoom;
+	private double worldCenterX = defaultWorldCenterX, worldCenterY = defaultWorldCenterY;
 
 	public static VUI get() {
 		return get("Default");
@@ -76,9 +84,9 @@ public class VUI {
 		statusPanel.add(statusLabel);
 		JButton resetButton = new JButton("Reset");
 		resetButton.addActionListener(l->{
-			zoom = 100;
-			worldCenterX = 0;
-			worldCenterY = 0;
+			zoom = defaultZoom;
+			worldCenterX = defaultWorldCenterX;
+			worldCenterY = defaultWorldCenterY;
 			updateCanvas();
 		});
 		statusPanel.add(resetButton);
@@ -88,6 +96,7 @@ public class VUI {
 			@Override
 			protected void paintComponent(Graphics g) {
 
+				
 				final Graphics2D g2 = (Graphics2D) g;
 				
 				final int w = getSize().width;
@@ -98,10 +107,18 @@ public class VUI {
 
 				g.setColor(new Color(0.96f, 0.96f, 0.96f));
 				g.fillRect(0, 0, w, h);
+				drawablesLock.lock();
+				Collections.sort(drawables, new Comparator<Drawable>() {
 
+					@Override
+					public int compare(Drawable o1, Drawable o2) {
+						return o1.getLayer()-o2.getLayer();
+					}
+				});
 				for (Drawable d : drawables) {
 					d.onDraw(g2);
 				}
+				drawablesLock.unlock();
 			}
 		};
 		canvas.addMouseListener(new MouseListener() {
@@ -158,8 +175,8 @@ public class VUI {
 				double wdy = screenToWorldDistance((int) (canvas.getSize().getHeight()/2 -e.getY()));
 				
 				zoom += e.getWheelRotation()*10;
-				if (zoom<1)
-					zoom=1;
+				if (zoom<10)
+					zoom=10;
 
 				double wdx2 = screenToWorldDistance((int) (canvas.getSize().getWidth()/2 -e.getX()));
 				double wdy2 = screenToWorldDistance((int) (canvas.getSize().getHeight()/2 -e.getY()));
@@ -218,7 +235,9 @@ public class VUI {
 
 	public void add(Drawable d) {
 		d.setPanel(this);
+		drawablesLock.lock();
 		drawables.add(d);
+		drawablesLock.unlock();
 		updateCanvas();
 	}
 	public void updateCanvas() {
@@ -253,5 +272,12 @@ public class VUI {
 		add(d);
 		return d;
 	}
-
+	public void setDefaultView(double zoom, double worldCenterX, double worldCenterY) {
+		this.zoom = zoom;
+		this.worldCenterX = worldCenterX;
+		this.worldCenterY = worldCenterY;
+		this.defaultZoom = zoom;
+		this.defaultWorldCenterX = worldCenterX;
+		this.defaultWorldCenterY = worldCenterY;
+	}
 }
