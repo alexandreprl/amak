@@ -24,6 +24,6 @@ public class AntHillExample extends Amas<WorldExample> {
 	}
 	@Override
 	protected void onSystemCycleEnd() {
-		FileHandler.writeCSVLine("test",cycle+"", agents.size()+"");
+
 	}
 }
