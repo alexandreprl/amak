@@ -6,6 +6,25 @@ Examples are available in the package fr.irit.smac.amak.examples.
 
 # Recent changes #
 
+
+## 1.4 (05/15/2018) ##
+
+A new visualization system called VUI has been added. 
+VUI features:
+- Zoom
+- Move view
+- Optimized rendering
+
+Example:
+```
+//Initialization
+drawablePoint = VUI.get().createPoint(dx, dy);
+drawablePoint.setStrokeOnly();
+
+//At runtime
+drawablePoint.move(newX, newY);
+```
+
 ## 1.3 (04/10/2018) ##
 
 Now you can tell agents to execute in two phases. During the first phase, every agent perceives. Then, once they have all perceived, they decide and act. And finally, they wait for each other before starting the next cycle. By default, the execution policy is ONE_PHASE. 
