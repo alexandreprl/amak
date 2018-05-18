@@ -32,7 +32,7 @@ public class DrawableImage extends Drawable {
 		return loadedImages.get(filename);
 	}
 
-	private void setFilename(String filename) {
+	public void setFilename(String filename) {
 		this.filename = filename;
 		try {
 			this.image = loadByFilename(this.filename);
@@ -55,10 +55,12 @@ public class DrawableImage extends Drawable {
 		AffineTransform trans = new AffineTransform();
 		trans.setTransform(identity);
 		trans.translate(left(), top());
+		trans.rotate(getAngle(), getRenderedWidth() / 2, getRenderedHeight() / 2);
 		if (!isFixed())
 			trans.scale(vui.getZoomFactor(), vui.getZoomFactor());
-		trans.rotate(getAngle(), getWidth() / 2, getHeight() / 2);
 		graphics.drawImage(image, trans, null);
+		
 	}
+
 
 }

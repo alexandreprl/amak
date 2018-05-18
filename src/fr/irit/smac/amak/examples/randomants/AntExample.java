@@ -8,11 +8,11 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 	/**
 	 * X coordinate of the ant in the world
 	 */
-	public double dx = 0;
+	public double dx;
 	/**
 	 * Y coordinate of the ant in the world
 	 */
-	public double dy = 0;
+	public double dy;
 	/**
 	 * Angle in radians
 	 */
@@ -25,15 +25,15 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 	 * @param amas
 	 *            the amas the ant belongs to
 	 */
-	public AntExample(AntHillExample amas) {
-		super(amas);
+	public AntExample(AntHillExample amas, double startX, double startY) {
+		super(amas, startX, startY);
+	}
+	@Override
+	protected void onInitialization() {
+		dx = (double) params[0];
+		dy = (double) params[1];
 	}
 
-	@Override
-	protected void onReady() {
-		dx = 0;
-		dy = 0;
-	}
 	@Override
 	protected void onRenderingInitialization() {
 		image = VUI.get().createImage(dx, dy, "Resources/ant.png");
@@ -43,20 +43,30 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 	 * Move in a random direction
 	 */
 	@Override
-	protected void onAct() {
+	protected void onDecideAndAct() {
 		double random = amas.getEnvironment().getRandom().nextGaussian();
 		angle += random * 0.1;
 		dx += Math.cos(angle);
 		dy += Math.sin(angle);
-		while (dx >= getAmas().getEnvironment().getWidth()/2)
+		while (dx >= getAmas().getEnvironment().getWidth() / 2)
 			dx -= getAmas().getEnvironment().getWidth();
-		while (dy >= getAmas().getEnvironment().getHeight()/2)
+		while (dy >= getAmas().getEnvironment().getHeight() / 2)
 			dy -= getAmas().getEnvironment().getHeight();
-		while (dx < -getAmas().getEnvironment().getWidth()/2)
+		while (dx < -getAmas().getEnvironment().getWidth() / 2)
 			dx += getAmas().getEnvironment().getWidth();
-		while (dy < -getAmas().getEnvironment().getHeight()/2)
+		while (dy < -getAmas().getEnvironment().getHeight() / 2)
 			dy += getAmas().getEnvironment().getHeight();
+
+		if (amas.getEnvironment().getRandom().nextDouble() < 0.001) {
+			image.setFilename("Resources/ant_dead.png");
+			destroy();
+		}
+
+		if (amas.getEnvironment().getRandom().nextDouble() < 0.001) {
+			AntExample a = new AntExample(getAmas(), dx, dy);
+		}
 	}
+
 	@Override
 	protected void onUpdateRender() {
 		image.move(dx, dy);

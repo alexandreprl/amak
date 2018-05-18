@@ -129,7 +129,7 @@
 </dd>
 <dt><a href="fr/irit/smac/amak/examples/randomants/AntExample.html" title="class in fr.irit.smac.amak.examples.randomants"><span class="typeNameLink">AntExample</span></a> - Class in <a href="fr/irit/smac/amak/examples/randomants/package-summary.html">fr.irit.smac.amak.examples.randomants</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntExample.html#AntExample-fr.irit.smac.amak.examples.randomants.AntHillExample-">AntExample(AntHillExample)</a></span> - Constructor for class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntExample</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntExample.html#AntExample-fr.irit.smac.amak.examples.randomants.AntHillExample-double-double-">AntExample(AntHillExample, double, double)</a></span> - Constructor for class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntExample</a></dt>
 <dd>
 <div class="block">Constructor of the ant</div>
 </dd>
@@ -430,8 +430,6 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/WorldExample.html#getHeight--">getHeight()</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/WorldExample.html" title="class in fr.irit.smac.amak.examples.randomants">WorldExample</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/drawables/Drawable.html#getHeight--">getHeight()</a></span> - Method in class fr.irit.smac.amak.ui.drawables.<a href="fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#getHeight--">getHeight()</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#getId--">getId()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
@@ -452,6 +450,10 @@
 <dd>
 <div class="block">Getter for the random object</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/drawables/Drawable.html#getRenderedHeight--">getRenderedHeight()</a></span> - Method in class fr.irit.smac.amak.ui.drawables.<a href="fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/drawables/Drawable.html#getRenderedWidth--">getRenderedWidth()</a></span> - Method in class fr.irit.smac.amak.ui.drawables.<a href="fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#getScheduler--">getScheduler()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
 <div class="block">Getter for the scheduler</div>
@@ -471,8 +473,6 @@
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/SchedulerToolbar.html#getSlider--">getSlider()</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/SchedulerToolbar.html" title="class in fr.irit.smac.amak.ui">SchedulerToolbar</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/WorldExample.html#getWidth--">getWidth()</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/WorldExample.html" title="class in fr.irit.smac.amak.examples.randomants">WorldExample</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/drawables/Drawable.html#getWidth--">getWidth()</a></span> - Method in class fr.irit.smac.amak.ui.drawables.<a href="fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#getWidth--">getWidth()</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
 <dd>&nbsp;</dd>
@@ -615,10 +615,6 @@
 <div class="block">This method corresponds to the action phase of the agents and must be
  overridden</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntExample.html#onAct--">onAct()</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntExample</a></dt>
-<dd>
-<div class="block">Move in a random direction</div>
-</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ScalibilityTest.MyAgent.html#onAct--">onAct()</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ScalibilityTest.MyAgent.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyAgent</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ThreadTest.MyAgent.html#onAct--">onAct()</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ThreadTest.MyAgent.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAgent</a></dt>
@@ -652,6 +648,10 @@
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html#onDecideAndAct--">onDecideAndAct()</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosopherExample</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntExample.html#onDecideAndAct--">onDecideAndAct()</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntExample</a></dt>
+<dd>
+<div class="block">Move in a random direction</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#onDraw--">onDraw()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span>
@@ -723,6 +723,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/TableExample.html#onInitialization--">onInitialization()</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/TableExample.html" title="class in fr.irit.smac.amak.examples.philosophers">TableExample</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntExample.html#onInitialization--">onInitialization()</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntExample</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/WorldExample.html#onInitialization--">onInitialization()</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/WorldExample.html" title="class in fr.irit.smac.amak.examples.randomants">WorldExample</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
@@ -754,8 +756,6 @@
 <dd>
 <div class="block">This method is called when all agents are ready</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntExample.html#onReady--">onReady()</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntExample</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#onRenderingInitialization--">onRenderingInitialization()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
 <div class="block">Called to initialize the rendering of the agent</div>
@@ -765,6 +765,8 @@
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html#onRenderingInitialization--">onRenderingInitialization()</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosopherExample</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntExample.html#onRenderingInitialization--">onRenderingInitialization()</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntExample</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntHillExample.html#onRenderingInitialization--">onRenderingInitialization()</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#onSchedulingStarts--">onSchedulingStarts()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
@@ -968,6 +970,8 @@
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/drawables/Drawable.html#setColor-java.awt.Color-">setColor(Color)</a></span> - Method in class fr.irit.smac.amak.ui.drawables.<a href="fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/VUI.html#setDefaultView-double-double-double-">setDefaultView(double, double, double)</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/drawables/DrawableImage.html#setFilename-java.lang.String-">setFilename(String)</a></span> - Method in class fr.irit.smac.amak.ui.drawables.<a href="fr/irit/smac/amak/ui/drawables/DrawableImage.html" title="class in fr.irit.smac.amak.ui.drawables">DrawableImage</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/Entity.html#setFirstname-java.lang.String-">setFirstname(String)</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/Entity.html" title="class in fr.irit.smac.amak.tests">Entity</a></dt>
 <dd>&nbsp;</dd>

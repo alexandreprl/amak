@@ -13,9 +13,9 @@ public class DrawableRectangle extends Drawable {
 	public void onDraw(Graphics2D graphics) {
 		graphics.setColor(color);
 		if (strokeMode)
-			graphics.drawRect((int)left(), (int)top(), (int)getWidth(), (int)getHeight());
+			graphics.drawRect((int)left(), (int)top(), (int)getRenderedWidth(), (int)getRenderedHeight());
 		else
-			graphics.fillRect((int)left(), (int)top(), (int)getWidth(), (int)getHeight());
+			graphics.fillRect((int)left(), (int)top(), (int)getRenderedWidth(), (int)getRenderedHeight());
 	}
 
 }

@@ -12,7 +12,7 @@ public abstract class Drawable {
 
 	private double width;
 
-	public double getWidth() {
+	public double getRenderedWidth() {
 		if (isFixed())
 			return width;
 		else
@@ -21,9 +21,10 @@ public abstract class Drawable {
 
 	public void setWidth(double width) {
 		this.width = width;
+		update();
 	}
 
-	public double getHeight() {
+	public double getRenderedHeight() {
 		if (isFixed())
 			return height;
 		else
@@ -32,6 +33,7 @@ public abstract class Drawable {
 
 	public void setHeight(double height) {
 		this.height = height;
+		update();
 	}
 
 	protected double height;
@@ -63,11 +65,13 @@ public abstract class Drawable {
 
 	public Drawable setLayer(int layer) {
 		this.layer = layer;
+		update();
 		return this;
 	}
 
 	public Drawable setAngle(double angle2) {
 		this.angle = angle2;
+		update();
 		return this;
 	}
 
@@ -82,7 +86,8 @@ public abstract class Drawable {
 	public abstract void onDraw(Graphics2D graphics);
 
 	public void update() {
-		panel.updateCanvas();
+		if (panel != null)
+			panel.updateCanvas();
 	}
 
 	public void setPanel(VUI vectorialUI) {
@@ -91,9 +96,9 @@ public abstract class Drawable {
 
 	public double top() {
 		if (isFixed())
-			return  y - height / 2;
+			return y - height / 2;
 		else
-			return vui.worldToScreenY( y - height / 2);
+			return vui.worldToScreenY(y - height / 2);
 	}
 
 	public double left() {
@@ -105,6 +110,7 @@ public abstract class Drawable {
 
 	public Drawable setStrokeOnly() {
 		strokeMode = true;
+		update();
 		return this;
 	}
 
@@ -127,6 +133,7 @@ public abstract class Drawable {
 
 	public Drawable setFixed() {
 		this.fixed = true;
+		update();
 		return this;
 	}
 
