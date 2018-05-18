@@ -1,5 +1,5 @@
 package fr.irit.smac.amak;
 
 public class Information {
-	public final static String version = "1.4.1";
+	public final static String version = "1.4.2";
 }
