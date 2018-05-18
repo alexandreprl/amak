@@ -5,6 +5,7 @@ import java.util.Random;
 
 import fr.irit.smac.amak.Agent;
 import fr.irit.smac.amak.ui.VUI;
+import fr.irit.smac.amak.ui.drawables.Drawable;
 import fr.irit.smac.amak.ui.drawables.DrawableRectangle;
 import fr.irit.smac.lxplot.LxPlot;
 import fr.irit.smac.lxplot.commons.ChartType;
@@ -23,6 +24,8 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 
 	private State state = State.THINK;
 	private DrawableRectangle drawableRectangle;
+	private Drawable drawableLeftFork;
+	private Drawable drawableRightFork;
 
 	public PhilosopherExample(int id, PhilosophersAMASExample amas, ForkExample left, ForkExample right) {
 		super(amas, id, left, right);
@@ -38,9 +41,11 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 	@Override
 	protected void onRenderingInitialization() {
 
-		drawableRectangle = VUI.get().createRectangle(
-				100 * Math.cos(2 * Math.PI * id / this.amas.getEnvironment().getForks().length),
-				100 * Math.sin(2 * Math.PI * id / this.amas.getEnvironment().getForks().length), 20, 20);
+		double x = 100 * Math.cos(2 * Math.PI * id / this.amas.getEnvironment().getForks().length);
+		double y = 100 * Math.sin(2 * Math.PI * id / this.amas.getEnvironment().getForks().length);
+		drawableRectangle = VUI.get().createRectangle(x, y, 20, 20);
+		drawableLeftFork = VUI.get().createRectangle(x - 10, y, 5, 20).setColor(Color.black).setStrokeOnly().hide();
+		drawableRightFork = VUI.get().createRectangle(x + 10, y, 5, 20).setColor(Color.black).setStrokeOnly().hide();
 
 	}
 
@@ -65,12 +70,11 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 		case HUNGRY:
 			hungerDuration++;
 			if (getMostCriticalNeighbor(true) == this) {
-				if (left.tryTake(this) && right.tryTake(this))
+				left.tryTake(this);
+				right.tryTake(this);
+				if (left.owned(this) && right.owned(this))
 					nextState = State.EATING;
-				else {
-					left.release(this);
-					right.release(this);
-				}
+
 			} else {
 				left.release(this);
 				right.release(this);
@@ -86,30 +90,41 @@ public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExam
 			break;
 
 		}
-		if (state != nextState) {
-			switch (nextState) {
-			case EATING:
-				drawableRectangle.setColor(Color.BLUE);
-				break;
-			case HUNGRY:
-				drawableRectangle.setColor(Color.RED);
-				break;
-			case THINK:
-				drawableRectangle.setColor(Color.GREEN);
-				break;
 
-			}
-		}
 		state = nextState;
 	}
 
 	@Override
 	protected double computeCriticality() {
-		return hungerDuration;
+		if (state == State.HUNGRY)
+			return hungerDuration;
+		return -1;
 	}
 
 	@Override
 	protected void onUpdateRender() {
 		LxPlot.getChart("Eaten Pastas", ChartType.BAR).add(id, eatenPastas);
+		switch (state) {
+		case EATING:
+			drawableRectangle.setColor(Color.BLUE);
+			break;
+		case HUNGRY:
+			drawableRectangle.setColor(Color.RED);
+			break;
+		case THINK:
+			drawableRectangle.setColor(Color.GREEN);
+			break;
+
+		}
+		if (left.owned(this)) {
+			drawableLeftFork.show();
+		} else {
+			drawableLeftFork.hide();
+		}
+		if (right.owned(this)) {
+			drawableRightFork.show();
+		} else {
+			drawableRightFork.hide();
+		}
 	}
 }

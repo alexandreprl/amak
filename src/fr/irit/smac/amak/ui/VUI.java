@@ -25,14 +25,13 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
-import fr.irit.smac.amak.tools.Log;
 import fr.irit.smac.amak.ui.drawables.Drawable;
+import fr.irit.smac.amak.ui.drawables.DrawableImage;
 import fr.irit.smac.amak.ui.drawables.DrawablePoint;
 import fr.irit.smac.amak.ui.drawables.DrawableRectangle;
+import fr.irit.smac.amak.ui.drawables.DrawableString;
 
 public class VUI {
-
-
 
 	private List<Drawable> drawables = new ArrayList<>();
 	private ReentrantLock drawablesLock = new ReentrantLock();
@@ -47,7 +46,6 @@ public class VUI {
 	protected Integer lastDragX;
 
 	protected Integer lastDragY;
-
 
 	private JPanel panel, canvas;
 
@@ -75,7 +73,7 @@ public class VUI {
 		this.title = _title;
 		onInitialConfiguration();
 		panel = new JPanel(new BorderLayout());
-		
+
 		JPanel statusPanel = new JPanel();
 		statusPanel.setBorder(new BevelBorder(BevelBorder.LOWERED));
 		statusPanel.setLayout(new BoxLayout(statusPanel, BoxLayout.X_AXIS));
@@ -83,27 +81,31 @@ public class VUI {
 		statusLabel.setHorizontalAlignment(SwingConstants.LEFT);
 		statusPanel.add(statusLabel);
 		JButton resetButton = new JButton("Reset");
-		resetButton.addActionListener(l->{
+		resetButton.addActionListener(l -> {
 			zoom = defaultZoom;
 			worldCenterX = defaultWorldCenterX;
 			worldCenterY = defaultWorldCenterY;
 			updateCanvas();
 		});
 		statusPanel.add(resetButton);
-		
+
 		canvas = new JPanel() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
 
 			@Override
 			protected void paintComponent(Graphics g) {
 
-				
 				final Graphics2D g2 = (Graphics2D) g;
-				
+
 				final int w = getSize().width;
 				final int h = getSize().height;
 
 				setWorldOffsetX(worldCenterX + screenToWorldDistance(w / 2));
-				setWorldOffsetY(worldCenterY  + screenToWorldDistance(h / 2));
+				setWorldOffsetY(worldCenterY + screenToWorldDistance(h / 2));
 
 				g.setColor(new Color(0.96f, 0.96f, 0.96f));
 				g.fillRect(0, 0, w, h);
@@ -112,11 +114,12 @@ public class VUI {
 
 					@Override
 					public int compare(Drawable o1, Drawable o2) {
-						return o1.getLayer()-o2.getLayer();
+						return o1.getLayer() - o2.getLayer();
 					}
 				});
 				for (Drawable d : drawables) {
-					d.onDraw(g2);
+					if (d.isVisible())
+						d.onDraw(g2);
 				}
 				drawablesLock.unlock();
 			}
@@ -158,7 +161,7 @@ public class VUI {
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				
+
 				worldCenterX += screenToWorldDistance(e.getX() - lastDragX);
 				worldCenterY += screenToWorldDistance(e.getY() - lastDragY);
 				lastDragX = e.getX();
@@ -171,18 +174,18 @@ public class VUI {
 
 			@Override
 			public void mouseWheelMoved(MouseWheelEvent e) {
-				double wdx = screenToWorldDistance((int) (canvas.getSize().getWidth()/2 -e.getX()));
-				double wdy = screenToWorldDistance((int) (canvas.getSize().getHeight()/2 -e.getY()));
-				
-				zoom += e.getWheelRotation()*10;
-				if (zoom<10)
-					zoom=10;
+				double wdx = screenToWorldDistance((int) (canvas.getSize().getWidth() / 2 - e.getX()));
+				double wdy = screenToWorldDistance((int) (canvas.getSize().getHeight() / 2 - e.getY()));
 
-				double wdx2 = screenToWorldDistance((int) (canvas.getSize().getWidth()/2 -e.getX()));
-				double wdy2 = screenToWorldDistance((int) (canvas.getSize().getHeight()/2 -e.getY()));
+				zoom += e.getWheelRotation() * 10;
+				if (zoom < 10)
+					zoom = 10;
 
-				worldCenterX -= wdx2-wdx;
-				worldCenterY -= wdy2-wdy;
+				double wdx2 = screenToWorldDistance((int) (canvas.getSize().getWidth() / 2 - e.getX()));
+				double wdy2 = screenToWorldDistance((int) (canvas.getSize().getHeight() / 2 - e.getY()));
+
+				worldCenterX -= wdx2 - wdx;
+				worldCenterY -= wdy2 - wdy;
 				updateCanvas();
 			}
 		});
@@ -206,31 +209,32 @@ public class VUI {
 
 	}
 
-
 	public int worldToScreenDistance(double d) {
-		return (int) (d*getZoomFactor());
+		return (int) (d * getZoomFactor());
 	}
+
 	public double screenToWorldDistance(int d) {
-		return  ((double)d/getZoomFactor());
+		return ((double) d / getZoomFactor());
 	}
 
 	public int worldToScreenX(double x) {
-		return (int) ((x+getWorldOffsetX())*getZoomFactor());
+		return (int) ((x + getWorldOffsetX()) * getZoomFactor());
 	}
 
-	private double getZoomFactor() {
-		return zoom/100;
+	public double getZoomFactor() {
+		return zoom / 100;
 	}
 
 	public int worldToScreenY(double y) {
-		return (int) ((y+getWorldOffsetY())*getZoomFactor());
+		return (int) ((y + getWorldOffsetY()) * getZoomFactor());
 	}
+
 	public double screenToWorldX(double x) {
-		return  (x)/getZoomFactor() - getWorldOffsetX();
+		return (x) / getZoomFactor() - getWorldOffsetX();
 	}
 
 	public double screenToWorldY(double y) {
-		return  (y)/getZoomFactor() - getWorldOffsetY();
+		return (y) / getZoomFactor() - getWorldOffsetY();
 	}
 
 	public void add(Drawable d) {
@@ -240,11 +244,13 @@ public class VUI {
 		drawablesLock.unlock();
 		updateCanvas();
 	}
+
 	public void updateCanvas() {
 		canvas.repaint();
-		
+
 		statusLabel.setText(String.format("Zoom: %.2f Center: (%.2f,%.2f)", zoom, worldCenterX, worldCenterY));
 	}
+
 	public double getWorldOffsetX() {
 		return worldOffsetX;
 	}
@@ -272,6 +278,7 @@ public class VUI {
 		add(d);
 		return d;
 	}
+
 	public void setDefaultView(double zoom, double worldCenterX, double worldCenterY) {
 		this.zoom = zoom;
 		this.worldCenterX = worldCenterX;
@@ -279,5 +286,17 @@ public class VUI {
 		this.defaultZoom = zoom;
 		this.defaultWorldCenterX = worldCenterX;
 		this.defaultWorldCenterY = worldCenterY;
+	}
+
+	public DrawableImage createImage(double dx, double dy, String filename) {
+		DrawableImage image = new DrawableImage(this, dx, dy, filename);
+		add(image);
+		return image;
+	}
+
+	public DrawableString createString(int dx, int dy, String text) {
+		DrawableString ds = new DrawableString(this, dx, dy, text);
+		add(ds);
+		return ds;
 	}
 }

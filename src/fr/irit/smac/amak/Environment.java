@@ -1,8 +1,6 @@
 package fr.irit.smac.amak;
 
 import java.util.Random;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 import fr.irit.smac.amak.ui.MainWindow;
 import fr.irit.smac.amak.ui.SchedulerToolbar;
@@ -40,10 +38,6 @@ public abstract class Environment implements Schedulable {
 	 *            The parameters to initialize the environment
 	 */
 	public Environment(Scheduling _scheduling, Object... params) {
-		this.params = params;
-		onInitialization();
-		onInitialEntitiesCreation();
-		onRenderingInitialization();
 		if (_scheduling == Scheduling.DEFAULT) {
 			this.scheduler = Scheduler.getDefaultScheduler();
 			this.scheduler.add(this);
@@ -52,11 +46,19 @@ public abstract class Environment implements Schedulable {
 			if (_scheduling == Scheduling.UI)
 				MainWindow.addToolbar(new SchedulerToolbar("Environment #" + id, getScheduler()));
 		}
+		this.scheduler.lock();
+		this.params = params;
+		onInitialization();
+		onInitialEntitiesCreation();
+		onRenderingInitialization();
+		this.scheduler.unlock();
 	}
 
+	/**
+	 * Override this method is you wish to render environment. For example, you can
+	 * use this method to create a VUI drawable object.
+	 */
 	private void onRenderingInitialization() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	/**
@@ -109,7 +111,10 @@ public abstract class Environment implements Schedulable {
 		onUpdateRender();
 	}
 
-	protected void onUpdateRender() {		
+	/**
+	 * Override this method to update rendering related to the environment
+	 */
+	protected void onUpdateRender() {
 	}
 
 	/**

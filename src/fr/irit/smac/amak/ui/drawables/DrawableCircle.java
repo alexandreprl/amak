@@ -13,9 +13,9 @@ public class DrawableCircle extends Drawable {
 	public void onDraw(Graphics2D graphics) {
 		graphics.setColor(color);
 		if (strokeMode)
-			graphics.drawOval(vui.worldToScreenX(left()), vui.worldToScreenY(top()), (int) width, (int) height);
+			graphics.drawOval((int)left(), (int)top(), (int) getWidth(), (int) getHeight());
 		else
-			graphics.fillOval(vui.worldToScreenX(left()), vui.worldToScreenY(top()), (int) width, (int) height);
+			graphics.fillOval((int)left(), (int)top(), (int) getWidth(), (int) getHeight());
 	}
 
 

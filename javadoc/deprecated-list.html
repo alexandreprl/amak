@@ -72,6 +72,7 @@
 <h2 title="Contents">Contents</h2>
 <ul>
 <li><a href="#method">Deprecated Methods</a></li>
+<li><a href="#constructor">Deprecated Constructors</a></li>
 </ul>
 </div>
 <div class="contentContainer"><a name="method">
@@ -86,16 +87,54 @@
 </tr>
 <tbody>
 <tr class="altColor">
-<td class="colOne"><a href="fr/irit/smac/amak/Agent.html#onDraw--">fr.irit.smac.amak.Agent.onDraw()</a></td>
+<td class="colOne"><a href="fr/irit/smac/amak/Agent.html#onDraw--">fr.irit.smac.amak.Agent.onDraw()</a>
+<div class="block"><span class="deprecationComment">Must be replaced by <a href="fr/irit/smac/amak/Agent.html#onUpdateRender--"><code>Agent.onUpdateRender()</code></a></span></div>
+</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><a href="fr/irit/smac/amak/Agent.html#onInitialize--">fr.irit.smac.amak.Agent.onInitialize()</a></td>
+<td class="colOne"><a href="fr/irit/smac/amak/Agent.html#onInitialize--">fr.irit.smac.amak.Agent.onInitialize()</a>
+<div class="block"><span class="deprecationComment">Must be replaced by <a href="fr/irit/smac/amak/Agent.html#onInitialization--"><code>Agent.onInitialization()</code></a></span></div>
+</td>
 </tr>
 <tr class="altColor">
-<td class="colOne"><a href="fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">fr.irit.smac.amak.Agent.onSystemCycleBegin()</a></td>
+<td class="colOne"><a href="fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">fr.irit.smac.amak.Agent.onSystemCycleBegin()</a>
+<div class="block"><span class="deprecationComment">This method is useless because the state of the agent is not
+             supposed to evolve before or after its cycle. Use
+             OnAgentCycleBegin/End instead.
+ 
+             This method is final because it must not be implemented.
+             Implement it will have no effect.</span></div>
+</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><a href="fr/irit/smac/amak/Agent.html#onSystemCycleEnd--">fr.irit.smac.amak.Agent.onSystemCycleEnd()</a></td>
+<td class="colOne"><a href="fr/irit/smac/amak/Agent.html#onSystemCycleEnd--">fr.irit.smac.amak.Agent.onSystemCycleEnd()</a>
+<div class="block"><span class="deprecationComment">This method is useless because the state of the agent is not
+             supposed to evolve before or after its cycle. Use
+             OnAgentCycleBegin/End instead.
+ 
+             This method is final because it must not be implemented.
+             Implement it will have no effect.</span></div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+<a name="constructor">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<table class="deprecatedSummary" border="0" cellpadding="3" cellspacing="0" summary="Deprecated Constructors table, listing deprecated constructors, and an explanation">
+<caption><span>Deprecated Constructors</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colOne" scope="col">Constructor and Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colOne"><a href="fr/irit/smac/amak/ui/DrawableUI.html#DrawableUI-fr.irit.smac.amak.Scheduling-T-java.lang.Object...-">fr.irit.smac.amak.ui.DrawableUI(Scheduling, T, Object...)</a>
+<div class="block"><span class="deprecationComment">Should be replaced by VUI</span></div>
+</td>
 </tr>
 </tbody>
 </table>

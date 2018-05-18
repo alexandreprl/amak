@@ -9,7 +9,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.ThreadPoolExecutor;
 
-import fr.irit.smac.amak.tools.Log;
 import fr.irit.smac.amak.ui.MainWindow;
 import fr.irit.smac.amak.ui.SchedulerToolbar;
 
@@ -107,14 +106,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 *            The params to initialize the amas
 	 */
 	public Amas(E environment, Scheduling scheduling, Object... params) {
-		this.params = params;
-		this.environment = environment;
-		this.onInitialConfiguration();
-		this.onInitialAgentsCreation();
 
-		addPendingAgents();
-		this.onReady();
-		this.onRenderingInitialization();
 		if (scheduling == Scheduling.DEFAULT) {
 			this.scheduler = Scheduler.getDefaultScheduler();
 			this.scheduler.add(this);
@@ -123,6 +115,16 @@ public class Amas<E extends Environment> implements Schedulable {
 			if (scheduling == Scheduling.UI)
 				MainWindow.addToolbar(new SchedulerToolbar("Amas #" + id, getScheduler()));
 		}
+		this.scheduler.lock();
+		this.params = params;
+		this.environment = environment;
+		this.onInitialConfiguration();
+		this.onInitialAgentsCreation();
+
+		addPendingAgents();
+		this.onReady();
+		this.onRenderingInitialization();
+		this.scheduler.unlock();
 	}
 
 	protected void onRenderingInitialization() {

@@ -155,14 +155,17 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	}
 
 	/**
-	 * This method should be used to update the representation of the agent for example in a VUI
+	 * This method should be used to update the representation of the agent for
+	 * example in a VUI
 	 */
 	protected void onUpdateRender() {
 
 	}
-	
+
 	/**
 	 * This method is now deprecated and should be replaced by onUpdateRender
+	 * 
+	 * @deprecated Must be replaced by {@link #onUpdateRender()}
 	 */
 	@Deprecated
 	protected final void onDraw() {
@@ -191,13 +194,17 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	protected void onInitialization() {
 
 	}
+
 	/**
 	 * Replaced by onInitialization
+	 * 
+	 * @deprecated Must be replaced by {@link #onInitialization()}
 	 */
 	@Deprecated
 	protected final void onInitialize() {
-		
+
 	}
+
 	/**
 	 * Called to initialize the rendering of the agent
 	 */
@@ -206,11 +213,12 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	}
 
 	/**
-	 * This method is useless because the state of the agent is not supposed to
-	 * evolve before or after its cycle. Use OnAgentCycleBegin/End instead.
+	 * @deprecated This method is useless because the state of the agent is not
+	 *             supposed to evolve before or after its cycle. Use
+	 *             OnAgentCycleBegin/End instead.
 	 * 
-	 * This method is final because it must not be implemented. Implement it will
-	 * have no effect.
+	 *             This method is final because it must not be implemented.
+	 *             Implement it will have no effect.
 	 */
 	@Deprecated
 	protected final void onSystemCycleBegin() {
@@ -218,11 +226,12 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	}
 
 	/**
-	 * This method is useless because the state of the agent is not supposed to
-	 * evolve before or after its cycle. Use OnAgentCycleBegin/End instead.
+	 * @deprecated This method is useless because the state of the agent is not
+	 *             supposed to evolve before or after its cycle. Use
+	 *             OnAgentCycleBegin/End instead.
 	 * 
-	 * This method is final because it must not be implemented. Implement it will
-	 * have no effect.
+	 *             This method is final because it must not be implemented.
+	 *             Implement it will have no effect.
 	 */
 	@Deprecated
 	protected final void onSystemCycleEnd() {

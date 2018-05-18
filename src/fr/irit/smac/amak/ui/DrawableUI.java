@@ -8,13 +8,10 @@ import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ThreadPoolExecutor;
 
 import javax.swing.JPanel;
 
 import fr.irit.smac.amak.Amas;
-import fr.irit.smac.amak.Configuration;
 import fr.irit.smac.amak.Environment;
 import fr.irit.smac.amak.Schedulable;
 import fr.irit.smac.amak.Scheduler;
@@ -79,8 +76,10 @@ public abstract class DrawableUI<T extends Amas<? extends Environment>> implemen
 	 *            The amas linked to the drawable UI
 	 * @param params
 	 *            the parameters that should be passed to the drawable UI
+	 *            
+	 * @deprecated Should be replaced by VUI
 	 */
-	public DrawableUI(Scheduling _scheduling, T amas, Object... params) {
+	@Deprecated  public DrawableUI(Scheduling _scheduling, T amas, Object... params) {
 		this.amas = amas;
 		this.params = params;
 

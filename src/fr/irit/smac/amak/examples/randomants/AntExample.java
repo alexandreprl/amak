@@ -2,7 +2,7 @@ package fr.irit.smac.amak.examples.randomants;
 
 import fr.irit.smac.amak.Agent;
 import fr.irit.smac.amak.ui.VUI;
-import fr.irit.smac.amak.ui.drawables.DrawablePoint;
+import fr.irit.smac.amak.ui.drawables.DrawableImage;
 
 public class AntExample extends Agent<AntHillExample, WorldExample> {
 	/**
@@ -17,7 +17,7 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 	 * Angle in radians
 	 */
 	private double angle = Math.random() * Math.PI * 2;
-	private DrawablePoint drawablePoint;
+	private DrawableImage image;
 
 	/**
 	 * Constructor of the ant
@@ -36,8 +36,7 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 	}
 	@Override
 	protected void onRenderingInitialization() {
-		drawablePoint = VUI.get().createPoint(dx, dy);
-		drawablePoint.setStrokeOnly();
+		image = VUI.get().createImage(dx, dy, "Resources/ant.png");
 	}
 
 	/**
@@ -60,6 +59,7 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 	}
 	@Override
 	protected void onUpdateRender() {
-		drawablePoint.move(dx, dy);
+		image.move(dx, dy);
+		image.setAngle(angle);
 	}
 }

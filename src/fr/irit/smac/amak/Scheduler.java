@@ -21,6 +21,7 @@ public class Scheduler implements Runnable {
 	private final ReentrantLock stateLock = new ReentrantLock();
 	private Consumer<Scheduler> onStop;
 	private Consumer<Scheduler> onChange;
+	private int locked = 0;
 	private static Scheduler defaultScheduler;
 
 	/**
@@ -60,6 +61,11 @@ public class Scheduler implements Runnable {
 	 *            the delay between two cycles
 	 */
 	public void startWithSleep(int i) {
+		if (locked>0) {
+			if (onChange != null)
+				onChange.accept(this);
+			return;
+		}
 		setSleep(i);
 		stateLock.lock();
 		switch (state) {
@@ -87,6 +93,11 @@ public class Scheduler implements Runnable {
 	 * Execute one cycle
 	 */
 	public void step() {
+		if (locked>0) {
+			if (onChange != null)
+				onChange.accept(this);
+			return;
+		}
 		this.setSleep(0);
 		stateLock.lock();
 		switch (state) {
@@ -99,6 +110,8 @@ public class Scheduler implements Runnable {
 
 		}
 		stateLock.unlock();
+		if (onChange != null)
+			onChange.accept(this);
 	}
 
 	/**
@@ -115,6 +128,8 @@ public class Scheduler implements Runnable {
 
 		}
 		stateLock.unlock();
+		if (onChange != null)
+			onChange.accept(this);
 	}
 
 	/**
@@ -207,6 +222,12 @@ public class Scheduler implements Runnable {
 	}
 	public void remove(Schedulable _schedulable) {
 		this.schedulables.remove(_schedulable);
+	}
+	public void lock() {
+		locked ++;
+	}
+	public void unlock() {
+		locked--;
 	}
 
 }

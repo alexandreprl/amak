@@ -324,7 +324,9 @@ implements java.lang.Runnable</pre>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onDraw--">onDraw</a></span>()</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Must be replaced by <a href="../../../../fr/irit/smac/amak/Agent.html#onUpdateRender--"><code>onUpdateRender()</code></a></span></div>
+</div>
 </td>
 </tr>
 <tr id="i16" class="altColor">
@@ -342,7 +344,9 @@ implements java.lang.Runnable</pre>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize</a></span>()</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">Must be replaced by <a href="../../../../fr/irit/smac/amak/Agent.html#onInitialization--"><code>onInitialization()</code></a></span></div>
+</div>
 </td>
 </tr>
 <tr id="i19" class="rowColor">
@@ -367,19 +371,34 @@ implements java.lang.Runnable</pre>
 <tr id="i22" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">onSystemCycleBegin</a></span>()</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">This method is useless because the state of the agent is not
+             supposed to evolve before or after its cycle. Use
+             OnAgentCycleBegin/End instead.
+ 
+             This method is final because it must not be implemented.
+             Implement it will have no effect.</span></div>
+</div>
 </td>
 </tr>
 <tr id="i23" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onSystemCycleEnd--">onSystemCycleEnd</a></span>()</code>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;
+<div class="block"><span class="deprecationComment">This method is useless because the state of the agent is not
+             supposed to evolve before or after its cycle. Use
+             OnAgentCycleBegin/End instead.
+ 
+             This method is final because it must not be implemented.
+             Implement it will have no effect.</span></div>
+</div>
 </td>
 </tr>
 <tr id="i24" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Agent.html#onUpdateRender--">onUpdateRender</a></span>()</code>
-<div class="block">This method should be used to update the representation of the agent for example in a VUI</div>
+<div class="block">This method should be used to update the representation of the agent for
+ example in a VUI</div>
 </td>
 </tr>
 <tr id="i25" class="rowColor">
@@ -616,7 +635,8 @@ public final&nbsp;void&nbsp;addNeighbor(<a href="../../../../fr/irit/smac/amak/A
 <li class="blockList">
 <h4>onUpdateRender</h4>
 <pre>protected&nbsp;void&nbsp;onUpdateRender()</pre>
-<div class="block">This method should be used to update the representation of the agent for example in a VUI</div>
+<div class="block">This method should be used to update the representation of the agent for
+ example in a VUI</div>
 </li>
 </ul>
 <a name="onDraw--">
@@ -627,7 +647,7 @@ public final&nbsp;void&nbsp;addNeighbor(<a href="../../../../fr/irit/smac/amak/A
 <h4>onDraw</h4>
 <pre>@Deprecated
 protected final&nbsp;void&nbsp;onDraw()</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Must be replaced by <a href="../../../../fr/irit/smac/amak/Agent.html#onUpdateRender--"><code>onUpdateRender()</code></a></span></div>
 <div class="block">This method is now deprecated and should be replaced by onUpdateRender</div>
 </li>
 </ul>
@@ -670,7 +690,7 @@ protected final&nbsp;void&nbsp;onDraw()</pre>
 <h4>onInitialize</h4>
 <pre>@Deprecated
 protected final&nbsp;void&nbsp;onInitialize()</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">Must be replaced by <a href="../../../../fr/irit/smac/amak/Agent.html#onInitialization--"><code>onInitialization()</code></a></span></div>
 <div class="block">Replaced by onInitialization</div>
 </li>
 </ul>
@@ -692,12 +712,12 @@ protected final&nbsp;void&nbsp;onInitialize()</pre>
 <h4>onSystemCycleBegin</h4>
 <pre>@Deprecated
 protected final&nbsp;void&nbsp;onSystemCycleBegin()</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
-<div class="block">This method is useless because the state of the agent is not supposed to
- evolve before or after its cycle. Use OnAgentCycleBegin/End instead.
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">This method is useless because the state of the agent is not
+             supposed to evolve before or after its cycle. Use
+             OnAgentCycleBegin/End instead.
  
- This method is final because it must not be implemented. Implement it will
- have no effect.</div>
+             This method is final because it must not be implemented.
+             Implement it will have no effect.</span></div>
 </li>
 </ul>
 <a name="onSystemCycleEnd--">
@@ -708,12 +728,12 @@ protected final&nbsp;void&nbsp;onSystemCycleBegin()</pre>
 <h4>onSystemCycleEnd</h4>
 <pre>@Deprecated
 protected final&nbsp;void&nbsp;onSystemCycleEnd()</pre>
-<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
-<div class="block">This method is useless because the state of the agent is not supposed to
- evolve before or after its cycle. Use OnAgentCycleBegin/End instead.
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;<span class="deprecationComment">This method is useless because the state of the agent is not
+             supposed to evolve before or after its cycle. Use
+             OnAgentCycleBegin/End instead.
  
- This method is final because it must not be implemented. Implement it will
- have no effect.</div>
+             This method is final because it must not be implemented.
+             Implement it will have no effect.</span></div>
 </li>
 </ul>
 <a name="run--">

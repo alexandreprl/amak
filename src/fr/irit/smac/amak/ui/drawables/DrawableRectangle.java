@@ -13,10 +13,9 @@ public class DrawableRectangle extends Drawable {
 	public void onDraw(Graphics2D graphics) {
 		graphics.setColor(color);
 		if (strokeMode)
-			graphics.drawRect(vui.worldToScreenX(left()), vui.worldToScreenY(top()), vui.worldToScreenDistance(width), vui.worldToScreenDistance(height));
+			graphics.drawRect((int)left(), (int)top(), (int)getWidth(), (int)getHeight());
 		else
-			graphics.fillRect(vui.worldToScreenX(left()), vui.worldToScreenY(top()), vui.worldToScreenDistance(width), vui.worldToScreenDistance(height));
+			graphics.fillRect((int)left(), (int)top(), (int)getWidth(), (int)getHeight());
 	}
-
 
 }

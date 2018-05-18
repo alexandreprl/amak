@@ -8,18 +8,19 @@ public class DrawableString extends Drawable {
 	private String text;
 
 	public DrawableString(VUI vui, double dx, double dy, String text) {
-		super(vui, dx, dy, 0, 0);
+		super(vui, dx, dy, 1, 1);
 		this.text = text;
 	}
 
 	@Override
 	public void onDraw(Graphics2D graphics) {
 		graphics.setColor(color);
-		graphics.drawString(text, vui.worldToScreenX(x), vui.worldToScreenY(y));
+		graphics.drawString(text, (int)left(), (int)top());
 	}
 
 	public void setText(String text) {
 		this.text = text;
 	}
+
 
 }

@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":9,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10};
+var methods = {"i0":10,"i1":9,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -199,56 +199,64 @@ implements java.lang.Runnable</pre>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#remove-fr.irit.smac.amak.Schedulable-">remove</a></span>(<a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>&nbsp;_schedulable)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#lock--">lock</a></span>()</code>&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#remove-fr.irit.smac.amak.Schedulable-">remove</a></span>(<a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>&nbsp;_schedulable)</code>&nbsp;</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#run--">run</a></span>()</code>
 <div class="block">Threaded run method</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#setOnChange-java.util.function.Consumer-">setOnChange</a></span>(java.util.function.Consumer&lt;<a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a>&gt;&nbsp;_onChange)</code>
 <div class="block">Set the method that must be executed when the scheduler speed is changed</div>
 </td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#setOnStop-java.util.function.Consumer-">setOnStop</a></span>(java.util.function.Consumer&lt;<a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a>&gt;&nbsp;_onStop)</code>
 <div class="block">Set the method that must be executed when the system is stopped</div>
 </td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#setSleep-int-">setSleep</a></span>(int&nbsp;sleep)</code>
 <div class="block">Setter for the sleep time</div>
 </td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#start--">start</a></span>()</code>
 <div class="block">Start (or continue) with no delay between cycles</div>
 </td>
 </tr>
-<tr id="i10" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#startWithSleep-int-">startWithSleep</a></span>(int&nbsp;i)</code>
 <div class="block">Set the delay between two cycles and launch the scheduler if it is not
  running</div>
 </td>
 </tr>
-<tr id="i11" class="rowColor">
+<tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#step--">step</a></span>()</code>
 <div class="block">Execute one cycle</div>
 </td>
 </tr>
-<tr id="i12" class="altColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#stop--">stop</a></span>()</code>
 <div class="block">Stop the scheduler if it is running</div>
 </td>
+</tr>
+<tr id="i14" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#unlock--">unlock</a></span>()</code>&nbsp;</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -444,10 +452,28 @@ implements java.lang.Runnable</pre>
 <a name="remove-fr.irit.smac.amak.Schedulable-">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>remove</h4>
 <pre>public&nbsp;void&nbsp;remove(<a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>&nbsp;_schedulable)</pre>
+</li>
+</ul>
+<a name="lock--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>lock</h4>
+<pre>public&nbsp;void&nbsp;lock()</pre>
+</li>
+</ul>
+<a name="unlock--">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>unlock</h4>
+<pre>public&nbsp;void&nbsp;unlock()</pre>
 </li>
 </ul>
 </li>
