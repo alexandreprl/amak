@@ -13,7 +13,7 @@ public class DrawableString extends Drawable {
 	}
 
 	@Override
-	public void onDraw(Graphics2D graphics) {
+	public void _onDraw(Graphics2D graphics) {
 		graphics.setColor(color);
 		graphics.drawString(text, (int)left(), (int)top());
 	}

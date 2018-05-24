@@ -19,7 +19,7 @@ public class DrawableLine extends Drawable {
 	}
 
 	@Override
-	public void onDraw(Graphics2D graphics) {
+	public void _onDraw(Graphics2D graphics) {
 		graphics.setColor(color);
 		if (isFixed())
 			graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);

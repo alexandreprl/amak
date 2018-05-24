@@ -10,7 +10,7 @@ public class DrawableCircle extends Drawable {
 	}
 
 	@Override
-	public void onDraw(Graphics2D graphics) {
+	public void _onDraw(Graphics2D graphics) {
 		graphics.setColor(color);
 		if (strokeMode)
 			graphics.drawOval((int)left(), (int)top(), (int) getRenderedWidth(), (int) getRenderedHeight());

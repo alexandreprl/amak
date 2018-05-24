@@ -3,6 +3,7 @@ package fr.irit.smac.amak.ui.drawables;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
+import fr.irit.smac.amak.tools.Log;
 import fr.irit.smac.amak.ui.VUI;
 
 public abstract class Drawable {
@@ -34,6 +35,14 @@ public abstract class Drawable {
 	public void setHeight(double height) {
 		this.height = height;
 		update();
+	}
+
+	public double getWidth() {
+		return width;
+	}
+
+	public double getHeight() {
+		return height;
 	}
 
 	protected double height;
@@ -82,8 +91,23 @@ public abstract class Drawable {
 		this.width = width;
 		this.height = height;
 	}
+	public void onDraw(Graphics2D graphics) {
+		if (isVisible() && isOnScreen()) {
+			_onDraw(graphics);	
+		}
+	}
 
-	public abstract void onDraw(Graphics2D graphics);
+	private boolean isOnScreen() {
+		return (isPointOnScreen(left(), top()) ||
+				isPointOnScreen(left(), bottom()) ||
+				isPointOnScreen(right(), bottom()) ||
+				isPointOnScreen(right(), top()));
+	}
+	private boolean isPointOnScreen(double x, double y) {
+		return x>=0 && x<=panel.getCanvasWidth() && y>=0 && y<=panel.getCanvasHeight();
+	}
+
+	public abstract void _onDraw(Graphics2D graphics);
 
 	public void update() {
 		if (panel != null)
@@ -106,6 +130,20 @@ public abstract class Drawable {
 			return x - width / 2;
 		else
 			return vui.worldToScreenX(x - width / 2);
+	}
+
+	public double bottom() {
+		if (isFixed())
+			return y + height / 2;
+		else
+			return vui.worldToScreenY(y + height / 2);
+	}
+
+	public double right() {
+		if (isFixed())
+			return x + width / 2;
+		else
+			return vui.worldToScreenX(x + width / 2);
 	}
 
 	public Drawable setStrokeOnly() {

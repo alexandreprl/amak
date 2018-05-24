@@ -37,6 +37,7 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 	@Override
 	protected void onRenderingInitialization() {
 		image = VUI.get().createImage(dx, dy, "Resources/ant.png");
+		image.setWidth(2);
 	}
 
 	/**
@@ -63,7 +64,7 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 		}
 
 		if (amas.getEnvironment().getRandom().nextDouble() < 0.001) {
-			AntExample a = new AntExample(getAmas(), dx, dy);
+			new AntExample(getAmas(), dx, dy);
 		}
 	}
 

@@ -10,7 +10,7 @@ public class DrawableRectangle extends Drawable {
 	}
 
 	@Override
-	public void onDraw(Graphics2D graphics) {
+	public void _onDraw(Graphics2D graphics) {
 		graphics.setColor(color);
 		if (strokeMode)
 			graphics.drawRect((int)left(), (int)top(), (int)getRenderedWidth(), (int)getRenderedHeight());

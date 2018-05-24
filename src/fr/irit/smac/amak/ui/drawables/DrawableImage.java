@@ -50,14 +50,14 @@ public class DrawableImage extends Drawable {
 	}
 
 	@Override
-	public void onDraw(Graphics2D graphics) {
+	public void _onDraw(Graphics2D graphics) {
 		AffineTransform identity = new AffineTransform();
 		AffineTransform trans = new AffineTransform();
 		trans.setTransform(identity);
 		trans.translate(left(), top());
 		trans.rotate(getAngle(), getRenderedWidth() / 2, getRenderedHeight() / 2);
 		if (!isFixed())
-			trans.scale(vui.getZoomFactor(), vui.getZoomFactor());
+			trans.scale(vui.getZoomFactor()*getWidth()/this.image.getWidth(), vui.getZoomFactor()*getHeight()/this.image.getHeight());
 		graphics.drawImage(image, trans, null);
 		
 	}

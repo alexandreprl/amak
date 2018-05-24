@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
+import fr.irit.smac.amak.tools.Log;
 import fr.irit.smac.amak.ui.drawables.Drawable;
 import fr.irit.smac.amak.ui.drawables.DrawableImage;
 import fr.irit.smac.amak.ui.drawables.DrawablePoint;
@@ -118,8 +119,7 @@ public class VUI {
 					}
 				});
 				for (Drawable d : drawables) {
-					if (d.isVisible())
-						d.onDraw(g2);
+					d.onDraw(g2);
 				}
 				drawablesLock.unlock();
 			}
@@ -161,13 +161,16 @@ public class VUI {
 
 			@Override
 			public void mouseDragged(MouseEvent e) {
-
-				worldCenterX += screenToWorldDistance(e.getX() - lastDragX);
-				worldCenterY += screenToWorldDistance(e.getY() - lastDragY);
-				lastDragX = e.getX();
-				lastDragY = e.getY();
-				updateCanvas();
-				onMouseDragged(e.getX(), e.getY());
+				try {
+					worldCenterX += screenToWorldDistance(e.getX() - lastDragX);
+					worldCenterY += screenToWorldDistance(e.getY() - lastDragY);
+					lastDragX = e.getX();
+					lastDragY = e.getY();
+					updateCanvas();
+					onMouseDragged(e.getX(), e.getY());
+				} catch (Exception ez) {
+					// Catch exception occuring when mouse is out of the canvas
+				}
 			}
 		});
 		canvas.addMouseWheelListener(new MouseWheelListener() {
@@ -249,6 +252,14 @@ public class VUI {
 		canvas.repaint();
 
 		statusLabel.setText(String.format("Zoom: %.2f Center: (%.2f,%.2f)", zoom, worldCenterX, worldCenterY));
+	}
+
+	public double getCanvasWidth() {
+		return canvas.getSize().getWidth();
+	}
+
+	public double getCanvasHeight() {
+		return canvas.getSize().getHeight();
 	}
 
 	public double getWorldOffsetX() {
