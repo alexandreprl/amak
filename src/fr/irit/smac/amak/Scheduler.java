@@ -1,6 +1,8 @@
 package fr.irit.smac.amak;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
@@ -24,6 +26,9 @@ public class Scheduler implements Runnable {
 	private int locked = 0;
 	private static Scheduler defaultScheduler;
 
+	private Queue<Schedulable> pendingAdditionSchedulables = new LinkedList<>();
+	private Queue<Schedulable> pendingRemovalSchedulables = new LinkedList<>();
+
 	/**
 	 * State of the scheduler
 	 *
@@ -42,7 +47,7 @@ public class Scheduler implements Runnable {
 	public Scheduler(Schedulable... _schedulables) {
 
 		for (Schedulable schedulable : _schedulables) {
-			this.schedulables.add(schedulable);
+			this.add(schedulable);
 		}
 		this.state = State.IDLE;
 	}
@@ -137,6 +142,7 @@ public class Scheduler implements Runnable {
 	 */
 	@Override
 	public void run() {
+		treatPendingSchedulables();
 		for (Schedulable schedulable : schedulables) {
 			schedulable.onSchedulingStarts();
 		}
@@ -158,14 +164,22 @@ public class Scheduler implements Runnable {
 			}
 		} while (state == State.RUNNING && !mustStop);
 		stateLock.lock();
-		if (onStop != null)
-			onStop.accept(this);
 		state = State.IDLE;
 		stateLock.unlock();
 
 		for (Schedulable schedulable : schedulables) {
 			schedulable.onSchedulingStops();
 		}
+		treatPendingSchedulables();
+		if (onStop != null)
+			onStop.accept(this);
+	}
+	private void treatPendingSchedulables() {
+		while (!pendingAdditionSchedulables.isEmpty())
+			schedulables.add(pendingAdditionSchedulables.poll());
+		while (!pendingRemovalSchedulables.isEmpty())
+			schedulables.remove(pendingRemovalSchedulables.poll());
+		
 	}
 
 	/**
