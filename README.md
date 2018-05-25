@@ -224,7 +224,7 @@ Create a class "Philosopher" which extends the class Agent<MyAMAS, Table>.
 	}
 	
 	@Override
-	protected void onDecideAct() {
+	protected void onDecideAndAct() {
 		State nextState = state;
 		switch (state) {
 		case EATING:
