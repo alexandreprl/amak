@@ -82,7 +82,7 @@ Amak is packaged with other useful libraries (lx-plot, avt, ...). Also, if you n
 
 In this quick start example, we will do the first steps aiming at creating an adaptive multi-agent system to solve the [philosopher's dinner problem](https://en.wikipedia.org/wiki/Dining_philosophers_problem).
 
-## Create the eclipse prject ##
+## Create the eclipse project ##
 
 Click on File -> New -> Java Project
 Enter a name : "Philosopher's dinner"
