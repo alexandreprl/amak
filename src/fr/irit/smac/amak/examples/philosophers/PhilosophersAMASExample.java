@@ -19,7 +19,7 @@ public class PhilosophersAMASExample extends Amas<TableExample> {
 	public PhilosophersAMASExample(TableExample env) {
 		super(env, Scheduling.DEFAULT);
 	}
-
+	
 	@Override
 	protected void onInitialConfiguration() {
 		Configuration.executionPolicy = ExecutionPolicy.TWO_PHASES;
