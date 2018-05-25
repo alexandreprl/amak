@@ -269,7 +269,7 @@ Create a class "Philosopher" which extends the class Agent<MyAMAS, Table>.
 	}
 
 	@Override
-	protected void onDraw() {
+	protected void onUpdateRender() {
 		LxPlot.getChart("Eaten Pastas", ChartType.BAR).add(id, eatenPastas);
 	}
 ```
