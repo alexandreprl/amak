@@ -179,11 +179,15 @@ implements java.lang.Runnable</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#add-fr.irit.smac.amak.Schedulable-">add</a></span>(<a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>&nbsp;_schedulable)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#add-fr.irit.smac.amak.Schedulable-">add</a></span>(<a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>&nbsp;_schedulable)</code>
+<div class="block">Plan to add a schedulable</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#getDefaultScheduler--">getDefaultScheduler</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#getDefaultScheduler--">getDefaultScheduler</a></span>()</code>
+<div class="block">Create or return the default scheduler</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
@@ -199,11 +203,15 @@ implements java.lang.Runnable</pre>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#lock--">lock</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#lock--">lock</a></span>()</code>
+<div class="block">Soft lock the scheduler to avoid a too early running</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#remove-fr.irit.smac.amak.Schedulable-">remove</a></span>(<a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>&nbsp;_schedulable)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#remove-fr.irit.smac.amak.Schedulable-">remove</a></span>(<a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>&nbsp;_schedulable)</code>
+<div class="block">Plan to remove a schedulable</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -256,7 +264,9 @@ implements java.lang.Runnable</pre>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#unlock--">unlock</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Scheduler.html#unlock--">unlock</a></span>()</code>
+<div class="block">Soft unlock the scheduler to avoid a too early running</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -309,6 +319,11 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>getDefaultScheduler</h4>
 <pre>public static&nbsp;<a href="../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a>&nbsp;getDefaultScheduler()</pre>
+<div class="block">Create or return the default scheduler</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The default scheduler</dd>
+</dl>
 </li>
 </ul>
 <a name="startWithSleep-int-">
@@ -447,6 +462,11 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>add</h4>
 <pre>public&nbsp;void&nbsp;add(<a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>&nbsp;_schedulable)</pre>
+<div class="block">Plan to add a schedulable</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_schedulable</code> - the schedulable to add</dd>
+</dl>
 </li>
 </ul>
 <a name="remove-fr.irit.smac.amak.Schedulable-">
@@ -456,6 +476,11 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>remove</h4>
 <pre>public&nbsp;void&nbsp;remove(<a href="../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>&nbsp;_schedulable)</pre>
+<div class="block">Plan to remove a schedulable</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_schedulable</code> - the schedulable to remove</dd>
+</dl>
 </li>
 </ul>
 <a name="lock--">
@@ -465,6 +490,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>lock</h4>
 <pre>public&nbsp;void&nbsp;lock()</pre>
+<div class="block">Soft lock the scheduler to avoid a too early running</div>
 </li>
 </ul>
 <a name="unlock--">
@@ -474,6 +500,7 @@ implements java.lang.Runnable</pre>
 <li class="blockList">
 <h4>unlock</h4>
 <pre>public&nbsp;void&nbsp;unlock()</pre>
+<div class="block">Soft unlock the scheduler to avoid a too early running</div>
 </li>
 </ul>
 </li>

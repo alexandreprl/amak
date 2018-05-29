@@ -109,6 +109,12 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">VUI</span>
 extends java.lang.Object</pre>
+<div class="block">Vectorial UI: This class allows to create dynamic rendering with zoom and
+ move capacities</div>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>perles</dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -156,59 +162,83 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#add-fr.irit.smac.amak.ui.drawables.Drawable-">add</a></span>(<a href="../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;d)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#add-fr.irit.smac.amak.ui.drawables.Drawable-">add</a></span>(<a href="../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;d)</code>
+<div class="block">Add an object to the VUI and repaint it</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../fr/irit/smac/amak/ui/drawables/DrawableImage.html" title="class in fr.irit.smac.amak.ui.drawables">DrawableImage</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#createImage-double-double-java.lang.String-">createImage</a></span>(double&nbsp;dx,
            double&nbsp;dy,
-           java.lang.String&nbsp;filename)</code>&nbsp;</td>
+           java.lang.String&nbsp;filename)</code>
+<div class="block">Create an image and start rendering it</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code><a href="../../../../../fr/irit/smac/amak/ui/drawables/DrawablePoint.html" title="class in fr.irit.smac.amak.ui.drawables">DrawablePoint</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#createPoint-double-double-">createPoint</a></span>(double&nbsp;dx,
-           double&nbsp;dy)</code>&nbsp;</td>
+           double&nbsp;dy)</code>
+<div class="block">Create a point and start rendering it</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../fr/irit/smac/amak/ui/drawables/DrawableRectangle.html" title="class in fr.irit.smac.amak.ui.drawables">DrawableRectangle</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#createRectangle-double-double-double-double-">createRectangle</a></span>(double&nbsp;x,
                double&nbsp;y,
                double&nbsp;w,
-               double&nbsp;h)</code>&nbsp;</td>
+               double&nbsp;h)</code>
+<div class="block">Create a rectangle and start rendering it</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="../../../../../fr/irit/smac/amak/ui/drawables/DrawableString.html" title="class in fr.irit.smac.amak.ui.drawables">DrawableString</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#createString-int-int-java.lang.String-">createString</a></span>(int&nbsp;dx,
             int&nbsp;dy,
-            java.lang.String&nbsp;text)</code>&nbsp;</td>
+            java.lang.String&nbsp;text)</code>
+<div class="block">Create a string and start rendering it</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#get--">get</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#get--">get</a></span>()</code>
+<div class="block">Get the default VUI</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>static <a href="../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#get-java.lang.String-">get</a></span>(java.lang.String&nbsp;id)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#get-java.lang.String-">get</a></span>(java.lang.String&nbsp;id)</code>
+<div class="block">Create or get a VUI</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#getCanvasHeight--">getCanvasHeight</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#getCanvasHeight--">getCanvasHeight</a></span>()</code>
+<div class="block">Get the height of the canvas</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#getCanvasWidth--">getCanvasWidth</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#getCanvasWidth--">getCanvasWidth</a></span>()</code>
+<div class="block">Get the width of the canvas</div>
+</td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#getWorldOffsetX--">getWorldOffsetX</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#getWorldOffsetX--">getWorldOffsetX</a></span>()</code>
+<div class="block">Get the value that must be added to the X coordinate of in world object</div>
+</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#getWorldOffsetY--">getWorldOffsetY</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#getWorldOffsetY--">getWorldOffsetY</a></span>()</code>
+<div class="block">Get the value that must be added to the Y coordinate of in world object</div>
+</td>
 </tr>
 <tr id="i11" class="rowColor">
-<td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#getZoomFactor--">getZoomFactor</a></span>()</code>&nbsp;</td>
+<td class="colFirst"><code>protected double</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#getZoomFactor--">getZoomFactor</a></span>()</code>
+<div class="block">A value that must be multiplied to scale objects</div>
+</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
@@ -222,45 +252,65 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#screenToWorldDistance-int-">screenToWorldDistance</a></span>(int&nbsp;d)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#screenToWorldDistance-int-">screenToWorldDistance</a></span>(int&nbsp;d)</code>
+<div class="block">Convert a distance on the screen to its equivalent in the world</div>
+</td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#screenToWorldX-double-">screenToWorldX</a></span>(double&nbsp;x)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#screenToWorldX-double-">screenToWorldX</a></span>(double&nbsp;x)</code>
+<div class="block">Convert a X on the screen to its equivalent in the world</div>
+</td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#screenToWorldY-double-">screenToWorldY</a></span>(double&nbsp;y)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#screenToWorldY-double-">screenToWorldY</a></span>(double&nbsp;y)</code>
+<div class="block">Convert a Y on the screen to its equivalent in the world</div>
+</td>
 </tr>
 <tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#setDefaultView-double-double-double-">setDefaultView</a></span>(double&nbsp;zoom,
               double&nbsp;worldCenterX,
-              double&nbsp;worldCenterY)</code>&nbsp;</td>
+              double&nbsp;worldCenterY)</code>
+<div class="block">Set the default configuration of the view</div>
+</td>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#setWorldOffsetX-double-">setWorldOffsetX</a></span>(double&nbsp;offsetX)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#setWorldOffsetX-double-">setWorldOffsetX</a></span>(double&nbsp;offsetX)</code>
+<div class="block">Set the value that must be added to the X coordinate of in world object</div>
+</td>
 </tr>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#setWorldOffsetY-double-">setWorldOffsetY</a></span>(double&nbsp;offsetY)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#setWorldOffsetY-double-">setWorldOffsetY</a></span>(double&nbsp;offsetY)</code>
+<div class="block">Set the value that must be added to the Y coordinate of in world object</div>
+</td>
 </tr>
 <tr id="i20" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#updateCanvas--">updateCanvas</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#updateCanvas--">updateCanvas</a></span>()</code>
+<div class="block">Refresh the canvas</div>
+</td>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#worldToScreenDistance-double-">worldToScreenDistance</a></span>(double&nbsp;d)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#worldToScreenDistance-double-">worldToScreenDistance</a></span>(double&nbsp;d)</code>
+<div class="block">Convert a distance in the world to its equivalent on the screen</div>
+</td>
 </tr>
 <tr id="i22" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#worldToScreenX-double-">worldToScreenX</a></span>(double&nbsp;x)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#worldToScreenX-double-">worldToScreenX</a></span>(double&nbsp;x)</code>
+<div class="block">Convert a X in the world to its equivalent on the screen</div>
+</td>
 </tr>
 <tr id="i23" class="rowColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#worldToScreenY-double-">worldToScreenY</a></span>(double&nbsp;y)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#worldToScreenY-double-">worldToScreenY</a></span>(double&nbsp;y)</code>
+<div class="block">Convert a Y in the world to its equivalent on the screen</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -326,6 +376,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>get</h4>
 <pre>public static&nbsp;<a href="../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a>&nbsp;get()</pre>
+<div class="block">Get the default VUI</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the default VUI</dd>
+</dl>
 </li>
 </ul>
 <a name="get-java.lang.String-">
@@ -335,6 +390,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>get</h4>
 <pre>public static&nbsp;<a href="../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a>&nbsp;get(java.lang.String&nbsp;id)</pre>
+<div class="block">Create or get a VUI</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>id</code> - The unique id of the VUI</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>The VUI with id "id"</dd>
+</dl>
 </li>
 </ul>
 <a name="onMouseDragged-int-int-">
@@ -364,6 +426,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>worldToScreenDistance</h4>
 <pre>public&nbsp;int&nbsp;worldToScreenDistance(double&nbsp;d)</pre>
+<div class="block">Convert a distance in the world to its equivalent on the screen</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>d</code> - the in world distance</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the on screen distance</dd>
+</dl>
 </li>
 </ul>
 <a name="screenToWorldDistance-int-">
@@ -373,6 +442,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>screenToWorldDistance</h4>
 <pre>public&nbsp;double&nbsp;screenToWorldDistance(int&nbsp;d)</pre>
+<div class="block">Convert a distance on the screen to its equivalent in the world</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>d</code> - the on screen distance</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the in world distance</dd>
+</dl>
 </li>
 </ul>
 <a name="worldToScreenX-double-">
@@ -382,6 +458,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>worldToScreenX</h4>
 <pre>public&nbsp;int&nbsp;worldToScreenX(double&nbsp;x)</pre>
+<div class="block">Convert a X in the world to its equivalent on the screen</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - the X in world</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the X on screen distance</dd>
+</dl>
 </li>
 </ul>
 <a name="getZoomFactor--">
@@ -390,7 +473,12 @@ extends java.lang.Object</pre>
 <ul class="blockList">
 <li class="blockList">
 <h4>getZoomFactor</h4>
-<pre>public&nbsp;double&nbsp;getZoomFactor()</pre>
+<pre>protected&nbsp;double&nbsp;getZoomFactor()</pre>
+<div class="block">A value that must be multiplied to scale objects</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the zoom factor</dd>
+</dl>
 </li>
 </ul>
 <a name="worldToScreenY-double-">
@@ -400,6 +488,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>worldToScreenY</h4>
 <pre>public&nbsp;int&nbsp;worldToScreenY(double&nbsp;y)</pre>
+<div class="block">Convert a Y in the world to its equivalent on the screen</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>y</code> - the Y in world</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the Y on screen distance</dd>
+</dl>
 </li>
 </ul>
 <a name="screenToWorldX-double-">
@@ -409,6 +504,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>screenToWorldX</h4>
 <pre>public&nbsp;double&nbsp;screenToWorldX(double&nbsp;x)</pre>
+<div class="block">Convert a X on the screen to its equivalent in the world</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - the X on screen</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the X in the world distance</dd>
+</dl>
 </li>
 </ul>
 <a name="screenToWorldY-double-">
@@ -418,6 +520,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>screenToWorldY</h4>
 <pre>public&nbsp;double&nbsp;screenToWorldY(double&nbsp;y)</pre>
+<div class="block">Convert a Y on the screen to its equivalent in the world</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>y</code> - the Y on screen</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the Y in the world distance</dd>
+</dl>
 </li>
 </ul>
 <a name="add-fr.irit.smac.amak.ui.drawables.Drawable-">
@@ -427,6 +536,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>add</h4>
 <pre>public&nbsp;void&nbsp;add(<a href="../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;d)</pre>
+<div class="block">Add an object to the VUI and repaint it</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>d</code> - the new object</dd>
+</dl>
 </li>
 </ul>
 <a name="updateCanvas--">
@@ -436,6 +550,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>updateCanvas</h4>
 <pre>public&nbsp;void&nbsp;updateCanvas()</pre>
+<div class="block">Refresh the canvas</div>
 </li>
 </ul>
 <a name="getCanvasWidth--">
@@ -445,6 +560,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCanvasWidth</h4>
 <pre>public&nbsp;double&nbsp;getCanvasWidth()</pre>
+<div class="block">Get the width of the canvas</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the canvas width</dd>
+</dl>
 </li>
 </ul>
 <a name="getCanvasHeight--">
@@ -454,6 +574,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getCanvasHeight</h4>
 <pre>public&nbsp;double&nbsp;getCanvasHeight()</pre>
+<div class="block">Get the height of the canvas</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the canvas height</dd>
+</dl>
 </li>
 </ul>
 <a name="getWorldOffsetX--">
@@ -463,6 +588,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getWorldOffsetX</h4>
 <pre>public&nbsp;double&nbsp;getWorldOffsetX()</pre>
+<div class="block">Get the value that must be added to the X coordinate of in world object</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the X offset</dd>
+</dl>
 </li>
 </ul>
 <a name="setWorldOffsetX-double-">
@@ -472,6 +602,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setWorldOffsetX</h4>
 <pre>public&nbsp;void&nbsp;setWorldOffsetX(double&nbsp;offsetX)</pre>
+<div class="block">Set the value that must be added to the X coordinate of in world object</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>offsetX</code> - the X offset</dd>
+</dl>
 </li>
 </ul>
 <a name="getWorldOffsetY--">
@@ -481,6 +616,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getWorldOffsetY</h4>
 <pre>public&nbsp;double&nbsp;getWorldOffsetY()</pre>
+<div class="block">Get the value that must be added to the Y coordinate of in world object</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the Y offset</dd>
+</dl>
 </li>
 </ul>
 <a name="setWorldOffsetY-double-">
@@ -490,6 +630,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setWorldOffsetY</h4>
 <pre>public&nbsp;void&nbsp;setWorldOffsetY(double&nbsp;offsetY)</pre>
+<div class="block">Set the value that must be added to the Y coordinate of in world object</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>offsetY</code> - the Y offset</dd>
+</dl>
 </li>
 </ul>
 <a name="createPoint-double-double-">
@@ -500,6 +645,14 @@ extends java.lang.Object</pre>
 <h4>createPoint</h4>
 <pre>public&nbsp;<a href="../../../../../fr/irit/smac/amak/ui/drawables/DrawablePoint.html" title="class in fr.irit.smac.amak.ui.drawables">DrawablePoint</a>&nbsp;createPoint(double&nbsp;dx,
                                  double&nbsp;dy)</pre>
+<div class="block">Create a point and start rendering it</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dx</code> - the x coordinate</dd>
+<dd><code>dy</code> - the y coordinate</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the point object</dd>
+</dl>
 </li>
 </ul>
 <a name="createRectangle-double-double-double-double-">
@@ -512,6 +665,16 @@ extends java.lang.Object</pre>
                                          double&nbsp;y,
                                          double&nbsp;w,
                                          double&nbsp;h)</pre>
+<div class="block">Create a rectangle and start rendering it</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>x</code> - the x coordinate</dd>
+<dd><code>y</code> - the y coordinate</dd>
+<dd><code>w</code> - the width</dd>
+<dd><code>h</code> - the height</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the rectangle object</dd>
+</dl>
 </li>
 </ul>
 <a name="setDefaultView-double-double-double-">
@@ -523,6 +686,13 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;void&nbsp;setDefaultView(double&nbsp;zoom,
                            double&nbsp;worldCenterX,
                            double&nbsp;worldCenterY)</pre>
+<div class="block">Set the default configuration of the view</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>zoom</code> - the initial zoom value</dd>
+<dd><code>worldCenterX</code> - the initial X center value</dd>
+<dd><code>worldCenterY</code> - the initial Y center value</dd>
+</dl>
 </li>
 </ul>
 <a name="createImage-double-double-java.lang.String-">
@@ -534,6 +704,15 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;<a href="../../../../../fr/irit/smac/amak/ui/drawables/DrawableImage.html" title="class in fr.irit.smac.amak.ui.drawables">DrawableImage</a>&nbsp;createImage(double&nbsp;dx,
                                  double&nbsp;dy,
                                  java.lang.String&nbsp;filename)</pre>
+<div class="block">Create an image and start rendering it</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dx</code> - the x coordinate</dd>
+<dd><code>dy</code> - the y coordinate</dd>
+<dd><code>filename</code> - the filename of the image</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the created image</dd>
+</dl>
 </li>
 </ul>
 <a name="createString-int-int-java.lang.String-">
@@ -545,6 +724,15 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;<a href="../../../../../fr/irit/smac/amak/ui/drawables/DrawableString.html" title="class in fr.irit.smac.amak.ui.drawables">DrawableString</a>&nbsp;createString(int&nbsp;dx,
                                    int&nbsp;dy,
                                    java.lang.String&nbsp;text)</pre>
+<div class="block">Create a string and start rendering it</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dx</code> - the x coordinate</dd>
+<dd><code>dy</code> - the y coordinate</dd>
+<dd><code>text</code> - the text to display</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the created string</dd>
+</dl>
 </li>
 </ul>
 </li>

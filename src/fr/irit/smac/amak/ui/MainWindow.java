@@ -62,7 +62,7 @@ public class MainWindow extends JFrame {
 		});
 		optionsMenu.add(menuItem);
 
-		menuBar.add(new JMenu("AMAK v"+Information.version));
+		menuBar.add(new JMenu("AMAK v"+Information.VERSION));
 		
 		setVisible(true);
 			

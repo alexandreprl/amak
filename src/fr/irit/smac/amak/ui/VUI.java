@@ -25,13 +25,20 @@ import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
 
-import fr.irit.smac.amak.tools.Log;
 import fr.irit.smac.amak.ui.drawables.Drawable;
 import fr.irit.smac.amak.ui.drawables.DrawableImage;
 import fr.irit.smac.amak.ui.drawables.DrawablePoint;
 import fr.irit.smac.amak.ui.drawables.DrawableRectangle;
 import fr.irit.smac.amak.ui.drawables.DrawableString;
 
+/**
+ * 
+ * Vectorial UI: This class allows to create dynamic rendering with zoom and
+ * move capacities
+ * 
+ * @author perles
+ *
+ */
 public class VUI {
 
 	private List<Drawable> drawables = new ArrayList<>();
@@ -57,10 +64,22 @@ public class VUI {
 	protected double zoom = defaultZoom;
 	private double worldCenterX = defaultWorldCenterX, worldCenterY = defaultWorldCenterY;
 
+	/**
+	 * Get the default VUI
+	 * 
+	 * @return the default VUI
+	 */
 	public static VUI get() {
 		return get("Default");
 	}
 
+	/**
+	 * Create or get a VUI
+	 * 
+	 * @param id
+	 *            The unique id of the VUI
+	 * @return The VUI with id "id"
+	 */
 	public static VUI get(String id) {
 		if (!instances.containsKey(id)) {
 			VUI value = new VUI(id);
@@ -212,34 +231,91 @@ public class VUI {
 
 	}
 
+	/**
+	 * Convert a distance in the world to its equivalent on the screen
+	 * 
+	 * @param d
+	 *            the in world distance
+	 * @return the on screen distance
+	 */
 	public int worldToScreenDistance(double d) {
 		return (int) (d * getZoomFactor());
 	}
 
+	/**
+	 * Convert a distance on the screen to its equivalent in the world
+	 * 
+	 * @param d
+	 *            the on screen distance
+	 * @return the in world distance
+	 */
 	public double screenToWorldDistance(int d) {
 		return ((double) d / getZoomFactor());
 	}
 
+	/**
+	 * Convert a X in the world to its equivalent on the screen
+	 * 
+	 * @param x
+	 *            the X in world
+	 *
+	 * @return the X on screen distance
+	 */
 	public int worldToScreenX(double x) {
 		return (int) ((x + getWorldOffsetX()) * getZoomFactor());
 	}
 
-	public double getZoomFactor() {
+	/**
+	 * A value that must be multiplied to scale objects
+	 * 
+	 * @return the zoom factor
+	 */
+	protected double getZoomFactor() {
 		return zoom / 100;
 	}
 
+	/**
+	 * Convert a Y in the world to its equivalent on the screen
+	 * 
+	 * @param y
+	 *            the Y in world
+	 *
+	 * @return the Y on screen distance
+	 */
 	public int worldToScreenY(double y) {
 		return (int) ((y + getWorldOffsetY()) * getZoomFactor());
 	}
 
+	/**
+	 * Convert a X on the screen to its equivalent in the world
+	 * 
+	 * @param x
+	 *            the X on screen
+	 *
+	 * @return the X in the world distance
+	 */
 	public double screenToWorldX(double x) {
 		return (x) / getZoomFactor() - getWorldOffsetX();
 	}
 
+	/**
+	 * Convert a Y on the screen to its equivalent in the world
+	 * 
+	 * @param y
+	 *            the Y on screen
+	 *
+	 * @return the Y in the world distance
+	 */
 	public double screenToWorldY(double y) {
 		return (y) / getZoomFactor() - getWorldOffsetY();
 	}
 
+	/**
+	 * Add an object to the VUI and repaint it
+	 * 
+	 * @param d
+	 *            the new object
+	 */
 	public void add(Drawable d) {
 		d.setPanel(this);
 		drawablesLock.lock();
@@ -248,48 +324,115 @@ public class VUI {
 		updateCanvas();
 	}
 
+	/**
+	 * Refresh the canvas
+	 */
 	public void updateCanvas() {
 		canvas.repaint();
 
 		statusLabel.setText(String.format("Zoom: %.2f Center: (%.2f,%.2f)", zoom, worldCenterX, worldCenterY));
 	}
 
+	/**
+	 * Get the width of the canvas
+	 * 
+	 * @return the canvas width
+	 */
 	public double getCanvasWidth() {
 		return canvas.getSize().getWidth();
 	}
 
+	/**
+	 * Get the height of the canvas
+	 * 
+	 * @return the canvas height
+	 */
 	public double getCanvasHeight() {
 		return canvas.getSize().getHeight();
 	}
 
+	/**
+	 * Get the value that must be added to the X coordinate of in world object
+	 * 
+	 * @return the X offset
+	 */
 	public double getWorldOffsetX() {
 		return worldOffsetX;
 	}
 
+	/**
+	 * Set the value that must be added to the X coordinate of in world object
+	 * 
+	 * @param offsetX
+	 *            the X offset
+	 */
 	public void setWorldOffsetX(double offsetX) {
 		this.worldOffsetX = offsetX;
 	}
 
+	/**
+	 * Get the value that must be added to the Y coordinate of in world object
+	 * 
+	 * @return the Y offset
+	 */
 	public double getWorldOffsetY() {
 		return worldOffsetY;
 	}
 
+	/**
+	 * Set the value that must be added to the Y coordinate of in world object
+	 * 
+	 * @param offsetY
+	 *            the Y offset
+	 */
 	public void setWorldOffsetY(double offsetY) {
 		this.worldOffsetY = offsetY;
 	}
 
+	/**
+	 * Create a point and start rendering it
+	 * 
+	 * @param dx
+	 *            the x coordinate
+	 * @param dy
+	 *            the y coordinate
+	 * @return the point object
+	 */
 	public DrawablePoint createPoint(double dx, double dy) {
 		DrawablePoint drawablePoint = new DrawablePoint(this, dx, dy);
 		add(drawablePoint);
 		return drawablePoint;
 	}
 
+	/**
+	 * Create a rectangle and start rendering it
+	 * 
+	 * @param x
+	 *            the x coordinate
+	 * @param y
+	 *            the y coordinate
+	 * @param w
+	 *            the width
+	 * @param h
+	 *            the height
+	 * @return the rectangle object
+	 */
 	public DrawableRectangle createRectangle(double x, double y, double w, double h) {
 		DrawableRectangle d = new DrawableRectangle(this, x, y, w, h);
 		add(d);
 		return d;
 	}
 
+	/**
+	 * Set the default configuration of the view
+	 * 
+	 * @param zoom
+	 *            the initial zoom value
+	 * @param worldCenterX
+	 *            the initial X center value
+	 * @param worldCenterY
+	 *            the initial Y center value
+	 */
 	public void setDefaultView(double zoom, double worldCenterX, double worldCenterY) {
 		this.zoom = zoom;
 		this.worldCenterX = worldCenterX;
@@ -299,12 +442,34 @@ public class VUI {
 		this.defaultWorldCenterY = worldCenterY;
 	}
 
+	/**
+	 * Create an image and start rendering it
+	 * 
+	 * @param dx
+	 *            the x coordinate
+	 * @param dy
+	 *            the y coordinate
+	 * @param filename
+	 *            the filename of the image
+	 * @return the created image
+	 */
 	public DrawableImage createImage(double dx, double dy, String filename) {
 		DrawableImage image = new DrawableImage(this, dx, dy, filename);
 		add(image);
 		return image;
 	}
 
+	/**
+	 * Create a string and start rendering it
+	 * 
+	 * @param dx
+	 *            the x coordinate
+	 * @param dy
+	 *            the y coordinate
+	 * @param text
+	 *            the text to display
+	 * @return the created string
+	 */
 	public DrawableString createString(int dx, int dy, String text) {
 		DrawableString ds = new DrawableString(this, dx, dy, text);
 		add(ds);

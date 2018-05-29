@@ -7,7 +7,10 @@ package fr.irit.smac.amak;
  *
  */
 public interface Schedulable {
-	public int defaultSleep = 0;
+	/**
+	 * The default time between scheduler cycle
+	 */
+	public static final int DEFAULT_SLEEP = 0;
 
 	/**
 	 * A cycle of the schedulable system
@@ -23,7 +26,14 @@ public interface Schedulable {
 	 */
 	public boolean stopCondition();
 
+	/**
+	 * This method is called when the scheduler starts
+	 */
 	public void onSchedulingStarts();
 
+	/**
+	 * This method is called when the scheduler stops (by stopCondition or explicit
+	 * stop)
+	 */
 	public void onSchedulingStops();
 }

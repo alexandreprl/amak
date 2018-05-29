@@ -13,6 +13,7 @@ import fr.irit.smac.amak.tools.Log;
 import fr.irit.smac.amak.tools.Profiler;
 import fr.irit.smac.amak.ui.DrawableUI;
 
+@SuppressWarnings("deprecation")
 public class ThreadTest {
 
 	public static void main(String[] args) {

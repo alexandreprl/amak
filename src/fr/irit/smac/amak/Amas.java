@@ -81,7 +81,15 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * decisionAndCycle phase.
 	 */
 	public enum ExecutionPolicy {
-		TWO_PHASES, ONE_PHASE
+		/**
+		 * Every agent perceives, then every agent agent decides and acts
+		 */
+		TWO_PHASES,
+		/**
+		 * Every agent perceives, decides and act. When they all have finished, they
+		 * start again (or die)
+		 */
+		ONE_PHASE
 	}
 
 	private ExecutionPolicy executionPolicy = Configuration.executionPolicy;

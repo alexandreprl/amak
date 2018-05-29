@@ -17,8 +17,8 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":6,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
-var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"]};
+var methods = {"i0":42,"i1":42,"i2":42,"i3":42,"i4":42,"i5":42,"i6":38,"i7":42,"i8":42,"i9":42,"i10":42,"i11":42,"i12":42,"i13":42};
+var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"],8:["t4","Concrete Methods"],32:["t6","Deprecated Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
 var tableTab = "tableTab";
@@ -114,8 +114,10 @@ var activeTableTab = "activeTableTab";
 <dd><a href="../../../../../fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html" title="class in fr.irit.smac.amak.tests">ThreadTest.AgentPhaseDrawer</a></dd>
 </dl>
 <hr>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
 <br>
-<pre>public abstract class <span class="typeNameLabel">DrawableUI&lt;T extends <a href="../../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;? extends <a href="../../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt;&gt;</span>
+<pre>@Deprecated
+public abstract class <span class="typeNameLabel">DrawableUI&lt;T extends <a href="../../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;? extends <a href="../../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt;&gt;</span>
 extends java.lang.Object
 implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></pre>
 <div class="block">This class should be overridden by classes aiming at rendering stuffs on a
@@ -145,16 +147,25 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <tr class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#defaultSleep">defaultSleep</a></span></code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">set fps to 10 to avoid CPU overload</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected java.lang.Object[]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#params">params</a></span></code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Parameters to initialize the drawable UI</div>
 </td>
 </tr>
 </table>
+<ul class="blockList">
+<li class="blockList"><a name="fields.inherited.from.class.fr.irit.smac.amak.Schedulable">
+<!--   -->
+</a>
+<h3>Fields inherited from interface&nbsp;fr.irit.smac.amak.<a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></h3>
+<code><a href="../../../../../fr/irit/smac/amak/Schedulable.html#DEFAULT_SLEEP">DEFAULT_SLEEP</a></code></li>
+</ul>
 </li>
 </ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -187,7 +198,7 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 </a>
 <h3>Method Summary</h3>
 <table class="memberSummary" border="0" cellpadding="3" cellspacing="0" summary="Method Summary table, listing methods, and an explanation">
-<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
+<caption><span id="t0" class="activeTableTab"><span>All Methods</span><span class="tabEnd">&nbsp;</span></span><span id="t2" class="tableTab"><span><a href="javascript:show(2);">Instance Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t3" class="tableTab"><span><a href="javascript:show(4);">Abstract Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t4" class="tableTab"><span><a href="javascript:show(8);">Concrete Methods</a></span><span class="tabEnd">&nbsp;</span></span><span id="t6" class="tableTab"><span><a href="javascript:show(32);">Deprecated Methods</a></span><span class="tabEnd">&nbsp;</span></span></caption>
 <tr>
 <th class="colFirst" scope="col">Modifier and Type</th>
 <th class="colLast" scope="col">Method and Description</th>
@@ -195,45 +206,55 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#cycle--">cycle</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">A cycle of the schedulable system</div>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="type parameter in DrawableUI">T</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getAmas--">getAmas</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Getter for amas</div>
 </td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getHeight--">getHeight</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getHeight--">getHeight</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getScheduler--">getScheduler</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method gives access to the scheduler of the DrawableUI</div>
 </td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getWidth--">getWidth</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#getWidth--">getWidth</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onClick-int-int-">onClick</a></span>(int&nbsp;x,
        int&nbsp;y)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method is called when the mouse is clicked on the canvas</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>protected abstract void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onDraw-java.awt.Graphics2D-">onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics2D)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method is called when the canvas must be drawn again</div>
 </td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onInitialConfiguration--">onInitialConfiguration</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method is called at the very beginning of the DrawableUI creation.</div>
 </td>
 </tr>
@@ -241,31 +262,43 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onMouseDragged-int-int-">onMouseDragged</a></span>(int&nbsp;x,
               int&nbsp;y)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method is called when the mouse is dragged on the canvas</div>
 </td>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onSchedulingStarts--">onSchedulingStarts</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onSchedulingStarts--">onSchedulingStarts</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block">This method is called when the scheduler starts</div>
+</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onSchedulingStops--">onSchedulingStops</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#onSchedulingStops--">onSchedulingStops</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block">This method is called when the scheduler stops (by stopCondition or explicit
+ stop)</div>
+</td>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#setSize-int-int-">setSize</a></span>(int&nbsp;width,
-       int&nbsp;height)</code>&nbsp;</td>
+       int&nbsp;height)</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+&nbsp;</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#start--">start</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Helper method to launch the scheduler</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html#stopCondition--">stopCondition</a></span>()</code>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method allows the system to stop the scheduler on certain conditions</div>
 </td>
 </tr>
@@ -298,6 +331,7 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <li class="blockList">
 <h4>defaultSleep</h4>
 <pre>public&nbsp;int defaultSleep</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">set fps to 10 to avoid CPU overload</div>
 </li>
 </ul>
@@ -308,6 +342,7 @@ implements <a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="in
 <li class="blockList">
 <h4>params</h4>
 <pre>protected&nbsp;java.lang.Object[] params</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Parameters to initialize the drawable UI</div>
 </li>
 </ul>
@@ -356,6 +391,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <li class="blockList">
 <h4>getWidth</h4>
 <pre>public&nbsp;int&nbsp;getWidth()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 </li>
 </ul>
 <a name="getHeight--">
@@ -365,6 +401,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <li class="blockList">
 <h4>getHeight</h4>
 <pre>public&nbsp;int&nbsp;getHeight()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 </li>
 </ul>
 <a name="onInitialConfiguration--">
@@ -374,6 +411,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <li class="blockList">
 <h4>onInitialConfiguration</h4>
 <pre>protected&nbsp;void&nbsp;onInitialConfiguration()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method is called at the very beginning of the DrawableUI creation. Any
  configuration should be made here.</div>
 </li>
@@ -386,6 +424,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <h4>setSize</h4>
 <pre>protected&nbsp;void&nbsp;setSize(int&nbsp;width,
                        int&nbsp;height)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 </li>
 </ul>
 <a name="cycle--">
@@ -395,6 +434,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <li class="blockList">
 <h4>cycle</h4>
 <pre>public final&nbsp;void&nbsp;cycle()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Schedulable.html#cycle--">Schedulable</a></code></span></div>
 <div class="block">A cycle of the schedulable system</div>
 <dl>
@@ -410,6 +450,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <li class="blockList">
 <h4>onDraw</h4>
 <pre>protected abstract&nbsp;void&nbsp;onDraw(java.awt.Graphics2D&nbsp;graphics2D)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method is called when the canvas must be drawn again</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -425,6 +466,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <h4>onClick</h4>
 <pre>protected&nbsp;void&nbsp;onClick(int&nbsp;x,
                        int&nbsp;y)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method is called when the mouse is clicked on the canvas</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -441,6 +483,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <h4>onMouseDragged</h4>
 <pre>protected&nbsp;void&nbsp;onMouseDragged(int&nbsp;x,
                               int&nbsp;y)</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method is called when the mouse is dragged on the canvas</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
@@ -456,6 +499,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <li class="blockList">
 <h4>getScheduler</h4>
 <pre>public&nbsp;<a href="../../../../../fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a>&nbsp;getScheduler()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method gives access to the scheduler of the DrawableUI</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -470,6 +514,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <li class="blockList">
 <h4>start</h4>
 <pre>public&nbsp;void&nbsp;start()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Helper method to launch the scheduler</div>
 </li>
 </ul>
@@ -480,6 +525,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <li class="blockList">
 <h4>stopCondition</h4>
 <pre>public&nbsp;boolean&nbsp;stopCondition()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">This method allows the system to stop the scheduler on certain conditions</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
@@ -496,6 +542,7 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <li class="blockList">
 <h4>getAmas</h4>
 <pre>public&nbsp;<a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="type parameter in DrawableUI">T</a>&nbsp;getAmas()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
 <div class="block">Getter for amas</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
@@ -510,6 +557,9 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <li class="blockList">
 <h4>onSchedulingStarts</h4>
 <pre>public&nbsp;void&nbsp;onSchedulingStarts()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStarts--">Schedulable</a></code></span></div>
+<div class="block">This method is called when the scheduler starts</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStarts--">onSchedulingStarts</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>
@@ -523,6 +573,10 @@ public&nbsp;DrawableUI(<a href="../../../../../fr/irit/smac/amak/Scheduling.html
 <li class="blockList">
 <h4>onSchedulingStops</h4>
 <pre>public&nbsp;void&nbsp;onSchedulingStops()</pre>
+<div class="block"><span class="deprecatedLabel">Deprecated.</span>&nbsp;</div>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStops--">Schedulable</a></code></span></div>
+<div class="block">This method is called when the scheduler stops (by stopCondition or explicit
+ stop)</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStops--">onSchedulingStops</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></code></dd>

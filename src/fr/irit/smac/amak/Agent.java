@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import fr.irit.smac.amak.Amas.ExecutionPolicy;
 import fr.irit.smac.amak.tools.Log;
 
 /**
@@ -44,12 +45,38 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	/**
 	 * The id of the agent
 	 */
-	private final int id = uniqueIndex++;
+	private final int id;
 	private int executionOrder;
 	protected Object[] params;
 
+	/**
+	 * These phases are used to synchronize agents on phase
+	 * 
+	 * @see fr.irit.smac.amak.Amas.ExecutionPolicy
+	 * @author perles
+	 *
+	 */
 	public enum Phase {
-		PERCEPTION, DECISION_AND_ACTION, INITIALIZING, PERCEPTION_DONE, DECISION_AND_ACTION_DONE
+		/**
+		 * Agent is perceiving
+		 */
+		PERCEPTION,
+		/**
+		 * Agent is deciding and acting
+		 */
+		DECISION_AND_ACTION,
+		/**
+		 * Agent haven't started to perceive, decide or act
+		 */
+		INITIALIZING,
+		/**
+		 * Agent is ready to decide
+		 */
+		PERCEPTION_DONE,
+		/**
+		 * Agent is ready to perceive or die
+		 */
+		DECISION_AND_ACTION_DONE
 	}
 
 	protected Phase currentPhase = Phase.INITIALIZING;
@@ -64,9 +91,12 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 *            The params to initialize the agent
 	 */
 	public Agent(A amas, Object... params) {
+		this.id = uniqueIndex++;
 		this.params = params;
 		this.amas = amas;
-		this.amas._addAgent(this);
+		if (amas != null) {
+			this.amas._addAgent(this);
+		}
 		neighborhood = new ArrayList<>();
 		neighborhood.add(this);
 		onInitialization();
@@ -185,7 +215,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	protected final void _onBeforeReady() {
 		criticality = computeCriticality();
-		executionOrder = computeExecutionOrder();
+		executionOrder = _computeExecutionOrder();
 	}
 
 	/**
@@ -243,9 +273,10 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 * agent
 	 */
 	@Override
-	public final void run() {
-		switch (amas.getExecutionPolicy()) {
-		case TWO_PHASES:
+	public void run() {
+		ExecutionPolicy executionPolicy = amas.getExecutionPolicy();
+		if (executionPolicy == ExecutionPolicy.TWO_PHASES) {
+
 			currentPhase = nextPhase();
 			switch (currentPhase) {
 			case PERCEPTION:
@@ -259,22 +290,20 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 			default:
 				Log.fatal("AMAK", "An agent is being run in an invalid phase (%s)", currentPhase);
 			}
-			break;
-		case ONE_PHASE:
+		} else if (executionPolicy == ExecutionPolicy.ONE_PHASE) {
 			currentPhase = Phase.PERCEPTION;
 			phase1();
 			currentPhase = Phase.DECISION_AND_ACTION;
 			phase2();
 			amas.informThatAgentPerceptionIsFinished();
 			amas.informThatAgentDecisionAndActionAreFinished();
-			break;
 		}
 	}
 
 	/**
 	 * This method represents the perception phase of the agent
 	 */
-	private void phase1() {
+	protected final void phase1() {
 		onAgentCycleBegin();
 		perceive();
 		currentPhase = Phase.PERCEPTION_DONE;
@@ -283,9 +312,9 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	/**
 	 * This method represents the decisionAndAction phase of the agent
 	 */
-	private void phase2() {
+	protected final void phase2() {
 		decideAndAct();
-		executionOrder = computeExecutionOrder();
+		executionOrder = _computeExecutionOrder();
 		onExpose();
 		onUpdateRender();
 		onAgentCycleEnd();
@@ -309,11 +338,12 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	}
 
 	/**
-	 * Compute the execution order from the layer and a random value
+	 * Compute the execution order from the layer and a random value. This method
+	 * shouldn't be overridden.
 	 * 
-	 * @return
+	 * @return A number used by amak to determine which agent executes first
 	 */
-	private final int computeExecutionOrder() {
+	protected int _computeExecutionOrder() {
 		return computeExecutionOrderLayer() * 10000 + amas.getEnvironment().getRandom().nextInt(10000);
 	}
 
@@ -370,7 +400,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 		}
 		if (criticalest.isEmpty())
 			return null;
-		return criticalest.get((int) (Math.random() * criticalest.size()));
+		return criticalest.get(getEnvironment().getRandom().nextInt(criticalest.size()));
 	}
 
 	/**
@@ -422,5 +452,13 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	public int getId() {
 		return id;
+	}
+
+	/**
+	 * Getter for the environment
+	 * @return the environment
+	 */
+	public E getEnvironment() {
+		return getAmas().getEnvironment();
 	}
 }

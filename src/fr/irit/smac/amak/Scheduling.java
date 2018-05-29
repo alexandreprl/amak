@@ -7,5 +7,16 @@ package fr.irit.smac.amak;
  * Example: amas.getScheduler().start();
  */
 public enum Scheduling {
-	UI, HIDDEN, DEFAULT
+	/**
+	 * Create a new scheduler and show it as a toolbar
+	 */
+	UI,
+	/**
+	 * Create a new scheduler and hide it
+	 */
+	HIDDEN,
+	/**
+	 * Use the default scheduler
+	 */
+	DEFAULT
 }

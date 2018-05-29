@@ -3,7 +3,6 @@ package fr.irit.smac.amak.ui.drawables;
 import java.awt.Color;
 import java.awt.Graphics2D;
 
-import fr.irit.smac.amak.tools.Log;
 import fr.irit.smac.amak.ui.VUI;
 
 public abstract class Drawable {

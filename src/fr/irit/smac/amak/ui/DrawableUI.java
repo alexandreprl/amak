@@ -24,7 +24,7 @@ import fr.irit.smac.amak.Scheduling;
  * @author Alexandre Perles
  *
  */
-public abstract class DrawableUI<T extends Amas<? extends Environment>> implements Schedulable {
+@Deprecated public abstract class DrawableUI<T extends Amas<? extends Environment>> implements Schedulable {
 	/**
 	 * set fps to 10 to avoid CPU overload
 	 */

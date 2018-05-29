@@ -24,6 +24,10 @@ public class AntExample extends Agent<AntHillExample, WorldExample> {
 	 * 
 	 * @param amas
 	 *            the amas the ant belongs to
+	 * @param startX
+	 *            Initial X coordinate
+	 * @param startY
+	 *            Initial Y coordinate
 	 */
 	public AntExample(AntHillExample amas, double startX, double startY) {
 		super(amas, startX, startY);

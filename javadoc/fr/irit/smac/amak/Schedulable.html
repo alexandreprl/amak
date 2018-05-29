@@ -99,7 +99,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>, <a href="../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>, <a href="../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a>, <a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosophersAMASExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyAMAS</a>, <a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyEnvironment.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyEnvironment</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/TableExample.html" title="class in fr.irit.smac.amak.examples.philosophers">TableExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html" title="class in fr.irit.smac.amak.tests">ThreadTest.AgentPhaseDrawer</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAMAS</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.MyEnvironment.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyEnvironment</a>, <a href="../../../../fr/irit/smac/amak/examples/randomants/WorldExample.html" title="class in fr.irit.smac.amak.examples.randomants">WorldExample</a></dd>
+<dd><a href="../../../../fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>, <a href="../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>, <a href="../../../../fr/irit/smac/amak/AsyncAgent.html" title="class in fr.irit.smac.amak">AsyncAgent</a>, <a href="../../../../fr/irit/smac/amak/AsyncAmas.html" title="class in fr.irit.smac.amak">AsyncAmas</a>, <a href="../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncAntExample</a>, <a href="../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>, <a href="../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a>, <a href="../../../../fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosophersAMASExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyAMAS</a>, <a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyEnvironment.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyEnvironment</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/TableExample.html" title="class in fr.irit.smac.amak.examples.philosophers">TableExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html" title="class in fr.irit.smac.amak.tests">ThreadTest.AgentPhaseDrawer</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAMAS</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.MyEnvironment.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyEnvironment</a>, <a href="../../../../fr/irit/smac/amak/examples/randomants/WorldExample.html" title="class in fr.irit.smac.amak.examples.randomants">WorldExample</a></dd>
 </dl>
 <hr>
 <br>
@@ -129,7 +129,9 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>static int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Schedulable.html#defaultSleep">defaultSleep</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Schedulable.html#DEFAULT_SLEEP">DEFAULT_SLEEP</a></span></code>
+<div class="block">The default time between scheduler cycle</div>
+</td>
 </tr>
 </table>
 </li>
@@ -154,11 +156,16 @@ var activeTableTab = "activeTableTab";
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStarts--">onSchedulingStarts</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStarts--">onSchedulingStarts</a></span>()</code>
+<div class="block">This method is called when the scheduler starts</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStops--">onSchedulingStops</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Schedulable.html#onSchedulingStops--">onSchedulingStops</a></span>()</code>
+<div class="block">This method is called when the scheduler stops (by stopCondition or explicit
+ stop)</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -181,16 +188,17 @@ var activeTableTab = "activeTableTab";
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a name="defaultSleep">
+<a name="DEFAULT_SLEEP">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>defaultSleep</h4>
-<pre>static final&nbsp;int defaultSleep</pre>
+<h4>DEFAULT_SLEEP</h4>
+<pre>static final&nbsp;int DEFAULT_SLEEP</pre>
+<div class="block">The default time between scheduler cycle</div>
 <dl>
 <dt><span class="seeLabel">See Also:</span></dt>
-<dd><a href="../../../../constant-values.html#fr.irit.smac.amak.Schedulable.defaultSleep">Constant Field Values</a></dd>
+<dd><a href="../../../../constant-values.html#fr.irit.smac.amak.Schedulable.DEFAULT_SLEEP">Constant Field Values</a></dd>
 </dl>
 </li>
 </ul>
@@ -235,6 +243,7 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>onSchedulingStarts</h4>
 <pre>void&nbsp;onSchedulingStarts()</pre>
+<div class="block">This method is called when the scheduler starts</div>
 </li>
 </ul>
 <a name="onSchedulingStops--">
@@ -244,6 +253,8 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <h4>onSchedulingStops</h4>
 <pre>void&nbsp;onSchedulingStops()</pre>
+<div class="block">This method is called when the scheduler stops (by stopCondition or explicit
+ stop)</div>
 </li>
 </ul>
 </li>

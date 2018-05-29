@@ -34,7 +34,18 @@ public class Scheduler implements Runnable {
 	 *
 	 */
 	public enum State {
-		RUNNING, IDLE, PENDING_STOP
+		/**
+		 * The scheduler is running
+		 */
+		RUNNING,
+		/**
+		 * The scheduler is paused
+		 */
+		IDLE,
+		/**
+		 * The scheduler is expected to stop at the end at the current cycle
+		 */
+		PENDING_STOP
 
 	}
 
@@ -51,6 +62,12 @@ public class Scheduler implements Runnable {
 		}
 		this.state = State.IDLE;
 	}
+
+	/**
+	 * Create or return the default scheduler
+	 * 
+	 * @return The default scheduler
+	 */
 	public static Scheduler getDefaultScheduler() {
 		if (defaultScheduler == null) {
 			defaultScheduler = new Scheduler();
@@ -58,6 +75,7 @@ public class Scheduler implements Runnable {
 		}
 		return defaultScheduler;
 	}
+
 	/**
 	 * Set the delay between two cycles and launch the scheduler if it is not
 	 * running
@@ -66,7 +84,7 @@ public class Scheduler implements Runnable {
 	 *            the delay between two cycles
 	 */
 	public void startWithSleep(int i) {
-		if (locked>0) {
+		if (locked > 0) {
 			if (onChange != null)
 				onChange.accept(this);
 			return;
@@ -91,14 +109,14 @@ public class Scheduler implements Runnable {
 	 * Start (or continue) with no delay between cycles
 	 */
 	public void start() {
-		startWithSleep(Schedulable.defaultSleep);
+		startWithSleep(Schedulable.DEFAULT_SLEEP);
 	}
 
 	/**
 	 * Execute one cycle
 	 */
 	public void step() {
-		if (locked>0) {
+		if (locked > 0) {
 			if (onChange != null)
 				onChange.accept(this);
 			return;
@@ -149,7 +167,7 @@ public class Scheduler implements Runnable {
 		boolean mustStop;
 		do {
 			for (Schedulable schedulable : schedulables) {
-				schedulable.cycle();	
+				schedulable.cycle();
 			}
 			if (getSleep() != 0) {
 				try {
@@ -160,7 +178,7 @@ public class Scheduler implements Runnable {
 			}
 			mustStop = false;
 			for (Schedulable schedulable : schedulables) {
-				mustStop|=schedulable.stopCondition();
+				mustStop |= schedulable.stopCondition();
 			}
 		} while (state == State.RUNNING && !mustStop);
 		stateLock.lock();
@@ -174,12 +192,13 @@ public class Scheduler implements Runnable {
 		if (onStop != null)
 			onStop.accept(this);
 	}
+
 	private void treatPendingSchedulables() {
 		while (!pendingAdditionSchedulables.isEmpty())
 			schedulables.add(pendingAdditionSchedulables.poll());
 		while (!pendingRemovalSchedulables.isEmpty())
 			schedulables.remove(pendingRemovalSchedulables.poll());
-		
+
 	}
 
 	/**
@@ -231,15 +250,36 @@ public class Scheduler implements Runnable {
 		this.sleep = sleep;
 	}
 
+	/**
+	 * Plan to add a schedulable
+	 * 
+	 * @param _schedulable
+	 *            the schedulable to add
+	 */
 	public void add(Schedulable _schedulable) {
-		this.schedulables.add(_schedulable);
+		this.pendingAdditionSchedulables.add(_schedulable);
 	}
+
+	/**
+	 * Plan to remove a schedulable
+	 * 
+	 * @param _schedulable
+	 *            the schedulable to remove
+	 */
 	public void remove(Schedulable _schedulable) {
-		this.schedulables.remove(_schedulable);
+		this.pendingRemovalSchedulables.add(_schedulable);
 	}
+
+	/**
+	 * Soft lock the scheduler to avoid a too early running
+	 */
 	public void lock() {
-		locked ++;
+		locked++;
 	}
+
+	/**
+	 * Soft unlock the scheduler to avoid a too early running
+	 */
 	public void unlock() {
 		locked--;
 	}
