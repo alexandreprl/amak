@@ -270,7 +270,7 @@ public class VUI {
 	 * 
 	 * @return the zoom factor
 	 */
-	protected double getZoomFactor() {
+	public double getZoomFactor() {
 		return zoom / 100;
 	}
 
