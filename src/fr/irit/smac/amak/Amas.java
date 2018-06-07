@@ -263,11 +263,15 @@ public class Amas<E extends Environment> implements Schedulable {
 			break;
 		}
 
-		while (!agentsPendingRemoval.isEmpty())
-			agents.remove(agentsPendingRemoval.poll());
+		removePendingAgents();
 		addPendingAgents();
 		onSystemCycleEnd();
 		onUpdateRender();
+	}
+
+	private void removePendingAgents() {
+		while (!agentsPendingRemoval.isEmpty())
+			agents.remove(agentsPendingRemoval.poll());
 	}
 
 	protected void onUpdateRender() {
