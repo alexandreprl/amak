@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.function.Consumer;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -33,6 +34,7 @@ public class MainWindow extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu optionsMenu;
 	private JTabbedPane tabbedPanel;
+	private final MainWindowListener mainWindowListener;
 	private static MainWindow instance;
 	private static ReentrantLock instanceLock = new ReentrantLock();
 
@@ -40,7 +42,9 @@ public class MainWindow extends JFrame {
 	 * Create the frame.
 	 */
 	private MainWindow() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		mainWindowListener = new MainWindowListener(this);
+		addWindowListener(mainWindowListener);
 		setBounds(100, 100, 450, 300);
 		toolbarPanel = new JPanel();
 		getContentPane().add(toolbarPanel, BorderLayout.SOUTH);
@@ -65,10 +69,14 @@ public class MainWindow extends JFrame {
 
 		menuBar.add(new JMenu("AMAK v" + Information.VERSION));
 
+		
+		
 		setVisible(true);
 
 	}
-
+	public static void addOnCloseAction(Consumer<MainWindow> onClose) {
+		instance().mainWindowListener.addOnCLoseAction(onClose);
+	}
 	/**
 	 * Change the icon of the window
 	 * 
@@ -133,7 +141,7 @@ public class MainWindow extends JFrame {
 	 * 
 	 * @return instance
 	 */
-	private static MainWindow instance() {
+	public static MainWindow instance() {
 		instanceLock.lock();
 		if (instance == null) {
 			instance = new MainWindow();

@@ -6,5 +6,6 @@
 	<classpathentry kind="lib" path="AdditionalLibraries/lx-plot-standalone.jar"/>
 	<classpathentry kind="lib" path="AdditionalLibraries/json-simple-1.1.jar"/>
 	<classpathentry kind="lib" path="AdditionalLibraries/xstream-1.4.10.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
