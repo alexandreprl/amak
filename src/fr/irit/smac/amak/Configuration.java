@@ -22,4 +22,14 @@ public class Configuration {
 	 * wait for each others.
 	 */
 	public static ExecutionPolicy executionPolicy = ExecutionPolicy.ONE_PHASE;
+
+	/**
+	 * By default, mas made with amak are meant to be executed on a graphical
+	 * environment. However, some may need to execute a mas without any GUI. To
+	 * guarantee the well functioning of this option, you have to check that you
+	 * only render stuff in methods such as onUpdaterRender
+	 * onRenderingInitialization... Also, do not forget to set your schedulers to
+	 * HIDDEN or DEFAULT
+	 */
+	public static boolean commandLineMode = false;
 }

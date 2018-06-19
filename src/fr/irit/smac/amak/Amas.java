@@ -120,7 +120,7 @@ public class Amas<E extends Environment> implements Schedulable {
 			this.scheduler.add(this);
 		} else {
 			this.scheduler = new Scheduler(this);
-			if (scheduling == Scheduling.UI)
+			if (scheduling == Scheduling.UI && !Configuration.commandLineMode)
 				MainWindow.addToolbar(new SchedulerToolbar("Amas #" + id, getScheduler()));
 		}
 		this.scheduler.lock();
@@ -131,7 +131,8 @@ public class Amas<E extends Environment> implements Schedulable {
 
 		addPendingAgents();
 		this.onReady();
-		this.onRenderingInitialization();
+		if (!Configuration.commandLineMode)
+			this.onRenderingInitialization();
 		this.scheduler.unlock();
 	}
 
@@ -266,7 +267,8 @@ public class Amas<E extends Environment> implements Schedulable {
 		removePendingAgents();
 		addPendingAgents();
 		onSystemCycleEnd();
-		onUpdateRender();
+		if (!Configuration.commandLineMode)
+			onUpdateRender();
 	}
 
 	private void removePendingAgents() {

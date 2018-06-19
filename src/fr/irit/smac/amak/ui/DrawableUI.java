@@ -12,6 +12,7 @@ import java.awt.event.MouseMotionListener;
 import javax.swing.JPanel;
 
 import fr.irit.smac.amak.Amas;
+import fr.irit.smac.amak.Configuration;
 import fr.irit.smac.amak.Environment;
 import fr.irit.smac.amak.Schedulable;
 import fr.irit.smac.amak.Scheduler;
@@ -163,7 +164,7 @@ import fr.irit.smac.amak.Scheduling;
 
 			scheduler = new Scheduler(this);
 
-			if (_scheduling == Scheduling.UI)
+			if (_scheduling == Scheduling.UI && !Configuration.commandLineMode)
 				MainWindow.addToolbar(new SchedulerToolbar("Drawable #" + id, scheduler));
 		}
 

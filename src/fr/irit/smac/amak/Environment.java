@@ -43,14 +43,15 @@ public abstract class Environment implements Schedulable {
 			this.scheduler.add(this);
 		} else {
 			this.scheduler = new Scheduler(this);
-			if (_scheduling == Scheduling.UI)
+			if (_scheduling == Scheduling.UI && !Configuration.commandLineMode)
 				MainWindow.addToolbar(new SchedulerToolbar("Environment #" + id, getScheduler()));
 		}
 		this.scheduler.lock();
 		this.params = params;
 		onInitialization();
 		onInitialEntitiesCreation();
-		onRenderingInitialization();
+		if (!Configuration.commandLineMode)
+			onRenderingInitialization();
 		this.scheduler.unlock();
 	}
 
@@ -108,7 +109,8 @@ public abstract class Environment implements Schedulable {
 	@Override
 	public final void cycle() {
 		onCycle();
-		onUpdateRender();
+		if (!Configuration.commandLineMode)
+			onUpdateRender();
 	}
 
 	/**

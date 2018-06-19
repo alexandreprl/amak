@@ -71,7 +71,8 @@ public class Scheduler implements Runnable {
 	public static Scheduler getDefaultScheduler() {
 		if (defaultScheduler == null) {
 			defaultScheduler = new Scheduler();
-			MainWindow.addToolbar(new SchedulerToolbar("Default", defaultScheduler));
+			if (!Configuration.commandLineMode)
+				MainWindow.addToolbar(new SchedulerToolbar("Default", defaultScheduler));
 		}
 		return defaultScheduler;
 	}

@@ -100,7 +100,8 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 		neighborhood = new ArrayList<>();
 		neighborhood.add(this);
 		onInitialization();
-		onRenderingInitialization();
+		if (!Configuration.commandLineMode)
+			onRenderingInitialization();
 	}
 
 	/**
@@ -316,7 +317,8 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 		decideAndAct();
 		executionOrder = _computeExecutionOrder();
 		onExpose();
-		onUpdateRender();
+		if (!Configuration.commandLineMode)
+			onUpdateRender();
 		onAgentCycleEnd();
 		currentPhase = Phase.DECISION_AND_ACTION_DONE;
 	}
@@ -456,6 +458,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 
 	/**
 	 * Getter for the environment
+	 * 
 	 * @return the environment
 	 */
 	public E getEnvironment() {
