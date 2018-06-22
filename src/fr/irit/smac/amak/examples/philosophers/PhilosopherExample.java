@@ -10,23 +10,89 @@ import fr.irit.smac.amak.ui.drawables.DrawableRectangle;
 import fr.irit.smac.lxplot.LxPlot;
 import fr.irit.smac.lxplot.commons.ChartType;
 
+/**
+ * This class represents a philosopher;
+ * 
+ * @author perles
+ *
+ */
 public class PhilosopherExample extends Agent<PhilosophersAMASExample, TableExample> {
 
+	/**
+	 * The fork on the left of its plate
+	 */
 	private ForkExample left;
+	/**
+	 * The fork on the right of its plate
+	 */
 	private ForkExample right;
+	/**
+	 * The amount of time (in cycle) the philosopher haven't ate (while in state
+	 * hungry)
+	 */
 	private double hungerDuration;
+	/**
+	 * The amount of eaten pastas
+	 */
 	private double eatenPastas;
+
+	/**
+	 * The id of the philosopher
+	 */
 	private int id;
 
+	/**
+	 * States philosophers can be in
+	 * 
+	 * @author perles
+	 *
+	 */
 	public enum State {
-		THINK, HUNGRY, EATING
+		/**
+		 * The philosopher is thinking. It essentially means that they are not hungry
+		 * and not eating
+		 */
+		THINK,
+		/**
+		 * The philosopher is hungry. He wants to be in the state eating.
+		 */
+		HUNGRY,
+		/**
+		 * The philosopher has obtained the two forks and eat.
+		 */
+		EATING
 	}
 
+	/**
+	 * The current state of the philosopher
+	 */
 	private State state = State.THINK;
+
+	/**
+	 * A rectangle meant to render the state and the location of the philosopher
+	 */
 	private DrawableRectangle drawableRectangle;
+	/**
+	 * The rendering of the left fork when handled by the philosopher
+	 */
 	private Drawable drawableLeftFork;
+	/**
+	 * The rendering of the right fork when handled by the philosopher
+	 */
 	private Drawable drawableRightFork;
 
+	/**
+	 * Constructor of the philosopher
+	 * 
+	 * @param id
+	 *            the identifier of the philosopher
+	 * @param amas
+	 *            the corresponding MAS
+	 * @param left
+	 *            the left fork
+	 * @param right
+	 *            the right fork
+	 */
 	public PhilosopherExample(int id, PhilosophersAMASExample amas, ForkExample left, ForkExample right) {
 		super(amas, id, left, right);
 	}

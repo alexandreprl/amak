@@ -10,9 +10,16 @@ package fr.irit.smac.amak;
  *            The environment the agent is connected to.
  */
 public class AsyncAgent<E extends Environment> extends Agent<AsyncAmas<E>, E> implements Schedulable {
-
+	/**
+	 * The scheduler of the agent. Each AsyncAgent has a dedicated scheduler.
+	 */
 	private Scheduler scheduler;
-	private E getEnvironment;
+
+	/**
+	 * AsyncAgent don't have an Amas. Therefore, it is necessary to give a direct
+	 * link to the environment.
+	 */
+	private E environment;
 
 	/**
 	 * Create an async agent
@@ -26,7 +33,7 @@ public class AsyncAgent<E extends Environment> extends Agent<AsyncAmas<E>, E> im
 	 */
 	public AsyncAgent(E environment, int sleep, Object... params) {
 		super(null, params);
-		this.getEnvironment = environment;
+		this.environment = environment;
 		this.scheduler = new Scheduler(this);
 		this.scheduler.startWithSleep(sleep);
 	}
@@ -64,6 +71,6 @@ public class AsyncAgent<E extends Environment> extends Agent<AsyncAmas<E>, E> im
 
 	@Override
 	public E getEnvironment() {
-		return getEnvironment;
+		return environment;
 	}
 }

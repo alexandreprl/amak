@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9,"i6":9,"i7":9,"i8":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../fr/irit/smac/amak/ui/SchedulerToolbar.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?fr/irit/smac/amak/ui/MainWindow.html" target="_top">Frames</a></li>
@@ -255,34 +255,44 @@ extends javax.swing.JFrame</pre>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#addOnCloseAction-java.util.function.Consumer-">addOnCloseAction</a></span>(java.util.function.Consumer&lt;<a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a>&gt;&nbsp;onClose)</code>&nbsp;</td>
+</tr>
+<tr id="i2" class="altColor">
+<td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#addTabbedPanel-java.lang.String-javax.swing.JPanel-">addTabbedPanel</a></span>(java.lang.String&nbsp;title,
               javax.swing.JPanel&nbsp;panel)</code>&nbsp;</td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#addToolbar-javax.swing.JToolBar-">addToolbar</a></span>(javax.swing.JToolBar&nbsp;toolbar)</code>
 <div class="block">Add a toolBar</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>static <a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a></code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#instance--">instance</a></span>()</code>
+<div class="block">Return the unique instance of MainWindow, may create it.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#setLeftPanel-java.lang.String-javax.swing.JPanel-">setLeftPanel</a></span>(java.lang.String&nbsp;title,
             javax.swing.JPanel&nbsp;panel)</code>
 <div class="block">Add a tabbedPanel</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#setRightPanel-java.lang.String-javax.swing.JPanel-">setRightPanel</a></span>(java.lang.String&nbsp;title,
              javax.swing.JPanel&nbsp;panel)</code>&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#setWindowIcon-java.lang.String-">setWindowIcon</a></span>(java.lang.String&nbsp;filename)</code>
 <div class="block">Change the icon of the window</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#setWindowTitle-java.lang.String-">setWindowTitle</a></span>(java.lang.String&nbsp;title)</code>
 <div class="block">Change the title of the main window</div>
@@ -352,6 +362,15 @@ extends javax.swing.JFrame</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="addOnCloseAction-java.util.function.Consumer-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>addOnCloseAction</h4>
+<pre>public static&nbsp;void&nbsp;addOnCloseAction(java.util.function.Consumer&lt;<a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a>&gt;&nbsp;onClose)</pre>
+</li>
+</ul>
 <a name="setWindowIcon-java.lang.String-">
 <!--   -->
 </a>
@@ -430,6 +449,20 @@ extends javax.swing.JFrame</pre>
                                  javax.swing.JPanel&nbsp;panel)</pre>
 </li>
 </ul>
+<a name="instance--">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>instance</h4>
+<pre>public static&nbsp;<a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a>&nbsp;instance()</pre>
+<div class="block">Return the unique instance of MainWindow, may create it.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>instance</dd>
+</dl>
+</li>
+</ul>
 <a name="addTabbedPanel-java.lang.String-javax.swing.JPanel-">
 <!--   -->
 </a>
@@ -468,7 +501,7 @@ extends javax.swing.JFrame</pre>
 <div class="subNav">
 <ul class="navList">
 <li><a href="../../../../../fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">Prev&nbsp;Class</span></a></li>
-<li><a href="../../../../../fr/irit/smac/amak/ui/SchedulerToolbar.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../index.html?fr/irit/smac/amak/ui/MainWindow.html" target="_top">Frames</a></li>

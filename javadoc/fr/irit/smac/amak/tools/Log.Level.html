@@ -141,22 +141,34 @@ extends java.lang.Enum&lt;<a href="../../../../../fr/irit/smac/amak/tools/Log.Le
 <th class="colOne" scope="col">Enum Constant and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#DEBUG">DEBUG</a></span></code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#DEBUG">DEBUG</a></span></code>
+<div class="block">Debug are the lowest level of logging.</div>
+</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#ERROR">ERROR</a></span></code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#ERROR">ERROR</a></span></code>
+<div class="block">An error which very probably causes alteration of the result</div>
+</td>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#FATAL">FATAL</a></span></code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#FATAL">FATAL</a></span></code>
+<div class="block">A fatal error should be thrown when the program is absolutely not able to continue</div>
+</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#IMPORTANT">IMPORTANT</a></span></code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#IMPORTANT">IMPORTANT</a></span></code>
+<div class="block">An important log should be considered by the developer but doesn't have a real impact on the result</div>
+</td>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#INFORM">INFORM</a></span></code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#INFORM">INFORM</a></span></code>
+<div class="block">Simply inform the developer or user</div>
+</td>
 </tr>
 <tr class="rowColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#WARNING">WARNING</a></span></code>&nbsp;</td>
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#WARNING">WARNING</a></span></code>
+<div class="block">A warning doesn't have impact on the problem but should be considered for next updates</div>
+</td>
 </tr>
 </table>
 </li>
@@ -175,7 +187,9 @@ extends java.lang.Enum&lt;<a href="../../../../../fr/irit/smac/amak/tools/Log.Le
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#isGE-fr.irit.smac.amak.tools.Log.Level-">isGE</a></span>(<a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a>&nbsp;_other)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html#isGE-fr.irit.smac.amak.tools.Log.Level-">isGE</a></span>(<a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a>&nbsp;_other)</code>
+<div class="block">Check whether a log level is more important than another</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a></code></td>
@@ -226,6 +240,7 @@ the order they are declared.</div>
 <li class="blockList">
 <h4>FATAL</h4>
 <pre>public static final&nbsp;<a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a> FATAL</pre>
+<div class="block">A fatal error should be thrown when the program is absolutely not able to continue</div>
 </li>
 </ul>
 <a name="ERROR">
@@ -235,6 +250,7 @@ the order they are declared.</div>
 <li class="blockList">
 <h4>ERROR</h4>
 <pre>public static final&nbsp;<a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a> ERROR</pre>
+<div class="block">An error which very probably causes alteration of the result</div>
 </li>
 </ul>
 <a name="IMPORTANT">
@@ -244,6 +260,7 @@ the order they are declared.</div>
 <li class="blockList">
 <h4>IMPORTANT</h4>
 <pre>public static final&nbsp;<a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a> IMPORTANT</pre>
+<div class="block">An important log should be considered by the developer but doesn't have a real impact on the result</div>
 </li>
 </ul>
 <a name="WARNING">
@@ -253,6 +270,7 @@ the order they are declared.</div>
 <li class="blockList">
 <h4>WARNING</h4>
 <pre>public static final&nbsp;<a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a> WARNING</pre>
+<div class="block">A warning doesn't have impact on the problem but should be considered for next updates</div>
 </li>
 </ul>
 <a name="INFORM">
@@ -262,6 +280,7 @@ the order they are declared.</div>
 <li class="blockList">
 <h4>INFORM</h4>
 <pre>public static final&nbsp;<a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a> INFORM</pre>
+<div class="block">Simply inform the developer or user</div>
 </li>
 </ul>
 <a name="DEBUG">
@@ -271,6 +290,7 @@ the order they are declared.</div>
 <li class="blockList">
 <h4>DEBUG</h4>
 <pre>public static final&nbsp;<a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a> DEBUG</pre>
+<div class="block">Debug are the lowest level of logging. Unreadable data should be here</div>
 </li>
 </ul>
 </li>
@@ -330,6 +350,13 @@ not permitted.)</div>
 <li class="blockList">
 <h4>isGE</h4>
 <pre>public&nbsp;boolean&nbsp;isGE(<a href="../../../../../fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a>&nbsp;_other)</pre>
+<div class="block">Check whether a log level is more important than another</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>_other</code> - the log level to compare to</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>true if this is more important than _other</dd>
+</dl>
 </li>
 </ul>
 </li>

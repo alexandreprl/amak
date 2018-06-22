@@ -115,7 +115,7 @@ var activeTableTab = "activeTableTab";
 </dl>
 <dl>
 <dt>Direct Known Subclasses:</dt>
-<dd><a href="../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>, <a href="../../../../fr/irit/smac/amak/AsyncAmas.html" title="class in fr.irit.smac.amak">AsyncAmas</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosophersAMASExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyAMAS</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAMAS</a></dd>
+<dd><a href="../../../../fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a>, <a href="../../../../fr/irit/smac/amak/AsyncAmas.html" title="class in fr.irit.smac.amak">AsyncAmas</a>, <a href="../../../../fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyAMAS.html" title="class in fr.irit.smac.amak.tests">CommandLineOnlyResolution.MyAMAS</a>, <a href="../../../../fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosophersAMASExample</a>, <a href="../../../../fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyAMAS</a>, <a href="../../../../fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAMAS</a></dd>
 </dl>
 <hr>
 <br>
@@ -327,7 +327,9 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onRenderingInitialization--">onRenderingInitialization</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onRenderingInitialization--">onRenderingInitialization</a></span>()</code>
+<div class="block">The method in which the rendering initialization should be made.</div>
+</td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
@@ -357,7 +359,9 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 </tr>
 <tr id="i20" class="altColor">
 <td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onUpdateRender--">onUpdateRender</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Amas.html#onUpdateRender--">onUpdateRender</a></span>()</code>
+<div class="block">The method in which you can update the rendering.</div>
+</td>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code>void</code></td>
@@ -491,6 +495,8 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <li class="blockList">
 <h4>onRenderingInitialization</h4>
 <pre>protected&nbsp;void&nbsp;onRenderingInitialization()</pre>
+<div class="block">The method in which the rendering initialization should be made. For example,
+ the creation of a VUI object <a href="../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui"><code>VUI</code></a></div>
 </li>
 </ul>
 <a name="informThatAgentPerceptionIsFinished--">
@@ -608,6 +614,9 @@ implements <a href="../../../../fr/irit/smac/amak/Schedulable.html" title="inter
 <li class="blockList">
 <h4>onUpdateRender</h4>
 <pre>protected&nbsp;void&nbsp;onUpdateRender()</pre>
+<div class="block">The method in which you can update the rendering. For example, update the
+ color of the VUI drawable object create in
+ <a href="../../../../fr/irit/smac/amak/Amas.html#onRenderingInitialization--"><code>onRenderingInitialization()</code></a></div>
 </li>
 </ul>
 <a name="onSystemCycleEnd--">

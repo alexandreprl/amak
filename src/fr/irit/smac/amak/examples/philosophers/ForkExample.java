@@ -8,6 +8,10 @@ package fr.irit.smac.amak.examples.philosophers;
  *
  */
 public class ForkExample {
+	/**
+	 * If the fork is taken by someone, the takenBy attribute will refer to this
+	 * person
+	 */
 	private PhilosopherExample takenBy;
 
 	/**

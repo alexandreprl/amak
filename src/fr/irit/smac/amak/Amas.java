@@ -3,6 +3,7 @@ package fr.irit.smac.amak;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.ConcurrentModificationException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -11,6 +12,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 
 import fr.irit.smac.amak.ui.MainWindow;
 import fr.irit.smac.amak.ui.SchedulerToolbar;
+import fr.irit.smac.amak.ui.VUI;
 
 /**
  * This class must be overridden by multi-agent systems
@@ -92,6 +94,9 @@ public class Amas<E extends Environment> implements Schedulable {
 		ONE_PHASE
 	}
 
+	/**
+	 * The execution policy {@link ExecutionPolicy}
+	 */
 	private ExecutionPolicy executionPolicy = Configuration.executionPolicy;
 
 	/**
@@ -136,6 +141,10 @@ public class Amas<E extends Environment> implements Schedulable {
 		this.scheduler.unlock();
 	}
 
+	/**
+	 * The method in which the rendering initialization should be made. For example,
+	 * the creation of a VUI object {@link VUI}
+	 */
 	protected void onRenderingInitialization() {
 	}
 
@@ -271,11 +280,20 @@ public class Amas<E extends Environment> implements Schedulable {
 			onUpdateRender();
 	}
 
+	/**
+	 * Effectively remove the agents that has been destroyed in the previous cycle
+	 * to avoid {@link ConcurrentModificationException}
+	 */
 	private void removePendingAgents() {
 		while (!agentsPendingRemoval.isEmpty())
 			agents.remove(agentsPendingRemoval.poll());
 	}
 
+	/**
+	 * The method in which you can update the rendering. For example, update the
+	 * color of the VUI drawable object create in
+	 * {@link Amas#onRenderingInitialization}
+	 */
 	protected void onUpdateRender() {
 	}
 

@@ -22,11 +22,18 @@ public abstract class Environment implements Schedulable {
 	 * The id of the environment
 	 */
 	private final int id = uniqueIndex++;
+
+	/**
+	 * The parameters that are passed to {@link Environment#onInitialization()}
+	 */
 	protected Object[] params;
 	/**
 	 * Random object common to the amas
 	 */
 	private Random random = new Random();
+	/**
+	 * The scheduler of the environment
+	 */
 	private Scheduler scheduler;
 
 	/**

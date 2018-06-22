@@ -14,14 +14,48 @@ public class Log {
 	 *
 	 */
 	public enum Level {
-		FATAL(60), ERROR(50), IMPORTANT(40), WARNING(30), INFORM(20), DEBUG(10);
+		/**
+		* A fatal error should be thrown when the program is absolutely not able to continue
+		*/
+		FATAL(60),
+		/**
+		* An error which very probably causes alteration of the result
+		*/
+		ERROR(50),
+		/**
+		* An important log should be considered by the developer but doesn't have a real impact on the result
+		*/
+		IMPORTANT(40),
+		/**
+		* A warning doesn't have impact on the problem but should be considered for next updates
+		*/
+		WARNING(30),
+		/**
+		* Simply inform the developer or user
+		*/
+		INFORM(20),
+		/**
+		* Debug are the lowest level of logging. Unreadable data should be here
+		*/
+		DEBUG(10);
 
+		/**
+		 * The valud of importance of the log
+		 */
 		private final int order;
 
+		/**
+		 * Constructor of the log level
+		 * @param order the order of importance (more means more important)
+		 */
 		Level(final int order) {
 			this.order = order;
 		}
-
+		/**
+		 * Check whether a log level is more important than another
+		 * @param _other the log level to compare to
+		 * @return true if this is more important than _other
+		 */
 		public boolean isGE(final Level _other) {
 			return order >= _other.order;
 		}

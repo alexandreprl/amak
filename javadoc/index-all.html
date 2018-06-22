@@ -86,6 +86,10 @@
 <dd>
 <div class="block">Add neighbors to the agent</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindow.html#addOnCloseAction-java.util.function.Consumer-">addOnCloseAction(Consumer&lt;MainWindow&gt;)</a></span> - Static method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindowListener.html#addOnCLoseAction-java.util.function.Consumer-">addOnCLoseAction(Consumer&lt;MainWindow&gt;)</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui">MainWindowListener</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindow.html#addTabbedPanel-java.lang.String-javax.swing.JPanel-">addTabbedPanel(String, JPanel)</a></span> - Static method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindow.html#addToolbar-javax.swing.JToolBar-">addToolbar(JToolBar)</a></span> - Static method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a></dt>
@@ -205,6 +209,19 @@
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/drawables/Drawable.html#color">color</a></span> - Variable in class fr.irit.smac.amak.ui.drawables.<a href="fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Configuration.html#commandLineMode">commandLineMode</a></span> - Static variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Configuration.html" title="class in fr.irit.smac.amak">Configuration</a></dt>
+<dd>
+<div class="block">By default, mas made with amak are meant to be executed on a graphical
+ environment.</div>
+</dd>
+<dt><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">CommandLineOnlyResolution</span></a> - Class in <a href="fr/irit/smac/amak/tests/package-summary.html">fr.irit.smac.amak.tests</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.html#CommandLineOnlyResolution--">CommandLineOnlyResolution()</a></span> - Constructor for class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.html" title="class in fr.irit.smac.amak.tests">CommandLineOnlyResolution</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyAMAS.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">CommandLineOnlyResolution.MyAMAS</span></a> - Class in <a href="fr/irit/smac/amak/tests/package-summary.html">fr.irit.smac.amak.tests</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyEnv.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">CommandLineOnlyResolution.MyEnv</span></a> - Class in <a href="fr/irit/smac/amak/tests/package-summary.html">fr.irit.smac.amak.tests</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#computeCriticality--">computeCriticality()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
 <div class="block">This method must be overridden by the agents.</div>
@@ -244,7 +261,9 @@
  the agent's cycle</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#currentPhase">currentPhase</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The current phase of the agent <a href="fr/irit/smac/amak/Agent.Phase.html" title="enum in fr.irit.smac.amak"><code>Agent.Phase</code></a></div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#cycle">cycle</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
 <div class="block">Number of cycles executed by the system</div>
@@ -644,10 +663,16 @@
 <dd>
 <div class="block">Inform that agent gas finished the perception phase.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindow.html#instance--">instance()</a></span> - Static method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a></dt>
+<dd>
+<div class="block">Return the unique instance of MainWindow, may create it.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/drawables/Drawable.html#isFixed--">isFixed()</a></span> - Method in class fr.irit.smac.amak.ui.drawables.<a href="fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tools/Log.Level.html#isGE-fr.irit.smac.amak.tools.Log.Level-">isGE(Log.Level)</a></span> - Method in enum fr.irit.smac.amak.tools.<a href="fr/irit/smac/amak/tools/Log.Level.html" title="enum in fr.irit.smac.amak.tools">Log.Level</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Check whether a log level is more important than another</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduler.html#isRunning--">isRunning()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></dt>
 <dd>
 <div class="block">Is the scheduler running ?</div>
@@ -696,6 +721,8 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntsLaunchExample.html#main-java.lang.String:A-">main(String[])</a></span> - Static method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntsLaunchExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntsLaunchExample</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.html#main-java.lang.String:A-">main(String[])</a></span> - Static method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.html" title="class in fr.irit.smac.amak.tests">CommandLineOnlyResolution</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/executionorder/Test.html#main-java.lang.String:A-">main(String[])</a></span> - Static method in class fr.irit.smac.amak.tests.executionorder.<a href="fr/irit/smac/amak/tests/executionorder/Test.html" title="class in fr.irit.smac.amak.tests.executionorder">Test</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ScalibilityTest.html#main-java.lang.String:A-">main(String[])</a></span> - Static method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ScalibilityTest.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest</a></dt>
@@ -707,6 +734,10 @@
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/VisibleUI.html#main-java.lang.String:A-">main(String[])</a></span> - Static method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/VisibleUI.html" title="class in fr.irit.smac.amak.tests">VisibleUI</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">MainWindow</span></a> - Class in <a href="fr/irit/smac/amak/ui/package-summary.html">fr.irit.smac.amak.ui</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui"><span class="typeNameLink">MainWindowListener</span></a> - Class in <a href="fr/irit/smac/amak/ui/package-summary.html">fr.irit.smac.amak.ui</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindowListener.html#MainWindowListener-fr.irit.smac.amak.ui.MainWindow-">MainWindowListener(MainWindow)</a></span> - Constructor for class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui">MainWindowListener</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tools/Log.html#minLevel">minLevel</a></span> - Static variable in class fr.irit.smac.amak.tools.<a href="fr/irit/smac/amak/tools/Log.html" title="class in fr.irit.smac.amak.tools">Log</a></dt>
 <dd>
@@ -720,9 +751,13 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ThreadTest.MyAgent.html#MyAgent-fr.irit.smac.amak.tests.ThreadTest.MyAMAS-java.lang.Object...-">MyAgent(ThreadTest.MyAMAS, Object...)</a></span> - Constructor for class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ThreadTest.MyAgent.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAgent</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyAMAS.html#MyAMAS--">MyAMAS()</a></span> - Constructor for class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyAMAS.html" title="class in fr.irit.smac.amak.tests">CommandLineOnlyResolution.MyAMAS</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html#MyAMAS-fr.irit.smac.amak.tests.ScalibilityTest.MyEnvironment-fr.irit.smac.amak.Scheduling-java.lang.Object...-">MyAMAS(ScalibilityTest.MyEnvironment, Scheduling, Object...)</a></span> - Constructor for class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyAMAS</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html#MyAMAS-fr.irit.smac.amak.tests.ThreadTest.MyEnvironment-fr.irit.smac.amak.Scheduling-java.lang.Object...-">MyAMAS(ThreadTest.MyEnvironment, Scheduling, Object...)</a></span> - Constructor for class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAMAS</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyEnv.html#MyEnv--">MyEnv()</a></span> - Constructor for class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyEnv.html" title="class in fr.irit.smac.amak.tests">CommandLineOnlyResolution.MyEnv</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ScalibilityTest.MyEnvironment.html#MyEnvironment-java.lang.Object...-">MyEnvironment(Object...)</a></span> - Constructor for class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ScalibilityTest.MyEnvironment.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyEnvironment</a></dt>
 <dd>&nbsp;</dd>
@@ -895,7 +930,9 @@
 <div class="block">Called to initialize the rendering of the agent</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#onRenderingInitialization--">onRenderingInitialization()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The method in which the rendering initialization should be made.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/asyncrandomants/AsyncAntExample.html#onRenderingInitialization--">onRenderingInitialization()</a></span> - Method in class fr.irit.smac.amak.examples.asyncrandomants.<a href="fr/irit/smac/amak/examples/asyncrandomants/AsyncAntExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncAntExample</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html#onRenderingInitialization--">onRenderingInitialization()</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosopherExample</a></dt>
@@ -973,13 +1010,17 @@
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntHillExample.html#onSystemCycleEnd--">onSystemCycleEnd()</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntHillExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntHillExample</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyAMAS.html#onSystemCycleEnd--">onSystemCycleEnd()</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyAMAS.html" title="class in fr.irit.smac.amak.tests">CommandLineOnlyResolution.MyAMAS</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#onUpdateRender--">onUpdateRender()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
 <div class="block">This method should be used to update the representation of the agent for
  example in a VUI</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#onUpdateRender--">onUpdateRender()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The method in which you can update the rendering.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Environment.html#onUpdateRender--">onUpdateRender()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a></dt>
 <dd>
 <div class="block">Override this method to update rendering related to the environment</div>
@@ -989,6 +1030,10 @@
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html#onUpdateRender--">onUpdateRender()</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosopherExample</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/AntExample.html#onUpdateRender--">onUpdateRender()</a></span> - Method in class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntExample.html" title="class in fr.irit.smac.amak.examples.randomants">AntExample</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyAMAS.html#onUpdateRender--">onUpdateRender()</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyAMAS.html" title="class in fr.irit.smac.amak.tests">CommandLineOnlyResolution.MyAMAS</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyEnv.html#onUpdateRender--">onUpdateRender()</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyEnv.html" title="class in fr.irit.smac.amak.tests">CommandLineOnlyResolution.MyEnv</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/ForkExample.html#owned-fr.irit.smac.amak.examples.philosophers.PhilosopherExample-">owned(PhilosopherExample)</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/ForkExample.html" title="class in fr.irit.smac.amak.examples.philosophers">ForkExample</a></dt>
 <dd>
@@ -1005,13 +1050,18 @@
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/drawables/Drawable.html#panel">panel</a></span> - Variable in class fr.irit.smac.amak.ui.drawables.<a href="fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#params">params</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The parameters that can be user in the initialization process
+ <a href="fr/irit/smac/amak/Agent.html#onInitialization--"><code>Agent.onInitialization()</code></a></div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Amas.html#params">params</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a></dt>
 <dd>
 <div class="block">Parameters that can be passed to the constructor.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Environment.html#params">params</a></span> - Variable in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">The parameters that are passed to <a href="fr/irit/smac/amak/Environment.html#onInitialization--"><code>Environment.onInitialization()</code></a></div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/DrawableUI.html#params">params</a></span> - Variable in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/DrawableUI.html" title="class in fr.irit.smac.amak.ui">DrawableUI</a></dt>
 <dd>
 <div class="block"><span class="deprecatedLabel">Deprecated.</span></div>
@@ -1026,11 +1076,17 @@
 <div class="block">This method represents the decisionAndAction phase of the agent</div>
 </dd>
 <dt><a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html" title="class in fr.irit.smac.amak.examples.philosophers"><span class="typeNameLink">PhilosopherExample</span></a> - Class in <a href="fr/irit/smac/amak/examples/philosophers/package-summary.html">fr.irit.smac.amak.examples.philosophers</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">This class represents a philosopher;</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html#PhilosopherExample-int-fr.irit.smac.amak.examples.philosophers.PhilosophersAMASExample-fr.irit.smac.amak.examples.philosophers.ForkExample-fr.irit.smac.amak.examples.philosophers.ForkExample-">PhilosopherExample(int, PhilosophersAMASExample, ForkExample, ForkExample)</a></span> - Constructor for class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosopherExample</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Constructor of the philosopher</div>
+</dd>
 <dt><a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.State.html" title="enum in fr.irit.smac.amak.examples.philosophers"><span class="typeNameLink">PhilosopherExample.State</span></a> - Enum in <a href="fr/irit/smac/amak/examples/philosophers/package-summary.html">fr.irit.smac.amak.examples.philosophers</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">States philosophers can be in</div>
+</dd>
 <dt><a href="fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html" title="class in fr.irit.smac.amak.examples.philosophers"><span class="typeNameLink">PhilosophersAMASExample</span></a> - Class in <a href="fr/irit/smac/amak/examples/philosophers/package-summary.html">fr.irit.smac.amak.examples.philosophers</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html#PhilosophersAMASExample-fr.irit.smac.amak.examples.philosophers.TableExample-">PhilosophersAMASExample(TableExample)</a></span> - Constructor for class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/PhilosophersAMASExample.html" title="class in fr.irit.smac.amak.examples.philosophers">PhilosophersAMASExample</a></dt>
@@ -1253,6 +1309,8 @@
 <dd>
 <div class="block">Check if the schedulable must be stopped by the scheduler.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyAMAS.html#stopCondition--">stopCondition()</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyAMAS.html" title="class in fr.irit.smac.amak.tests">CommandLineOnlyResolution.MyAMAS</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html#stopCondition--">stopCondition()</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ScalibilityTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ScalibilityTest.MyAMAS</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html#stopCondition--">stopCondition()</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ThreadTest.MyAMAS.html" title="class in fr.irit.smac.amak.tests">ThreadTest.MyAMAS</a></dt>
@@ -1277,6 +1335,8 @@
 <dt><a href="fr/irit/smac/amak/tests/executionorder/Test.html" title="class in fr.irit.smac.amak.tests.executionorder"><span class="typeNameLink">Test</span></a> - Class in <a href="fr/irit/smac/amak/tests/executionorder/package-summary.html">fr.irit.smac.amak.tests.executionorder</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/executionorder/Test.html#Test--">Test()</a></span> - Constructor for class fr.irit.smac.amak.tests.executionorder.<a href="fr/irit/smac/amak/tests/executionorder/Test.html" title="class in fr.irit.smac.amak.tests.executionorder">Test</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/UITest.html#testClose--">testClose()</a></span> - Method in class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/UITest.html" title="class in fr.irit.smac.amak.tests">UITest</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="fr/irit/smac/amak/tests/TestFileHandler.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">TestFileHandler</span></a> - Class in <a href="fr/irit/smac/amak/tests/package-summary.html">fr.irit.smac.amak.tests</a></dt>
 <dd>&nbsp;</dd>
@@ -1310,6 +1370,10 @@
 </a>
 <h2 class="title">U</h2>
 <dl>
+<dt><a href="fr/irit/smac/amak/tests/UITest.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">UITest</span></a> - Class in <a href="fr/irit/smac/amak/tests/package-summary.html">fr.irit.smac.amak.tests</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/UITest.html#UITest--">UITest()</a></span> - Constructor for class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/UITest.html" title="class in fr.irit.smac.amak.tests">UITest</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduler.html#unlock--">unlock()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></dt>
 <dd>
 <div class="block">Soft unlock the scheduler to avoid a too early running</div>
@@ -1405,6 +1469,20 @@ the order they are declared.</div>
 <dd>
 <div class="block">Log a line with log level set to warning</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindowListener.html#windowActivated-java.awt.event.WindowEvent-">windowActivated(WindowEvent)</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui">MainWindowListener</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindowListener.html#windowClosed-java.awt.event.WindowEvent-">windowClosed(WindowEvent)</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui">MainWindowListener</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindowListener.html#windowClosing-java.awt.event.WindowEvent-">windowClosing(WindowEvent)</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui">MainWindowListener</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindowListener.html#windowDeactivated-java.awt.event.WindowEvent-">windowDeactivated(WindowEvent)</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui">MainWindowListener</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindowListener.html#windowDeiconified-java.awt.event.WindowEvent-">windowDeiconified(WindowEvent)</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui">MainWindowListener</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindowListener.html#windowIconified-java.awt.event.WindowEvent-">windowIconified(WindowEvent)</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui">MainWindowListener</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindowListener.html#windowOpened-java.awt.event.WindowEvent-">windowOpened(WindowEvent)</a></span> - Method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui">MainWindowListener</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="fr/irit/smac/amak/examples/randomants/WorldExample.html" title="class in fr.irit.smac.amak.examples.randomants"><span class="typeNameLink">WorldExample</span></a> - Class in <a href="fr/irit/smac/amak/examples/randomants/package-summary.html">fr.irit.smac.amak.examples.randomants</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/randomants/WorldExample.html#WorldExample-java.lang.Object...-">WorldExample(Object...)</a></span> - Constructor for class fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/WorldExample.html" title="class in fr.irit.smac.amak.examples.randomants">WorldExample</a></dt>
@@ -1430,7 +1508,9 @@ the order they are declared.</div>
 <div class="block">Write a JSONObject in the file</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tools/FileHandler.html#writeLine-java.lang.String-java.lang.String-java.lang.Object...-">writeLine(String, String, Object...)</a></span> - Static method in class fr.irit.smac.amak.tools.<a href="fr/irit/smac/amak/tools/FileHandler.html" title="class in fr.irit.smac.amak.tools">FileHandler</a></dt>
-<dd>&nbsp;</dd>
+<dd>
+<div class="block">Write a line to a file.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tools/FileHandler.html#writeXML-java.lang.String-java.lang.Object-">writeXML(String, Object)</a></span> - Static method in class fr.irit.smac.amak.tools.<a href="fr/irit/smac/amak/tools/FileHandler.html" title="class in fr.irit.smac.amak.tools">FileHandler</a></dt>
 <dd>
 <div class="block">Write an Object in a xml file</div>

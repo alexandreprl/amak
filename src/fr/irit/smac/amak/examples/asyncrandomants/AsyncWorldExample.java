@@ -18,7 +18,13 @@ public class AsyncWorldExample extends Environment {
 		super(Scheduling.HIDDEN);
 	}
 
+	/**
+	 * The width of the world the ants can evolve in
+	 */
 	private int width;
+	/**
+	 * The height of the world the ants can evolve in
+	 */
 	private int height;
 
 	/**

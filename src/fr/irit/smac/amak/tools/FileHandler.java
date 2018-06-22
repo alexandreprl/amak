@@ -23,7 +23,13 @@ import com.thoughtworks.xstream.io.xml.DomDriver;
  *
  */
 public class FileHandler {
+	/**
+	 * Files which have been opened for reading
+	 */
 	private static Map<String, BufferedReader> openedReadableFiles = new HashMap<>();
+	/**
+	 * Files which have been opened for writing
+	 */
 	private static Map<String, PrintWriter> openedWritableFiles = new HashMap<>();
 
 	/**
@@ -132,7 +138,12 @@ public class FileHandler {
 	public static void writeCSVLine(String filename, CharSequence... params) {
 		writeLine(filename, String.join(",", params));
 	}
-
+	/**
+	 * Write a line to a file. This method is used by the others
+	 * @param filename the file in which to write
+	 * @param line the line to write
+	 * @param params the parameters that should be added to the string "line" ({@link String#format(java.util.Locale, String, Object...)})
+	 */
 	public static void writeLine(String filename, String line, Object... params) {
 		try {
 			if (!openedWritableFiles.containsKey(filename)) {

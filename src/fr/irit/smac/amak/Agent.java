@@ -46,7 +46,15 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 * The id of the agent
 	 */
 	private final int id;
+	/**
+	 * The order of execution of the agent as computed by
+	 * {@link Agent#_computeExecutionOrder()}
+	 */
 	private int executionOrder;
+	/**
+	 * The parameters that can be user in the initialization process
+	 * {@link Agent#onInitialization()}
+	 */
 	protected Object[] params;
 
 	/**
@@ -79,6 +87,9 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 		DECISION_AND_ACTION_DONE
 	}
 
+	/**
+	 * The current phase of the agent {@link Phase}
+	 */
 	protected Phase currentPhase = Phase.INITIALIZING;
 
 	/**
@@ -362,6 +373,9 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 		criticalities.put(this, criticality);
 	}
 
+	/**
+	 * A combination of decision and action as called by the framework
+	 */
 	private final void decideAndAct() {
 		onDecideAndAct();
 

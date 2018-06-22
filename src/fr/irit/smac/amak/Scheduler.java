@@ -1,5 +1,6 @@
 package fr.irit.smac.amak;
 
+import java.util.ConcurrentModificationException;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -17,16 +18,47 @@ import fr.irit.smac.amak.ui.SchedulerToolbar;
  *
  */
 public class Scheduler implements Runnable {
+	/**
+	 * The schedulables object handled by the scheduler
+	 */
 	private final Set<Schedulable> schedulables = new HashSet<>();
+	/**
+	 * The state of the scheduler {@link State}
+	 */
 	private State state;
+	/**
+	 * The sleep time in ms between each cycle
+	 */
 	private int sleep;
+	/**
+	 * A lock to protect the state
+	 */
 	private final ReentrantLock stateLock = new ReentrantLock();
+	/**
+	 * Method that is called when the scheduler stops
+	 */
 	private Consumer<Scheduler> onStop;
+	/**
+	 * A method called when the speed is changed. Useful to change the value of the
+	 * GUI slider of {@link SchedulerToolbar}
+	 */
 	private Consumer<Scheduler> onChange;
+	/**
+	 * The idea is to prevent scheduler from launching if the schedulables are not
+	 * yet fully ready
+	 */
 	private int locked = 0;
+	/**
+	 * The default scheduler
+	 */
 	private static Scheduler defaultScheduler;
-
+	/**
+	 * The schedulables that must be added
+	 */
 	private Queue<Schedulable> pendingAdditionSchedulables = new LinkedList<>();
+	/**
+	 * The schedulables that must be removed
+	 */
 	private Queue<Schedulable> pendingRemovalSchedulables = new LinkedList<>();
 
 	/**
@@ -194,6 +226,10 @@ public class Scheduler implements Runnable {
 			onStop.accept(this);
 	}
 
+	/**
+	 * Effectively Add or Remove the schedulables that were added or removed during
+	 * a cycle to avoid {@link ConcurrentModificationException}
+	 */
 	private void treatPendingSchedulables() {
 		while (!pendingAdditionSchedulables.isEmpty())
 			schedulables.add(pendingAdditionSchedulables.poll());

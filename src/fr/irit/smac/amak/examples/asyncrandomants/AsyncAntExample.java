@@ -25,7 +25,13 @@ public class AsyncAntExample extends AsyncAgent<AsyncWorldExample> {
 	 * Angle in radians
 	 */
 	private double angle = Math.random() * Math.PI * 2;
+	/**
+	 * The image that will be used to render the ant
+	 */
 	private DrawableImage image;
+	/**
+	 * Random object made for randomize the movement
+	 */
 	private Random randomObject;
 
 	/**

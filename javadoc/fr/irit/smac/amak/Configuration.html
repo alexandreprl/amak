@@ -134,6 +134,13 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr class="rowColor">
+<td class="colFirst"><code>static boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Configuration.html#commandLineMode">commandLineMode</a></span></code>
+<div class="block">By default, mas made with amak are meant to be executed on a graphical
+ environment.</div>
+</td>
+</tr>
+<tr class="altColor">
 <td class="colFirst"><code>static <a href="../../../../fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak">Amas.ExecutionPolicy</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../fr/irit/smac/amak/Configuration.html#executionPolicy">executionPolicy</a></span></code>
 <div class="block">The execution policy refers to the synchronization between agents execution.</div>
@@ -199,7 +206,7 @@ extends java.lang.Object</pre>
 <a name="executionPolicy">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>executionPolicy</h4>
 <pre>public static&nbsp;<a href="../../../../fr/irit/smac/amak/Amas.ExecutionPolicy.html" title="enum in fr.irit.smac.amak">Amas.ExecutionPolicy</a> executionPolicy</pre>
@@ -208,6 +215,21 @@ extends java.lang.Object</pre>
  other after the action. TWO_PHASES means that agents perceive simultaneously
  then wait for each others and then decide and act simultaneously and finally
  wait for each others.</div>
+</li>
+</ul>
+<a name="commandLineMode">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>commandLineMode</h4>
+<pre>public static&nbsp;boolean commandLineMode</pre>
+<div class="block">By default, mas made with amak are meant to be executed on a graphical
+ environment. However, some may need to execute a mas without any GUI. To
+ guarantee the well functioning of this option, you have to check that you
+ only render stuff in methods such as onUpdaterRender
+ onRenderingInitialization... Also, do not forget to set your schedulers to
+ HIDDEN or DEFAULT</div>
 </li>
 </ul>
 </li>
