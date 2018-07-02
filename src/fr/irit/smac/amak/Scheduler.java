@@ -2,6 +2,7 @@ package fr.irit.smac.amak;
 
 import java.util.ConcurrentModificationException;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Set;
@@ -21,7 +22,7 @@ public class Scheduler implements Runnable {
 	/**
 	 * The schedulables object handled by the scheduler
 	 */
-	private final Set<Schedulable> schedulables = new HashSet<>();
+	private final Set<Schedulable> schedulables = new LinkedHashSet<>();
 	/**
 	 * The state of the scheduler {@link State}
 	 */
