@@ -10,7 +10,7 @@ import fr.irit.smac.amak.Agent;
 import fr.irit.smac.amak.Amas;
 import fr.irit.smac.amak.Environment;
 
-public class TestAgent {
+public class TestAgentBascisOpperations {
 
 	private static final String STR_ID_BASE = "Agent #";
 	private Agent<Amas<Environment>, Environment> agent;
@@ -30,4 +30,6 @@ public class TestAgent {
 		assertTrue(strAID.contains(STR_ID_BASE) && !strAID.equals(STR_ID_BASE));
 	}
 	
+	
+	//TODO add more tests
 }

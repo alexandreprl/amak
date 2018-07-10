@@ -17,7 +17,12 @@ public interface IAmakMessageBox {
 	 * @throws MessagingTechnicalException
 	 *             if the message cannot be send this exception is throw.
 	 */
-	void sendMessage(IAmakMessage messageToSend, AddressableAID receiver) throws MessagingTechnicalException;
+	void sendMessage(IAmakMessage messageToSend, AddressableAID receiver)
+			throws MessagingTechnicalException;
 
+
+	void sendMessage(IAmakMessage messageToSend, AddressableAID addressableAID, IAmakMessageMetaData metadata)
+			throws MessagingTechnicalException;
+	
 	List<IAmakEnvelope> getReceivedMessages();
 }

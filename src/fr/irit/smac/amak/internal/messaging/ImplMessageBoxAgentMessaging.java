@@ -7,7 +7,9 @@ import fr.irit.smac.amak.messaging.IAmakAddress;
 import fr.irit.smac.amak.messaging.IAmakEnvelope;
 import fr.irit.smac.amak.messaging.IAmakMessage;
 import fr.irit.smac.amak.messaging.IAmakMessageBox;
+import fr.irit.smac.amak.messaging.IAmakMessageMetaData;
 import fr.irit.smac.amak.messaging.MessagingTechnicalException;
+import fr.irit.smac.amak.messaging.SimpleAmakMessageMetaData;
 import fr.irit.smac.libs.tooling.messaging.IMsgBox;
 import fr.irit.smac.libs.tooling.messaging.impl.Ref;
 
@@ -26,19 +28,19 @@ public class ImplMessageBoxAgentMessaging implements IAmakMessageBox {
 	}
 
 	@Override
-	public void sendMessage(IAmakMessage messageToSend, AddressableAID receiver) throws MessagingTechnicalException {
+	public void sendMessage(IAmakMessage messageToSend, AddressableAID receiver)
+			throws MessagingTechnicalException {
 		Ref<IAmakEnvelope> refReceiver = getRefFromAmakAddress(receiver.getAgentAdress());
-		IAmakEnvelope enveloppeToSend = encapsulateAmakMessage(messageToSend);
-		boolean sendingSuccessful = msgbox.send(enveloppeToSend, refReceiver);
-		if (!sendingSuccessful) {
-			throw new MessagingTechnicalException("Unknown reason. Maybe the receiver messagebox is full, try later.");
-		}
+		IAmakMessageMetaData metadata = new SimpleAmakMessageMetaData();
+		sendMessage(messageToSend, refReceiver, metadata);
 	}
+	
 
-	private IAmakEnvelope encapsulateAmakMessage(IAmakMessage messageToSend) {
-		// other meta data can be add ...
-		SimpleEnvelope envelop = new SimpleEnvelope(messageToSend, senderAID);
-		return envelop;
+	@Override
+	public void sendMessage(IAmakMessage messageToSend, AddressableAID receiver, IAmakMessageMetaData metadata)
+			throws MessagingTechnicalException {
+		Ref<IAmakEnvelope> refReceiver = getRefFromAmakAddress(receiver.getAgentAdress());
+		sendMessage(messageToSend, refReceiver, metadata);
 	}
 
 	private Ref<IAmakEnvelope> getRefFromAmakAddress(IAmakAddress iAmakAddress) throws MessagingTechnicalException {
@@ -52,6 +54,20 @@ public class ImplMessageBoxAgentMessaging implements IAmakMessageBox {
 							+ iAmakAddress.getClass().getName());
 		}
 		return ref;
+	}
+
+	private void sendMessage(IAmakMessage messageToSend, Ref<IAmakEnvelope> refReceiver, IAmakMessageMetaData metadata)
+			throws MessagingTechnicalException {
+		IAmakEnvelope enveloppeToSend = encapsulateAmakMessage(messageToSend, metadata);
+		boolean sendingSuccessful = msgbox.send(enveloppeToSend, refReceiver);
+		if (!sendingSuccessful) {
+			throw new MessagingTechnicalException("Unknown reason. Maybe the receiver messagebox is full, try later.");
+		}
+	}
+
+	private IAmakEnvelope encapsulateAmakMessage(IAmakMessage messageToSend, IAmakMessageMetaData metadata) {
+		SimpleEnvelope envelop = new SimpleEnvelope(messageToSend, senderAID, metadata);
+		return envelop;
 	}
 
 	@Override

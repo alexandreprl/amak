@@ -16,6 +16,7 @@ import fr.irit.smac.amak.messaging.IAmakAddress;
 import fr.irit.smac.amak.messaging.IAmakEnvelope;
 import fr.irit.smac.amak.messaging.IAmakMessage;
 import fr.irit.smac.amak.messaging.IAmakMessageBox;
+import fr.irit.smac.amak.messaging.IAmakMessageMetaData;
 import fr.irit.smac.amak.messaging.IAmakMessagingService;
 import fr.irit.smac.amak.messaging.MessagingTechnicalException;
 import fr.irit.smac.amak.tools.Log;
@@ -534,6 +535,19 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 		try {
 			getAddressableAIDFromAID(receiver);
 			messageBox.sendMessage(messageToSend, (AddressableAID) receiver);
+			result = true;
+		} catch (MessagingTechnicalException exception) {
+			// TODO must be log !
+			exception.printStackTrace();
+		}
+		return result;
+	}
+
+	public boolean sendMessage(IAmakMessage messageToSend, AID receiver, IAmakMessageMetaData metadata) {
+		boolean result = false;
+		try {
+			getAddressableAIDFromAID(receiver);
+			messageBox.sendMessage(messageToSend, (AddressableAID) receiver, metadata);
 			result = true;
 		} catch (MessagingTechnicalException exception) {
 			// TODO must be log !
