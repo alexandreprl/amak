@@ -574,7 +574,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 *
 	 *@return the received message.
 	 **/
-	public Collection<IAmakEnvelope> getReceivedMessages() {
+	public Collection<IAmakEnvelope> pollAllReceivedMessages() {
 		//event the msgbox return a list, the full order cannot be guaranty.
 		return messageBox.getReceivedMessages();
 	}

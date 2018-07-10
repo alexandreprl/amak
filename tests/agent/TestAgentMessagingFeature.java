@@ -1,23 +1,33 @@
 package agent;
 
-import org.junit.Before;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import fr.irit.smac.amak.Agent;
-import fr.irit.smac.amak.Amas;
-import fr.irit.smac.amak.Environment;
+import java.util.Collection;
 
-public class TestAgentMessagingFeature {
+import org.junit.Test;
 
-	private Agent<Amas<Environment>, Environment> agent;
+import fr.irit.smac.amak.messaging.IAmakEnvelope;
+import testutils.ObjectsForAgentTesting;
+import testutils.ObjectsForMessagingTesting;
 
+public class TestAgentMessagingFeature extends ObjectsForAgentTesting {
 
-	@Before
-	public void setUp() {
-		agent = new Agent<Amas<Environment>, Environment>(null, null) {
-		};
+	public ObjectsForMessagingTesting omt = new ObjectsForMessagingTesting();
+	
+	
+	@Test
+	public void sendSimpleMsg() {
+		boolean sendingSuccessful = agent1.sendMessage(omt.MSG_1, agent2.getAID());
+		assertTrue(sendingSuccessful);
+
+		Collection<IAmakEnvelope> receivedMsg = agent2.pollAllReceivedMessages();
+		assertEquals(1, receivedMsg.size());
+
+		IAmakEnvelope env = receivedMsg.iterator().next();
+		assertEquals(omt.MSG_1, env.getMessage());
+		assertEquals(agent1.getAID(), env.getMessageSenderAID());
 	}
-	
-	
-	
-	//TODO add more tests
+
+
 }
