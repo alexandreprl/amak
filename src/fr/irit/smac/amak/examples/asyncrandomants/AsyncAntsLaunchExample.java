@@ -26,7 +26,7 @@ public class AsyncAntsLaunchExample {
 			new AsyncAntExample(env, 0, 0);
 		JPanel panel = new JPanel();
 		panel.add(new JLabel("<html><b>Async AntHill simulation</b><br/><br/>" + "Ants move randomly.<br />"
-				+ "This demo is here to show AMAK<br />rendering capacities.</html>"));
+				+ "This demo is here to show AMAK<br />asynchronous agent capacities.</html>"));
 		MainWindow.setLeftPanel("", panel);
 	}
 }
