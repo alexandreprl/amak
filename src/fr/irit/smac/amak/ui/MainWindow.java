@@ -19,6 +19,8 @@ import javax.swing.JToolBar;
 import fr.irit.smac.amak.Information;
 
 /**
+ * This window is the main one of an AMAS developed using AMAK. It contains a
+ * toolbar panel and various spaces for panels
  * 
  * @author Alexandre Perles, Marcillaud Guilhem
  *
@@ -26,16 +28,42 @@ import fr.irit.smac.amak.Information;
 public class MainWindow extends JFrame {
 
 	/**
-	 * 
+	 * Unique ID meant to handle serialization correctly
 	 */
 	private static final long serialVersionUID = 2607956693857748227L;
+	/**
+	 * The panel which contains the toolbar
+	 */
 	private JPanel toolbarPanel;
+	/**
+	 * The main panel is split in two panels. This allows to dynamically resize
+	 * these two panels.
+	 */
 	private JSplitPane splitPane;
+	/**
+	 * The menu bar of the window
+	 */
 	private JMenuBar menuBar;
+	/**
+	 * The option menu
+	 */
 	private JMenu optionsMenu;
+	/**
+	 * The panel in which panels with tab can be added
+	 */
 	private JTabbedPane tabbedPanel;
+	/**
+	 * The listener of the window here to detect the closing of the window and
+	 * execute specific actions.
+	 */
 	private final MainWindowListener mainWindowListener;
+	/**
+	 * For an AMAK process it can only be one instance of MainWindow
+	 */
 	private static MainWindow instance;
+	/**
+	 * Lock present to avoid the creation of a MainWindow while another is creating
+	 */
 	private static ReentrantLock instanceLock = new ReentrantLock();
 
 	/**
@@ -62,21 +90,25 @@ public class MainWindow extends JFrame {
 		getContentPane().add(menuBar, BorderLayout.NORTH);
 
 		JMenuItem menuItem = new JMenuItem("Close");
-		menuItem.addActionListener(l -> {
-			System.exit(0);
-		});
+		menuItem.addActionListener(l -> System.exit(0));
 		optionsMenu.add(menuItem);
 
 		menuBar.add(new JMenu("AMAK v" + Information.VERSION));
 
-		
-		
 		setVisible(true);
 
 	}
+
+	/**
+	 * Add a close action to the listener
+	 * 
+	 * @param onClose
+	 *            The action to be executed when the window is closed
+	 */
 	public static void addOnCloseAction(Consumer<MainWindow> onClose) {
-		instance().mainWindowListener.addOnCLoseAction(onClose);
+		instance().mainWindowListener.addOnCloseAction(onClose);
 	}
+
 	/**
 	 * Change the icon of the window
 	 * 
@@ -91,12 +123,21 @@ public class MainWindow extends JFrame {
 	/**
 	 * Change the title of the main window
 	 * 
-	 * @param title The new title
+	 * @param title
+	 *            The new title
 	 */
 	public static void setWindowTitle(String title) {
 		instance().setTitle(title);
 	}
 
+	/**
+	 * Add a button in the menu options
+	 * 
+	 * @param title
+	 *            The title of the button
+	 * @param listener
+	 *            The action to be executed
+	 */
 	public static void addMenuItem(String title, ActionListener listener) {
 		JMenuItem menuItem = new JMenuItem(title);
 		menuItem.addActionListener(listener);
@@ -116,21 +157,25 @@ public class MainWindow extends JFrame {
 	}
 
 	/**
-	 * Add a tabbedPanel
+	 * Set a panel to the left
 	 * 
-	 * @param title
-	 *            The title
 	 * @param panel
 	 *            The panel
 	 */
 
-	public static void setLeftPanel(String title, JPanel panel) {
+	public static void setLeftPanel(JPanel panel) {
 		instance().splitPane.setLeftComponent(panel);
 		instance().pack();
 		instance().setVisible(true);
 	}
 
-	public static void setRightPanel(String title, JPanel panel) {
+	/**
+	 * Set a panel to the right
+	 * 
+	 * @param panel
+	 *            The panel
+	 */
+	public static void setRightPanel(JPanel panel) {
 		instance().splitPane.setRightComponent(panel);
 		instance().pack();
 		instance().setVisible(true);
@@ -150,6 +195,14 @@ public class MainWindow extends JFrame {
 		return instance;
 	}
 
+	/**
+	 * Add a panel with a tab
+	 * 
+	 * @param title
+	 *            The title of the tab
+	 * @param panel
+	 *            The panel to add
+	 */
 	public static void addTabbedPanel(String title, JPanel panel) {
 		instance().tabbedPanel.addTab(title, panel);
 		instance().pack();

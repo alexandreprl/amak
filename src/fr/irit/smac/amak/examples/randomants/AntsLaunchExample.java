@@ -16,6 +16,6 @@ public class AntsLaunchExample {
 		panel.add(new JLabel("<html><b>AntHill simulation</b><br/><br/>"
 				+ "Ants move randomly.<br />"
 				+ "This demo is here to show AMAK<br />rendering capacities.</html>"));
-		MainWindow.setLeftPanel("", panel);
+		MainWindow.setLeftPanel(panel);
 	}
 }

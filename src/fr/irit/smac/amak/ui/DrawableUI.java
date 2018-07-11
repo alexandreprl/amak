@@ -23,14 +23,12 @@ import fr.irit.smac.amak.Scheduling;
  * canvas
  * 
  * @author Alexandre Perles
+ * @param <T>
+ *            The AMAS the drawableui is linked to
  *
  */
-@Deprecated public abstract class DrawableUI<T extends Amas<? extends Environment>> implements Schedulable {
-	/**
-	 * set fps to 10 to avoid CPU overload
-	 */
-	public int defaultSleep = 100;
-
+@Deprecated
+public abstract class DrawableUI<T extends Amas<? extends Environment>> implements Schedulable {
 	/**
 	 * Drawable canvas
 	 */
@@ -56,14 +54,34 @@ import fr.irit.smac.amak.Scheduling;
 	 */
 	protected Object[] params;
 
+	/**
+	 * The amas linked to the DrawableUI
+	 */
 	private T amas;
 
-	private int width = 800, height = 600;
+	/**
+	 * The width of the canvas
+	 */
+	private int width = 800;
+	/**
+	 * The height of the canvas
+	 */
+	private int height = 600;
 
+	/**
+	 * Getter for the width
+	 * 
+	 * @return the width of the canvas
+	 */
 	public int getWidth() {
 		return width;
 	}
 
+	/**
+	 * Getter for the height
+	 * 
+	 * @return the height of the canvas
+	 */
 	public int getHeight() {
 		return height;
 	}
@@ -71,34 +89,29 @@ import fr.irit.smac.amak.Scheduling;
 	/**
 	 * Create and initialize the frame and the canvas
 	 * 
-	 * @param _scheduling
+	 * @param scheduling
 	 *            the scheduling mode
 	 * @param amas
 	 *            The amas linked to the drawable UI
 	 * @param params
 	 *            the parameters that should be passed to the drawable UI
-	 *            
+	 * 
 	 * @deprecated Should be replaced by VUI
 	 */
-	@Deprecated  public DrawableUI(Scheduling _scheduling, T amas, Object... params) {
+	@Deprecated
+	public DrawableUI(Scheduling scheduling, T amas, Object... params) {
 		this.amas = amas;
 		this.params = params;
 
 		onInitialConfiguration();
-		// setTitle("Drawable #" + id);
-		// setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		// setBounds(100, 300, 611, 466);
-		// contentPane = new JPanel();
-		// contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		// contentPane.setLayout(new BorderLayout(0, 0));
-		// setContentPane(contentPane);
 
 		canvas = new JPanel() {
 			/**
-			 * 
+			 * Unique ID meant to handle serialization correctly
 			 */
 			private static final long serialVersionUID = 1L;
 
+			@Override
 			protected void paintComponent(java.awt.Graphics g) {
 
 				Image buffer = createImage(this.getSize().width, this.getSize().height);
@@ -115,18 +128,22 @@ import fr.irit.smac.amak.Scheduling;
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
+				// This method is not meant to be used yet
 			}
 
 			@Override
 			public void mousePressed(MouseEvent e) {
+				// This method is not meant to be used yet
 			}
 
 			@Override
 			public void mouseExited(MouseEvent e) {
+				// This method is not meant to be used yet
 			}
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
+				// This method is not meant to be used yet
 
 			}
 
@@ -139,7 +156,7 @@ import fr.irit.smac.amak.Scheduling;
 
 			@Override
 			public void mouseMoved(MouseEvent e) {
-
+				// This method is not meant to be used yet
 			}
 
 			@Override
@@ -150,13 +167,10 @@ import fr.irit.smac.amak.Scheduling;
 
 		canvas.setIgnoreRepaint(true);
 		canvas.setPreferredSize(new Dimension(width, height));
-		// contentPane.add(canvas, BorderLayout.CENTER);
 
 		MainWindow.addTabbedPanel("Drawable #" + id, canvas);
-		// pack();
-		// setVisible(true);
 
-		if (_scheduling == Scheduling.DEFAULT) {
+		if (scheduling == Scheduling.DEFAULT) {
 
 			this.scheduler = Scheduler.getDefaultScheduler();
 			this.scheduler.add(this);
@@ -164,7 +178,7 @@ import fr.irit.smac.amak.Scheduling;
 
 			scheduler = new Scheduler(this);
 
-			if (_scheduling == Scheduling.UI && !Configuration.commandLineMode)
+			if (scheduling == Scheduling.UI && !Configuration.commandLineMode)
 				MainWindow.addToolbar(new SchedulerToolbar("Drawable #" + id, scheduler));
 		}
 
@@ -177,6 +191,14 @@ import fr.irit.smac.amak.Scheduling;
 	protected void onInitialConfiguration() {
 	}
 
+	/**
+	 * Set the size of the drawing area
+	 * 
+	 * @param width
+	 *            The width in pixels
+	 * @param height
+	 *            The height in pixels
+	 */
 	protected void setSize(int width, int height) {
 		this.width = width;
 		this.height = height;
