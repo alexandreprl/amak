@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 import fr.irit.smac.amak.Amas.ExecutionPolicy;
 import fr.irit.smac.amak.aid.AID;
@@ -115,6 +116,9 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 
 	/** The msgbox is the delegate of all the messaging services (sending/receiving msg) */
 	private IAmakMessageBox messageBox;
+
+	/** The perceived messages */
+	private Collection<IAmakEnvelope> messagesOfTheCycle;
 
 	/** Messaging services builder */
 	private static final IAmakMessagingService messagingService = new ImplMessagingServiceAgentMessaging();
@@ -405,6 +409,9 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 		// Criticality of agent should be updated after perception AND after action
 		criticality = computeCriticality();
 		criticalities.put(this, criticality);
+		
+		//event the msgbox return a list, the full order cannot be guaranty.
+		messagesOfTheCycle = messageBox.getReceivedMessages();
 	}
 
 	/**
@@ -569,13 +576,19 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	}
 
 	/**
-	 *Get the received messages of the current cycle.<br/>
-	 *<b>After the call the msgbox is empty until the next message receiving.</b>
-	 *
-	 *@return the received message.
+	 * Get the received messages of the current cycle.
+	 * 
+	 * @return the received message. The return collection can be modify.
 	 **/
-	public Collection<IAmakEnvelope> pollAllReceivedMessages() {
-		//event the msgbox return a list, the full order cannot be guaranty.
-		return messageBox.getReceivedMessages();
+	public Collection<IAmakEnvelope> getAllReceivedMessages() {
+		return new ArrayList<>(messagesOfTheCycle);
+	}
+
+	public <M extends IAmakMessage> Collection<M> getReceivedMessagesGivenType(Class<M> clasz) {
+		@SuppressWarnings("unchecked")
+		List<M> result = (List<M>) messagesOfTheCycle.stream().filter(env -> env.getMessage().getClass().equals(clasz))
+				.map(env -> (M) env.getMessage()).collect(Collectors.toList());
+
+		return result;
 	}
 }
