@@ -1,7 +1,7 @@
 package fr.irit.smac.amak;
 
+import java.io.Serializable;
 import java.util.ConcurrentModificationException;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Queue;
@@ -18,7 +18,11 @@ import fr.irit.smac.amak.ui.SchedulerToolbar;
  * @author Alexandre Perles
  *
  */
-public class Scheduler implements Runnable {
+public class Scheduler implements Runnable, Serializable {
+	/**
+	 * Unique ID meant to handle serialization correctly
+	 */
+	private static final long serialVersionUID = -4765899565369100376L;
 	/**
 	 * The schedulables object handled by the scheduler
 	 */

@@ -19,22 +19,38 @@ import fr.irit.smac.amak.Scheduler;
  */
 public class SchedulerToolbar extends JToolBar {
 	/**
-	 * 
+	 * Unique ID meant to handle serialization correctly
 	 */
 	private static final long serialVersionUID = 2152445838931621997L;
 
+	/**
+	 * The slider which controls the speed
+	 */
 	private JSlider runController;
 
+	/**
+	 * The scheduler to which the toolbar is associated
+	 */
 	private Scheduler scheduler;
 
+	/**
+	 * The title of the toolbar
+	 */
 	private String title;
 
-	public SchedulerToolbar(String _title, Scheduler scheduler) {
-		this.title = _title;
+	/**
+	 * Constructor of the toolbar
+	 * 
+	 * @param title
+	 *            The title of the toolbar
+	 * @param scheduler
+	 *            The scheduler to which the toolbar is associated
+	 * 
+	 */
+	public SchedulerToolbar(String title, Scheduler scheduler) {
+		this.title = title;
 		this.scheduler = scheduler;
-		this.scheduler.setOnStop(s -> {
-			getSlider().setValue(1);
-		});
+		this.scheduler.setOnStop(s -> getSlider().setValue(1));
 		this.scheduler.setOnChange(s -> {
 			if (s.isRunning()) {
 				switch (s.getSleep()) {
@@ -67,20 +83,28 @@ public class SchedulerToolbar extends JToolBar {
 		setPreferredSize(new Dimension(300, 100));
 	}
 
+	/**
+	 * Get or create the slider component
+	 * 
+	 * @return the slider
+	 */
 	public JSlider getSlider() {
 		if (runController == null) {
 			runController = new JSlider(SwingConstants.HORIZONTAL, 0, 7, 1);
 			runController.setBorder(BorderFactory.createTitledBorder(this.title));
 
-			final Hashtable<Integer, JLabel> labelTable = new Hashtable<Integer, JLabel>();
-			labelTable.put(new Integer(0), new JLabel("Step"));
-			labelTable.put(new Integer(1), new JLabel("Stop"));
-			labelTable.put(new Integer(2), new JLabel("x1"));
-			labelTable.put(new Integer(3), new JLabel("x10"));
-			labelTable.put(new Integer(4), new JLabel("x50"));
-			labelTable.put(new Integer(5), new JLabel("x100"));
-			labelTable.put(new Integer(6), new JLabel("x500"));
-			labelTable.put(new Integer(7), new JLabel("MAX"));
+			// Hashtable is not recommended anymore and should be replaced by an HashMap but
+			// JSlider requires Hashtable so Hashtable it will have.
+			final Hashtable<Integer, JLabel> labelTable = new Hashtable<>();
+			labelTable.put(0, new JLabel("Step"));
+			labelTable.put(1, new JLabel("Stop"));
+			labelTable.put(2, new JLabel("x1"));
+			labelTable.put(3, new JLabel("x10"));
+			labelTable.put(4, new JLabel("x50"));
+			labelTable.put(5, new JLabel("x100"));
+			labelTable.put(6, new JLabel("x500"));
+			labelTable.put(7, new JLabel("MAX"));
+
 			runController.setLabelTable(labelTable);
 
 			runController.setPaintLabels(true);
@@ -88,9 +112,6 @@ public class SchedulerToolbar extends JToolBar {
 				switch (runController.getValue()) {
 				case 0:
 					scheduler.step();
-					break;
-				case 1:
-					scheduler.stop();
 					break;
 				case 2:
 					scheduler.startWithSleep(1000);
@@ -109,6 +130,10 @@ public class SchedulerToolbar extends JToolBar {
 					break;
 				case 7:
 					scheduler.startWithSleep(0);
+					break;
+				case 1:
+				default:
+					scheduler.stop();
 					break;
 				}
 			});

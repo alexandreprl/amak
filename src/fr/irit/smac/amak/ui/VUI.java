@@ -8,11 +8,8 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.awt.event.MouseWheelEvent;
-import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,29 +37,83 @@ import fr.irit.smac.amak.ui.drawables.DrawableString;
  *
  */
 public class VUI {
-
+	/**
+	 * List of objects currently being drawn by the VUI
+	 */
 	private List<Drawable> drawables = new ArrayList<>();
+	/**
+	 * Lock to avoid concurrent modification on the list {@link #drawables}
+	 */
 	private ReentrantLock drawablesLock = new ReentrantLock();
 
-	private String title;
+	/**
+	 * A static map to facilitate access to different instances of VUI
+	 */
 	private static Map<String, VUI> instances = new HashMap<>();
 
+	/**
+	 * The horizontal offset of the drawing zone. Used to allow the user to move the
+	 * view.
+	 */
 	private double worldOffsetX;
 
+	/**
+	 * The vertical offset of the drawing zone. Used to allow the user to move the
+	 * view.
+	 */
 	private double worldOffsetY;
 
+	/**
+	 * The last horizontal position of the mouse when dragging
+	 */
 	protected Integer lastDragX;
 
+	/**
+	 * The last vertical position of the mouse when dragging
+	 */
 	protected Integer lastDragY;
 
-	private JPanel panel, canvas;
+	/**
+	 * The main panel of the VUI
+	 */
+	private JPanel panel;
 
+	/**
+	 * The canvas on which all is drawn
+	 */
+	private JPanel canvas;
+
+	/**
+	 * Label aiming at showing information about the VUI (zoom and offset)
+	 */
 	private JLabel statusLabel;
+
+	/**
+	 * The default value of the {@link #zoom}
+	 */
 	private double defaultZoom = 100;
+	/**
+	 * The default horizontal position of the view
+	 */
 	private double defaultWorldCenterX = 0;
+	/**
+	 * The default vertical position of the view
+	 */
 	private double defaultWorldCenterY = 0;
+	/**
+	 * The value of the zoom. 100 means 1/1 scale
+	 */
 	protected double zoom = defaultZoom;
-	private double worldCenterX = defaultWorldCenterX, worldCenterY = defaultWorldCenterY;
+
+	/**
+	 * The horizontal position of the view
+	 */
+	private double worldCenterX = defaultWorldCenterX;
+
+	/**
+	 * The vertical position of the view
+	 */
+	private double worldCenterY = defaultWorldCenterY;
 
 	/**
 	 * Get the default VUI
@@ -89,9 +140,14 @@ public class VUI {
 		return instances.get(id);
 	}
 
-	private VUI(String _title) {
-		this.title = _title;
-		onInitialConfiguration();
+	/**
+	 * Constructor of the VUI. This one is private as it can only be created through
+	 * static method.
+	 * 
+	 * @param title
+	 *            The title used for the vui
+	 */
+	private VUI(String title) {
 		panel = new JPanel(new BorderLayout());
 
 		JPanel statusPanel = new JPanel();
@@ -130,13 +186,7 @@ public class VUI {
 				g.setColor(new Color(0.96f, 0.96f, 0.96f));
 				g.fillRect(0, 0, w, h);
 				drawablesLock.lock();
-				Collections.sort(drawables, new Comparator<Drawable>() {
-
-					@Override
-					public int compare(Drawable o1, Drawable o2) {
-						return o1.getLayer() - o2.getLayer();
-					}
-				});
+				Collections.sort(drawables, (o1, o2) -> o1.getLayer() - o2.getLayer());
 				for (Drawable d : drawables) {
 					d.onDraw(g2);
 				}
@@ -147,6 +197,7 @@ public class VUI {
 
 			@Override
 			public void mouseReleased(MouseEvent e) {
+				// This method is not meant to be used as everything is handled by other methods
 			}
 
 			@Override
@@ -164,18 +215,18 @@ public class VUI {
 
 			@Override
 			public void mouseEntered(MouseEvent e) {
-
+				// This method is not meant to be used as everything is handled by other methods
 			}
 
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				onClick(e.getX(), e.getY());
+				// This method is not meant to be used yet
 			}
 		});
 		canvas.addMouseMotionListener(new MouseMotionListener() {
 			@Override
 			public void mouseMoved(MouseEvent e) {
-
+				// This method is not meant to be used as everything is handled by other methods
 			}
 
 			@Override
@@ -186,48 +237,30 @@ public class VUI {
 					lastDragX = e.getX();
 					lastDragY = e.getY();
 					updateCanvas();
-					onMouseDragged(e.getX(), e.getY());
 				} catch (Exception ez) {
 					// Catch exception occuring when mouse is out of the canvas
 				}
 			}
 		});
-		canvas.addMouseWheelListener(new MouseWheelListener() {
+		canvas.addMouseWheelListener(e -> {
+			double wdx = screenToWorldDistance((int) (canvas.getSize().getWidth() / 2 - e.getX()));
+			double wdy = screenToWorldDistance((int) (canvas.getSize().getHeight() / 2 - e.getY()));
 
-			@Override
-			public void mouseWheelMoved(MouseWheelEvent e) {
-				double wdx = screenToWorldDistance((int) (canvas.getSize().getWidth() / 2 - e.getX()));
-				double wdy = screenToWorldDistance((int) (canvas.getSize().getHeight() / 2 - e.getY()));
+			zoom += e.getWheelRotation() * 10;
+			if (zoom < 10)
+				zoom = 10;
 
-				zoom += e.getWheelRotation() * 10;
-				if (zoom < 10)
-					zoom = 10;
+			double wdx2 = screenToWorldDistance((int) (canvas.getSize().getWidth() / 2 - e.getX()));
+			double wdy2 = screenToWorldDistance((int) (canvas.getSize().getHeight() / 2 - e.getY()));
 
-				double wdx2 = screenToWorldDistance((int) (canvas.getSize().getWidth() / 2 - e.getX()));
-				double wdy2 = screenToWorldDistance((int) (canvas.getSize().getHeight() / 2 - e.getY()));
-
-				worldCenterX -= wdx2 - wdx;
-				worldCenterY -= wdy2 - wdy;
-				updateCanvas();
-			}
+			worldCenterX -= wdx2 - wdx;
+			worldCenterY -= wdy2 - wdy;
+			updateCanvas();
 		});
 		canvas.setPreferredSize(new Dimension(800, 600));
 		panel.add(canvas, BorderLayout.CENTER);
 		panel.add(statusPanel, BorderLayout.SOUTH);
 		MainWindow.addTabbedPanel("VUI #" + title, panel);
-
-	}
-
-	protected void onMouseDragged(int x, int y) {
-	}
-
-	protected void onClick(int x, int y) {
-		// TODO Auto-generated method stub
-
-	}
-
-	private void onInitialConfiguration() {
-		// TODO Auto-generated method stub
 
 	}
 
