@@ -20,27 +20,27 @@ public class TestAgentMessagingFeature extends ObjectsForAgentTesting {
 	
 	@Test
 	public void getAllReceivedMessages() throws InterruptedException {
-		agent1.run();
-		boolean sendingSuccessful = agent1.sendMessage(omt.MSG_1, agent2.getAID());
+		communicantAgent1.run();
+		boolean sendingSuccessful = communicantAgent1.sendMessage(omt.MSG_1, communicantAgent2.getAID());
 		assertTrue(sendingSuccessful);
 
-		agent2.run();
-		Collection<IAmakEnvelope> receivedMsg = agent2.getAllReceivedMessages();
+		communicantAgent2.run();
+		Collection<IAmakEnvelope> receivedMsg = communicantAgent2.getAllReceivedMessages();
 		assertEquals(1, receivedMsg.size());
 		IAmakEnvelope env = receivedMsg.iterator().next();
 		assertEquals(omt.MSG_1, env.getMessage());
-		assertEquals(agent1.getAID(), env.getMessageSenderAID());
+		assertEquals(communicantAgent1.getAID(), env.getMessageSenderAID());
 	}
 
 	@Test
 	public void getReceivedMessagesGivenType() {
-		agent1.run();
+		communicantAgent1.run();
 
-		boolean sendingSuccessful = agent1.sendMessage(omt.MSG_1, agent2.getAID());
+		boolean sendingSuccessful = communicantAgent1.sendMessage(omt.MSG_1, communicantAgent2.getAID());
 		assertTrue(sendingSuccessful);
 
-		agent2.run();
-		Collection<MyMsg> receivedMsg = agent2.getReceivedMessagesGivenType(MyMsg.class);
+		communicantAgent2.run();
+		Collection<MyMsg> receivedMsg = communicantAgent2.getReceivedMessagesGivenType(MyMsg.class);
 		assertEquals(1, receivedMsg.size());
 
 		MyMsg msg = receivedMsg.iterator().next();

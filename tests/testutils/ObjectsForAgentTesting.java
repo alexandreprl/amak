@@ -2,15 +2,15 @@ package testutils;
 
 import org.junit.Before;
 
-import fr.irit.smac.amak.Agent;
+import fr.irit.smac.amak.AgentCommunicant;
 import fr.irit.smac.amak.Amas;
 import fr.irit.smac.amak.Environment;
 import fr.irit.smac.amak.Scheduling;
 
 public class ObjectsForAgentTesting {
 
-	public Agent<TestAMAS, TestEnv> agent1;
-	public Agent<TestAMAS, TestEnv> agent2;
+	public AgentCommunicant<TestAMAS, TestEnv> communicantAgent1;
+	public AgentCommunicant<TestAMAS, TestEnv> communicantAgent2;
 	public TestAMAS amas;
 
 
@@ -19,10 +19,10 @@ public class ObjectsForAgentTesting {
 		TestEnv env = new TestEnv();
 		amas = new TestAMAS(env);
 		Object params[] = {};
-		agent1 = new Agent<TestAMAS, TestEnv>(amas, params) {
+		communicantAgent1 = new AgentCommunicant<TestAMAS, TestEnv>(amas, params) {
 		};
 
-		agent2 = new Agent<TestAMAS, TestEnv>(amas, params) {
+		communicantAgent2 = new AgentCommunicant<TestAMAS, TestEnv>(amas, params) {
 		};
 	}
 
