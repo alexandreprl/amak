@@ -10,6 +10,7 @@ import fr.irit.smac.amak.tools.Log;
  *
  * @param <T> The environment of the Amas
  */
+@Deprecated
 public final class AsyncAmas<T extends Environment> extends Amas<T> {
 
 	/**

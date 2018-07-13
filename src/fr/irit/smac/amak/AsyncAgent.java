@@ -8,7 +8,10 @@ package fr.irit.smac.amak;
  *
  * @param <E>
  *            The environment the agent is connected to.
+ * 
+ * @deprecated Asynchonism should be made using {@link Configuration}
  */
+@Deprecated
 public class AsyncAgent<E extends Environment> extends Agent<AsyncAmas<E>, E> implements Schedulable {
 	/**
 	 * The scheduler of the agent. Each AsyncAgent has a dedicated scheduler.
