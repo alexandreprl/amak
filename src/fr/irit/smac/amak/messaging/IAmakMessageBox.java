@@ -1,10 +1,8 @@
 package fr.irit.smac.amak.messaging;
 
-import java.util.List;
-
 import fr.irit.smac.amak.aid.AddressableAID;
 
-public interface IAmakMessageBox {
+public interface IAmakMessageBox extends IAmakReadableMessageBox {
 
 	IAmakAddress getAddress();
 
@@ -24,5 +22,4 @@ public interface IAmakMessageBox {
 	void sendMessage(IAmakMessage messageToSend, AddressableAID addressableAID, IAmakMessageMetaData metadata)
 			throws MessagingTechnicalException;
 	
-	List<IAmakEnvelope> getReceivedMessages();
 }
