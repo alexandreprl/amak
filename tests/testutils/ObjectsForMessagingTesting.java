@@ -22,6 +22,7 @@ public class ObjectsForMessagingTesting {
 	public final AddressableAID addressableAID1;
 	public final AddressableAID addressableAID2;
 	public final MyMsg MSG_1 = new MyMsg(MSG_VAL);
+	public final MyMsg MSG_2 = new MyMsg(MSG_VAL + MSG_VAL);
 	public final IAmakMessageMetaData metadata1 = new MyCustomMetadata(SENDING_COST_METADATA);
 
 	public ObjectsForMessagingTesting() {
