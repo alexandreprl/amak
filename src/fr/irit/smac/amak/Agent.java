@@ -374,7 +374,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	/**
 	 * Perceive, decide and act
 	 */
-	private final void perceive() {
+	void perceive() {
 		for (Agent<A, E> agent : neighborhood) {
 			criticalities.put(agent, agent.criticality);
 		}
