@@ -51,7 +51,7 @@ public class SchedulerToolbar extends JToolBar {
 		this.title = title;
 		this.scheduler = scheduler;
 		this.scheduler.setOnStop(s -> getSlider().setValue(1));
-		this.scheduler.setOnChange(s -> {
+		this.scheduler.addOnChange(s -> {
 			if (s.isRunning()) {
 				switch (s.getSleep()) {
 				case 1000:

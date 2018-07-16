@@ -98,6 +98,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * The execution policy {@link ExecutionPolicy}
 	 */
 	private ExecutionPolicy executionPolicy = Configuration.executionPolicy;
+	private List<Agent<?,?>> runningAsyncAgents = new ArrayList<>();
 
 	/**
 	 * Getter for the execution policy
@@ -152,16 +153,44 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * Effectively add agent to the system
 	 */
 	private void addPendingAgents() {
+		//The double loop is required as the method onReady should only be called when all the agents have been added
 		for (Agent<?, E> agent : agentsPendingAddition) {
 			agents.add(agent);
 		}
-		Agent<?, E> agent;
 		while (!agentsPendingAddition.isEmpty()) {
-			agent = agentsPendingAddition.poll();
+			final Agent<?, E> agent = agentsPendingAddition.poll();
 			agent._onBeforeReady();
 			agent.onReady();
-
+			if (!agent.isSynchronous()) {
+				scheduler.addOnChange(s->{
+					if (s.isRunning() && !runningAsyncAgents.contains(agent)) {
+						startRunningAsyncAgent(agent);
+					}
+				});
+				startRunningAsyncAgent(agent);
+			}
 		}
+	}
+
+	private void startRunningAsyncAgent(Agent<?, E> agent) {
+		runningAsyncAgents.add(agent);
+		runAsynchronousAgent(agent);
+	}
+
+	private void runAsynchronousAgent(Agent<?, E> agent) {
+		executor.execute(()->{
+			agent.onePhaseCycle();
+			if (scheduler.isRunning()&&agents.contains(agent)) {
+				try {
+					Thread.sleep(scheduler.getSleep());
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				runAsynchronousAgent(agent);
+			}else {
+				runningAsyncAgents.remove(agent);
+			}
+		});
 	}
 
 	/**
@@ -235,10 +264,16 @@ public class Amas<E extends Environment> implements Schedulable {
 		Collections.sort(agents, new AgentOrderComparator());
 		onSystemCycleBegin();
 
+		//TODO explain code and avoid considering asycnhronous agent
 		switch (executionPolicy) {
 		case ONE_PHASE:
 			for (Agent<?, E> agent : agents) {
-				executor.execute(agent);
+				if (agent.isSynchronous())
+					executor.execute(agent);
+				else {
+					perceptionPhaseSemaphore.release();
+					decisionAndActionPhasesSemaphore.release();
+				}
 			}
 			try {
 				perceptionPhaseSemaphore.acquire(agents.size());
@@ -254,7 +289,10 @@ public class Amas<E extends Environment> implements Schedulable {
 		case TWO_PHASES:
 			// Perception
 			for (Agent<?, E> agent : agents) {
-				executor.execute(agent);
+				if (agent.isSynchronous())
+					executor.execute(agent);
+				else
+					perceptionPhaseSemaphore.release();
 			}
 			try {
 				perceptionPhaseSemaphore.acquire(agents.size());
@@ -263,7 +301,10 @@ public class Amas<E extends Environment> implements Schedulable {
 			}
 			// Decision and action
 			for (Agent<?, E> agent : agents) {
-				executor.execute(agent);
+				if (agent.isSynchronous())
+					executor.execute(agent);
+				else
+					decisionAndActionPhasesSemaphore.release();
 			}
 			try {
 				decisionAndActionPhasesSemaphore.acquire(agents.size());

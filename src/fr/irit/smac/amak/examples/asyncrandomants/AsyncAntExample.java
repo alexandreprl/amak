@@ -2,7 +2,7 @@ package fr.irit.smac.amak.examples.asyncrandomants;
 
 import java.util.Random;
 
-import fr.irit.smac.amak.AsyncAgent;
+import fr.irit.smac.amak.Agent;
 import fr.irit.smac.amak.ui.VUI;
 import fr.irit.smac.amak.ui.drawables.DrawableImage;
 
@@ -12,7 +12,7 @@ import fr.irit.smac.amak.ui.drawables.DrawableImage;
  * @author perles
  *
  */
-public class AsyncAntExample extends AsyncAgent<AsyncWorldExample> {
+public class AsyncAntExample extends Agent<AsyncAntsAMASExample, AsyncWorldExample> {
 	/**
 	 * X coordinate of the ant in the world
 	 */
@@ -44,8 +44,8 @@ public class AsyncAntExample extends AsyncAgent<AsyncWorldExample> {
 	 * @param startY
 	 *            Initial Y coordinate
 	 */
-	public AsyncAntExample(AsyncWorldExample env, double startX, double startY) {
-		super(env, 10, startX, startY);
+	public AsyncAntExample(AsyncAntsAMASExample amas, double startX, double startY) {
+		super(amas, 10, startX, startY);
 	}
 
 	@Override
@@ -53,7 +53,9 @@ public class AsyncAntExample extends AsyncAgent<AsyncWorldExample> {
 		dx = (double) params[0];
 		dy = (double) params[1];
 		randomObject = new Random();
+		setAsynchronous();
 	}
+
 
 	@Override
 	protected void onRenderingInitialization() {
@@ -84,7 +86,7 @@ public class AsyncAntExample extends AsyncAgent<AsyncWorldExample> {
 		}
 
 		if (getEnvironment().getRandom().nextDouble() < 0.01) {
-			new AsyncAntExample(getEnvironment(), dx, dy);
+			new AsyncAntExample(getAmas(), dx, dy);
 		}
 	}
 
