@@ -149,7 +149,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	protected void setAsynchronous() {
 		if (currentPhase != Phase.INITIALIZING)
 			Log.fatal("AMAK", "Asynchronous mode must be set during the initialization");
-		this.synchronous = true;
+		this.synchronous = false;
 	}
 	/**
 	 * This method must be overriden if you need to specify an execution order layer

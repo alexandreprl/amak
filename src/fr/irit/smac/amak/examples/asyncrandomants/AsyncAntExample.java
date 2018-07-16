@@ -45,7 +45,7 @@ public class AsyncAntExample extends Agent<AsyncAntsAMASExample, AsyncWorldExamp
 	 *            Initial Y coordinate
 	 */
 	public AsyncAntExample(AsyncAntsAMASExample amas, double startX, double startY) {
-		super(amas, 10, startX, startY);
+		super(amas, startX, startY);
 	}
 
 	@Override

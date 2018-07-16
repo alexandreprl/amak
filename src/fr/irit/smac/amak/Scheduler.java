@@ -46,8 +46,8 @@ public class Scheduler implements Runnable, Serializable {
 	 */
 	private Consumer<Scheduler> onStop;
 	/**
-	 * The methods called when the speed is changed. Useful to change the value of the
-	 * GUI slider of {@link SchedulerToolbar}
+	 * The methods called when the speed is changed. Useful to change the value of
+	 * the GUI slider of {@link SchedulerToolbar}
 	 */
 	private List<Consumer<Scheduler>> onChange = new ArrayList<>();
 	/**
@@ -125,7 +125,10 @@ public class Scheduler implements Runnable, Serializable {
 	 */
 	public void startWithSleep(int i) {
 		if (locked > 0) {
-			onChange.forEach(c->c.accept(this));
+			
+			synchronized (onChange) {
+				onChange.forEach(c -> c.accept(this));
+			}
 			return;
 		}
 		setSleep(i);
@@ -140,7 +143,9 @@ public class Scheduler implements Runnable, Serializable {
 
 		}
 		stateLock.unlock();
-		onChange.forEach(c->c.accept(this));
+		synchronized (onChange) {
+			onChange.forEach(c -> c.accept(this));
+		}
 	}
 
 	/**
@@ -155,7 +160,9 @@ public class Scheduler implements Runnable, Serializable {
 	 */
 	public void step() {
 		if (locked > 0) {
-			onChange.forEach(c->c.accept(this));
+			synchronized (onChange) {
+				onChange.forEach(c -> c.accept(this));
+			}
 			return;
 		}
 		this.setSleep(0);
@@ -170,7 +177,9 @@ public class Scheduler implements Runnable, Serializable {
 
 		}
 		stateLock.unlock();
-		onChange.forEach(c->c.accept(this));
+		synchronized (onChange) {
+			onChange.forEach(c -> c.accept(this));
+		}
 	}
 
 	/**
@@ -187,7 +196,9 @@ public class Scheduler implements Runnable, Serializable {
 
 		}
 		stateLock.unlock();
-		onChange.forEach(c->c.accept(this));
+		synchronized (onChange) {
+			onChange.forEach(c -> c.accept(this));
+		}
 	}
 
 	/**
@@ -257,7 +268,9 @@ public class Scheduler implements Runnable, Serializable {
 	 *            Consumer method
 	 */
 	public final void addOnChange(Consumer<Scheduler> _onChange) {
-		this.onChange.add(_onChange);
+		synchronized (onChange) {
+			this.onChange.add(_onChange);
+		}
 	}
 
 	/**
