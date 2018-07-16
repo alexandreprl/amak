@@ -91,6 +91,8 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 * The current phase of the agent {@link Phase}
 	 */
 	protected Phase currentPhase = Phase.INITIALIZING;
+	
+	private boolean synchronous = true;
 
 	/**
 	 * The constructor automatically add the agent to the corresponding amas and
@@ -105,14 +107,16 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 		this.id = uniqueIndex++;
 		this.params = params;
 		this.amas = amas;
-		if (amas != null) {
-			this.amas._addAgent(this);
-		}
 		neighborhood = new ArrayList<>();
 		neighborhood.add(this);
 		onInitialization();
 		if (!Configuration.commandLineMode)
 			onRenderingInitialization();
+		
+
+		if (amas != null) {
+			this.amas._addAgent(this);
+		}
 	}
 
 	/**
@@ -142,6 +146,11 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 		return Double.NEGATIVE_INFINITY;
 	}
 
+	protected void setAsynchronous() {
+		if (currentPhase != Phase.INITIALIZING)
+			Log.fatal("AMAK", "Asynchronous mode must be set during the initialization");
+		this.synchronous = false;
+	}
 	/**
 	 * This method must be overriden if you need to specify an execution order layer
 	 * 
@@ -303,15 +312,17 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 				Log.fatal("AMAK", "An agent is being run in an invalid phase (%s)", currentPhase);
 			}
 		} else if (executionPolicy == ExecutionPolicy.ONE_PHASE) {
-			currentPhase = Phase.PERCEPTION;
-			phase1();
-			currentPhase = Phase.DECISION_AND_ACTION;
-			phase2();
+			onePhaseCycle();
 			amas.informThatAgentPerceptionIsFinished();
 			amas.informThatAgentDecisionAndActionAreFinished();
 		}
 	}
-
+	public void onePhaseCycle() {
+		currentPhase = Phase.PERCEPTION;
+		phase1();
+		currentPhase = Phase.DECISION_AND_ACTION;
+		phase2();
+	}
 	/**
 	 * This method represents the perception phase of the agent
 	 */
@@ -363,7 +374,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	/**
 	 * Perceive, decide and act
 	 */
-	private final void perceive() {
+	void perceive() {
 		for (Agent<A, E> agent : neighborhood) {
 			criticalities.put(agent, agent.criticality);
 		}
@@ -477,5 +488,9 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	public E getEnvironment() {
 		return getAmas().getEnvironment();
+	}
+
+	public boolean isSynchronous() {
+		return synchronous ;
 	}
 }

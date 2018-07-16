@@ -9,6 +9,9 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.ThreadPoolExecutor;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import fr.irit.smac.amak.ui.MainWindow;
 import fr.irit.smac.amak.ui.SchedulerToolbar;
@@ -98,6 +101,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * The execution policy {@link ExecutionPolicy}
 	 */
 	private ExecutionPolicy executionPolicy = Configuration.executionPolicy;
+	private List<Agent<?, ?>> runningAsyncAgents = new ArrayList<>();
 
 	/**
 	 * Getter for the execution policy
@@ -119,7 +123,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 *            The params to initialize the amas
 	 */
 	public Amas(E environment, Scheduling scheduling, Object... params) {
-
+		executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(Configuration.allowedSimultaneousAgentsExecution);
 		if (scheduling == Scheduling.DEFAULT) {
 			this.scheduler = Scheduler.getDefaultScheduler();
 			this.scheduler.add(this);
@@ -152,16 +156,48 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * Effectively add agent to the system
 	 */
 	private void addPendingAgents() {
-		for (Agent<?, E> agent : agentsPendingAddition) {
-			agents.add(agent);
-		}
-		Agent<?, E> agent;
-		while (!agentsPendingAddition.isEmpty()) {
-			agent = agentsPendingAddition.poll();
-			agent._onBeforeReady();
-			agent.onReady();
+		// The double loop is required as the method onReady should only be called when
+		// all the agents have been added
+		synchronized (agentsPendingAddition) {
 
+			for (Agent<?, E> agent : agentsPendingAddition) {
+				agents.add(agent);
+			}
+			while (!agentsPendingAddition.isEmpty()) {
+				final Agent<?, E> agent = agentsPendingAddition.poll();
+				agent._onBeforeReady();
+				agent.onReady();
+				if (!agent.isSynchronous()) {
+					scheduler.addOnChange(s -> {
+						if (s.isRunning() && !runningAsyncAgents.contains(agent)) {
+							startRunningAsyncAgent(agent);
+						}
+					});
+					startRunningAsyncAgent(agent);
+				}
+			}
 		}
+	}
+
+	private void startRunningAsyncAgent(Agent<?, E> agent) {
+		runningAsyncAgents.add(agent);
+		runAsynchronousAgent(agent);
+	}
+
+	private void runAsynchronousAgent(Agent<?, E> agent) {
+		executor.execute(() -> {
+			agent.onePhaseCycle();
+			if (scheduler.isRunning() && agents.contains(agent)) {
+				try {
+					Thread.sleep(scheduler.getSleep());
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				runAsynchronousAgent(agent);
+			} else {
+				runningAsyncAgents.remove(agent);
+			}
+		});
 	}
 
 	/**
@@ -214,7 +250,9 @@ public class Amas<E extends Environment> implements Schedulable {
 	 *            the agent to add to the system
 	 */
 	public final void _addAgent(Agent<?, E> _agent) {
-		agentsPendingAddition.add(_agent);
+		synchronized (agentsPendingAddition) {
+			agentsPendingAddition.add(_agent);
+		}
 	}
 
 	/**
@@ -224,7 +262,9 @@ public class Amas<E extends Environment> implements Schedulable {
 	 *            the agent to remove from the system
 	 */
 	public final void _removeAgent(Agent<?, E> _agent) {
-		agentsPendingRemoval.add(_agent);
+		synchronized (agentsPendingRemoval) {
+			agentsPendingRemoval.add(_agent);
+		}
 	}
 
 	/**
@@ -232,41 +272,43 @@ public class Amas<E extends Environment> implements Schedulable {
 	 */
 	public final void cycle() {
 		cycle++;
-		Collections.sort(agents, new AgentOrderComparator());
+		List<Agent<? extends Amas<E>, E>> synchronousAgents = agents.stream().filter(a -> a.isSynchronous())
+				.collect(Collectors.toList());
+		Collections.sort(synchronousAgents, new AgentOrderComparator());
 		onSystemCycleBegin();
 
 		switch (executionPolicy) {
 		case ONE_PHASE:
-			for (Agent<?, E> agent : agents) {
+			for (Agent<?, E> agent : synchronousAgents) {
 				executor.execute(agent);
 			}
 			try {
-				perceptionPhaseSemaphore.acquire(agents.size());
+				perceptionPhaseSemaphore.acquire(synchronousAgents.size());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			try {
-				decisionAndActionPhasesSemaphore.acquire(agents.size());
+				decisionAndActionPhasesSemaphore.acquire(synchronousAgents.size());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			break;
 		case TWO_PHASES:
 			// Perception
-			for (Agent<?, E> agent : agents) {
+			for (Agent<?, E> agent : synchronousAgents) {
 				executor.execute(agent);
 			}
 			try {
-				perceptionPhaseSemaphore.acquire(agents.size());
+				perceptionPhaseSemaphore.acquire(synchronousAgents.size());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			// Decision and action
-			for (Agent<?, E> agent : agents) {
+			for (Agent<?, E> agent : synchronousAgents) {
 				executor.execute(agent);
 			}
 			try {
-				decisionAndActionPhasesSemaphore.acquire(agents.size());
+				decisionAndActionPhasesSemaphore.acquire(synchronousAgents.size());
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -274,10 +316,14 @@ public class Amas<E extends Environment> implements Schedulable {
 		}
 
 		removePendingAgents();
+
 		addPendingAgents();
+
 		onSystemCycleEnd();
 		if (!Configuration.commandLineMode)
+
 			onUpdateRender();
+
 	}
 
 	/**
@@ -285,8 +331,11 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * to avoid {@link ConcurrentModificationException}
 	 */
 	private void removePendingAgents() {
-		while (!agentsPendingRemoval.isEmpty())
-			agents.remove(agentsPendingRemoval.poll());
+
+		synchronized (agentsPendingRemoval) {
+			while (!agentsPendingRemoval.isEmpty())
+				agents.remove(agentsPendingRemoval.poll());
+		}
 	}
 
 	/**
@@ -379,16 +428,12 @@ public class Amas<E extends Environment> implements Schedulable {
 	 */
 	@Override
 	public final void onSchedulingStarts() {
-		executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(Configuration.allowedSimultaneousAgentsExecution);
+		
 	}
 
-	/**
-	 * When the scheduling stops we shutdown the executor so it doesn't stuck the
-	 * process
-	 */
 	@Override
 	public final void onSchedulingStops() {
-		executor.shutdown();
+
 	}
 
 	/**

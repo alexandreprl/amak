@@ -14,17 +14,17 @@ import fr.irit.smac.amak.tools.Profiler;
 import fr.irit.smac.amak.ui.DrawableUI;
 
 @SuppressWarnings("deprecation")
-public class ThreadTest {
+public class AsyncTest {
 
 	public static void main(String[] args) {
-		new ThreadTest();
+		new AsyncTest();
 
 	}
 
-	public ThreadTest() {
+	public AsyncTest() {
 		Configuration.allowedSimultaneousAgentsExecution = 10;
-		Configuration.executionPolicy = ExecutionPolicy.TWO_PHASES;
-		Log.minLevel = Log.Level.INFORM;
+
+		Log.minLevel = Log.Level.DEBUG;
 		runAmas();
 	}
 
@@ -34,7 +34,6 @@ public class ThreadTest {
 			Log.inform("time", "Threads used: %d", Configuration.allowedSimultaneousAgentsExecution);
 			Log.inform("time", "Elapsed time: %s", Profiler.endHR("amas"));
 		});
-		new AgentPhaseDrawer(amas);
 		Profiler.start("amas");
 
 		amas.start();
@@ -48,27 +47,34 @@ public class ThreadTest {
 
 		@Override
 		protected void onInitialAgentsCreation() {
-			for (int i = 0; i < 100; i++) {
+			for (int i = 0; i < 2; i++) {
 				new MyAgent(this);
 			}
-		}
-
-		@Override
-		public boolean stopCondition() {
-			return cycle == 100000;
 		}
 	}
 
 	public class MyAgent extends Agent<MyAMAS, MyEnvironment> {
+		public int myCycle = 0;
 
 		public MyAgent(MyAMAS amas, Object... params) {
 			super(amas, params);
 		}
 
 		@Override
+		protected void onInitialization() {
+			setAsynchronous();
+		}
+
+		@Override
 		protected void onPerceive() {
+		}
+
+		@Override
+		protected void onAct() {
+			myCycle++;
+			// Sleep the thread to simulate a behavior
 			try {
-				Thread.sleep(50);
+				Thread.sleep(getId() % 2 == 0 ? 0 : 1000);
 			} catch (InterruptedException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -76,16 +82,9 @@ public class ThreadTest {
 		}
 
 		@Override
-		protected void onAct() {
-			// Sleep the thread to simulate a behavior
-			try {
-				Thread.sleep(50);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		protected void onAgentCycleEnd() {
+			Log.debug("AsyncTest", "Agent #%d cycle %d", getId(), myCycle);
 		}
-
 	}
 
 	public class MyEnvironment extends Environment {
@@ -93,45 +92,5 @@ public class ThreadTest {
 		public MyEnvironment(Object... params) {
 			super(Scheduling.DEFAULT, params);
 		}
-	}
-
-	public class AgentPhaseDrawer extends DrawableUI<MyAMAS> {
-
-		public AgentPhaseDrawer(MyAMAS amas) {
-			super(Scheduling.UI, amas);
-			start();
-		}
-
-		@Override
-		protected void onDraw(Graphics2D graphics2d) {
-			int x = 0, y = 0;
-			for (Agent<? extends Amas<MyEnvironment>, MyEnvironment> a : getAmas().getAgents()) {
-				switch (a.getCurrentPhase()) {
-				case DECISION_AND_ACTION:
-					graphics2d.setColor(Color.GREEN);
-					break;
-				case DECISION_AND_ACTION_DONE:
-					graphics2d.setColor(Color.BLUE);
-					break;
-				case PERCEPTION:
-					graphics2d.setColor(Color.ORANGE);
-					break;
-				case PERCEPTION_DONE:
-					graphics2d.setColor(Color.RED);
-					break;
-				default:
-					break;
-				
-				}
-				x = (a.getId()%10)*10;
-				y = ((int)(a.getId()/10))*10;
-				graphics2d.fillRect(x, y, 9, 9);
-
-				graphics2d.setColor(Color.WHITE);
-				graphics2d.drawString(""+getAmas().getPerceptionPhaseSemaphore().availablePermits(), 10,200);
-				graphics2d.drawString(""+getAmas().getDecisionAndActionPhasesSemaphore().availablePermits(), 10,220);
-			}
-		}
-
 	}
 }

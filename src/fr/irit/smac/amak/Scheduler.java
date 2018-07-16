@@ -1,9 +1,11 @@
 package fr.irit.smac.amak;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 import java.util.Set;
 import java.util.concurrent.locks.ReentrantLock;
@@ -44,10 +46,10 @@ public class Scheduler implements Runnable, Serializable {
 	 */
 	private Consumer<Scheduler> onStop;
 	/**
-	 * A method called when the speed is changed. Useful to change the value of the
-	 * GUI slider of {@link SchedulerToolbar}
+	 * The methods called when the speed is changed. Useful to change the value of
+	 * the GUI slider of {@link SchedulerToolbar}
 	 */
-	private Consumer<Scheduler> onChange;
+	private List<Consumer<Scheduler>> onChange = new ArrayList<>();
 	/**
 	 * The idea is to prevent scheduler from launching if the schedulables are not
 	 * yet fully ready
@@ -123,8 +125,10 @@ public class Scheduler implements Runnable, Serializable {
 	 */
 	public void startWithSleep(int i) {
 		if (locked > 0) {
-			if (onChange != null)
-				onChange.accept(this);
+			
+			synchronized (onChange) {
+				onChange.forEach(c -> c.accept(this));
+			}
 			return;
 		}
 		setSleep(i);
@@ -139,8 +143,9 @@ public class Scheduler implements Runnable, Serializable {
 
 		}
 		stateLock.unlock();
-		if (onChange != null)
-			onChange.accept(this);
+		synchronized (onChange) {
+			onChange.forEach(c -> c.accept(this));
+		}
 	}
 
 	/**
@@ -155,8 +160,9 @@ public class Scheduler implements Runnable, Serializable {
 	 */
 	public void step() {
 		if (locked > 0) {
-			if (onChange != null)
-				onChange.accept(this);
+			synchronized (onChange) {
+				onChange.forEach(c -> c.accept(this));
+			}
 			return;
 		}
 		this.setSleep(0);
@@ -171,8 +177,9 @@ public class Scheduler implements Runnable, Serializable {
 
 		}
 		stateLock.unlock();
-		if (onChange != null)
-			onChange.accept(this);
+		synchronized (onChange) {
+			onChange.forEach(c -> c.accept(this));
+		}
 	}
 
 	/**
@@ -189,8 +196,9 @@ public class Scheduler implements Runnable, Serializable {
 
 		}
 		stateLock.unlock();
-		if (onChange != null)
-			onChange.accept(this);
+		synchronized (onChange) {
+			onChange.forEach(c -> c.accept(this));
+		}
 	}
 
 	/**
@@ -254,13 +262,15 @@ public class Scheduler implements Runnable, Serializable {
 	}
 
 	/**
-	 * Set the method that must be executed when the scheduler speed is changed
+	 * Add a method that must be executed when the scheduler speed is changed
 	 * 
 	 * @param _onChange
 	 *            Consumer method
 	 */
-	public final void setOnChange(Consumer<Scheduler> _onChange) {
-		this.onChange = _onChange;
+	public final void addOnChange(Consumer<Scheduler> _onChange) {
+		synchronized (onChange) {
+			this.onChange.add(_onChange);
+		}
 	}
 
 	/**
