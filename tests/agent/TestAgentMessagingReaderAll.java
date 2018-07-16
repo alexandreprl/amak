@@ -13,7 +13,7 @@ import testutils.ObjectsForAgentTesting;
 import testutils.ObjectsForMessagingTesting;
 import testutils.ObjectsForMessagingTesting.MyMsg;
 
-public class TestAgentMessagingFeature extends ObjectsForAgentTesting {
+public class TestAgentMessagingReaderAll extends ObjectsForAgentTesting {
 
 	public ObjectsForMessagingTesting omt = new ObjectsForMessagingTesting();
 	

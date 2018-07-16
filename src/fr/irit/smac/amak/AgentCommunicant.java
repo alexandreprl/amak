@@ -1,6 +1,5 @@
 package fr.irit.smac.amak;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
@@ -16,6 +15,8 @@ import fr.irit.smac.amak.messaging.IAmakMessageBox;
 import fr.irit.smac.amak.messaging.IAmakMessageMetaData;
 import fr.irit.smac.amak.messaging.IAmakMessagingService;
 import fr.irit.smac.amak.messaging.MessagingTechnicalException;
+import fr.irit.smac.amak.messaging.reader.IMessagingReader;
+import fr.irit.smac.amak.messaging.reader.MessagingReaderAllMsgsOfCycle;
 
 /**
  * This class must be overridden by communicant agents to use messages
@@ -35,18 +36,28 @@ public abstract class AgentCommunicant<A extends Amas<E>, E extends Environment>
 	 */
 	private final AddressableAID aid;
 
-	/** The msgbox is the delegate of all the messaging services (sending/receiving msg) */
+	/**
+	 * The msgbox is the delegate of all the messaging operations
+	 * (sending/receiving msg).</br>
+	 * <i>For reading the msgbox, the {@link AgentCommunicant#msgReader} should
+	 * be use.</i>
+	 */
 	private IAmakMessageBox messageBox;
 
-	/** The perceived messages */
-	private Collection<IAmakEnvelope> messagesOfTheCycle;
+	/**
+	 * The messaging reader is use to apply reading strategy on msgbox and give
+	 * the msgs with a specific way.
+	 */
+	private IMessagingReader msgReader;
 
 	/** Messaging services builder */
 	private static final IAmakMessagingService messagingService = new ImplMessagingServiceAgentMessaging();
 
 	/**
 	 * The constructor automatically add the agent to the corresponding amas and
-	 * initialize the agent
+	 * initialize the agent.</br>
+	 * The default messaging reader ({@link MessagingReaderAllMsgsOfCycle}) will
+	 * be use.
 	 * 
 	 * @param amas
 	 *            Amas the agent belongs to
@@ -54,15 +65,31 @@ public abstract class AgentCommunicant<A extends Amas<E>, E extends Environment>
 	 *            The params to initialize the agent
 	 */
 	public AgentCommunicant(A amas, Object... params) {
-		super(amas, params);
-		//build the address...
-		final String randomUUID = UUID.randomUUID().toString();
-		IAmakAddress address = messagingService.buildNewAmakAddress(randomUUID);
-		//... to build the AID and the msgbox
-		this.aid = new AddressableAID(address, randomUUID);
-		messageBox = messagingService.buildNewAmakMessageBox(aid);
+		this(amas, new MessagingReaderAllMsgsOfCycle(), params);
 	}
 
+	/**
+	 * The constructor automatically add the agent to the corresponding amas and
+	 * initialize the agent.</br>
+	 * 
+	 * @param amas
+	 *            Amas the agent belongs to
+	 * @param params
+	 *            The params to initialize the agent
+	 * @param msgReader
+	 *            The strategy of messaging reader.
+	 */
+	public AgentCommunicant(A amas, IMessagingReader msgReader, Object... params) {
+		super(amas, params);
+		// build the address...
+		final String randomUUID = UUID.randomUUID().toString();
+		IAmakAddress address = messagingService.buildNewAmakAddress(randomUUID);
+		// ... to build the AID and the msgbox
+		this.aid = new AddressableAID(address, randomUUID);
+		messageBox = messagingService.buildNewAmakMessageBox(aid);
+		this.msgReader = msgReader;
+		this.msgReader.setReadableMessageBox(messageBox);
+	}
 
 	/**
 	 * Override to handle the messages received
@@ -70,10 +97,7 @@ public abstract class AgentCommunicant<A extends Amas<E>, E extends Environment>
 	@Override
 	final void perceive() {
 		super.perceive();
-		
-		//event the msgbox return a list, the full order cannot be guaranty.
-		// All the previous message will be erase.
-		messagesOfTheCycle = messageBox.getReceivedMessages();
+		msgReader.readMsgbox();
 	}
 
 
@@ -139,17 +163,17 @@ public abstract class AgentCommunicant<A extends Amas<E>, E extends Environment>
 	}
 
 	/**
-	 * Get the received messages of the current cycle.
+	 * Get the received messages according to the message reader strategy. .
 	 * 
-	 * @return the received message. The return collection can be modify.
+	 * @return the received message.
 	 **/
-	public Collection<IAmakEnvelope> getAllReceivedMessages() {
-		return new ArrayList<>(messagesOfTheCycle);
+	public Collection<IAmakEnvelope> getAllMessages() {
+		return msgReader.getMessages();
 	}
 
 	public <M extends IAmakMessage> Collection<M> getReceivedMessagesGivenType(Class<M> clasz) {
 		@SuppressWarnings("unchecked") // it is a safe cast
-		List<M> result = (List<M>) messagesOfTheCycle.stream().filter(env -> env.getMessage().getClass().equals(clasz))
+		List<M> result = (List<M>) getAllMessages().stream().filter(env -> env.getMessage().getClass().equals(clasz))
 				.map(env -> (M) env.getMessage()).collect(Collectors.toList());
 
 		return result;
