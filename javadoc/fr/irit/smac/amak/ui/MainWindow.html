@@ -138,6 +138,8 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public class <span class="typeNameLabel">MainWindow</span>
 extends javax.swing.JFrame</pre>
+<div class="block">This window is the main one of an AMAS developed using AMAK. It contains a
+ toolbar panel and various spaces for panels</div>
 <dl>
 <dt><span class="simpleTagLabel">Author:</span></dt>
 <dd>Alexandre Perles, Marcillaud Guilhem</dd>
@@ -251,16 +253,22 @@ extends javax.swing.JFrame</pre>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#addMenuItem-java.lang.String-java.awt.event.ActionListener-">addMenuItem</a></span>(java.lang.String&nbsp;title,
-           java.awt.event.ActionListener&nbsp;listener)</code>&nbsp;</td>
+           java.awt.event.ActionListener&nbsp;listener)</code>
+<div class="block">Add a button in the menu options</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#addOnCloseAction-java.util.function.Consumer-">addOnCloseAction</a></span>(java.util.function.Consumer&lt;<a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a>&gt;&nbsp;onClose)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#addOnCloseAction-java.util.function.Consumer-">addOnCloseAction</a></span>(java.util.function.Consumer&lt;<a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a>&gt;&nbsp;onClose)</code>
+<div class="block">Add a close action to the listener</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>static void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#addTabbedPanel-java.lang.String-javax.swing.JPanel-">addTabbedPanel</a></span>(java.lang.String&nbsp;title,
-              javax.swing.JPanel&nbsp;panel)</code>&nbsp;</td>
+              javax.swing.JPanel&nbsp;panel)</code>
+<div class="block">Add a panel with a tab</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
@@ -276,15 +284,15 @@ extends javax.swing.JFrame</pre>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#setLeftPanel-java.lang.String-javax.swing.JPanel-">setLeftPanel</a></span>(java.lang.String&nbsp;title,
-            javax.swing.JPanel&nbsp;panel)</code>
-<div class="block">Add a tabbedPanel</div>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#setLeftPanel-javax.swing.JPanel-">setLeftPanel</a></span>(javax.swing.JPanel&nbsp;panel)</code>
+<div class="block">Set a panel to the left</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>static void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#setRightPanel-java.lang.String-javax.swing.JPanel-">setRightPanel</a></span>(java.lang.String&nbsp;title,
-             javax.swing.JPanel&nbsp;panel)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html#setRightPanel-javax.swing.JPanel-">setRightPanel</a></span>(javax.swing.JPanel&nbsp;panel)</code>
+<div class="block">Set a panel to the right</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>static void</code></td>
@@ -369,6 +377,11 @@ extends javax.swing.JFrame</pre>
 <li class="blockList">
 <h4>addOnCloseAction</h4>
 <pre>public static&nbsp;void&nbsp;addOnCloseAction(java.util.function.Consumer&lt;<a href="../../../../../fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a>&gt;&nbsp;onClose)</pre>
+<div class="block">Add a close action to the listener</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>onClose</code> - The action to be executed when the window is closed</dd>
+</dl>
 </li>
 </ul>
 <a name="setWindowIcon-java.lang.String-">
@@ -407,6 +420,12 @@ extends javax.swing.JFrame</pre>
 <h4>addMenuItem</h4>
 <pre>public static&nbsp;void&nbsp;addMenuItem(java.lang.String&nbsp;title,
                                java.awt.event.ActionListener&nbsp;listener)</pre>
+<div class="block">Add a button in the menu options</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>title</code> - The title of the button</dd>
+<dd><code>listener</code> - The action to be executed</dd>
+</dl>
 </li>
 </ul>
 <a name="addToolbar-javax.swing.JToolBar-">
@@ -423,30 +442,32 @@ extends javax.swing.JFrame</pre>
 </dl>
 </li>
 </ul>
-<a name="setLeftPanel-java.lang.String-javax.swing.JPanel-">
+<a name="setLeftPanel-javax.swing.JPanel-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setLeftPanel</h4>
-<pre>public static&nbsp;void&nbsp;setLeftPanel(java.lang.String&nbsp;title,
-                                javax.swing.JPanel&nbsp;panel)</pre>
-<div class="block">Add a tabbedPanel</div>
+<pre>public static&nbsp;void&nbsp;setLeftPanel(javax.swing.JPanel&nbsp;panel)</pre>
+<div class="block">Set a panel to the left</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>title</code> - The title</dd>
 <dd><code>panel</code> - The panel</dd>
 </dl>
 </li>
 </ul>
-<a name="setRightPanel-java.lang.String-javax.swing.JPanel-">
+<a name="setRightPanel-javax.swing.JPanel-">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>setRightPanel</h4>
-<pre>public static&nbsp;void&nbsp;setRightPanel(java.lang.String&nbsp;title,
-                                 javax.swing.JPanel&nbsp;panel)</pre>
+<pre>public static&nbsp;void&nbsp;setRightPanel(javax.swing.JPanel&nbsp;panel)</pre>
+<div class="block">Set a panel to the right</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>panel</code> - The panel</dd>
+</dl>
 </li>
 </ul>
 <a name="instance--">
@@ -471,6 +492,12 @@ extends javax.swing.JFrame</pre>
 <h4>addTabbedPanel</h4>
 <pre>public static&nbsp;void&nbsp;addTabbedPanel(java.lang.String&nbsp;title,
                                   javax.swing.JPanel&nbsp;panel)</pre>
+<div class="block">Add a panel with a tab</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>title</code> - The title of the tab</dd>
+<dd><code>panel</code> - The panel to add</dd>
+</dl>
 </li>
 </ul>
 </li>

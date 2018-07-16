@@ -73,40 +73,101 @@
 <div class="serializedFormContainer">
 <ul class="blockList">
 <li class="blockList">
-<h2 title="Package">Package&nbsp;fr.irit.smac.amak.ui</h2>
+<h2 title="Package">Package&nbsp;fr.irit.smac.amak</h2>
 <ul class="blockList">
-<li class="blockList"><a name="fr.irit.smac.amak.ui.DraggableTabbedPane">
+<li class="blockList"><a name="fr.irit.smac.amak.Scheduler">
 <!--   -->
 </a>
-<h3>Class <a href="fr/irit/smac/amak/ui/DraggableTabbedPane.html" title="class in fr.irit.smac.amak.ui">fr.irit.smac.amak.ui.DraggableTabbedPane</a> extends javax.swing.JTabbedPane implements Serializable</h3>
+<h3>Class <a href="fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">fr.irit.smac.amak.Scheduler</a> extends java.lang.Object implements Serializable</h3>
 <dl class="nameValue">
 <dt>serialVersionUID:</dt>
-<dd>-3225498238991261266L</dd>
+<dd>-4765899565369100376L</dd>
 </dl>
 <ul class="blockList">
 <li class="blockList">
 <h3>Serialized Fields</h3>
 <ul class="blockList">
 <li class="blockList">
-<h4>dragging</h4>
-<pre>boolean dragging</pre>
+<h4>schedulables</h4>
+<pre>java.util.Set&lt;E&gt; schedulables</pre>
+<div class="block">The schedulables object handled by the scheduler</div>
 </li>
 <li class="blockList">
-<h4>tabImage</h4>
-<pre>java.awt.Image tabImage</pre>
+<h4>state</h4>
+<pre><a href="fr/irit/smac/amak/Scheduler.State.html" title="enum in fr.irit.smac.amak">Scheduler.State</a> state</pre>
+<div class="block">The state of the scheduler <a href="fr/irit/smac/amak/Scheduler.State.html" title="enum in fr.irit.smac.amak"><code>Scheduler.State</code></a></div>
 </li>
 <li class="blockList">
-<h4>currentMouseLocation</h4>
-<pre>java.awt.Point currentMouseLocation</pre>
+<h4>sleep</h4>
+<pre>int sleep</pre>
+<div class="block">The sleep time in ms between each cycle</div>
+</li>
+<li class="blockList">
+<h4>stateLock</h4>
+<pre>java.util.concurrent.locks.ReentrantLock stateLock</pre>
+<div class="block">A lock to protect the state</div>
+</li>
+<li class="blockList">
+<h4>onStop</h4>
+<pre>java.util.function.Consumer&lt;T&gt; onStop</pre>
+<div class="block">Method that is called when the scheduler stops</div>
+</li>
+<li class="blockList">
+<h4>onChange</h4>
+<pre>java.util.List&lt;E&gt; onChange</pre>
+<div class="block">The methods called when the speed is changed. Useful to change the value of
+ the GUI slider of <a href="fr/irit/smac/amak/ui/SchedulerToolbar.html" title="class in fr.irit.smac.amak.ui"><code>SchedulerToolbar</code></a></div>
+</li>
+<li class="blockList">
+<h4>locked</h4>
+<pre>int locked</pre>
+<div class="block">The idea is to prevent scheduler from launching if the schedulables are not
+ yet fully ready</div>
+</li>
+<li class="blockList">
+<h4>pendingAdditionSchedulables</h4>
+<pre>java.util.Queue&lt;E&gt; pendingAdditionSchedulables</pre>
+<div class="block">The schedulables that must be added</div>
 </li>
 <li class="blockListLast">
-<h4>draggedTabIndex</h4>
-<pre>int draggedTabIndex</pre>
+<h4>pendingRemovalSchedulables</h4>
+<pre>java.util.Queue&lt;E&gt; pendingRemovalSchedulables</pre>
+<div class="block">The schedulables that must be removed</div>
 </li>
 </ul>
 </li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="blockList">
+<h2 title="Package">Package&nbsp;fr.irit.smac.amak.messaging</h2>
+<ul class="blockList">
+<li class="blockList"><a name="fr.irit.smac.amak.messaging.MessagingTechnicalException">
+<!--   -->
+</a>
+<h3>Class <a href="fr/irit/smac/amak/messaging/MessagingTechnicalException.html" title="class in fr.irit.smac.amak.messaging">fr.irit.smac.amak.messaging.MessagingTechnicalException</a> extends java.lang.Exception implements Serializable</h3>
+<dl class="nameValue">
+<dt>serialVersionUID:</dt>
+<dd>-3381348762571712415L</dd>
+</dl>
+<ul class="blockList">
+<li class="blockList">
+<h3>Serialized Fields</h3>
+<ul class="blockList">
+<li class="blockListLast">
+<h4>cause</h4>
+<pre>java.lang.String cause</pre>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="blockList">
+<h2 title="Package">Package&nbsp;fr.irit.smac.amak.ui</h2>
+<ul class="blockList">
 <li class="blockList"><a name="fr.irit.smac.amak.ui.MainWindow">
 <!--   -->
 </a>
@@ -122,26 +183,34 @@
 <li class="blockList">
 <h4>toolbarPanel</h4>
 <pre>javax.swing.JPanel toolbarPanel</pre>
+<div class="block">The panel which contains the toolbar</div>
 </li>
 <li class="blockList">
 <h4>splitPane</h4>
 <pre>javax.swing.JSplitPane splitPane</pre>
+<div class="block">The main panel is split in two panels. This allows to dynamically resize
+ these two panels.</div>
 </li>
 <li class="blockList">
 <h4>menuBar</h4>
 <pre>javax.swing.JMenuBar menuBar</pre>
+<div class="block">The menu bar of the window</div>
 </li>
 <li class="blockList">
 <h4>optionsMenu</h4>
 <pre>javax.swing.JMenu optionsMenu</pre>
+<div class="block">The option menu</div>
 </li>
 <li class="blockList">
 <h4>tabbedPanel</h4>
 <pre>javax.swing.JTabbedPane tabbedPanel</pre>
+<div class="block">The panel in which panels with tab can be added</div>
 </li>
 <li class="blockListLast">
 <h4>mainWindowListener</h4>
 <pre><a href="fr/irit/smac/amak/ui/MainWindowListener.html" title="class in fr.irit.smac.amak.ui">MainWindowListener</a> mainWindowListener</pre>
+<div class="block">The listener of the window here to detect the closing of the window and
+ execute specific actions.</div>
 </li>
 </ul>
 </li>
@@ -162,14 +231,17 @@
 <li class="blockList">
 <h4>runController</h4>
 <pre>javax.swing.JSlider runController</pre>
+<div class="block">The slider which controls the speed</div>
 </li>
 <li class="blockList">
 <h4>scheduler</h4>
 <pre><a href="fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a> scheduler</pre>
+<div class="block">The scheduler to which the toolbar is associated</div>
 </li>
 <li class="blockListLast">
 <h4>title</h4>
 <pre>java.lang.String title</pre>
+<div class="block">The title of the toolbar</div>
 </li>
 </ul>
 </li>

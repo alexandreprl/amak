@@ -113,6 +113,11 @@ var activeTableTab = "activeTableTab";
 <br>
 <pre>public abstract class <span class="typeNameLabel">Drawable</span>
 extends java.lang.Object</pre>
+<div class="block">A drawable is an object that can be drawn by the <a href="../../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui"><code>VUI</code></a> system</div>
+<dl>
+<dt><span class="simpleTagLabel">Author:</span></dt>
+<dd>Alexandre Perles</dd>
+</dl>
 </li>
 </ul>
 </div>
@@ -133,27 +138,33 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected java.awt.Color</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#color">color</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#color">color</a></span></code>
+<div class="block">The color of the object</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#height">height</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#height">height</a></span></code>
+<div class="block">The real height</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#layer">layer</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#layer">layer</a></span></code>
+<div class="block">The order of drawing.</div>
+</td>
 </tr>
 <tr class="rowColor">
-<td class="colFirst"><code>protected <a href="../../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#panel">panel</a></span></code>&nbsp;</td>
+<td class="colFirst"><code>protected boolean</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#strokeMode">strokeMode</a></span></code>
+<div class="block">Does only the border must be displayed ?</div>
+</td>
 </tr>
 <tr class="altColor">
-<td class="colFirst"><code>protected boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#strokeMode">strokeMode</a></span></code>&nbsp;</td>
-</tr>
-<tr class="rowColor">
 <td class="colFirst"><code>protected <a href="../../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#vui">vui</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#vui">vui</a></span></code>
+<div class="block">The VUI on which the object is drawn</div>
+</td>
 </tr>
 </table>
 </li>
@@ -176,7 +187,9 @@ extends java.lang.Object</pre>
         double&nbsp;dx,
         double&nbsp;dy,
         double&nbsp;width,
-        double&nbsp;height)</code>&nbsp;</td>
+        double&nbsp;height)</code>
+<div class="block">Constructor of the obejct</div>
+</td>
 </tr>
 </table>
 </li>
@@ -195,35 +208,51 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i0" class="altColor">
 <td class="colFirst"><code>abstract void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#Z:Z_onDraw-java.awt.Graphics2D-">_onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#Z:Z_onDraw-java.awt.Graphics2D-">_onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics)</code>
+<div class="block">Method that must be overrided to draw</div>
+</td>
 </tr>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#bottom--">bottom</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#bottom--">bottom</a></span>()</code>
+<div class="block">Get the bottom y coordinate</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getAngle--">getAngle</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getAngle--">getAngle</a></span>()</code>
+<div class="block">Getter for the angle attribute</div>
+</td>
 </tr>
 <tr id="i3" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getHeight--">getHeight</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getHeight--">getHeight</a></span>()</code>
+<div class="block">Get the real height</div>
+</td>
 </tr>
 <tr id="i4" class="altColor">
 <td class="colFirst"><code>int</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getLayer--">getLayer</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getLayer--">getLayer</a></span>()</code>
+<div class="block">Getter for the layer attribute</div>
+</td>
 </tr>
 <tr id="i5" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getRenderedHeight--">getRenderedHeight</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getRenderedHeight--">getRenderedHeight</a></span>()</code>
+<div class="block">Compute the height as it must be displayed on screen.</div>
+</td>
 </tr>
 <tr id="i6" class="altColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getRenderedWidth--">getRenderedWidth</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getRenderedWidth--">getRenderedWidth</a></span>()</code>
+<div class="block">Compute the width as it must be displayed on screen.</div>
+</td>
 </tr>
 <tr id="i7" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getWidth--">getWidth</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#getWidth--">getWidth</a></span>()</code>
+<div class="block">Get the real width</div>
+</td>
 </tr>
 <tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></code></td>
@@ -231,7 +260,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i9" class="rowColor">
 <td class="colFirst"><code>boolean</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#isFixed--">isFixed</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#isFixed--">isFixed</a></span>()</code>
+<div class="block">Getter for the fixed attribute</div>
+</td>
 </tr>
 <tr id="i10" class="altColor">
 <td class="colFirst"><code>boolean</code></td>
@@ -239,7 +270,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i11" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#left--">left</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#left--">left</a></span>()</code>
+<div class="block">Get the left x coordinate</div>
+</td>
 </tr>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></code></td>
@@ -248,15 +281,21 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i13" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#onDraw-java.awt.Graphics2D-">onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#onDraw-java.awt.Graphics2D-">onDraw</a></span>(java.awt.Graphics2D&nbsp;graphics)</code>
+<div class="block">Draw the object if visible and if on screen</div>
+</td>
 </tr>
 <tr id="i14" class="altColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#right--">right</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#right--">right</a></span>()</code>
+<div class="block">Get the right x coordinate</div>
+</td>
 </tr>
 <tr id="i15" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setAngle-double-">setAngle</a></span>(double&nbsp;angle2)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setAngle-double-">setAngle</a></span>(double&nbsp;angle2)</code>
+<div class="block">Set the new angle</div>
+</td>
 </tr>
 <tr id="i16" class="altColor">
 <td class="colFirst"><code><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></code></td>
@@ -268,19 +307,27 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setHeight-double-">setHeight</a></span>(double&nbsp;height)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setHeight-double-">setHeight</a></span>(double&nbsp;height)</code>
+<div class="block">Set the real height of the object</div>
+</td>
 </tr>
 <tr id="i19" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setLayer-int-">setLayer</a></span>(int&nbsp;layer)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setLayer-int-">setLayer</a></span>(int&nbsp;layer)</code>
+<div class="block">Set the layer and update</div>
+</td>
 </tr>
 <tr id="i20" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setPanel-fr.irit.smac.amak.ui.VUI-">setPanel</a></span>(<a href="../../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a>&nbsp;vectorialUI)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setPanel-fr.irit.smac.amak.ui.VUI-">setPanel</a></span>(<a href="../../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a>&nbsp;vectorialUI)</code>
+<div class="block">Set the associated VUI</div>
+</td>
 </tr>
 <tr id="i21" class="rowColor">
 <td class="colFirst"><code><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setStrokeOnly--">setStrokeOnly</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setStrokeOnly--">setStrokeOnly</a></span>()</code>
+<div class="block">Only draw the border of the object</div>
+</td>
 </tr>
 <tr id="i22" class="altColor">
 <td class="colFirst"><code><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></code></td>
@@ -288,7 +335,9 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i23" class="rowColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setWidth-double-">setWidth</a></span>(double&nbsp;width)</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#setWidth-double-">setWidth</a></span>(double&nbsp;width)</code>
+<div class="block">Set the real width of the object</div>
+</td>
 </tr>
 <tr id="i24" class="altColor">
 <td class="colFirst"><code><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></code></td>
@@ -296,11 +345,15 @@ extends java.lang.Object</pre>
 </tr>
 <tr id="i25" class="rowColor">
 <td class="colFirst"><code>double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#top--">top</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#top--">top</a></span>()</code>
+<div class="block">Get the top y coordinate</div>
+</td>
 </tr>
 <tr id="i26" class="altColor">
 <td class="colFirst"><code>void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#update--">update</a></span>()</code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html#update--">update</a></span>()</code>
+<div class="block">Method called when the VUI must be refreshed</div>
+</td>
 </tr>
 </table>
 <ul class="blockList">
@@ -324,15 +377,6 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Field Detail</h3>
-<a name="panel">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>panel</h4>
-<pre>protected&nbsp;<a href="../../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a> panel</pre>
-</li>
-</ul>
 <a name="height">
 <!--   -->
 </a>
@@ -340,6 +384,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>height</h4>
 <pre>protected&nbsp;double height</pre>
+<div class="block">The real height</div>
 </li>
 </ul>
 <a name="strokeMode">
@@ -349,6 +394,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>strokeMode</h4>
 <pre>protected&nbsp;boolean strokeMode</pre>
+<div class="block">Does only the border must be displayed ?</div>
 </li>
 </ul>
 <a name="color">
@@ -358,6 +404,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>color</h4>
 <pre>protected&nbsp;java.awt.Color color</pre>
+<div class="block">The color of the object</div>
 </li>
 </ul>
 <a name="vui">
@@ -367,6 +414,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>vui</h4>
 <pre>protected&nbsp;<a href="../../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a> vui</pre>
+<div class="block">The VUI on which the object is drawn</div>
 </li>
 </ul>
 <a name="layer">
@@ -376,6 +424,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>layer</h4>
 <pre>protected&nbsp;int layer</pre>
+<div class="block">The order of drawing. An higher layer is drawn on top of the other.</div>
 </li>
 </ul>
 </li>
@@ -397,6 +446,15 @@ extends java.lang.Object</pre>
                    double&nbsp;dy,
                    double&nbsp;width,
                    double&nbsp;height)</pre>
+<div class="block">Constructor of the obejct</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vui</code> - the VUI on which the object must be drawn</dd>
+<dd><code>dx</code> - the x real position</dd>
+<dd><code>dy</code> - the y real position</dd>
+<dd><code>width</code> - the real width</dd>
+<dd><code>height</code> - the real height</dd>
+</dl>
 </li>
 </ul>
 </li>
@@ -414,6 +472,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getRenderedWidth</h4>
 <pre>public&nbsp;double&nbsp;getRenderedWidth()</pre>
+<div class="block">Compute the width as it must be displayed on screen. Given the zoom factor,
+ the width displayed can be different than the real width.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the width</dd>
+</dl>
 </li>
 </ul>
 <a name="setWidth-double-">
@@ -423,6 +487,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setWidth</h4>
 <pre>public&nbsp;void&nbsp;setWidth(double&nbsp;width)</pre>
+<div class="block">Set the real width of the object</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>width</code> - The new width</dd>
+</dl>
 </li>
 </ul>
 <a name="getRenderedHeight--">
@@ -432,6 +501,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getRenderedHeight</h4>
 <pre>public&nbsp;double&nbsp;getRenderedHeight()</pre>
+<div class="block">Compute the height as it must be displayed on screen. Given the zoom factor,
+ the height displayed can be different than the real height.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the width</dd>
+</dl>
 </li>
 </ul>
 <a name="setHeight-double-">
@@ -441,6 +516,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setHeight</h4>
 <pre>public&nbsp;void&nbsp;setHeight(double&nbsp;height)</pre>
+<div class="block">Set the real height of the object</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>height</code> - The new height</dd>
+</dl>
 </li>
 </ul>
 <a name="getWidth--">
@@ -450,6 +530,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getWidth</h4>
 <pre>public&nbsp;double&nbsp;getWidth()</pre>
+<div class="block">Get the real width</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the real width</dd>
+</dl>
 </li>
 </ul>
 <a name="getHeight--">
@@ -459,6 +544,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getHeight</h4>
 <pre>public&nbsp;double&nbsp;getHeight()</pre>
+<div class="block">Get the real height</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the real height</dd>
+</dl>
 </li>
 </ul>
 <a name="isFixed--">
@@ -468,6 +558,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>isFixed</h4>
 <pre>public&nbsp;boolean&nbsp;isFixed()</pre>
+<div class="block">Getter for the fixed attribute</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>if the obejct is fixed</dd>
+</dl>
 </li>
 </ul>
 <a name="getAngle--">
@@ -477,6 +572,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getAngle</h4>
 <pre>public&nbsp;double&nbsp;getAngle()</pre>
+<div class="block">Getter for the angle attribute</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the angle</dd>
+</dl>
 </li>
 </ul>
 <a name="getLayer--">
@@ -486,6 +586,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>getLayer</h4>
 <pre>public&nbsp;int&nbsp;getLayer()</pre>
+<div class="block">Getter for the layer attribute</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the layer</dd>
+</dl>
 </li>
 </ul>
 <a name="setLayer-int-">
@@ -495,6 +600,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setLayer</h4>
 <pre>public&nbsp;<a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;setLayer(int&nbsp;layer)</pre>
+<div class="block">Set the layer and update</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>layer</code> - the new layer</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the object for chained methods</dd>
+</dl>
 </li>
 </ul>
 <a name="setAngle-double-">
@@ -504,6 +616,13 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setAngle</h4>
 <pre>public&nbsp;<a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;setAngle(double&nbsp;angle2)</pre>
+<div class="block">Set the new angle</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>angle2</code> - the new angle</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the object for chained methods</dd>
+</dl>
 </li>
 </ul>
 <a name="onDraw-java.awt.Graphics2D-">
@@ -513,6 +632,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>onDraw</h4>
 <pre>public&nbsp;void&nbsp;onDraw(java.awt.Graphics2D&nbsp;graphics)</pre>
+<div class="block">Draw the object if visible and if on screen</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>graphics</code> - The graphics object that must be used to draw</dd>
+</dl>
 </li>
 </ul>
 <a name="Z:Z_onDraw-java.awt.Graphics2D-">
@@ -522,6 +646,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>_onDraw</h4>
 <pre>public abstract&nbsp;void&nbsp;_onDraw(java.awt.Graphics2D&nbsp;graphics)</pre>
+<div class="block">Method that must be overrided to draw</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>graphics</code> - the Graphics2D object</dd>
+</dl>
 </li>
 </ul>
 <a name="update--">
@@ -531,6 +660,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>update</h4>
 <pre>public&nbsp;void&nbsp;update()</pre>
+<div class="block">Method called when the VUI must be refreshed</div>
 </li>
 </ul>
 <a name="setPanel-fr.irit.smac.amak.ui.VUI-">
@@ -540,6 +670,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setPanel</h4>
 <pre>public&nbsp;void&nbsp;setPanel(<a href="../../../../../../fr/irit/smac/amak/ui/VUI.html" title="class in fr.irit.smac.amak.ui">VUI</a>&nbsp;vectorialUI)</pre>
+<div class="block">Set the associated VUI</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vectorialUI</code> - </dd>
+</dl>
 </li>
 </ul>
 <a name="top--">
@@ -549,6 +684,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>top</h4>
 <pre>public&nbsp;double&nbsp;top()</pre>
+<div class="block">Get the top y coordinate</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the top y coordinate</dd>
+</dl>
 </li>
 </ul>
 <a name="left--">
@@ -558,6 +698,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>left</h4>
 <pre>public&nbsp;double&nbsp;left()</pre>
+<div class="block">Get the left x coordinate</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the left x coordinate</dd>
+</dl>
 </li>
 </ul>
 <a name="bottom--">
@@ -567,6 +712,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>bottom</h4>
 <pre>public&nbsp;double&nbsp;bottom()</pre>
+<div class="block">Get the bottom y coordinate</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the bottom y coordinate</dd>
+</dl>
 </li>
 </ul>
 <a name="right--">
@@ -576,6 +726,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>right</h4>
 <pre>public&nbsp;double&nbsp;right()</pre>
+<div class="block">Get the right x coordinate</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the right x coordinate</dd>
+</dl>
 </li>
 </ul>
 <a name="setStrokeOnly--">
@@ -585,6 +740,11 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setStrokeOnly</h4>
 <pre>public&nbsp;<a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;setStrokeOnly()</pre>
+<div class="block">Only draw the border of the object</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the object for chained methods</dd>
+</dl>
 </li>
 </ul>
 <a name="setColor-java.awt.Color-">
@@ -594,6 +754,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setColor</h4>
 <pre>public&nbsp;<a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;setColor(java.awt.Color&nbsp;color)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>color</code> - </dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the object for chained methods</dd>
+</dl>
 </li>
 </ul>
 <a name="move-double-double-">
@@ -604,6 +770,13 @@ extends java.lang.Object</pre>
 <h4>move</h4>
 <pre>public&nbsp;<a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;move(double&nbsp;dx,
                      double&nbsp;dy)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>dx</code> - </dd>
+<dd><code>dy</code> - </dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the object for chained methods</dd>
+</dl>
 </li>
 </ul>
 <a name="setFixed--">
@@ -613,6 +786,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setFixed</h4>
 <pre>public&nbsp;<a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;setFixed()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the object for chained methods</dd>
+</dl>
 </li>
 </ul>
 <a name="show--">
@@ -622,6 +799,10 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>show</h4>
 <pre>public&nbsp;<a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;show()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the object for chained methods</dd>
+</dl>
 </li>
 </ul>
 <a name="hide--">
@@ -631,6 +812,9 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>hide</h4>
 <pre>public&nbsp;<a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;hide()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
 </li>
 </ul>
 <a name="isVisible--">
@@ -640,6 +824,9 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>isVisible</h4>
 <pre>public&nbsp;boolean&nbsp;isVisible()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+</dl>
 </li>
 </ul>
 <a name="setVisible-boolean-">
@@ -649,6 +836,12 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>setVisible</h4>
 <pre>public&nbsp;<a href="../../../../../../fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a>&nbsp;setVisible(boolean&nbsp;visible)</pre>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>visible</code> - </dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>the object for chained methods</dd>
+</dl>
 </li>
 </ul>
 </li>

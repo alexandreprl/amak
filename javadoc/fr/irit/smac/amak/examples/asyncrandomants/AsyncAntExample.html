@@ -48,7 +48,7 @@ var activeTableTab = "activeTableTab";
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsLaunchExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsAMASExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?fr/irit/smac/amak/examples/asyncrandomants/AsyncAntExample.html" target="_top">Frames</a></li>
@@ -98,15 +98,10 @@ var activeTableTab = "activeTableTab";
 <li>java.lang.Object</li>
 <li>
 <ul class="inheritance">
-<li><a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">fr.irit.smac.amak.Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/AsyncAmas.html" title="class in fr.irit.smac.amak">AsyncAmas</a>&lt;E&gt;,E&gt;</li>
-<li>
-<ul class="inheritance">
-<li><a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="class in fr.irit.smac.amak">fr.irit.smac.amak.AsyncAgent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</li>
+<li><a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">fr.irit.smac.amak.Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsAMASExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncAntsAMASExample</a>,<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</li>
 <li>
 <ul class="inheritance">
 <li>fr.irit.smac.amak.examples.asyncrandomants.AsyncAntExample</li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>
@@ -117,12 +112,12 @@ var activeTableTab = "activeTableTab";
 <li class="blockList">
 <dl>
 <dt>All Implemented Interfaces:</dt>
-<dd><a href="../../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a>, java.lang.Runnable</dd>
+<dd>java.lang.Runnable</dd>
 </dl>
 <hr>
 <br>
 <pre>public class <span class="typeNameLabel">AsyncAntExample</span>
-extends <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="class in fr.irit.smac.amak">AsyncAgent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</pre>
+extends <a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsAMASExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncAntsAMASExample</a>,<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</pre>
 <div class="block">This class is an example of a completely asynchronous agent</div>
 <dl>
 <dt><span class="simpleTagLabel">Author:</span></dt>
@@ -181,13 +176,6 @@ extends <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="cla
 <h3>Fields inherited from class&nbsp;fr.irit.smac.amak.<a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></h3>
 <code><a href="../../../../../../fr/irit/smac/amak/Agent.html#amas">amas</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#criticalities">criticalities</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#currentPhase">currentPhase</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#neighborhood">neighborhood</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#params">params</a></code></li>
 </ul>
-<ul class="blockList">
-<li class="blockList"><a name="fields.inherited.from.class.fr.irit.smac.amak.Schedulable">
-<!--   -->
-</a>
-<h3>Fields inherited from interface&nbsp;fr.irit.smac.amak.<a href="../../../../../../fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak">Schedulable</a></h3>
-<code><a href="../../../../../../fr/irit/smac/amak/Schedulable.html#DEFAULT_SLEEP">DEFAULT_SLEEP</a></code></li>
-</ul>
 </li>
 </ul>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
@@ -202,7 +190,7 @@ extends <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="cla
 <th class="colOne" scope="col">Constructor and Description</th>
 </tr>
 <tr class="altColor">
-<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntExample.html#AsyncAntExample-fr.irit.smac.amak.examples.asyncrandomants.AsyncWorldExample-double-double-">AsyncAntExample</a></span>(<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&nbsp;env,
+<td class="colOne"><code><span class="memberNameLink"><a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntExample.html#AsyncAntExample-fr.irit.smac.amak.examples.asyncrandomants.AsyncAntsAMASExample-double-double-">AsyncAntExample</a></span>(<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsAMASExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncAntsAMASExample</a>&nbsp;amas,
                double&nbsp;startX,
                double&nbsp;startY)</code>
 <div class="block">Constructor of the ant</div>
@@ -250,18 +238,11 @@ extends <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="cla
 </tr>
 </table>
 <ul class="blockList">
-<li class="blockList"><a name="methods.inherited.from.class.fr.irit.smac.amak.AsyncAgent">
-<!--   -->
-</a>
-<h3>Methods inherited from class&nbsp;fr.irit.smac.amak.<a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="class in fr.irit.smac.amak">AsyncAgent</a></h3>
-<code><a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html#Z:Z_computeExecutionOrder--">_computeExecutionOrder</a>, <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html#cycle--">cycle</a>, <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html#destroy--">destroy</a>, <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html#getEnvironment--">getEnvironment</a>, <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html#onSchedulingStarts--">onSchedulingStarts</a>, <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html#onSchedulingStops--">onSchedulingStops</a>, <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html#stopCondition--">stopCondition</a></code></li>
-</ul>
-<ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.fr.irit.smac.amak.Agent">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;fr.irit.smac.amak.<a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></h3>
-<code><a href="../../../../../../fr/irit/smac/amak/Agent.html#Z:Z_onBeforeReady--">_onBeforeReady</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#addNeighbor-fr.irit.smac.amak.Agent...-">addNeighbor</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#computeCriticality--">computeCriticality</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#computeExecutionOrderLayer--">computeExecutionOrderLayer</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getAmas--">getAmas</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getCurrentPhase--">getCurrentPhase</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getExecutionOrder--">getExecutionOrder</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getId--">getId</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getMostCriticalNeighbor-boolean-">getMostCriticalNeighbor</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAct--">onAct</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleBegin--">onAgentCycleBegin</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleEnd--">onAgentCycleEnd</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onDecide--">onDecide</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onDraw--">onDraw</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onExpose--">onExpose</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onPerceive--">onPerceive</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onReady--">onReady</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">onSystemCycleBegin</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleEnd--">onSystemCycleEnd</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#phase1--">phase1</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#phase2--">phase2</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#run--">run</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#toString--">toString</a></code></li>
+<code><a href="../../../../../../fr/irit/smac/amak/Agent.html#Z:Z_computeExecutionOrder--">_computeExecutionOrder</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#Z:Z_onBeforeReady--">_onBeforeReady</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#addNeighbor-fr.irit.smac.amak.Agent...-">addNeighbor</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#computeCriticality--">computeCriticality</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#computeExecutionOrderLayer--">computeExecutionOrderLayer</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#destroy--">destroy</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getAmas--">getAmas</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getCurrentPhase--">getCurrentPhase</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getEnvironment--">getEnvironment</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getExecutionOrder--">getExecutionOrder</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getId--">getId</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#getMostCriticalNeighbor-boolean-">getMostCriticalNeighbor</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#isSynchronous--">isSynchronous</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAct--">onAct</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleBegin--">onAgentCycleBegin</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onAgentCycleEnd--">onAgentCycleEnd</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onDecide--">onDecide</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onDraw--">onDraw</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onePhaseCycle--">onePhaseCycle</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onExpose--">onExpose</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onInitialize--">onInitialize</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onPerceive--">onPerceive</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onReady--">onReady</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleBegin--">onSystemCycleBegin</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#onSystemCycleEnd--">onSystemCycleEnd</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#phase1--">phase1</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#phase2--">phase2</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#run--">run</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#setAsynchronous--">setAsynchronous</a>, <a href="../../../../../../fr/irit/smac/amak/Agent.html#toString--">toString</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a name="methods.inherited.from.class.java.lang.Object">
@@ -312,13 +293,13 @@ extends <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="cla
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a name="AsyncAntExample-fr.irit.smac.amak.examples.asyncrandomants.AsyncWorldExample-double-double-">
+<a name="AsyncAntExample-fr.irit.smac.amak.examples.asyncrandomants.AsyncAntsAMASExample-double-double-">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>AsyncAntExample</h4>
-<pre>public&nbsp;AsyncAntExample(<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&nbsp;env,
+<pre>public&nbsp;AsyncAntExample(<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsAMASExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncAntsAMASExample</a>&nbsp;amas,
                        double&nbsp;startX,
                        double&nbsp;startY)</pre>
 <div class="block">Constructor of the ant</div>
@@ -349,7 +330,7 @@ extends <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="cla
 <div class="block">Called before all agents are created</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../../../../../fr/irit/smac/amak/Agent.html#onInitialization--">onInitialization</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/AsyncAmas.html" title="class in fr.irit.smac.amak">AsyncAmas</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;,<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</code></dd>
+<dd><code><a href="../../../../../../fr/irit/smac/amak/Agent.html#onInitialization--">onInitialization</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsAMASExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncAntsAMASExample</a>,<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -364,7 +345,7 @@ extends <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="cla
 <div class="block">Called to initialize the rendering of the agent</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../../../../../fr/irit/smac/amak/Agent.html#onRenderingInitialization--">onRenderingInitialization</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/AsyncAmas.html" title="class in fr.irit.smac.amak">AsyncAmas</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;,<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</code></dd>
+<dd><code><a href="../../../../../../fr/irit/smac/amak/Agent.html#onRenderingInitialization--">onRenderingInitialization</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsAMASExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncAntsAMASExample</a>,<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -378,7 +359,7 @@ extends <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="cla
 <div class="block">Move in a random direction</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../../../../../fr/irit/smac/amak/Agent.html#onDecideAndAct--">onDecideAndAct</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/AsyncAmas.html" title="class in fr.irit.smac.amak">AsyncAmas</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;,<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</code></dd>
+<dd><code><a href="../../../../../../fr/irit/smac/amak/Agent.html#onDecideAndAct--">onDecideAndAct</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsAMASExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncAntsAMASExample</a>,<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -394,7 +375,7 @@ extends <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="cla
  example in a VUI</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Overrides:</span></dt>
-<dd><code><a href="../../../../../../fr/irit/smac/amak/Agent.html#onUpdateRender--">onUpdateRender</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/AsyncAmas.html" title="class in fr.irit.smac.amak">AsyncAmas</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;,<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</code></dd>
+<dd><code><a href="../../../../../../fr/irit/smac/amak/Agent.html#onUpdateRender--">onUpdateRender</a></code>&nbsp;in class&nbsp;<code><a href="../../../../../../fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a>&lt;<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsAMASExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncAntsAMASExample</a>,<a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncWorldExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants">AsyncWorldExample</a>&gt;</code></dd>
 </dl>
 </li>
 </ul>
@@ -426,7 +407,7 @@ extends <a href="../../../../../../fr/irit/smac/amak/AsyncAgent.html" title="cla
 <div class="subNav">
 <ul class="navList">
 <li>Prev&nbsp;Class</li>
-<li><a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsLaunchExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
+<li><a href="../../../../../../fr/irit/smac/amak/examples/asyncrandomants/AsyncAntsAMASExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants"><span class="typeNameLink">Next&nbsp;Class</span></a></li>
 </ul>
 <ul class="navList">
 <li><a href="../../../../../../index.html?fr/irit/smac/amak/examples/asyncrandomants/AsyncAntExample.html" target="_top">Frames</a></li>

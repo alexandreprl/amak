@@ -17,7 +17,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":9,"i6":9,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10,"i22":10,"i23":10};
+var methods = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":9,"i6":9,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10,"i14":10,"i15":10,"i16":10,"i17":10,"i18":10,"i19":10,"i20":10,"i21":10};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -135,15 +135,21 @@ extends java.lang.Object</pre>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected java.lang.Integer</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#lastDragX">lastDragX</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#lastDragX">lastDragX</a></span></code>
+<div class="block">The last horizontal position of the mouse when dragging</div>
+</td>
 </tr>
 <tr class="rowColor">
 <td class="colFirst"><code>protected java.lang.Integer</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#lastDragY">lastDragY</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#lastDragY">lastDragY</a></span></code>
+<div class="block">The last vertical position of the mouse when dragging</div>
+</td>
 </tr>
 <tr class="altColor">
 <td class="colFirst"><code>protected double</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#zoom">zoom</a></span></code>&nbsp;</td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#zoom">zoom</a></span></code>
+<div class="block">The value of the zoom. 100 means 1/1 scale</div>
+</td>
 </tr>
 </table>
 </li>
@@ -241,34 +247,24 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i12" class="altColor">
-<td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#onClick-int-int-">onClick</a></span>(int&nbsp;x,
-       int&nbsp;y)</code>&nbsp;</td>
-</tr>
-<tr id="i13" class="rowColor">
-<td class="colFirst"><code>protected void</code></td>
-<td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#onMouseDragged-int-int-">onMouseDragged</a></span>(int&nbsp;x,
-              int&nbsp;y)</code>&nbsp;</td>
-</tr>
-<tr id="i14" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#screenToWorldDistance-int-">screenToWorldDistance</a></span>(int&nbsp;d)</code>
 <div class="block">Convert a distance on the screen to its equivalent in the world</div>
 </td>
 </tr>
-<tr id="i15" class="rowColor">
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#screenToWorldX-double-">screenToWorldX</a></span>(double&nbsp;x)</code>
 <div class="block">Convert a X on the screen to its equivalent in the world</div>
 </td>
 </tr>
-<tr id="i16" class="altColor">
+<tr id="i14" class="altColor">
 <td class="colFirst"><code>double</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#screenToWorldY-double-">screenToWorldY</a></span>(double&nbsp;y)</code>
 <div class="block">Convert a Y on the screen to its equivalent in the world</div>
 </td>
 </tr>
-<tr id="i17" class="rowColor">
+<tr id="i15" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#setDefaultView-double-double-double-">setDefaultView</a></span>(double&nbsp;zoom,
               double&nbsp;worldCenterX,
@@ -276,37 +272,37 @@ extends java.lang.Object</pre>
 <div class="block">Set the default configuration of the view</div>
 </td>
 </tr>
-<tr id="i18" class="altColor">
+<tr id="i16" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#setWorldOffsetX-double-">setWorldOffsetX</a></span>(double&nbsp;offsetX)</code>
 <div class="block">Set the value that must be added to the X coordinate of in world object</div>
 </td>
 </tr>
-<tr id="i19" class="rowColor">
+<tr id="i17" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#setWorldOffsetY-double-">setWorldOffsetY</a></span>(double&nbsp;offsetY)</code>
 <div class="block">Set the value that must be added to the Y coordinate of in world object</div>
 </td>
 </tr>
-<tr id="i20" class="altColor">
+<tr id="i18" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#updateCanvas--">updateCanvas</a></span>()</code>
 <div class="block">Refresh the canvas</div>
 </td>
 </tr>
-<tr id="i21" class="rowColor">
+<tr id="i19" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#worldToScreenDistance-double-">worldToScreenDistance</a></span>(double&nbsp;d)</code>
 <div class="block">Convert a distance in the world to its equivalent on the screen</div>
 </td>
 </tr>
-<tr id="i22" class="altColor">
+<tr id="i20" class="altColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#worldToScreenX-double-">worldToScreenX</a></span>(double&nbsp;x)</code>
 <div class="block">Convert a X in the world to its equivalent on the screen</div>
 </td>
 </tr>
-<tr id="i23" class="rowColor">
+<tr id="i21" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../../fr/irit/smac/amak/ui/VUI.html#worldToScreenY-double-">worldToScreenY</a></span>(double&nbsp;y)</code>
 <div class="block">Convert a Y in the world to its equivalent on the screen</div>
@@ -341,6 +337,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>lastDragX</h4>
 <pre>protected&nbsp;java.lang.Integer lastDragX</pre>
+<div class="block">The last horizontal position of the mouse when dragging</div>
 </li>
 </ul>
 <a name="lastDragY">
@@ -350,6 +347,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>lastDragY</h4>
 <pre>protected&nbsp;java.lang.Integer lastDragY</pre>
+<div class="block">The last vertical position of the mouse when dragging</div>
 </li>
 </ul>
 <a name="zoom">
@@ -359,6 +357,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>zoom</h4>
 <pre>protected&nbsp;double zoom</pre>
+<div class="block">The value of the zoom. 100 means 1/1 scale</div>
 </li>
 </ul>
 </li>
@@ -397,26 +396,6 @@ extends java.lang.Object</pre>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>The VUI with id "id"</dd>
 </dl>
-</li>
-</ul>
-<a name="onMouseDragged-int-int-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>onMouseDragged</h4>
-<pre>protected&nbsp;void&nbsp;onMouseDragged(int&nbsp;x,
-                              int&nbsp;y)</pre>
-</li>
-</ul>
-<a name="onClick-int-int-">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>onClick</h4>
-<pre>protected&nbsp;void&nbsp;onClick(int&nbsp;x,
-                       int&nbsp;y)</pre>
 </li>
 </ul>
 <a name="worldToScreenDistance-double-">
