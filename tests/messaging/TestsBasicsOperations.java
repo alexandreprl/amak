@@ -13,7 +13,7 @@ import fr.irit.smac.amak.messaging.IAmakMessage;
 import fr.irit.smac.amak.messaging.MessagingTechnicalException;
 import testutils.ObjectsForMessagingTesting;
 
-public class TestsBascisOpperations extends ObjectsForMessagingTesting {
+public class TestsBasicsOperations extends ObjectsForMessagingTesting {
 
 	@Test
 	public void testSendingAloneSuccessful() {

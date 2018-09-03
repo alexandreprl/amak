@@ -19,7 +19,7 @@ import fr.irit.smac.amak.messaging.reader.IMessagingReader;
 import fr.irit.smac.amak.messaging.reader.MessagingReaderAllMsgsOfCycle;
 
 /**
- * This class must be overridden by communicant agents to use messages
+ * This class must be overridden by communicating agents to use messages
  * 
  * @author Florent Mouysset
  *
@@ -28,7 +28,7 @@ import fr.irit.smac.amak.messaging.reader.MessagingReaderAllMsgsOfCycle;
  * @param <E>
  *            The kind of Environment the agent AND the Amas refer to
  */
-public abstract class AgentCommunicant<A extends Amas<E>, E extends Environment> extends Agent<A, E>
+public abstract class CommunicatingAgent<A extends Amas<E>, E extends Environment> extends Agent<A, E>
 		implements Runnable {
 
 	/**
@@ -39,7 +39,7 @@ public abstract class AgentCommunicant<A extends Amas<E>, E extends Environment>
 	/**
 	 * The msgbox is the delegate of all the messaging operations
 	 * (sending/receiving msg).</br>
-	 * <i>For reading the msgbox, the {@link AgentCommunicant#msgReader} should
+	 * <i>For reading the msgbox, the {@link CommunicatingAgent#msgReader} should
 	 * be use.</i>
 	 */
 	private IAmakMessageBox messageBox;
@@ -64,7 +64,7 @@ public abstract class AgentCommunicant<A extends Amas<E>, E extends Environment>
 	 * @param params
 	 *            The params to initialize the agent
 	 */
-	public AgentCommunicant(A amas, Object... params) {
+	public CommunicatingAgent(A amas, Object... params) {
 		this(amas, new MessagingReaderAllMsgsOfCycle(), params);
 	}
 
@@ -79,7 +79,7 @@ public abstract class AgentCommunicant<A extends Amas<E>, E extends Environment>
 	 * @param msgReader
 	 *            The strategy of messaging reader.
 	 */
-	public AgentCommunicant(A amas, IMessagingReader msgReader, Object... params) {
+	public CommunicatingAgent(A amas, IMessagingReader msgReader, Object... params) {
 		super(amas, params);
 		// build the address...
 		final String randomUUID = UUID.randomUUID().toString();
