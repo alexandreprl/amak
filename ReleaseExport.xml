@@ -4,6 +4,7 @@
 	<!--ANT 1.7 is required                                        -->
 	<!--define folder properties-->
 	<property name="dir.buildfile" value="." />
+	<property name="dir.classes" value="./target/classes" />
 	<property name="dir.workspace" value="${dir.buildfile}/.." />
 	<property name="dir.jarfile" value="${dir.buildfile}/Release" />
 	<property name="javadoc.dir" value="javadoc" />
@@ -17,6 +18,7 @@
 					<include name="avt.jar" />
 					<include name="json-simple-1.1.jar" />
 					<include name="xstream-1.4.10.jar" />
+					<include name="agent-messaging-0.1.jar" />
 				</fileset>
 			</classpath>
 		</javadoc>
@@ -27,18 +29,19 @@
                 <attribute name="Main-Class" value="Test"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>-->
-			<fileset dir="${dir.buildfile}/bin" />
+			<fileset dir="${dir.classes}" />
 			<zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/lx-plot-standalone.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/avt.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/json-simple-1.1.jar" />
 			<zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/xstream-1.4.10.jar" />
+			<zipfileset excludes="META-INF/*.SF" src="${dir.buildfile}/AdditionalLibraries/agent-messaging-0.1.jar" />
 		</jar>
 		<jar destfile="${dir.jarfile}/AmakFramework.jar" filesetmanifest="mergewithoutmain">
 			<!--<manifest>
                 <attribute name="Main-Class" value="Test"/>
                 <attribute name="Class-Path" value="."/>
             </manifest>-->
-			<fileset dir="${dir.buildfile}/bin" />
+			<fileset dir="${dir.classes}" />
 		</jar>
 	</target>
 </project>

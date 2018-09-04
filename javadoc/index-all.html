@@ -72,6 +72,10 @@
 </a>
 <h2 class="title">A</h2>
 <dl>
+<dt><a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html" title="class in fr.irit.smac.amak.messaging.reader"><span class="typeNameLink">AbstractMessagingReader</span></a> - Class in <a href="fr/irit/smac/amak/messaging/reader/package-summary.html">fr.irit.smac.amak.messaging.reader</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html#AbstractMessagingReader--">AbstractMessagingReader()</a></span> - Constructor for class fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html" title="class in fr.irit.smac.amak.messaging.reader">AbstractMessagingReader</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Scheduler.html#add-fr.irit.smac.amak.Schedulable-">add(Schedulable)</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Scheduler.html" title="class in fr.irit.smac.amak">Scheduler</a></dt>
 <dd>
 <div class="block">Plan to add a schedulable</div>
@@ -125,15 +129,6 @@
 <dt><a href="fr/irit/smac/amak/Agent.Phase.html" title="enum in fr.irit.smac.amak"><span class="typeNameLink">Agent.Phase</span></a> - Enum in <a href="fr/irit/smac/amak/package-summary.html">fr.irit.smac.amak</a></dt>
 <dd>
 <div class="block">These phases are used to synchronize agents on phase</div>
-</dd>
-<dt><a href="fr/irit/smac/amak/AgentCommunicant.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">AgentCommunicant</span></a>&lt;<a href="fr/irit/smac/amak/AgentCommunicant.html" title="type parameter in AgentCommunicant">A</a> extends <a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;<a href="fr/irit/smac/amak/AgentCommunicant.html" title="type parameter in AgentCommunicant">E</a>&gt;,<a href="fr/irit/smac/amak/AgentCommunicant.html" title="type parameter in AgentCommunicant">E</a> extends <a href="fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt; - Class in <a href="fr/irit/smac/amak/package-summary.html">fr.irit.smac.amak</a></dt>
-<dd>
-<div class="block">This class must be overridden by communicant agents to use messages</div>
-</dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/AgentCommunicant.html#AgentCommunicant-A-java.lang.Object...-">AgentCommunicant(A, Object...)</a></span> - Constructor for class fr.irit.smac.amak.<a href="fr/irit/smac/amak/AgentCommunicant.html" title="class in fr.irit.smac.amak">AgentCommunicant</a></dt>
-<dd>
-<div class="block">The constructor automatically add the agent to the corresponding amas and
- initialize the agent</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html#AgentPhaseDrawer-fr.irit.smac.amak.tests.ThreadTest.MyAMAS-">AgentPhaseDrawer(ThreadTest.MyAMAS)</a></span> - Constructor for class fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ThreadTest.AgentPhaseDrawer.html" title="class in fr.irit.smac.amak.tests">ThreadTest.AgentPhaseDrawer</a></dt>
 <dd>&nbsp;</dd>
@@ -262,6 +257,20 @@
 <dd>&nbsp;</dd>
 <dt><a href="fr/irit/smac/amak/tests/CommandLineOnlyResolution.MyEnv.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">CommandLineOnlyResolution.MyEnv</span></a> - Class in <a href="fr/irit/smac/amak/tests/package-summary.html">fr.irit.smac.amak.tests</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="fr/irit/smac/amak/CommunicatingAgent.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">CommunicatingAgent</span></a>&lt;<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="type parameter in CommunicatingAgent">A</a> extends <a href="fr/irit/smac/amak/Amas.html" title="class in fr.irit.smac.amak">Amas</a>&lt;<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="type parameter in CommunicatingAgent">E</a>&gt;,<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="type parameter in CommunicatingAgent">E</a> extends <a href="fr/irit/smac/amak/Environment.html" title="class in fr.irit.smac.amak">Environment</a>&gt; - Class in <a href="fr/irit/smac/amak/package-summary.html">fr.irit.smac.amak</a></dt>
+<dd>
+<div class="block">This class must be overridden by communicating agents to use messages</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/CommunicatingAgent.html#CommunicatingAgent-A-java.lang.Object...-">CommunicatingAgent(A, Object...)</a></span> - Constructor for class fr.irit.smac.amak.<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="class in fr.irit.smac.amak">CommunicatingAgent</a></dt>
+<dd>
+<div class="block">The constructor automatically add the agent to the corresponding amas and
+ initialize the agent.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/CommunicatingAgent.html#CommunicatingAgent-A-fr.irit.smac.amak.messaging.reader.IMessagingReader-java.lang.Object...-">CommunicatingAgent(A, IMessagingReader, Object...)</a></span> - Constructor for class fr.irit.smac.amak.<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="class in fr.irit.smac.amak">CommunicatingAgent</a></dt>
+<dd>
+<div class="block">The constructor automatically add the agent to the corresponding amas and
+ initialize the agent.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#computeCriticality--">computeCriticality()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
 <div class="block">This method must be overridden by the agents.</div>
@@ -510,6 +519,8 @@
 <dd>&nbsp;</dd>
 <dt><a href="fr/irit/smac/amak/messaging/package-summary.html">fr.irit.smac.amak.messaging</a> - package fr.irit.smac.amak.messaging</dt>
 <dd>&nbsp;</dd>
+<dt><a href="fr/irit/smac/amak/messaging/reader/package-summary.html">fr.irit.smac.amak.messaging.reader</a> - package fr.irit.smac.amak.messaging.reader</dt>
+<dd>&nbsp;</dd>
 <dt><a href="fr/irit/smac/amak/tests/package-summary.html">fr.irit.smac.amak.tests</a> - package fr.irit.smac.amak.tests</dt>
 <dd>&nbsp;</dd>
 <dt><a href="fr/irit/smac/amak/tests/executionorder/package-summary.html">fr.irit.smac.amak.tests.executionorder</a> - package fr.irit.smac.amak.tests.executionorder</dt>
@@ -550,11 +561,11 @@
 <dd>
 <div class="block">Getter for the list of agents</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/AgentCommunicant.html#getAID--">getAID()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/AgentCommunicant.html" title="class in fr.irit.smac.amak">AgentCommunicant</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/CommunicatingAgent.html#getAID--">getAID()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="class in fr.irit.smac.amak">CommunicatingAgent</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/AgentCommunicant.html#getAllReceivedMessages--">getAllReceivedMessages()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/AgentCommunicant.html" title="class in fr.irit.smac.amak">AgentCommunicant</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/CommunicatingAgent.html#getAllMessages--">getAllMessages()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="class in fr.irit.smac.amak">CommunicatingAgent</a></dt>
 <dd>
-<div class="block">Get the received messages of the current cycle.</div>
+<div class="block">Get the received messages according to the message reader strategy. .</div>
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/Agent.html#getAmas--">getAmas()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak">Agent</a></dt>
 <dd>
@@ -644,6 +655,14 @@
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/MessagingTechnicalException.html#getMessage--">getMessage()</a></span> - Method in exception fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/MessagingTechnicalException.html" title="class in fr.irit.smac.amak.messaging">MessagingTechnicalException</a></dt>
 <dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/reader/IMessagingReader.html#getMessages--">getMessages()</a></span> - Method in interface fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/IMessagingReader.html" title="interface in fr.irit.smac.amak.messaging.reader">IMessagingReader</a></dt>
+<dd>
+<div class="block">Get the messages according to the strategy implementation.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/reader/MessagingReaderAllMsgsOfCycle.html#getMessages--">getMessages()</a></span> - Method in class fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/MessagingReaderAllMsgsOfCycle.html" title="class in fr.irit.smac.amak.messaging.reader">MessagingReaderAllMsgsOfCycle</a></dt>
+<dd>
+<div class="block">Get the received messages of the current cycle.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/IAmakEnvelope.html#getMessageSenderAID--">getMessageSenderAID()</a></span> - Method in interface fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakEnvelope.html" title="interface in fr.irit.smac.amak.messaging">IAmakEnvelope</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/IAmakEnvelope.html#getMetadata--">getMetadata()</a></span> - Method in interface fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakEnvelope.html" title="interface in fr.irit.smac.amak.messaging">IAmakEnvelope</a></dt>
@@ -662,9 +681,9 @@
 </dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/internal/messaging/ImplMessageBoxAgentMessaging.html#getReceivedMessages--">getReceivedMessages()</a></span> - Method in class fr.irit.smac.amak.internal.messaging.<a href="fr/irit/smac/amak/internal/messaging/ImplMessageBoxAgentMessaging.html" title="class in fr.irit.smac.amak.internal.messaging">ImplMessageBoxAgentMessaging</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/IAmakMessageBox.html#getReceivedMessages--">getReceivedMessages()</a></span> - Method in interface fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakMessageBox.html" title="interface in fr.irit.smac.amak.messaging">IAmakMessageBox</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/IAmakReadableMessageBox.html#getReceivedMessages--">getReceivedMessages()</a></span> - Method in interface fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakReadableMessageBox.html" title="interface in fr.irit.smac.amak.messaging">IAmakReadableMessageBox</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/AgentCommunicant.html#getReceivedMessagesGivenType-java.lang.Class-">getReceivedMessagesGivenType(Class&lt;M&gt;)</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/AgentCommunicant.html" title="class in fr.irit.smac.amak">AgentCommunicant</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/CommunicatingAgent.html#getReceivedMessagesGivenType-java.lang.Class-">getReceivedMessagesGivenType(Class&lt;M&gt;)</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="class in fr.irit.smac.amak">CommunicatingAgent</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/drawables/Drawable.html#getRenderedHeight--">getRenderedHeight()</a></span> - Method in class fr.irit.smac.amak.ui.drawables.<a href="fr/irit/smac/amak/ui/drawables/Drawable.html" title="class in fr.irit.smac.amak.ui.drawables">Drawable</a></dt>
 <dd>
@@ -756,6 +775,12 @@
 <dd>&nbsp;</dd>
 <dt><a href="fr/irit/smac/amak/messaging/IAmakMessagingService.html" title="interface in fr.irit.smac.amak.messaging"><span class="typeNameLink">IAmakMessagingService</span></a> - Interface in <a href="fr/irit/smac/amak/messaging/package-summary.html">fr.irit.smac.amak.messaging</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="fr/irit/smac/amak/messaging/IAmakReadableMessageBox.html" title="interface in fr.irit.smac.amak.messaging"><span class="typeNameLink">IAmakReadableMessageBox</span></a> - Interface in <a href="fr/irit/smac/amak/messaging/package-summary.html">fr.irit.smac.amak.messaging</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="fr/irit/smac/amak/messaging/reader/IMessagingReader.html" title="interface in fr.irit.smac.amak.messaging.reader"><span class="typeNameLink">IMessagingReader</span></a> - Interface in <a href="fr/irit/smac/amak/messaging/reader/package-summary.html">fr.irit.smac.amak.messaging.reader</a></dt>
+<dd>
+<div class="block">Interface of messaging reader strategies.</div>
+</dd>
 <dt><a href="fr/irit/smac/amak/internal/messaging/ImplAddressAgentMessaging.html" title="class in fr.irit.smac.amak.internal.messaging"><span class="typeNameLink">ImplAddressAgentMessaging</span></a> - Class in <a href="fr/irit/smac/amak/internal/messaging/package-summary.html">fr.irit.smac.amak.internal.messaging</a></dt>
 <dd>
 <div class="block">An Address implementation using the agent-messaging library.</div>
@@ -889,6 +914,18 @@
 <dd>
 <div class="block">The constructor of the listener</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html#messageBox">messageBox</a></span> - Variable in class fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html" title="class in fr.irit.smac.amak.messaging.reader">AbstractMessagingReader</a></dt>
+<dd>
+<div class="block">The msgbox is the delegate of all the "retrieved operations"</div>
+</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html#messagesOfTheCycle">messagesOfTheCycle</a></span> - Variable in class fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html" title="class in fr.irit.smac.amak.messaging.reader">AbstractMessagingReader</a></dt>
+<dd>
+<div class="block">The retrieved messages of cycle</div>
+</dd>
+<dt><a href="fr/irit/smac/amak/messaging/reader/MessagingReaderAllMsgsOfCycle.html" title="class in fr.irit.smac.amak.messaging.reader"><span class="typeNameLink">MessagingReaderAllMsgsOfCycle</span></a> - Class in <a href="fr/irit/smac/amak/messaging/reader/package-summary.html">fr.irit.smac.amak.messaging.reader</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/reader/MessagingReaderAllMsgsOfCycle.html#MessagingReaderAllMsgsOfCycle--">MessagingReaderAllMsgsOfCycle()</a></span> - Constructor for class fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/MessagingReaderAllMsgsOfCycle.html" title="class in fr.irit.smac.amak.messaging.reader">MessagingReaderAllMsgsOfCycle</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="fr/irit/smac/amak/messaging/MessagingTechnicalException.html" title="class in fr.irit.smac.amak.messaging"><span class="typeNameLink">MessagingTechnicalException</span></a> - Exception in <a href="fr/irit/smac/amak/messaging/package-summary.html">fr.irit.smac.amak.messaging</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/MessagingTechnicalException.html#MessagingTechnicalException-java.lang.String-">MessagingTechnicalException(String)</a></span> - Constructor for exception fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/MessagingTechnicalException.html" title="class in fr.irit.smac.amak.messaging">MessagingTechnicalException</a></dt>
@@ -1292,6 +1329,12 @@
 <dd>
 <div class="block">Read a line from a file</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html#readMsgbox--">readMsgbox()</a></span> - Method in class fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html" title="class in fr.irit.smac.amak.messaging.reader">AbstractMessagingReader</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/reader/IMessagingReader.html#readMsgbox--">readMsgbox()</a></span> - Method in interface fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/IMessagingReader.html" title="interface in fr.irit.smac.amak.messaging.reader">IMessagingReader</a></dt>
+<dd>
+<div class="block">Retrieve the new received messages.</div>
+</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/ForkExample.html#release-fr.irit.smac.amak.examples.philosophers.PhilosopherExample-">release(PhilosopherExample)</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/ForkExample.html" title="class in fr.irit.smac.amak.examples.philosophers">ForkExample</a></dt>
 <dd>
 <div class="block">The philosopher asker releases the fork</div>
@@ -1370,11 +1413,11 @@
 <dd>
 <div class="block">Convert a Y on the screen to its equivalent in the world</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/AgentCommunicant.html#sendMessage-fr.irit.smac.amak.messaging.IAmakMessage-fr.irit.smac.amak.aid.AID-">sendMessage(IAmakMessage, AID)</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/AgentCommunicant.html" title="class in fr.irit.smac.amak">AgentCommunicant</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/CommunicatingAgent.html#sendMessage-fr.irit.smac.amak.messaging.IAmakMessage-fr.irit.smac.amak.aid.AID-">sendMessage(IAmakMessage, AID)</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="class in fr.irit.smac.amak">CommunicatingAgent</a></dt>
 <dd>
 <div class="block">Send a message to an agent.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/AgentCommunicant.html#sendMessage-fr.irit.smac.amak.messaging.IAmakMessage-fr.irit.smac.amak.aid.AID-fr.irit.smac.amak.messaging.IAmakMessageMetaData-">sendMessage(IAmakMessage, AID, IAmakMessageMetaData)</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/AgentCommunicant.html" title="class in fr.irit.smac.amak">AgentCommunicant</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/CommunicatingAgent.html#sendMessage-fr.irit.smac.amak.messaging.IAmakMessage-fr.irit.smac.amak.aid.AID-fr.irit.smac.amak.messaging.IAmakMessageMetaData-">sendMessage(IAmakMessage, AID, IAmakMessageMetaData)</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="class in fr.irit.smac.amak">CommunicatingAgent</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/internal/messaging/ImplMessageBoxAgentMessaging.html#sendMessage-fr.irit.smac.amak.messaging.IAmakMessage-fr.irit.smac.amak.aid.AddressableAID-">sendMessage(IAmakMessage, AddressableAID)</a></span> - Method in class fr.irit.smac.amak.internal.messaging.<a href="fr/irit/smac/amak/internal/messaging/ImplMessageBoxAgentMessaging.html" title="class in fr.irit.smac.amak.internal.messaging">ImplMessageBoxAgentMessaging</a></dt>
 <dd>&nbsp;</dd>
@@ -1430,6 +1473,10 @@
 <dd>
 <div class="block">Set the associated VUI</div>
 </dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html#setReadableMessageBox-fr.irit.smac.amak.messaging.IAmakReadableMessageBox-">setReadableMessageBox(IAmakReadableMessageBox)</a></span> - Method in class fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html" title="class in fr.irit.smac.amak.messaging.reader">AbstractMessagingReader</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/messaging/reader/IMessagingReader.html#setReadableMessageBox-fr.irit.smac.amak.messaging.IAmakReadableMessageBox-">setReadableMessageBox(IAmakReadableMessageBox)</a></span> - Method in interface fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/IMessagingReader.html" title="interface in fr.irit.smac.amak.messaging.reader">IMessagingReader</a></dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/ui/MainWindow.html#setRightPanel-javax.swing.JPanel-">setRightPanel(JPanel)</a></span> - Static method in class fr.irit.smac.amak.ui.<a href="fr/irit/smac/amak/ui/MainWindow.html" title="class in fr.irit.smac.amak.ui">MainWindow</a></dt>
 <dd>
 <div class="block">Set a panel to the right</div>
@@ -1586,12 +1633,12 @@
 <dd>
 <div class="block">Agent toString</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/AgentCommunicant.html#toString--">toString()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/AgentCommunicant.html" title="class in fr.irit.smac.amak">AgentCommunicant</a></dt>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/aid/AddressableAID.html#toString--">toString()</a></span> - Method in class fr.irit.smac.amak.aid.<a href="fr/irit/smac/amak/aid/AddressableAID.html" title="class in fr.irit.smac.amak.aid">AddressableAID</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/CommunicatingAgent.html#toString--">toString()</a></span> - Method in class fr.irit.smac.amak.<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="class in fr.irit.smac.amak">CommunicatingAgent</a></dt>
 <dd>
 <div class="block">Agent toString using the AID agent.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="fr/irit/smac/amak/aid/AddressableAID.html#toString--">toString()</a></span> - Method in class fr.irit.smac.amak.aid.<a href="fr/irit/smac/amak/aid/AddressableAID.html" title="class in fr.irit.smac.amak.aid">AddressableAID</a></dt>
-<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/internal/messaging/ImplAddressAgentMessaging.html#toString--">toString()</a></span> - Method in class fr.irit.smac.amak.internal.messaging.<a href="fr/irit/smac/amak/internal/messaging/ImplAddressAgentMessaging.html" title="class in fr.irit.smac.amak.internal.messaging">ImplAddressAgentMessaging</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="fr/irit/smac/amak/examples/philosophers/ForkExample.html#tryTake-fr.irit.smac.amak.examples.philosophers.PhilosopherExample-">tryTake(PhilosopherExample)</a></span> - Method in class fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/ForkExample.html" title="class in fr.irit.smac.amak.examples.philosophers">ForkExample</a></dt>

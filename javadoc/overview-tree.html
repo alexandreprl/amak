@@ -81,6 +81,7 @@
 <li><a href="fr/irit/smac/amak/internal/package-tree.html">fr.irit.smac.amak.internal</a>, </li>
 <li><a href="fr/irit/smac/amak/internal/messaging/package-tree.html">fr.irit.smac.amak.internal.messaging</a>, </li>
 <li><a href="fr/irit/smac/amak/messaging/package-tree.html">fr.irit.smac.amak.messaging</a>, </li>
+<li><a href="fr/irit/smac/amak/messaging/reader/package-tree.html">fr.irit.smac.amak.messaging.reader</a>, </li>
 <li><a href="fr/irit/smac/amak/tests/package-tree.html">fr.irit.smac.amak.tests</a>, </li>
 <li><a href="fr/irit/smac/amak/tests/executionorder/package-tree.html">fr.irit.smac.amak.tests.executionorder</a>, </li>
 <li><a href="fr/irit/smac/amak/tools/package-tree.html">fr.irit.smac.amak.tools</a>, </li>
@@ -93,12 +94,17 @@
 <ul>
 <li type="circle">java.lang.Object
 <ul>
+<li type="circle">fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/AbstractMessagingReader.html" title="class in fr.irit.smac.amak.messaging.reader"><span class="typeNameLink">AbstractMessagingReader</span></a> (implements fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/IMessagingReader.html" title="interface in fr.irit.smac.amak.messaging.reader">IMessagingReader</a>)
+<ul>
+<li type="circle">fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/MessagingReaderAllMsgsOfCycle.html" title="class in fr.irit.smac.amak.messaging.reader"><span class="typeNameLink">MessagingReaderAllMsgsOfCycle</span></a></li>
+</ul>
+</li>
 <li type="circle">fr.irit.smac.amak.<a href="fr/irit/smac/amak/Agent.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">Agent</span></a>&lt;A,E&gt; (implements java.lang.Runnable)
 <ul>
-<li type="circle">fr.irit.smac.amak.<a href="fr/irit/smac/amak/AgentCommunicant.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">AgentCommunicant</span></a>&lt;A,E&gt; (implements java.lang.Runnable)</li>
 <li type="circle">fr.irit.smac.amak.examples.randomants.<a href="fr/irit/smac/amak/examples/randomants/AntExample.html" title="class in fr.irit.smac.amak.examples.randomants"><span class="typeNameLink">AntExample</span></a></li>
 <li type="circle">fr.irit.smac.amak.examples.asyncrandomants.<a href="fr/irit/smac/amak/examples/asyncrandomants/AsyncAntExample.html" title="class in fr.irit.smac.amak.examples.asyncrandomants"><span class="typeNameLink">AsyncAntExample</span></a></li>
 <li type="circle">fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/AsyncTest.MyAgent.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">AsyncTest.MyAgent</span></a></li>
+<li type="circle">fr.irit.smac.amak.<a href="fr/irit/smac/amak/CommunicatingAgent.html" title="class in fr.irit.smac.amak"><span class="typeNameLink">CommunicatingAgent</span></a>&lt;A,E&gt; (implements java.lang.Runnable)</li>
 <li type="circle">fr.irit.smac.amak.examples.philosophers.<a href="fr/irit/smac/amak/examples/philosophers/PhilosopherExample.html" title="class in fr.irit.smac.amak.examples.philosophers"><span class="typeNameLink">PhilosopherExample</span></a></li>
 <li type="circle">fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ScalibilityTest.MyAgent.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">ScalibilityTest.MyAgent</span></a></li>
 <li type="circle">fr.irit.smac.amak.tests.<a href="fr/irit/smac/amak/tests/ThreadTest.MyAgent.html" title="class in fr.irit.smac.amak.tests"><span class="typeNameLink">ThreadTest.MyAgent</span></a></li>
@@ -225,13 +231,18 @@
 <li type="circle">fr.irit.smac.amak.aid.<a href="fr/irit/smac/amak/aid/AID.html" title="interface in fr.irit.smac.amak.aid"><span class="typeNameLink">AID</span></a></li>
 <li type="circle">fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakAddress.html" title="interface in fr.irit.smac.amak.messaging"><span class="typeNameLink">IAmakAddress</span></a></li>
 <li type="circle">fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakMessage.html" title="interface in fr.irit.smac.amak.messaging"><span class="typeNameLink">IAmakMessage</span></a></li>
-<li type="circle">fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakMessageBox.html" title="interface in fr.irit.smac.amak.messaging"><span class="typeNameLink">IAmakMessageBox</span></a></li>
 <li type="circle">fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakMessageMetaData.html" title="interface in fr.irit.smac.amak.messaging"><span class="typeNameLink">IAmakMessageMetaData</span></a>
 <ul>
 <li type="circle">fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakEnvelope.html" title="interface in fr.irit.smac.amak.messaging"><span class="typeNameLink">IAmakEnvelope</span></a></li>
 </ul>
 </li>
 <li type="circle">fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakMessagingService.html" title="interface in fr.irit.smac.amak.messaging"><span class="typeNameLink">IAmakMessagingService</span></a></li>
+<li type="circle">fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakReadableMessageBox.html" title="interface in fr.irit.smac.amak.messaging"><span class="typeNameLink">IAmakReadableMessageBox</span></a>
+<ul>
+<li type="circle">fr.irit.smac.amak.messaging.<a href="fr/irit/smac/amak/messaging/IAmakMessageBox.html" title="interface in fr.irit.smac.amak.messaging"><span class="typeNameLink">IAmakMessageBox</span></a></li>
+</ul>
+</li>
+<li type="circle">fr.irit.smac.amak.messaging.reader.<a href="fr/irit/smac/amak/messaging/reader/IMessagingReader.html" title="interface in fr.irit.smac.amak.messaging.reader"><span class="typeNameLink">IMessagingReader</span></a></li>
 <li type="circle">fr.irit.smac.amak.<a href="fr/irit/smac/amak/Schedulable.html" title="interface in fr.irit.smac.amak"><span class="typeNameLink">Schedulable</span></a></li>
 </ul>
 <h2 title="Enum Hierarchy">Enum Hierarchy</h2>

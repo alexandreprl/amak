@@ -8,6 +8,7 @@ fr.irit.smac.amak.examples.randomants
 fr.irit.smac.amak.internal
 fr.irit.smac.amak.internal.messaging
 fr.irit.smac.amak.messaging
+fr.irit.smac.amak.messaging.reader
 fr.irit.smac.amak.tests
 fr.irit.smac.amak.tests.executionorder
 fr.irit.smac.amak.tools
