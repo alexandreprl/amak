@@ -5,7 +5,30 @@ Examples are available in the package fr.irit.smac.amak.examples.
 # [Click here to download the latest standalone version](https://bitbucket.org/perlesa/amak/raw/master/Release/AmakFramework-standalone.jar?at=master) #
 
 # Recent changes #
+## 1.5.2 (11/22/2018) ##
+### New features:
+  + The agent ID can be specified when the agent is create: it is called "raw id".
+  + The possibility to send a message directly with the raw id (not only with `AID`).
+  + The `getReceivedEnvelopeGivenMessageType()` method and `IAmakReceivedEnvelope` method  simplify the message retrieval.
 
+### Possible breaking changes:
+* `IAmakMessagingService.buildNewAmakAddress(String)` --> `IAmakMessagingService.getOrCreateAmakAddress(String)`
+* `IAmakMessagingService.dispose()` --> `IAmakMessagingService.disposeAll()`
+
+### Improvements and bug fixes:
+* Added the section "Communication agent with messages" in the readme file.
+* When an agent is destroyed, its msgbox is deleted too.
+* Some improvements in code quality using sonar reports
+* All new features are tested
+* Hot fix on messaging-agent library (0.1 > 0.2)
+
+----
+
+## 1.5.1 (09/04/2018) ##
+Add agent messaging
+
+## 1.5 (07/16/2018) ##
+New AMAK version : new synchronous mode.
 
 ## 1.4 (05/15/2018) ##
 
@@ -288,3 +311,172 @@ public static void main(String[] args) {
 		new MyAMAS(env);
 	}
 ```
+
+
+# Agent messaging #
+If your agents need to exchange information by message, we recommend to use the `CommunicatingAgent` class. The implementation of your agents must inherit this class. Otherwise you must manage the mailbox yourself (see `CommunicatingAgent` implementation for an example).
+
+## Communication agent through `CommunicatingAgent` class ##
+When your agent inherits the `CommunicatingAgent` class, an address is attached to your agent, it is called `AID` (Agent ID).  You should use the `AID` to deliver messages.
+To get the `AID`, simply call `getAID()` on the agent.
+
+### Main methods
+Various messaging methods are available, divided into two main concerns:
+
+1. Received messages :
+
+* 	Get all received messages : 
+
+```
+#!Java
+
+Collection<IAmakEnvelope> getAllMessages()
+```
+
+an AmakEnvelope contain :
+ 	the sent message `IAmakMessage`,
+    the sender `AddressableAID` (it is an `AID`),
+    the metadata related to the sending.
+  
+  
+* 	Alternatively, you can retrieve messages given a specific type:
+
+```
+#!Java
+
+	<M extends IAmakMessage> Collection<M> getReceivedMessagesGivenType(Class<M>)
+	<M extends IAmakMessage> Collection<IAmakReceivedEnvelope<M, IAmakMessageMetaData, AddressableAID>> getReceivedEnvelopesGivenMessageType(Class<M>)
+```
+
+2.Sending messages:
+
+* Sending with the `AID` of receiver
+```
+#!Java
+sendMessage(IAmakMessage messageToSend, AID receiver)
+sendMessage(IAmakMessage messageToSend, AID receiver, IAmakMessageMetaData metadata)
+```
+
+*   Sending with the "raw id" of receiver
+```
+#!Java
+
+sendMessage(IAmakMessage messageToSend, String receiverRawID)
+```	
+
+
+### Make messages
+An Amak message should implement the `IAmakMessage` interface, like this :
+
+```
+#!Java
+
+	public static class MyMsg implements IAmakMessage {
+		private final String content;
+
+		public MyMsg(String content) {
+			this.content = content;
+		}
+
+		public String getContent() {
+			return content;
+		}
+	}
+```
+
+
+### Example
+The agent 1 create a new message and send it to agent 2. Agent 2 receive and display the content of this message.
+
+```
+#!Java
+CommunicatingAgent<TestAMAS, TestEnv> communicantAgent1 = new CommunicatingAgent<TestAMAS, TestEnv>(amas, params) { ...
+	};
+	
+CommunicatingAgent<TestAMAS, TestEnv> communicantAgent2 = new CommunicatingAgent<TestAMAS, TestEnv>(amas, params) { ...
+	};
+		
+communicantAgent1.run();
+	
+MyMsg msg = new MyMsg("Hello Agent 2!");	
+boolean sendingSuccessful = communicantAgent1.sendMessage(msg, communicantAgent2.getAID());
+//can make something if sendingSuccessful == false
+
+//the agent 2 must make a execution cycle to perceive the msg
+communicantAgent2.run();
+Collection<IAmakReceivedEnvelope<MyMsg, IAmakMessageMetaData, AddressableAID>> allMyMgsReceived = communicantAgent2
+				.getReceivedEnvelopeGivenMessageType(MyMsg.class);
+
+allMyMgsReceived.forEach(msg -> System.out.println("Agent 2 : I received a MyMsg from : "
+				+ msg.getMessageSenderAID() + ", he tells me : \"" + msg.getMessage().getContent() + "\""));
+//Agent 2 : I receive a MyMsg from : 06fcd4fc-1674-4bc0-bffc-c6c33cbbaa53, he tells me : "Hello Agent 2!"
+```	
+
+To ensure the uniqueness of agent identifiers, by default, the UUID class is used. Therefore, in the example, the identifier is "06fcd4fc-1674-4bc0-bffc-c6c33cbbaa53".
+
+You can define your own agent name by specifying it in at creation with parameters:
+
+```
+#!Java
+
+Object params[] = { CommunicatingAgent.RAW_ID_PARAM_NAME_PREFIX + "Agent 1" };
+communicantAgent1 = new CommunicatingAgent<TestAMAS, TestEnv>(amas, params) {...
+};
+
+//same code...
+
+//Agent 2 : I received a message from : Agent 1, he tells me : "Hello Agent 2!"
+```
+
+The uniqueness of the "raw id" is the responsibility of the developer.
+
+When you use your own agent ID, you can use this "raw id" to send messages:
+
+```
+#!Java
+
+
+communicantAgent2.sendMessage(messageToSend, "Agent 1");
+```
+    
+However, the performance of this method can be degraded when the system has a lot of agents. You should prefer the `AID` usage.
+
+### Define custom metadata for Amak message
+Metadata is attached to a sent message but is not contained in the message. Metadata is of particular interest when certain technical considerations must be taken into account but are not relevant to the agent. Metadata processing must be delegated to the technical layer of an agent or to the lower layer of an infrastructure.
+To customize metadata, simply inherit the `SimpleAmakMessageMetaData` interface or implement `IAmakMessageMetaData`, like this :
+
+```
+#!Java
+
+
+public static class MyCustomMetadata extends SimpleAmakMessageMetaData {
+	// SimpleAmakMessageMetaData hasn't a sendingCost attribute
+	private final float sendingCost;
+
+	public MyCustomMetadata(float sendingCost) {
+		this.sendingCost = sendingCost;
+	}
+
+	public float getSendingCost() {
+		return sendingCost;
+	}
+}
+```
+
+## Implementation consideration
+### Perception policy and message retention duration [**IMPORTANT**]
+Messages are perceived during the perception phase. Thus, when an agent finishes his perception phase, any new incoming messages are not perceptible during the rest of the cycle (i.e. decision and action). They will be perceived for the next cycle.
+
+By default, all received messages can only be processed during the current cycle. At the beginning of the next cycle, all messages perceived in the previous cycle are deleted. Message retention duration is only one cycle. If you want to change this policy, please refer to the following paragraph.
+
+
+### Modification of the message retention policy
+At the communicating agent creation, it is possible to indicate a mailbox reading strategy (use the constructor `public CommunicatingAgent(A amas, IMessagingReader msgReader, Object... params)`). By default, this strategy is: `MessagingReaderAllMsgsOfCycle`.
+To redefine this strategy, you simply need to implement `IMessagingReader` and give it at the agent creation.
+
+### Other consideration
+All agents share the same messaging infrastructure.
+The infrastructures are completely thread-safe and optimized for this purpose.
+Amak uses the agent-messaging library : https://github.com/IRIT-SMAC/agent-tooling/tree/master/agent-messaging
+
+
