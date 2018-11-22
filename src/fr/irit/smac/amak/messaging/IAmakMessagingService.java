@@ -6,7 +6,7 @@ public interface IAmakMessagingService {
 
 	IAmakMessageBox buildNewAmakMessageBox(AddressableAID aid);
 
-	IAmakAddress buildNewAmakAddress(String randomUUID);
+	IAmakAddress getOrCreateAmakAddress(String randomUUID);
 
 	void dispose();
 }

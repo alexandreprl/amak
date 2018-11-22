@@ -50,5 +50,24 @@ public class TestsBasicsOperations extends ObjectsForMessagingTesting {
 		}
 	}
 
+	@Test
+	public void testSendingAndReceivingSuccessfulWithAddress() {
+		try {
+			final IAmakMessage messageToSend = new IAmakMessage() {
+			};
+			msgbox1.sendMessage(messageToSend, address2);
+			List<IAmakEnvelope> allReceivedMsg = msgbox2.getReceivedMessages();
+			assertEquals(1, allReceivedMsg.size());
+
+			IAmakEnvelope actualMsg = allReceivedMsg.get(0);
+			assertEquals(addressableAID1, actualMsg.getMessageSenderAID());
+			assertEquals(messageToSend, actualMsg.getMessage());
+
+		} catch (MessagingTechnicalException e) {
+			e.printStackTrace();
+			fail();
+		}
+	}
+
 
 }

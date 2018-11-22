@@ -20,20 +20,19 @@ public class ImplMessagingServiceAgentMessaging implements IAmakMessagingService
 	private Map<String, IMsgBox<IAmakEnvelope>> mapIDMsgbox = new ConcurrentHashMap<String, IMsgBox<IAmakEnvelope>>();
 
 	@Override
-	public IAmakMessageBox buildNewAmakMessageBox(AddressableAID aid) {
+	public synchronized IAmakMessageBox buildNewAmakMessageBox(AddressableAID aid) {
 		IMsgBox<IAmakEnvelope> msgbox = getOrCreateMsgbox(aid.getID());
-		IAmakMessageBox msgboxAmak = new ImplMessageBoxAgentMessaging(msgbox, aid);
-		return msgboxAmak;
+		return new ImplMessageBoxAgentMessaging(msgbox, aid);
 	}
 
 	@Override
-	public IAmakAddress buildNewAmakAddress(String rawID) {
+	public synchronized IAmakAddress getOrCreateAmakAddress(String rawID) {
 		IMsgBox<IAmakEnvelope> msgbox = getOrCreateMsgbox(rawID);
 		ImplAddressAgentMessaging addressOfMsgBox = new ImplAddressAgentMessaging(msgbox.getRef());
 		return addressOfMsgBox;
 	}
 
-	private IMsgBox<IAmakEnvelope> getOrCreateMsgbox(String rawID) {
+	private synchronized IMsgBox<IAmakEnvelope> getOrCreateMsgbox(String rawID) {
 		IMsgBox<IAmakEnvelope> msgbox = mapIDMsgbox.get(rawID);
 		if (null == msgbox) {
 			msgbox = AgentMessaging.getMsgBox(rawID, IAmakEnvelope.class);

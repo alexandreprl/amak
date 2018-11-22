@@ -28,19 +28,30 @@ public class ImplMessageBoxAgentMessaging implements IAmakMessageBox {
 	}
 
 	@Override
-	public void sendMessage(IAmakMessage messageToSend, AddressableAID receiver)
+	public void sendMessage(IAmakMessage messageToSend, IAmakAddress receiverAddress)
 			throws MessagingTechnicalException {
-		Ref<IAmakEnvelope> refReceiver = getRefFromAmakAddress(receiver.getAgentAdress());
+		Ref<IAmakEnvelope> refReceiver = getRefFromAmakAddress(receiverAddress);
 		IAmakMessageMetaData metadata = new SimpleAmakMessageMetaData();
 		sendMessage(messageToSend, refReceiver, metadata);
 	}
-	
+
+	@Override
+	public void sendMessage(IAmakMessage messageToSend, IAmakAddress receiverAddress, IAmakMessageMetaData metadata)
+			throws MessagingTechnicalException {
+		Ref<IAmakEnvelope> refReceiver = getRefFromAmakAddress(receiverAddress);
+		sendMessage(messageToSend, refReceiver, metadata);
+	}
+
+	@Override
+	public void sendMessage(IAmakMessage messageToSend, AddressableAID receiver)
+			throws MessagingTechnicalException {
+		sendMessage(messageToSend, receiver.getAgentAdress());
+	}
 
 	@Override
 	public void sendMessage(IAmakMessage messageToSend, AddressableAID receiver, IAmakMessageMetaData metadata)
 			throws MessagingTechnicalException {
-		Ref<IAmakEnvelope> refReceiver = getRefFromAmakAddress(receiver.getAgentAdress());
-		sendMessage(messageToSend, refReceiver, metadata);
+		sendMessage(messageToSend, receiver.getAgentAdress(), metadata);
 	}
 
 	private Ref<IAmakEnvelope> getRefFromAmakAddress(IAmakAddress iAmakAddress) throws MessagingTechnicalException {
@@ -66,8 +77,7 @@ public class ImplMessageBoxAgentMessaging implements IAmakMessageBox {
 	}
 
 	private IAmakEnvelope encapsulateAmakMessage(IAmakMessage messageToSend, IAmakMessageMetaData metadata) {
-		SimpleEnvelope envelop = new SimpleEnvelope(messageToSend, senderAID, metadata);
-		return envelop;
+		return new SimpleEnvelope(messageToSend, senderAID, metadata);
 	}
 
 	@Override

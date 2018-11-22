@@ -1,5 +1,6 @@
 package fr.irit.smac.amak;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.UUID;
@@ -53,6 +54,8 @@ public abstract class CommunicatingAgent<A extends Amas<E>, E extends Environmen
 	/** Messaging services builder */
 	private static final IAmakMessagingService messagingService = new ImplMessagingServiceAgentMessaging();
 
+	public static final String RAW_ID_PARAM_NAME = "rawID=";
+
 	/**
 	 * The constructor automatically add the agent to the corresponding amas and
 	 * initialize the agent.</br>
@@ -82,13 +85,37 @@ public abstract class CommunicatingAgent<A extends Amas<E>, E extends Environmen
 	public CommunicatingAgent(A amas, IMessagingReader msgReader, Object... params) {
 		super(amas, params);
 		// build the address...
-		final String randomUUID = UUID.randomUUID().toString();
-		IAmakAddress address = messagingService.buildNewAmakAddress(randomUUID);
+		final String randomUUID = getRawID(params);
+		IAmakAddress address = messagingService.getOrCreateAmakAddress(randomUUID);
 		// ... to build the AID and the msgbox
 		this.aid = new AddressableAID(address, randomUUID);
 		messageBox = messagingService.buildNewAmakMessageBox(aid);
 		this.msgReader = msgReader;
 		this.msgReader.setReadableMessageBox(messageBox);
+	}
+
+	/**
+	 * Get the ID given in the params or return a random ID.
+	 */
+	private String getRawID(Object[] params) {
+		String result = parseParamsToFindRawID(params);
+		if (null == result) {
+			result = UUID.randomUUID().toString();
+		}
+		return result;
+	}
+
+	private String parseParamsToFindRawID(Object[] params) {
+		String result = null;
+		if (params != null) {
+			String paramValue = Arrays.asList(params).stream().filter(param -> param instanceof String).map(param -> (String) param)
+					.filter(param -> param.startsWith(RAW_ID_PARAM_NAME)).findFirst().orElse(null);
+			if (null != paramValue) {
+				int beginIndex = paramValue.indexOf(RAW_ID_PARAM_NAME);
+				result = paramValue.substring(beginIndex + RAW_ID_PARAM_NAME.length());
+			}
+		}
+		return result;
 	}
 
 	/**
@@ -117,7 +144,7 @@ public abstract class CommunicatingAgent<A extends Amas<E>, E extends Environmen
 	public AID getAID() {
 		return aid;
 	}
-	
+
 	/**
 	 * Send a message to an agent.
 	 * @param messageToSend
@@ -150,6 +177,19 @@ public abstract class CommunicatingAgent<A extends Amas<E>, E extends Environmen
 		return result;
 	}
 
+	public boolean sendMessage(IAmakMessage messageToSend, String receiverRawID) {
+		boolean result = false;
+		try {
+			IAmakAddress receiver = messagingService.getOrCreateAmakAddress(receiverRawID);
+			messageBox.sendMessage(messageToSend, receiver);
+			result = true;
+		} catch (MessagingTechnicalException exception) {
+			// TODO must be log !
+			exception.printStackTrace();
+		}
+		return result;
+	}
+
 	private AddressableAID getAddressableAIDFromAID(AID receiver) throws MessagingTechnicalException {
 		AddressableAID result = null;
 		if (receiver instanceof AddressableAID) {
@@ -173,7 +213,7 @@ public abstract class CommunicatingAgent<A extends Amas<E>, E extends Environmen
 
 	public <M extends IAmakMessage> Collection<M> getReceivedMessagesGivenType(Class<M> clasz) {
 		@SuppressWarnings("unchecked") // it is a safe cast
-		List<M> result = (List<M>) getAllMessages().stream().filter(env -> env.getMessage().getClass().equals(clasz))
+		List<M> result = getAllMessages().stream().filter(env -> env.getMessage().getClass().equals(clasz))
 				.map(env -> (M) env.getMessage()).collect(Collectors.toList());
 
 		return result;

@@ -21,5 +21,10 @@ public interface IAmakMessageBox extends IAmakReadableMessageBox {
 
 	void sendMessage(IAmakMessage messageToSend, AddressableAID addressableAID, IAmakMessageMetaData metadata)
 			throws MessagingTechnicalException;
+
+	void sendMessage(IAmakMessage messageToSend, IAmakAddress receiverAddress) throws MessagingTechnicalException;
+
+	void sendMessage(IAmakMessage messageToSend, IAmakAddress receiverAddress, IAmakMessageMetaData metadata)
+			throws MessagingTechnicalException;
 	
 }

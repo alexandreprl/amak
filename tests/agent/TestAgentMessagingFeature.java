@@ -33,6 +33,20 @@ public class TestAgentMessagingFeature extends ObjectsForAgentTesting {
 	}
 
 	@Test
+	public void getAllReceivedMessagesSendWithRawID() throws InterruptedException {
+		communicantAgent1.run();
+		boolean sendingSuccessful = communicantAgent1.sendMessage(omt.MSG_1, ObjectsForAgentTesting.RAW_ID3);
+		assertTrue(sendingSuccessful);
+
+		communicantAgent3.run();
+		Collection<IAmakEnvelope> receivedMsg = communicantAgent3.getAllMessages();
+		assertEquals(1, receivedMsg.size());
+		IAmakEnvelope env = receivedMsg.iterator().next();
+		assertEquals(omt.MSG_1, env.getMessage());
+		assertEquals(communicantAgent1.getAID(), env.getMessageSenderAID());
+	}
+
+	@Test
 	public void getReceivedMessagesGivenType() {
 		communicantAgent1.run();
 

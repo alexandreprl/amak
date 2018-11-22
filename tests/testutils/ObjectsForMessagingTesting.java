@@ -24,18 +24,17 @@ public class ObjectsForMessagingTesting {
 	public final MyMsg MSG_1 = new MyMsg(MSG_VAL);
 	public final MyMsg MSG_2 = new MyMsg(MSG_VAL + MSG_VAL);
 	public final IAmakMessageMetaData metadata1 = new MyCustomMetadata(SENDING_COST_METADATA);
+	public static final String RAW_ID1 = "testAID1";
+	public static final String RAW_ID2 = "testAID2";
 
 	public ObjectsForMessagingTesting() {
 		messagingServices = new ImplMessagingServiceAgentMessaging();
 
-		final String rawID1 = "testAID1";
-		final String rawID2 = "testAID2";
-
-		address1 = createAddress(rawID1);
-		addressableAID1 = createAddressableAID(rawID1, address1);
+		address1 = createAddress(RAW_ID1);
+		addressableAID1 = createAddressableAID(RAW_ID1, address1);
 		msgbox1 = createMsgbox(addressableAID1);
-		address2 = createAddress(rawID2);
-		addressableAID2 = createAddressableAID(rawID2, address2);
+		address2 = createAddress(RAW_ID2);
+		addressableAID2 = createAddressableAID(RAW_ID2, address2);
 		msgbox2 = createMsgbox(addressableAID2);
 	}
 
@@ -49,7 +48,7 @@ public class ObjectsForMessagingTesting {
 	}
 
 	private IAmakAddress createAddress(String rawID1) {
-		IAmakAddress address = messagingServices.buildNewAmakAddress(rawID1);
+		IAmakAddress address = messagingServices.getOrCreateAmakAddress(rawID1);
 		return address;
 	}
 
