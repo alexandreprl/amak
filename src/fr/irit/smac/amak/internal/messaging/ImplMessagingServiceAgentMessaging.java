@@ -17,7 +17,7 @@ import fr.irit.smac.libs.tooling.messaging.IMsgBox;
  */
 public class ImplMessagingServiceAgentMessaging implements IAmakMessagingService {
 
-	private Map<String, IMsgBox<IAmakEnvelope>> mapIDMsgbox = new ConcurrentHashMap<String, IMsgBox<IAmakEnvelope>>();
+	private Map<String, IMsgBox<IAmakEnvelope>> mapIDMsgbox = new ConcurrentHashMap<>();
 
 	@Override
 	public synchronized IAmakMessageBox buildNewAmakMessageBox(AddressableAID aid) {
@@ -28,8 +28,7 @@ public class ImplMessagingServiceAgentMessaging implements IAmakMessagingService
 	@Override
 	public synchronized IAmakAddress getOrCreateAmakAddress(String rawID) {
 		IMsgBox<IAmakEnvelope> msgbox = getOrCreateMsgbox(rawID);
-		ImplAddressAgentMessaging addressOfMsgBox = new ImplAddressAgentMessaging(msgbox.getRef());
-		return addressOfMsgBox;
+		return new ImplAddressAgentMessaging(msgbox.getRef());
 	}
 
 	private synchronized IMsgBox<IAmakEnvelope> getOrCreateMsgbox(String rawID) {
@@ -42,8 +41,16 @@ public class ImplMessagingServiceAgentMessaging implements IAmakMessagingService
 	}
 
 	@Override
-	public void dispose() {
+	public void disposeAll() {
 		mapIDMsgbox.values().forEach(msgbox -> msgbox.dispose());
+	}
+
+	@Override
+	public void dispose(AddressableAID aid) {
+		IMsgBox<IAmakEnvelope> msgbox = mapIDMsgbox.get(aid.getID());
+		if (null != msgbox) {
+			msgbox.dispose();
+		}
 	}
 
 }

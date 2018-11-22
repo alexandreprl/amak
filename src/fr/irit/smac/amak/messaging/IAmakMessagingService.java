@@ -8,5 +8,7 @@ public interface IAmakMessagingService {
 
 	IAmakAddress getOrCreateAmakAddress(String randomUUID);
 
-	void dispose();
+	void disposeAll();
+
+	void dispose(AddressableAID aid);
 }

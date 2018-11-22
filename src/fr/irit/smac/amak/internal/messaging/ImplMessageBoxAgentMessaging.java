@@ -85,4 +85,8 @@ public class ImplMessageBoxAgentMessaging implements IAmakMessageBox {
 		return msgbox.getMsgs();
 	}
 
+	void close() {
+		msgbox.dispose();
+	}
+
 }

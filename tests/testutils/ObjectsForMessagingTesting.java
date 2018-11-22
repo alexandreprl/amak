@@ -54,7 +54,7 @@ public class ObjectsForMessagingTesting {
 
 	@After
 	public void teardown() {
-		messagingServices.dispose();
+		messagingServices.disposeAll();
 	}
 
 	public static class MyCustomMetadata extends SimpleAmakMessageMetaData {

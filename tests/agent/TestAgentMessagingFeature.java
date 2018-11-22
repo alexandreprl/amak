@@ -47,6 +47,21 @@ public class TestAgentMessagingFeature extends ObjectsForAgentTesting {
 	}
 
 	@Test
+	public void disposeTest() throws InterruptedException {
+		communicantAgent1.run();
+		communicantAgent3.run();
+
+		// True tests should use different thread ! (default scheduler don't use
+		// different thread)
+		communicantAgent3.destroy();
+		Runnable run1 = () -> communicantAgent1.destroy();
+		Thread thr1 = new Thread(run1);
+		thr1.start();
+		thr1.join(800); // destroy() failure could be block, so a timeout should
+						// be specified
+	}
+
+	@Test
 	public void getReceivedMessagesGivenType() {
 		communicantAgent1.run();
 

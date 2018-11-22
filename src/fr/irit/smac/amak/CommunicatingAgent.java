@@ -218,4 +218,9 @@ public abstract class CommunicatingAgent<A extends Amas<E>, E extends Environmen
 
 		return result;
 	}
+
+	@Override
+	public void destroy() {
+		messagingService.dispose(aid);
+	}
 }
