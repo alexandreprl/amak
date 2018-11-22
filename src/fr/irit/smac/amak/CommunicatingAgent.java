@@ -15,6 +15,7 @@ import fr.irit.smac.amak.messaging.IAmakMessage;
 import fr.irit.smac.amak.messaging.IAmakMessageBox;
 import fr.irit.smac.amak.messaging.IAmakMessageMetaData;
 import fr.irit.smac.amak.messaging.IAmakMessagingService;
+import fr.irit.smac.amak.messaging.IAmakReceivedEnvelope;
 import fr.irit.smac.amak.messaging.MessagingTechnicalException;
 import fr.irit.smac.amak.messaging.reader.IMessagingReader;
 import fr.irit.smac.amak.messaging.reader.MessagingReaderAllMsgsOfCycle;
@@ -54,7 +55,7 @@ public abstract class CommunicatingAgent<A extends Amas<E>, E extends Environmen
 	/** Messaging services builder */
 	private static final IAmakMessagingService messagingService = new ImplMessagingServiceAgentMessaging();
 
-	public static final String RAW_ID_PARAM_NAME = "rawID=";
+	public static final String RAW_ID_PARAM_NAME_PREFIX = "rawID=";
 
 	/**
 	 * The constructor automatically add the agent to the corresponding amas and
@@ -109,10 +110,10 @@ public abstract class CommunicatingAgent<A extends Amas<E>, E extends Environmen
 		String result = null;
 		if (params != null) {
 			String paramValue = Arrays.asList(params).stream().filter(param -> param instanceof String).map(param -> (String) param)
-					.filter(param -> param.startsWith(RAW_ID_PARAM_NAME)).findFirst().orElse(null);
+					.filter(param -> param.startsWith(RAW_ID_PARAM_NAME_PREFIX)).findFirst().orElse(null);
 			if (null != paramValue) {
-				int beginIndex = paramValue.indexOf(RAW_ID_PARAM_NAME);
-				result = paramValue.substring(beginIndex + RAW_ID_PARAM_NAME.length());
+				int beginIndex = paramValue.indexOf(RAW_ID_PARAM_NAME_PREFIX);
+				result = paramValue.substring(beginIndex + RAW_ID_PARAM_NAME_PREFIX.length());
 			}
 		}
 		return result;
@@ -211,16 +212,48 @@ public abstract class CommunicatingAgent<A extends Amas<E>, E extends Environmen
 		return msgReader.getMessages();
 	}
 
-	public <M extends IAmakMessage> Collection<M> getReceivedMessagesGivenType(Class<M> clasz) {
+	/**
+	 * @param <M>
+	 *            the type of message to retrieve.
+	 */
+	public <M extends IAmakMessage> Collection<M> getReceivedMessagesGivenType(Class<M> classOfmessageToGet) {
 		@SuppressWarnings("unchecked") // it is a safe cast
-		List<M> result = getAllMessages().stream().filter(env -> env.getMessage().getClass().equals(clasz))
+		List<M> result = getAllMessages().stream().filter(env -> env.getMessage().getClass().equals(classOfmessageToGet))
 				.map(env -> (M) env.getMessage()).collect(Collectors.toList());
 
 		return result;
 	}
 
+	/**
+	 * @param <M>
+	 *            the type of message to retrieve.
+	 */
+	public <M extends IAmakMessage> Collection<IAmakReceivedEnvelope<M, IAmakMessageMetaData, AddressableAID>> getReceivedEnvelopesGivenMessageType(
+			Class<M> classOfmessageToGet) {
+		return getAllMessages().stream().filter(env -> env.getMessage().getClass().equals(classOfmessageToGet))
+				.map(env -> new IAmakReceivedEnvelope<M, IAmakMessageMetaData, AddressableAID>() {
+
+					@Override
+					public M getMessage() {
+						return (M) env.getMessage();
+					}
+
+					@Override
+					public IAmakMessageMetaData getMetadata() {
+						return env.getMetadata();
+					}
+
+					@Override
+					public AddressableAID getMessageSenderAID() {
+						return env.getMessageSenderAID();
+					}
+				})
+				.collect(Collectors.toList());
+	}
+
 	@Override
 	public void destroy() {
+		super.destroy();
 		messagingService.dispose(aid);
 	}
 }

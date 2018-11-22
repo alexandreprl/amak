@@ -27,7 +27,7 @@ public class ObjectsForAgentTesting {
 		communicantAgent2 = new CommunicatingAgent<TestAMAS, TestEnv>(amas, params) {
 		};
 
-		Object params2[] = { CommunicatingAgent.RAW_ID_PARAM_NAME + RAW_ID3 };
+		Object params2[] = { CommunicatingAgent.RAW_ID_PARAM_NAME_PREFIX + RAW_ID3 };
 		communicantAgent3 = new CommunicatingAgent<TestAMAS, TestEnv>(amas, params2) {
 		};
 	}
