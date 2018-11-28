@@ -10,7 +10,7 @@ import fr.irit.smac.amak.Agent;
 import fr.irit.smac.amak.CommunicatingAgent;
 import testutils.ObjectsForAgentTesting;
 
-public class TestAgentBascisOpperations extends ObjectsForAgentTesting {
+public class TestAgentBasicsOperations extends ObjectsForAgentTesting {
 
 	private static final String STR_ID_BASE = "Agent #";
 	private Agent<TestAMAS, TestEnv> agent;

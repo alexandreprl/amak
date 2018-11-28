@@ -405,7 +405,7 @@ boolean sendingSuccessful = communicantAgent1.sendMessage(msg, communicantAgent2
 //the agent 2 must make a execution cycle to perceive the msg
 communicantAgent2.run();
 Collection<IAmakReceivedEnvelope<MyMsg, IAmakMessageMetaData, AddressableAID>> allMyMgsReceived = communicantAgent2
-				.getReceivedEnvelopeGivenMessageType(MyMsg.class);
+				.getReceivedEnvelopesGivenMessageType(MyMsg.class);
 
 allMyMgsReceived.forEach(msg -> System.out.println("Agent 2 : I received a MyMsg from : "
 				+ msg.getMessageSenderAID() + ", he tells me : \"" + msg.getMessage().getContent() + "\""));
