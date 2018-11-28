@@ -124,8 +124,8 @@ public abstract class CommunicatingAgent<A extends Amas<E>, E extends Environmen
 	 */
 	@Override
 	final void perceive() {
-		super.perceive();
 		msgReader.readMsgbox();
+		super.perceive();
 	}
 
 

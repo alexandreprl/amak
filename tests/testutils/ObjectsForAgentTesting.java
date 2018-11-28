@@ -14,11 +14,12 @@ public class ObjectsForAgentTesting {
 	public CommunicatingAgent<TestAMAS, TestEnv> communicantAgent2;
 	public CommunicatingAgent<TestAMAS, TestEnv> communicantAgent3;
 	public TestAMAS amas;
+	public TestEnv env;
 
 
 	@Before
 	public void setup() {
-		TestEnv env = new TestEnv();
+		env = new TestEnv();
 		amas = new TestAMAS(env);
 		Object params[] = {};
 		communicantAgent1 = new CommunicatingAgent<TestAMAS, TestEnv>(amas, params) {
@@ -32,8 +33,7 @@ public class ObjectsForAgentTesting {
 		};
 	}
 
-	private class TestEnv extends Environment {
-
+	public class TestEnv extends Environment {
 		public TestEnv() {
 			super(Scheduling.DEFAULT);
 		}

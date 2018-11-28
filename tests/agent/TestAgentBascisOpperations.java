@@ -7,18 +7,27 @@ import org.junit.Before;
 import org.junit.Test;
 
 import fr.irit.smac.amak.Agent;
-import fr.irit.smac.amak.Amas;
-import fr.irit.smac.amak.Environment;
+import fr.irit.smac.amak.CommunicatingAgent;
+import testutils.ObjectsForAgentTesting;
 
-public class TestAgentBascisOpperations {
+public class TestAgentBascisOpperations extends ObjectsForAgentTesting {
 
 	private static final String STR_ID_BASE = "Agent #";
-	private Agent<Amas<Environment>, Environment> agent;
+	private Agent<TestAMAS, TestEnv> agent;
 
 
 	@Before
 	public void setUp() {
-		agent = new Agent<Amas<Environment>, Environment>(null, null) {
+		super.setup();
+		
+		agent = new CommunicatingAgent<TestAMAS, TestEnv>(amas, env) {
+
+			@Override
+			protected void onPerceive() {
+				super.onPerceive();
+				getAllMessages();
+			}
+			
 		};
 	}
 	
@@ -30,6 +39,11 @@ public class TestAgentBascisOpperations {
 		assertTrue(strAID.contains(STR_ID_BASE) && !strAID.equals(STR_ID_BASE));
 	}
 	
+	@Test
+	public void nothingToPerceiveTest() {
+		agent.onePhaseCycle();
+		// should not crash
+	}
 	
 	//TODO add more tests
 }
