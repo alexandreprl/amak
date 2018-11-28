@@ -9,9 +9,7 @@ import java.util.List;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.ThreadPoolExecutor;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import fr.irit.smac.amak.ui.MainWindow;
 import fr.irit.smac.amak.ui.SchedulerToolbar;
@@ -100,7 +98,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	/**
 	 * The execution policy {@link ExecutionPolicy}
 	 */
-	private ExecutionPolicy executionPolicy = Configuration.executionPolicy;
+	private ExecutionPolicy executionPolicy;
 	private List<Agent<?, ?>> runningAsyncAgents = new ArrayList<>();
 
 	/**
@@ -136,6 +134,7 @@ public class Amas<E extends Environment> implements Schedulable {
 		this.params = params;
 		this.environment = environment;
 		this.onInitialConfiguration();
+		executionPolicy = Configuration.executionPolicy;
 		this.onInitialAgentsCreation();
 
 		addPendingAgents();
