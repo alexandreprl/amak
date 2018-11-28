@@ -5,6 +5,20 @@ Examples are available in the package fr.irit.smac.amak.examples.
 # [Click here to download the latest standalone version](https://bitbucket.org/perlesa/amak/raw/master/Release/AmakFramework-standalone.jar?at=master) #
 
 # Recent changes #
+
+## 1.5.3 (11/28/2018) ##
+### New features: none
+
+### Possible breaking changes:
+*Maybe unexpected amas behaviour if the fixed bug was used as a feature ! (see bug-fix `3da519a`)*
+
+### Improvements and bug fixes:
++ Bug-fix (`fccf75e0`) on messaging (PNE)
++ Bug-Fix (`3da519a`) : on ExecutionPolicy.TWO_PHASES => before the correction, the execution policy was not executed correctly.
+(Before : perception agent 1 -> decision&action agent 1 -> perception agent 2 -> decision&action agent 2 | After : perception agent 1 -> perception agent 2 -> decision&action agent 1 -> decision&action agent 2)
+
+
+
 ## 1.5.2 (11/22/2018) ##
 ### New features:
   + The agent ID can be specified when the agent is create: it is called "raw id".
