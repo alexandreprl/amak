@@ -1,5 +1,10 @@
 # Recent changes #
 
+## 2.0.0b (06/17/2021) ##
+
+- Use Gradle instead of Maven
+- Use Gradle source dependency instead of prepackaged jar file
+
 ## 1.5.3 (11/28/2018) ##
 ### New features: none
 
