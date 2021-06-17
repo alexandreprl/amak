@@ -1,11 +1,12 @@
 plugins {
+    id 'com.github.johnrengelman.shadow' version '7.0.0'
     id 'java'
     id 'groovy'
     id "io.freefair.lombok" version "6.0.0-m2"
 }
 
 group 'fr.irit.smac.amak'
-version '2.0.0b'
+version '2'
 
 repositories {
     mavenCentral()
@@ -23,14 +24,7 @@ dependencies {
 test {
     useJUnitPlatform()
 }
-sourceSets {
-    main {
-        resources {
-            srcDirs "dependencies"
-        }
-    }
-}
 
-jar {
-    destinationDirectory.set(file("Release"))
+shadowJar {
+    archiveFile.set(file("Release/AmakFramework-standalone.jar"))
 }
