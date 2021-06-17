@@ -23,8 +23,16 @@ dependencies {
 
 test {
     useJUnitPlatform()
+    dependsOn clean
 }
 
 shadowJar {
     archiveFile.set(file("Release/AmakFramework-standalone.jar"))
+
+    dependsOn test
+
+}
+
+clean {
+    delete 'Release/AmakFramework-standalone.jar'
 }
