@@ -23,6 +23,14 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+sourceSets {
+    main {
+        resources {
+            srcDirs "dependencies"
+        }
+    }
+}
+
 jar {
     destinationDirectory.set(file("Release"))
 }
