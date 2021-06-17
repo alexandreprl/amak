@@ -7,8 +7,8 @@
         <processorPath useClasspath="false">
           <entry name="$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.projectlombok/lombok/1.18.20/18bcea7d5df4d49227b4a0743a536208ce4825bb/lombok-1.18.20.jar" />
         </processorPath>
-        <module name="amak.test" />
-        <module name="amak.main" />
+        <module name="AmakFramework.test" />
+        <module name="AmakFramework.main" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="16" />
