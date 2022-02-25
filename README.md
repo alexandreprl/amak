@@ -96,7 +96,7 @@ A table is initialized with 10 forks.
 ### Create your multi-agent system ###
 
 Let's call the multi-agent system "MyAMAS".
-Create a class "MyAMAS" which extends the abstract class Amas<Table>.
+Create a class "MyAMAS" which extends the abstract class `Amas<Table>`.
 
 During the initialization, we want to create a philosopher per fork and let them know their neighbors.
 
