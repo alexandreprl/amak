@@ -1,38 +1,22 @@
 plugins {
-    id 'com.github.johnrengelman.shadow' version '7.0.0'
     id 'java'
     id 'groovy'
-    id "io.freefair.lombok" version "6.0.0-m2"
 }
 
-group 'fr.irit.smac.amak'
-version '2'
+group 'fr.irit'
+version '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
-    implementation group: 'com.fasterxml.jackson.dataformat', name: 'jackson-dataformat-xml', version: '2.11.2'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-api', version: '2.14.1'
-    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.14.1'
-    implementation fileTree(include: ['*.jar'], dir: 'dependencies')
-    testImplementation 'org.spockframework:spock-core:2.0-M5-groovy-3.0'
+    testImplementation 'org.spockframework:spock-core:2.3-groovy-3.0'
+    testImplementation 'org.codehaus.groovy:groovy-all:3.0.8'
+    testImplementation "net.bytebuddy:byte-buddy:1.9.3"
+    testImplementation 'org.objenesis:objenesis:3.1'
 }
 
 test {
     useJUnitPlatform()
-}
-
-shadowJar {
-    archiveFile.set(file("Release/AmakFramework-standalone.jar"))
-    dependsOn test
-}
-
-tasks.register("packageAmakStandalone") {
-    finalizedBy shadowJar
-    doFirst {
-        delete 'Release/AmakFramework-standalone.jar'
-    }
 }
