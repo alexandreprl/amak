@@ -1,13 +1,13 @@
 package fr.irit.smac.amak.scheduling;
 
+import lombok.Setter;
+
 import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
 /**
  * A scheduler associated to a MAS
- *
- * @author Alexandre Perles
  */
 public class Scheduler implements Runnable {
 	/**
@@ -31,9 +31,9 @@ public class Scheduler implements Runnable {
 	 */
 	private final Queue<Schedulable> pendingRemovalSchedulables = new LinkedList<>();
 	/**
-	 * The state of the scheduler {@link State}
+	 * The state of the scheduler {@link SchedulerState}
 	 */
-	private State state;
+	private SchedulerState state;
 	/**
 	 * The sleep time in ms between each cycle
 	 */
@@ -41,12 +41,8 @@ public class Scheduler implements Runnable {
 	/**
 	 * Method that is called when the scheduler stops
 	 */
+	@Setter
 	private Consumer<Scheduler> onStop;
-	/**
-	 * The idea is to prevent scheduler from launching if the schedulables are not
-	 * yet fully ready
-	 */
-	private int locked = 0;
 
 	/**
 	 * Constructor which set the initial state
@@ -54,11 +50,10 @@ public class Scheduler implements Runnable {
 	 * @param schedulables the corresponding schedulables
 	 */
 	public Scheduler(Schedulable... schedulables) {
-
 		for (Schedulable schedulable : schedulables) {
 			this.add(schedulable);
 		}
-		this.state = State.IDLE;
+		this.state = SchedulerState.IDLE;
 	}
 
 	/**
@@ -68,17 +63,10 @@ public class Scheduler implements Runnable {
 	 * @param i the delay between two cycles
 	 */
 	public void startWithSleep(int i) {
-		if (locked > 0) {
-
-			synchronized (onChange) {
-				onChange.forEach(c -> c.accept(this));
-			}
-			return;
-		}
-		setSleep(i);
+		sleep = i;
 		stateLock.lock();
-		if (Objects.requireNonNull(state) == State.IDLE) {
-			state = State.RUNNING;
+		if (Objects.requireNonNull(state) == SchedulerState.IDLE) {
+			state = SchedulerState.RUNNING;
 			new Thread(this).start();
 		}
 		stateLock.unlock();
@@ -91,23 +79,17 @@ public class Scheduler implements Runnable {
 	 * Start (or continue) with no delay between cycles
 	 */
 	public void start() {
-		startWithSleep(Schedulable.DEFAULT_SLEEP);
+		startWithSleep(0);
 	}
 
 	/**
 	 * Execute one cycle
 	 */
 	public void step() {
-		if (locked > 0) {
-			synchronized (onChange) {
-				onChange.forEach(c -> c.accept(this));
-			}
-			return;
-		}
-		this.setSleep(0);
+		sleep = 0;
 		stateLock.lock();
-		if (Objects.requireNonNull(state) == State.IDLE) {
-			state = State.PENDING_STOP;
+		if (Objects.requireNonNull(state) == SchedulerState.IDLE) {
+			state = SchedulerState.PENDING_STOP;
 			new Thread(this).start();
 		}
 		stateLock.unlock();
@@ -121,8 +103,8 @@ public class Scheduler implements Runnable {
 	 */
 	public void stop() {
 		stateLock.lock();
-		if (Objects.requireNonNull(state) == State.RUNNING) {
-			state = State.PENDING_STOP;
+		if (Objects.requireNonNull(state) == SchedulerState.RUNNING) {
+			state = SchedulerState.PENDING_STOP;
 		}
 		stateLock.unlock();
 		synchronized (onChange) {
@@ -145,16 +127,16 @@ public class Scheduler implements Runnable {
 				for (Schedulable schedulable : schedulables) {
 					schedulable.cycle();
 				}
-				if (getSleep() != 0) {
-					Thread.sleep(getSleep());
+				if (sleep != 0) {
+					Thread.sleep(sleep);
 				}
 				mustStop = false;
 				for (Schedulable schedulable : schedulables) {
 					mustStop |= schedulable.stopCondition();
 				}
-			} while (state == State.RUNNING && !mustStop);
+			} while (state == SchedulerState.RUNNING && !mustStop);
 			stateLock.lock();
-			state = State.IDLE;
+			state = SchedulerState.IDLE;
 			stateLock.unlock();
 
 			for (Schedulable schedulable : schedulables) {
@@ -182,15 +164,6 @@ public class Scheduler implements Runnable {
 	}
 
 	/**
-	 * Set the method that must be executed when the system is stopped
-	 *
-	 * @param onStop Consumer method
-	 */
-	public final void setOnStop(Consumer<Scheduler> onStop) {
-		this.onStop = onStop;
-	}
-
-	/**
 	 * Add a method that must be executed when the scheduler speed is changed
 	 *
 	 * @param onChangeConsumer Consumer method
@@ -207,26 +180,7 @@ public class Scheduler implements Runnable {
 	 * @return true if the scheduler is running
 	 */
 	public boolean isRunning() {
-		return state == State.RUNNING;
-	}
-
-	/**
-	 * Getter for the sleep time
-	 *
-	 * @return the sleep time
-	 */
-
-	public int getSleep() {
-		return sleep;
-	}
-
-	/**
-	 * Setter for the sleep time
-	 *
-	 * @param sleep The time between each cycle
-	 */
-	public void setSleep(int sleep) {
-		this.sleep = sleep;
+		return state == SchedulerState.RUNNING;
 	}
 
 	/**
@@ -234,7 +188,7 @@ public class Scheduler implements Runnable {
 	 *
 	 * @param schedulable the schedulable to add
 	 */
-	public void add(Schedulable schedulable) {
+	private void add(Schedulable schedulable) {
 		this.pendingAdditionSchedulables.add(schedulable);
 	}
 
@@ -248,23 +202,9 @@ public class Scheduler implements Runnable {
 	}
 
 	/**
-	 * Soft lock the scheduler to avoid a too early running
-	 */
-	public void lock() {
-		locked++;
-	}
-
-	/**
-	 * Soft unlock the scheduler to avoid a too early running
-	 */
-	public void unlock() {
-		locked--;
-	}
-
-	/**
 	 * State of the scheduler
 	 */
-	public enum State {
+	public enum SchedulerState {
 		/**
 		 * The scheduler is running
 		 */

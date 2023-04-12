@@ -6,8 +6,6 @@ import java.util.Random;
 
 /**
  * This class must be overridden by environments
- *
- * @author Alexandre Perles
  */
 public abstract class Environment implements Schedulable {
 	/**

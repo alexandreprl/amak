@@ -2,10 +2,7 @@ package fr.irit.smac.amak;
 
 import fr.irit.smac.amak.Amas.ExecutionPolicy;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
 
 /**
@@ -13,9 +10,8 @@ import java.util.Map.Entry;
  *
  * @param <A> The kind of Amas the agent refers to
  * @param <E> The kind of Environment the agent AND the Amas refer to
- * @author Alexandre Perles
  */
-public abstract class Agent<A extends Amas<E>, E extends Environment> implements Runnable {
+public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	/**
 	 * Unique index to give unique id to each agent
 	 */
@@ -43,18 +39,9 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	private final int id;
 	/**
-	 * The current phase of the agent {@link Phase}
-	 */
-	protected Phase currentPhase = Phase.INITIALIZING;
-	/**
 	 * Last calculated criticality of the agent
 	 */
 	private double criticality;
-	/**
-	 * The order of execution of the agent as computed by
-	 * {@link Agent#computeExecutionOrder()}
-	 */
-	private int executionOrder;
 
 	/**
 	 * The constructor automatically add the agent to the corresponding amas and
@@ -66,15 +53,11 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	protected Agent(A amas, Object... params) {
 		this.id = uniqueIndex++;
 		this.params = params;
-		this.amas = amas;
+		this.amas = Objects.requireNonNull(amas);
 		neighborhood = new ArrayList<>();
 		neighborhood.add(this);
 		onInitialization();
-
-
-		if (amas != null) {
-			this.amas.addAgent(this);
-		}
+		this.amas.addAgent(this);
 	}
 
 	/**
@@ -84,7 +67,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	@SafeVarargs
 	public final void addNeighbor(Agent<A, E>... agents) {
-		for (Agent<A, E> agent : agents) {
+		for (var agent : agents) {
 			if (agent != null) {
 				neighborhood.add(agent);
 				criticalities.put(agent, Double.NEGATIVE_INFINITY);
@@ -105,21 +88,11 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	}
 
 	/**
-	 * This method must be overridden if you need to specify an execution order layer
-	 *
-	 * @return the execution order layer
-	 */
-	@SuppressWarnings("SameReturnValue")
-	protected int computeExecutionOrderLayer() {
-		return 0;
-	}
-
-	/**
 	 * This method is called at the beginning of an agent's cycle
 	 */
 	@SuppressWarnings("EmptyMethod")
 	protected void onAgentCycleBegin() {
-
+		// To be implemented
 	}
 
 	/**
@@ -127,7 +100,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	@SuppressWarnings("EmptyMethod")
 	protected void onAgentCycleEnd() {
-
+		// To be implemented
 	}
 
 	/**
@@ -136,7 +109,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	@SuppressWarnings("EmptyMethod")
 	protected void onPerceive() {
-
+		// To be implemented
 	}
 
 	/**
@@ -145,7 +118,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	@SuppressWarnings("EmptyMethod")
 	protected void onDecide() {
-
+		// To be implemented
 	}
 
 	/**
@@ -154,7 +127,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	@SuppressWarnings("EmptyMethod")
 	protected void onAct() {
-
+		// To be implemented
 	}
 
 	/**
@@ -162,7 +135,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	@SuppressWarnings("EmptyMethod")
 	protected void onExpose() {
-
+		// To be implemented
 	}
 
 	/**
@@ -174,7 +147,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	@SuppressWarnings("EmptyMethod")
 	protected void onReady() {
-
+		// To be implemented
 	}
 
 	/**
@@ -183,7 +156,6 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	protected final void onBeforeReady() {
 		criticality = computeCriticality();
-		executionOrder = computeExecutionOrder();
 	}
 
 	/**
@@ -191,84 +163,26 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	 */
 	@SuppressWarnings("EmptyMethod")
 	protected void onInitialization() {
-
-	}
-
-	/**
-	 * This method is called automatically and corresponds to a full cycle of an
-	 * agent
-	 */
-	@Override
-	public void run() {
-		ExecutionPolicy executionPolicy = amas.getExecutionPolicy();
-		if (executionPolicy == ExecutionPolicy.TWO_PHASES) {
-
-			currentPhase = nextPhase();
-			switch (currentPhase) {
-				case PERCEPTION -> {
-					phase1();
-					amas.informThatAgentPerceptionIsFinished();
-				}
-				case DECISION_AND_ACTION -> {
-					phase2();
-					amas.informThatAgentDecisionAndActionAreFinished();
-				}
-				default -> throw new IllegalStateException("Unexpected value: " + currentPhase);
-			}
-		} else if (executionPolicy == ExecutionPolicy.ONE_PHASE) {
-			onePhaseCycle();
-			amas.informThatAgentPerceptionIsFinished();
-			amas.informThatAgentDecisionAndActionAreFinished();
-		}
-	}
-
-	public void onePhaseCycle() {
-		currentPhase = Phase.PERCEPTION;
-		phase1();
-		currentPhase = Phase.DECISION_AND_ACTION;
-		phase2();
+		// To be implemented
 	}
 
 	/**
 	 * This method represents the perception phase of the agent
 	 */
-	protected final void phase1() {
+	void phase1() {
 		onAgentCycleBegin();
 		perceive();
-		currentPhase = Phase.PERCEPTION_DONE;
+		amas.informThatAgentPerceptionIsFinished();
 	}
 
 	/**
 	 * This method represents the decisionAndAction phase of the agent
 	 */
-	protected final void phase2() {
+	void phase2() {
 		decideAndAct();
-		executionOrder = computeExecutionOrder();
 		onExpose();
 		onAgentCycleEnd();
-		currentPhase = Phase.DECISION_AND_ACTION_DONE;
-	}
-
-	/**
-	 * Determine which phase comes after another
-	 *
-	 * @return the next phase
-	 */
-	private Phase nextPhase() {
-		return switch (currentPhase) {
-			case PERCEPTION_DONE -> Phase.DECISION_AND_ACTION;
-			default -> Phase.PERCEPTION;
-		};
-	}
-
-	/**
-	 * Compute the execution order from the layer and a random value. This method
-	 * shouldn't be overridden.
-	 *
-	 * @return A number used by amak to determine which agent executes first
-	 */
-	private int computeExecutionOrder() {
-		return computeExecutionOrderLayer() * 10000 + amas.getEnvironment().getRandom().nextInt(10000);
+		amas.informThatAgentDecisionAndActionAreFinished();
 	}
 
 	/**
@@ -330,15 +244,6 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	}
 
 	/**
-	 * Get the latest computed execution order
-	 *
-	 * @return the execution order
-	 */
-	public int getExecutionOrder() {
-		return executionOrder;
-	}
-
-	/**
 	 * Getter for the AMAS
 	 *
 	 * @return the amas
@@ -360,24 +265,6 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> implements
 	@Override
 	public String toString() {
 		return String.format("Agent #%d", id);
-	}
-
-	/**
-	 * Getter for the current phase of the agent
-	 *
-	 * @return the current phase
-	 */
-	public Phase getCurrentPhase() {
-		return currentPhase;
-	}
-
-	/**
-	 * Return the id of the agent
-	 *
-	 * @return the id of the agent
-	 */
-	public int getId() {
-		return id;
 	}
 
 	/**

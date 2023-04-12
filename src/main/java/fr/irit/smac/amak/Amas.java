@@ -11,7 +11,6 @@ import java.util.concurrent.ThreadPoolExecutor;
  * This class must be overridden by multi-agent systems
  *
  * @param <E> The environment of the MAS
- * @author Alexandre Perles
  */
 public class Amas<E extends Environment> implements Schedulable {
 	/**
@@ -168,28 +167,26 @@ public class Amas<E extends Environment> implements Schedulable {
 	 */
 	public final void cycle() throws InterruptedException {
 		cycle++;
-		var sortedAgents = agents.stream()
-		                         .sorted(new AgentOrderComparator())
-		                         .toList();
 		onSystemCycleBegin();
 
 		if (Objects.requireNonNull(executionPolicy) == ExecutionPolicy.ONE_PHASE) {
-			for (Agent<?, E> agent : sortedAgents) {
-				executor.execute(agent);
+			for (Agent<?, E> agent : agents) {
+				executor.execute(()->{
+					agent.phase1();
+					agent.phase2();
+				});
 			}
-			perceptionPhaseSemaphore.acquire(sortedAgents.size());
-			decisionAndActionPhasesSemaphore.acquire(sortedAgents.size());
+			perceptionPhaseSemaphore.acquire(agents.size());
+			decisionAndActionPhasesSemaphore.acquire(agents.size());
 		} else if (executionPolicy == ExecutionPolicy.TWO_PHASES) {
-			// Perception
-			for (Agent<?, E> agent : sortedAgents) {
-				executor.execute(agent);
+			for (Agent<?, E> agent : agents) {
+				executor.execute(agent::phase1);
 			}
-			perceptionPhaseSemaphore.acquire(sortedAgents.size());
-			// Decision and action
-			for (Agent<?, E> agent : sortedAgents) {
-				executor.execute(agent);
+			perceptionPhaseSemaphore.acquire(agents.size());
+			for (Agent<?, E> agent : agents) {
+				executor.execute(agent::phase2);
 			}
-			decisionAndActionPhasesSemaphore.acquire(sortedAgents.size());
+			decisionAndActionPhasesSemaphore.acquire(agents.size());
 		}
 
 		removePendingAgents();
@@ -226,15 +223,6 @@ public class Amas<E extends Environment> implements Schedulable {
 	@SuppressWarnings("EmptyMethod")
 	protected void onSystemCycleBegin() {
 		// To be implemented
-	}
-
-	/**
-	 * Getter for the current cycle number
-	 *
-	 * @return the current cycle
-	 */
-	public final int getCycle() {
-		return cycle;
 	}
 
 	/**
@@ -281,22 +269,5 @@ public class Amas<E extends Environment> implements Schedulable {
 		 * start again (or die)
 		 */
 		ONE_PHASE
-	}
-
-	/**
-	 * Comparator to sort agents for execution
-	 *
-	 * @author Alexandre Perles
-	 */
-	private class AgentOrderComparator implements Comparator<Agent<? extends Amas<E>, E>> {
-
-		@Override
-		public int compare(Agent<? extends Amas<E>, E> o1, Agent<? extends Amas<E>, E> o2) {
-			if (o1.getExecutionOrder() == o2.getExecutionOrder())
-				return 0;
-			else
-				return o1.getExecutionOrder() - o2.getExecutionOrder();
-		}
-
 	}
 }

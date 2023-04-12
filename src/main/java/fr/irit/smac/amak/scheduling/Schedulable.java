@@ -2,15 +2,8 @@ package fr.irit.smac.amak.scheduling;
 
 /**
  * A schedulable object can be controlled by a scheduler
- *
- * @author Alexandre Perles
  */
 public interface Schedulable {
-	/**
-	 * The default time between scheduler cycle
-	 */
-	int DEFAULT_SLEEP = 0;
-
 	/**
 	 * A cycle of the schedulable system
 	 */
