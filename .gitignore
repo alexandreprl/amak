@@ -40,3 +40,7 @@ bin/
 
 ### Mac OS ###
 .DS_Store
+workspace.xml
+.idea/codeStyles/codeStyleConfig.xml
+.idea/sonarlint/issuestore/index.pb
+.idea/uiDesigner.xml
