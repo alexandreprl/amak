@@ -3,6 +3,8 @@ package fr.irit.smac.amak.scheduling;
 import lombok.Setter;
 
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
@@ -31,6 +33,10 @@ public class Scheduler implements Runnable {
 	 */
 	private final Queue<Schedulable> pendingRemovalSchedulables = new LinkedList<>();
 	/**
+	 * The executor service on which the scheduler should run
+	 */
+	private final ExecutorService executorService;
+	/**
 	 * The state of the scheduler {@link SchedulerState}
 	 */
 	private SchedulerState state;
@@ -49,11 +55,12 @@ public class Scheduler implements Runnable {
 	 *
 	 * @param schedulables the corresponding schedulables
 	 */
-	public Scheduler(Schedulable... schedulables) {
+	public Scheduler(ExecutorService executorService, Schedulable... schedulables) {
 		for (Schedulable schedulable : schedulables) {
 			this.add(schedulable);
 		}
 		this.state = SchedulerState.IDLE;
+		this.executorService = executorService;
 	}
 
 	/**
@@ -65,9 +72,9 @@ public class Scheduler implements Runnable {
 	public void startWithSleep(int i) {
 		sleep = i;
 		stateLock.lock();
-		if (Objects.requireNonNull(state) == SchedulerState.IDLE) {
+		if (state == SchedulerState.IDLE) {
 			state = SchedulerState.RUNNING;
-			new Thread(this).start();
+			executorService.execute(this);
 		}
 		stateLock.unlock();
 		synchronized (onChange) {
@@ -88,9 +95,9 @@ public class Scheduler implements Runnable {
 	public void step() {
 		sleep = 0;
 		stateLock.lock();
-		if (Objects.requireNonNull(state) == SchedulerState.IDLE) {
+		if (state == SchedulerState.IDLE) {
 			state = SchedulerState.PENDING_STOP;
-			new Thread(this).start();
+			executorService.execute(this);
 		}
 		stateLock.unlock();
 		synchronized (onChange) {
@@ -103,7 +110,7 @@ public class Scheduler implements Runnable {
 	 */
 	public void stop() {
 		stateLock.lock();
-		if (Objects.requireNonNull(state) == SchedulerState.RUNNING) {
+		if (state == SchedulerState.RUNNING) {
 			state = SchedulerState.PENDING_STOP;
 		}
 		stateLock.unlock();
@@ -135,20 +142,19 @@ public class Scheduler implements Runnable {
 					mustStop |= schedulable.stopCondition();
 				}
 			} while (state == SchedulerState.RUNNING && !mustStop);
-			stateLock.lock();
-			state = SchedulerState.IDLE;
-			stateLock.unlock();
-
-			for (Schedulable schedulable : schedulables) {
-				schedulable.onSchedulingStops();
-			}
-			treatPendingSchedulables();
-			if (onStop != null)
-				onStop.accept(this);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-			Thread.currentThread().interrupt();
 		}
+		stateLock.lock();
+		state = SchedulerState.IDLE;
+		stateLock.unlock();
+
+		for (Schedulable schedulable : schedulables) {
+			schedulable.onSchedulingStops();
+		}
+		treatPendingSchedulables();
+		if (onStop != null)
+			onStop.accept(this);
 	}
 
 	/**
@@ -168,19 +174,10 @@ public class Scheduler implements Runnable {
 	 *
 	 * @param onChangeConsumer Consumer method
 	 */
-	public final void addOnChange(Consumer<Scheduler> onChangeConsumer) {
+	public final void addOnChange(Consumer onChangeConsumer) {
 		synchronized (this.onChange) {
 			this.onChange.add(onChangeConsumer);
 		}
-	}
-
-	/**
-	 * Is the scheduler running ?
-	 *
-	 * @return true if the scheduler is running
-	 */
-	public boolean isRunning() {
-		return state == SchedulerState.RUNNING;
 	}
 
 	/**
@@ -188,7 +185,7 @@ public class Scheduler implements Runnable {
 	 *
 	 * @param schedulable the schedulable to add
 	 */
-	private void add(Schedulable schedulable) {
+	public void add(Schedulable schedulable) {
 		this.pendingAdditionSchedulables.add(schedulable);
 	}
 
