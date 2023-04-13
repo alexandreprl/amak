@@ -38,6 +38,28 @@ public abstract class Environment implements Schedulable {
 		random = new Random(seed);
 	}
 
+	@Override
+	public final void cycle() {
+		onCycle();
+	}
+
+	/**
+	 * Getter for the random object
+	 *
+	 * @return the random object
+	 */
+	public Random getRandom() {
+		return random;
+	}
+
+	@Override
+	public void onSchedulingStarts() {
+	}
+
+	@Override
+	public void onSchedulingStops() {
+	}
+
 	/**
 	 * This method is called during the initialization process of the environment
 	 */
@@ -63,27 +85,5 @@ public abstract class Environment implements Schedulable {
 	@Override
 	public boolean stopCondition() {
 		return false;
-	}
-
-	@Override
-	public final void cycle() {
-		onCycle();
-	}
-
-	/**
-	 * Getter for the random object
-	 *
-	 * @return the random object
-	 */
-	public Random getRandom() {
-		return random;
-	}
-
-	@Override
-	public void onSchedulingStarts() {
-	}
-
-	@Override
-	public void onSchedulingStops() {
 	}
 }

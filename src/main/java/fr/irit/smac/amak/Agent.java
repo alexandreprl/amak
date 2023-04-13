@@ -1,6 +1,7 @@
 package fr.irit.smac.amak;
 
 import fr.irit.smac.amak.Amas.ExecutionPolicy;
+import lombok.Getter;
 
 import java.util.*;
 import java.util.Map.Entry;
@@ -28,6 +29,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	/**
 	 * Amas the agent belongs to
 	 */
+	@Getter
 	protected final A amas;
 	/**
 	 * The parameters that can be user in the initialization process
@@ -172,7 +174,6 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	void phase1() {
 		onAgentCycleBegin();
 		perceive();
-		amas.informThatAgentPerceptionIsFinished();
 	}
 
 	/**
@@ -182,7 +183,11 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 		decideAndAct();
 		onExpose();
 		onAgentCycleEnd();
-		amas.informThatAgentDecisionAndActionAreFinished();
+	}
+
+	public void cycle() {
+		phase1();
+		phase2();
 	}
 
 	/**
@@ -240,23 +245,14 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 		}
 		if (mostCritical.isEmpty())
 			return null;
-		return mostCritical.get(getEnvironment().getRandom().nextInt(mostCritical.size()));
-	}
-
-	/**
-	 * Getter for the AMAS
-	 *
-	 * @return the amas
-	 */
-	public A getAmas() {
-		return amas;
+		return mostCritical.get(amas.getEnvironment().getRandom().nextInt(mostCritical.size()));
 	}
 
 	/**
 	 * Remove the agent from the system
 	 */
 	public void destroy() {
-		getAmas().removeAgent(this);
+		amas.removeAgent(this);
 	}
 
 	/**
@@ -265,15 +261,6 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	@Override
 	public String toString() {
 		return String.format("Agent #%d", id);
-	}
-
-	/**
-	 * Getter for the environment
-	 *
-	 * @return the environment
-	 */
-	public E getEnvironment() {
-		return getAmas().getEnvironment();
 	}
 
 	/**
