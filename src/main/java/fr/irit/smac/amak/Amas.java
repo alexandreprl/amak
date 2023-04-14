@@ -21,7 +21,6 @@ public class Amas<E extends Environment> implements Schedulable {
 	/**
 	 * Environment of the system
 	 */
-	@Getter
 	protected final E environment;
 	/**
 	 * Parameters that can be passed to the constructor. These parameters are meant
@@ -229,6 +228,10 @@ public class Amas<E extends Environment> implements Schedulable {
 	@Override
 	public void onSchedulingStops() {
 		// To be implemented
+	}
+
+	public E getEnvironment() {
+		return environment;
 	}
 
 	/**
