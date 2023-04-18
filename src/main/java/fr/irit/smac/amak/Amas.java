@@ -17,16 +17,12 @@ public class Amas<E extends Environment> implements Schedulable {
 	/**
 	 * List of agents present in the system
 	 */
+	@Getter
 	protected final List<Agent<? extends Amas<E>, E>> agents = new ArrayList<>();
 	/**
 	 * Environment of the system
 	 */
 	protected final E environment;
-	/**
-	 * Parameters that can be passed to the constructor. These parameters are meant
-	 * to be used only in the method onInitialConfiguration.
-	 */
-	protected final Object[] params;
 	/**
 	 * Agents that must be removed from the AMAS at the end of the cycle
 	 */
@@ -55,7 +51,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	/**
 	 * Number of cycles executed by the system
 	 */
-	protected int cycle;
+	protected int cyclesCount;
 
 	/**
 	 * Constructor of the MAS
@@ -63,9 +59,8 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * @param environment Environment of the system
 	 * @param params      The params to initialize the amas
 	 */
-	public Amas(E environment, int allowedSimultaneousAgentsExecution, ExecutionPolicy executionPolicy, Object... params) {
-		executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(allowedSimultaneousAgentsExecution);
-		this.params = params;
+	public Amas(E environment, int allowedSimultaneousAgentsExecution, ExecutionPolicy executionPolicy) {
+		this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(allowedSimultaneousAgentsExecution);
 		this.environment = environment;
 		this.onInitialConfiguration();
 		this.executionPolicy = executionPolicy;
@@ -119,7 +114,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * Cycle of the system
 	 */
 	public final void cycle() throws InterruptedException {
-		cycle++;
+		cyclesCount++;
 		onSystemCycleBegin();
 
 		if (Objects.requireNonNull(executionPolicy) == ExecutionPolicy.ONE_PHASE) {

@@ -38,7 +38,7 @@ class SchedulerTest extends Specification {
         !scheduler.stateLock.locked
         scheduler.sleep == 123
         1 * consumer.accept(_)
-        1 * executorService.execute(scheduler)
+        1 * executorService.submit(scheduler)
     }
 
     @Unroll
@@ -54,7 +54,7 @@ class SchedulerTest extends Specification {
         scheduler.startWithSleep(123)
 
         then:
-        runTimes * executorService.execute(scheduler)
+        runTimes * executorService.submit(scheduler)
 
         where:
         initialState                          | runTimes
@@ -77,7 +77,7 @@ class SchedulerTest extends Specification {
         !scheduler.stateLock.locked
         1 * consumer.accept(_)
         scheduler.sleep == 0
-        1 * executorService.execute(scheduler)
+        1 * executorService.submit(scheduler)
     }
 
     def "When step is called and the scheduler is in state #initialState, then the executor should be run #runTimes and the next state should be #nextState"() {

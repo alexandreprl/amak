@@ -3,8 +3,9 @@ package fr.irit.smac.amak.scheduling;
 import lombok.Setter;
 
 import java.util.*;
+import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
@@ -68,25 +69,30 @@ public class Scheduler implements Runnable {
 	 * running
 	 *
 	 * @param i the delay between two cycles
+	 * @return
 	 */
-	public void startWithSleep(int i) {
+	public Future<?> startWithSleep(int i) {
 		sleep = i;
 		stateLock.lock();
+		Future<?> task = CompletableFuture.completedFuture(0L);
 		if (state == SchedulerState.IDLE) {
 			state = SchedulerState.RUNNING;
-			executorService.execute(this);
+			task = executorService.submit(this);
 		}
 		stateLock.unlock();
 		synchronized (onChange) {
 			onChange.forEach(c -> c.accept(this));
 		}
+		return task;
 	}
 
 	/**
 	 * Start (or continue) with no delay between cycles
+	 *
+	 * @return
 	 */
-	public void start() {
-		startWithSleep(0);
+	public Future<?> start() {
+		return startWithSleep(0);
 	}
 
 	/**

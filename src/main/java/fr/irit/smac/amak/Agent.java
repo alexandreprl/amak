@@ -39,6 +39,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	/**
 	 * The id of the agent
 	 */
+	@Getter
 	private final int id;
 	/**
 	 * Last calculated criticality of the agent
@@ -260,7 +261,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 */
 	@Override
 	public String toString() {
-		return String.format("Agent #%d", id);
+		return String.format("Agent/%d/", id);
 	}
 
 	/**
