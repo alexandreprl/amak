@@ -13,6 +13,9 @@ public class Mailbox<T extends Message> {
 	public boolean isEmpty() {
 		return messages.isEmpty();
 	}
+	public int size() {
+		return messages.size();
+	}
 
 	public Optional<T> retrieve() {
 		var message = messages.poll();

@@ -1,5 +1,7 @@
 package fr.irit.smac.amak.scheduling;
 
+import fr.irit.smac.amak.SchedulableExecutionException;
+
 /**
  * A schedulable object can be controlled by a scheduler
  */
@@ -7,7 +9,7 @@ public interface Schedulable {
 	/**
 	 * A cycle of the schedulable system
 	 */
-	void cycle() throws InterruptedException;
+	void cycle() throws InterruptedException, SchedulableExecutionException;
 
 	/**
 	 * Check if the schedulable must be stopped by the scheduler. For example, a

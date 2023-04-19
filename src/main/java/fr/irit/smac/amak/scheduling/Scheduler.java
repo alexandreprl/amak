@@ -1,5 +1,6 @@
 package fr.irit.smac.amak.scheduling;
 
+import fr.irit.smac.amak.SchedulableExecutionException;
 import lombok.Setter;
 
 import java.util.*;
@@ -148,7 +149,7 @@ public class Scheduler implements Runnable {
 					mustStop |= schedulable.stopCondition();
 				}
 			} while (state == SchedulerState.RUNNING && !mustStop);
-		} catch (InterruptedException e) {
+		} catch (InterruptedException | SchedulableExecutionException e) {
 			e.printStackTrace();
 		}
 		stateLock.lock();

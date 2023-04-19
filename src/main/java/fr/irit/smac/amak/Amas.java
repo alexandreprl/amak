@@ -4,6 +4,7 @@ import fr.irit.smac.amak.scheduling.Schedulable;
 import lombok.Getter;
 
 import java.util.*;
+import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -57,7 +58,6 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * Constructor of the MAS
 	 *
 	 * @param environment Environment of the system
-	 * @param params      The params to initialize the amas
 	 */
 	public Amas(E environment, int allowedSimultaneousAgentsExecution, ExecutionPolicy executionPolicy) {
 		this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(allowedSimultaneousAgentsExecution);
@@ -113,35 +113,60 @@ public class Amas<E extends Environment> implements Schedulable {
 	/**
 	 * Cycle of the system
 	 */
-	public final void cycle() throws InterruptedException {
+	public final void cycle() throws InterruptedException, SchedulableExecutionException {
 		cyclesCount++;
 		onSystemCycleBegin();
-
-		if (Objects.requireNonNull(executionPolicy) == ExecutionPolicy.ONE_PHASE) {
+		if (cyclesCount == 1) {
+			removePendingAgents();
+			addPendingAgents();
+		}
+		var caughtExceptions = new ConcurrentLinkedQueue<RuntimeException>();
+		if (executionPolicy == ExecutionPolicy.ONE_PHASE) {
 			for (Agent<?, E> agent : agents) {
-				executor.execute(()->{
-					agent.cycle();
-					perceptionPhaseSemaphore.release();
-					decisionAndActionPhasesSemaphore.release();
+				executor.execute(() -> {
+					try {
+						agent.cycle();
+					} catch (RuntimeException exception) {
+						caughtExceptions.add(exception);
+					} finally {
+						perceptionPhaseSemaphore.release();
+						decisionAndActionPhasesSemaphore.release();
+					}
 				});
 			}
 			perceptionPhaseSemaphore.acquire(agents.size());
 			decisionAndActionPhasesSemaphore.acquire(agents.size());
+			if (!caughtExceptions.isEmpty())
+				throw new SchedulableExecutionException(caughtExceptions.toArray(new RuntimeException[0]));
 		} else if (executionPolicy == ExecutionPolicy.TWO_PHASES) {
 			for (Agent<?, E> agent : agents) {
-				executor.execute(()->{
-					agent.phase1();
-					perceptionPhaseSemaphore.release();
+				executor.execute(() -> {
+					try {
+						agent.phase1();
+					} catch (RuntimeException exception) {
+						caughtExceptions.add(exception);
+					} finally {
+						perceptionPhaseSemaphore.release();
+					}
 				});
 			}
 			perceptionPhaseSemaphore.acquire(agents.size());
+			if (!caughtExceptions.isEmpty())
+				throw new SchedulableExecutionException(caughtExceptions.toArray(new RuntimeException[0]));
 			for (Agent<?, E> agent : agents) {
-				executor.execute(()->{
-					agent.phase2();
-					decisionAndActionPhasesSemaphore.release();
+				executor.execute(() -> {
+					try {
+						agent.phase2();
+					} catch (RuntimeException exception) {
+						caughtExceptions.add(exception);
+					} finally {
+						decisionAndActionPhasesSemaphore.release();
+					}
 				});
 			}
 			decisionAndActionPhasesSemaphore.acquire(agents.size());
+			if (!caughtExceptions.isEmpty())
+				throw new SchedulableExecutionException(caughtExceptions.toArray(new RuntimeException[0]));
 		}
 
 		removePendingAgents();
