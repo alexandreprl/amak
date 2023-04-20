@@ -1,6 +1,7 @@
 package fr.irit.smac.amak.scheduling;
 
 import fr.irit.smac.amak.SchedulableExecutionException;
+import lombok.Getter;
 import lombok.Setter;
 
 import java.util.*;
@@ -203,6 +204,10 @@ public class Scheduler implements Runnable {
 	 */
 	public void remove(Schedulable schedulable) {
 		this.pendingRemovalSchedulables.add(schedulable);
+	}
+
+	public boolean isRunning() {
+		return state == SchedulerState.RUNNING;
 	}
 
 	/**
