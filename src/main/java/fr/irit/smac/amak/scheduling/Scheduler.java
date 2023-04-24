@@ -80,9 +80,6 @@ public class Scheduler implements Runnable {
 		Future<?> task = CompletableFuture.completedFuture(0L);
 		if (state == SchedulerState.IDLE) {
 			setState(SchedulerState.RUNNING);
-			synchronized (onChange) {
-				onChange.forEach(c -> c.accept(this));
-			}
 			task = executorService.submit(this);
 		}
 		stateLock.unlock();
@@ -106,9 +103,6 @@ public class Scheduler implements Runnable {
 		stateLock.lock();
 		if (state == SchedulerState.IDLE) {
 			setState(SchedulerState.PENDING_STOP);
-			synchronized (onChange) {
-				onChange.forEach(c -> c.accept(this));
-			}
 			executorService.execute(this);
 		}
 		stateLock.unlock();
