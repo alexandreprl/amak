@@ -8,8 +8,6 @@ import java.util.function.Consumer;
 
 /**
  * Listener for the {@link MainWindow}
- * 
- * @author Perles Alexandre
  *
  */
 public class MainWindowListener implements WindowListener {

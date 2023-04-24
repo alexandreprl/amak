@@ -46,6 +46,7 @@ public class Scheduler implements Runnable {
 	/**
 	 * The sleep time in ms between each cycle
 	 */
+	@Getter
 	private int sleep;
 	/**
 	 * Method that is called when the scheduler stops
@@ -62,7 +63,7 @@ public class Scheduler implements Runnable {
 		for (Schedulable schedulable : schedulables) {
 			this.add(schedulable);
 		}
-		this.state = SchedulerState.IDLE;
+		setState(SchedulerState.IDLE);
 		this.executorService = executorService;
 	}
 
@@ -78,13 +79,13 @@ public class Scheduler implements Runnable {
 		stateLock.lock();
 		Future<?> task = CompletableFuture.completedFuture(0L);
 		if (state == SchedulerState.IDLE) {
-			state = SchedulerState.RUNNING;
+			setState(SchedulerState.RUNNING);
+			synchronized (onChange) {
+				onChange.forEach(c -> c.accept(this));
+			}
 			task = executorService.submit(this);
 		}
 		stateLock.unlock();
-		synchronized (onChange) {
-			onChange.forEach(c -> c.accept(this));
-		}
 		return task;
 	}
 
@@ -104,13 +105,13 @@ public class Scheduler implements Runnable {
 		sleep = 0;
 		stateLock.lock();
 		if (state == SchedulerState.IDLE) {
-			state = SchedulerState.PENDING_STOP;
+			setState(SchedulerState.PENDING_STOP);
+			synchronized (onChange) {
+				onChange.forEach(c -> c.accept(this));
+			}
 			executorService.execute(this);
 		}
 		stateLock.unlock();
-		synchronized (onChange) {
-			onChange.forEach(c -> c.accept(this));
-		}
 	}
 
 	/**
@@ -119,12 +120,9 @@ public class Scheduler implements Runnable {
 	public void stop() {
 		stateLock.lock();
 		if (state == SchedulerState.RUNNING) {
-			state = SchedulerState.PENDING_STOP;
+			setState(SchedulerState.PENDING_STOP);
 		}
 		stateLock.unlock();
-		synchronized (onChange) {
-			onChange.forEach(c -> c.accept(this));
-		}
 	}
 
 	/**
@@ -153,9 +151,7 @@ public class Scheduler implements Runnable {
 		} catch (InterruptedException | SchedulableExecutionException e) {
 			e.printStackTrace();
 		}
-		stateLock.lock();
-		state = SchedulerState.IDLE;
-		stateLock.unlock();
+		setState(SchedulerState.IDLE);
 
 		for (Schedulable schedulable : schedulables) {
 			schedulable.onSchedulingStops();
@@ -163,6 +159,15 @@ public class Scheduler implements Runnable {
 		treatPendingSchedulables();
 		if (onStop != null)
 			onStop.accept(this);
+	}
+
+	private void setState(SchedulerState newState) {
+		stateLock.lock();
+		state = newState;
+		synchronized (onChange) {
+			onChange.forEach(c -> c.accept(this));
+		}
+		stateLock.unlock();
 	}
 
 	/**
@@ -182,7 +187,7 @@ public class Scheduler implements Runnable {
 	 *
 	 * @param onChangeConsumer Consumer method
 	 */
-	public final void addOnChange(Consumer onChangeConsumer) {
+	public final void addOnChange(Consumer<Scheduler> onChangeConsumer) {
 		synchronized (this.onChange) {
 			this.onChange.add(onChangeConsumer);
 		}
