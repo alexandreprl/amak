@@ -116,10 +116,10 @@ public class Amas<E extends Environment> implements Schedulable {
 	public final void cycle() throws InterruptedException, SchedulableExecutionException {
 		cyclesCount++;
 		onSystemCycleBegin();
-		if (cyclesCount == 1) {
-			removePendingAgents();
-			addPendingAgents();
-		}
+
+		removePendingAgents();
+		addPendingAgents();
+
 		var caughtExceptions = new ConcurrentLinkedQueue<RuntimeException>();
 		if (executionPolicy == ExecutionPolicy.ONE_PHASE) {
 			for (Agent<?, E> agent : agents) {
