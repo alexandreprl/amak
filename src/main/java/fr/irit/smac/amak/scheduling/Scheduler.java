@@ -6,6 +6,7 @@ import lombok.Setter;
 import java.util.*;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
@@ -54,8 +55,18 @@ public class Scheduler implements Runnable {
 	private Consumer<Scheduler> onStop;
 
 	/**
+     * Constructor which set the initial state
+     *
+     * @param schedulables the corresponding schedulables
+     */
+	public Scheduler(Schedulable... schedulables) {
+		this(Executors.newSingleThreadExecutor(), schedulables);
+	}
+
+	/**
 	 * Constructor which set the initial state
 	 *
+	 * @param executorService the thread executor for the scheduler
 	 * @param schedulables the corresponding schedulables
 	 */
 	public Scheduler(ExecutorService executorService, Schedulable... schedulables) {

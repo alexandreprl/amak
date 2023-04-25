@@ -63,8 +63,8 @@ public class Amas<E extends Environment> implements Schedulable {
 	public Amas(E environment, int allowedSimultaneousAgentsExecution, ExecutionPolicy executionPolicy) {
 		this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(allowedSimultaneousAgentsExecution);
 		this.environment = environment;
-		this.onInitialConfiguration();
 		this.executionPolicy = executionPolicy;
+		this.onInitialConfiguration();
 		this.onInitialAgentsCreation();
 		addPendingAgents();
 		this.onReady();

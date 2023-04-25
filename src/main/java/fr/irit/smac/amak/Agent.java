@@ -30,11 +30,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 */
 	@Getter
 	protected final A amas;
-	/**
-	 * The parameters that can be user in the initialization process
-	 * {@link Agent#onInitialization()}
-	 */
-	protected final Object[] params;
+
 	/**
 	 * The id of the agent
 	 */
@@ -50,15 +46,12 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * initialize the agent
 	 *
 	 * @param amas   Amas the agent belongs to
-	 * @param params The params to initialize the agent
 	 */
-	protected Agent(A amas, Object... params) {
+	protected Agent(A amas) {
 		this.id = uniqueIndex++;
-		this.params = params;
 		this.amas = Objects.requireNonNull(amas);
 		neighborhood = new ArrayList<>();
 		neighborhood.add(this);
-		onInitialization();
 		this.amas.addAgent(this);
 	}
 

@@ -9,10 +9,6 @@ import java.util.Random;
  */
 public abstract class Environment implements Schedulable {
 	/**
-	 * The parameters that are passed to {@link Environment#onInitialization()}
-	 */
-	protected final Object[] params;
-	/**
 	 * Random object common to the amas
 	 */
 	private Random random = new Random();
@@ -22,8 +18,7 @@ public abstract class Environment implements Schedulable {
 	 *
 	 * @param params The parameters to initialize the environment
 	 */
-	protected Environment(Object... params) {
-		this.params = params;
+	protected Environment() {
 		onInitialization();
 		onInitialEntitiesCreation();
 	}
