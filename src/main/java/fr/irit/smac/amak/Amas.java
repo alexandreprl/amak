@@ -93,7 +93,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 *
 	 * @param agent the agent to add to the system
 	 */
-	final void addAgent(Agent<?, E> agent) {
+	void addAgent(Agent<?, E> agent) {
 		synchronized (agentsPendingAddition) {
 			agentsPendingAddition.add(agent);
 		}
@@ -104,7 +104,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 *
 	 * @param agent the agent to remove from the system
 	 */
-	final void removeAgent(Agent<?, E> agent) {
+	void removeAgent(Agent<?, E> agent) {
 		synchronized (agentsPendingRemoval) {
 			agentsPendingRemoval.add(agent);
 		}

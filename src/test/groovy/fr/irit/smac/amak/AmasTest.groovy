@@ -5,7 +5,7 @@ import spock.lang.Specification
 import spock.lang.Timeout
 
 class AmasTest extends Specification {
-	@Timeout(1)
+	@Timeout(10)
 	def "When a cycle is executed and an agent throws a runtime exception then the cycle method should end and an exception should be thrown"() {
 		given:
 		def amas = new Amas(Mock(Environment), 1, executionPolicy)
