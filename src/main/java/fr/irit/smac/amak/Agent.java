@@ -1,6 +1,5 @@
 package fr.irit.smac.amak;
 
-import fr.irit.smac.amak.Amas.ExecutionPolicy;
 import lombok.Getter;
 
 import java.util.*;

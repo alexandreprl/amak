@@ -1,4 +1,4 @@
-package fr.irit.smac.amak;
+package fr.irit.smac.amak.scheduling;
 
 public class SchedulableExecutionException extends Exception {
 	private final RuntimeException[] causes;

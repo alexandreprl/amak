@@ -14,9 +14,8 @@ import fr.irit.smac.amak.ui.VectorialGraphicsPanel;
 
 public class DrawableImage extends Drawable {
 
-	private String filename;
 	private BufferedImage image;
-	private static Map<String, BufferedImage> loadedImages = new HashMap<>();
+	private static final Map<String, BufferedImage> loadedImages = new HashMap<>();
 
 	public DrawableImage(VectorialGraphicsPanel vectorialGraphicsPanel, double dx, double dy, String filename) {
 		super(vectorialGraphicsPanel, dx, dy, 0, 0);
@@ -32,9 +31,8 @@ public class DrawableImage extends Drawable {
 	}
 
 	public void setFilename(String filename) {
-		this.filename = filename;
 		try {
-			this.image = loadByFilename(this.filename);
+			this.image = loadByFilename(filename);
 		} catch (IOException e) {
 			try {
 				this.image = loadByFilename("Resources/unavailable.png");

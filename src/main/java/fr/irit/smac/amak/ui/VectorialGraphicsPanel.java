@@ -8,11 +8,7 @@ import java.awt.Graphics2D;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.locks.ReentrantLock;
 
 import javax.swing.BoxLayout;
@@ -38,16 +34,16 @@ public class VectorialGraphicsPanel extends JPanel {
 	/**
 	 * List of objects currently being drawn by the VUI
 	 */
-	private List<Drawable> drawables = new ArrayList<>();
+	private final List<Drawable> drawables = new ArrayList<>();
 	/**
 	 * Lock to avoid concurrent modification on the list {@link #drawables}
 	 */
-	private ReentrantLock drawablesLock = new ReentrantLock();
+	private final ReentrantLock drawablesLock = new ReentrantLock();
 
 	/**
 	 * A static map to facilitate access to different instances of VUI
 	 */
-	private static Map<String, VectorialGraphicsPanel> instances = new HashMap<>();
+	private static final Map<String, VectorialGraphicsPanel> instances = new HashMap<>();
 
 	/**
 	 * The horizontal offset of the drawing zone. Used to allow the user to move the
@@ -74,12 +70,12 @@ public class VectorialGraphicsPanel extends JPanel {
 	/**
 	 * The canvas on which all is drawn
 	 */
-	private JPanel canvas;
+	private final JPanel canvas;
 
 	/**
 	 * Label aiming at showing information about the VUI (zoom and offset)
 	 */
-	private JLabel statusLabel;
+	private final JLabel statusLabel;
 
 	/**
 	 * The default value of the {@link #zoom}
@@ -135,11 +131,6 @@ public class VectorialGraphicsPanel extends JPanel {
 
 		canvas = new JPanel() {
 
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-
 			@Override
 			protected void paintComponent(Graphics g) {
 
@@ -154,7 +145,7 @@ public class VectorialGraphicsPanel extends JPanel {
 				g.setColor(new Color(0.96f, 0.96f, 0.96f));
 				g.fillRect(0, 0, w, h);
 				drawablesLock.lock();
-				Collections.sort(drawables, (o1, o2) -> o1.getLayer() - o2.getLayer());
+				drawables.sort(Comparator.comparingInt(Drawable::getLayer));
 				for (Drawable d : drawables) {
 					d.onDraw(g2);
 				}
@@ -206,7 +197,7 @@ public class VectorialGraphicsPanel extends JPanel {
 					lastDragY = e.getY();
 					updateCanvas();
 				} catch (Exception ez) {
-					// Catch exception occuring when mouse is out of the canvas
+					// Catch exception occurring when mouse is out of the canvas
 				}
 			}
 		});
@@ -235,7 +226,7 @@ public class VectorialGraphicsPanel extends JPanel {
 	 * 
 	 * @param d
 	 *            the in world distance
-	 * @return the on screen distance
+	 * @return the on-screen distance
 	 */
 	public int worldToScreenDistance(double d) {
 		return (int) (d * getZoomFactor());
@@ -245,7 +236,7 @@ public class VectorialGraphicsPanel extends JPanel {
 	 * Convert a distance on the screen to its equivalent in the world
 	 * 
 	 * @param d
-	 *            the on screen distance
+	 *            the on-screen distance
 	 * @return the in world distance
 	 */
 	public double screenToWorldDistance(int d) {
@@ -253,7 +244,7 @@ public class VectorialGraphicsPanel extends JPanel {
 	}
 
 	/**
-	 * Convert a X in the world to its equivalent on the screen
+	 * Convert an X in the world to its equivalent on the screen
 	 * 
 	 * @param x
 	 *            the X in world
@@ -286,7 +277,7 @@ public class VectorialGraphicsPanel extends JPanel {
 	}
 
 	/**
-	 * Convert a X on the screen to its equivalent in the world
+	 * Convert an X on the screen to its equivalent in the world
 	 * 
 	 * @param x
 	 *            the X on screen

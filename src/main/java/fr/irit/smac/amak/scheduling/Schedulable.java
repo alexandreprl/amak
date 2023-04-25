@@ -1,7 +1,5 @@
 package fr.irit.smac.amak.scheduling;
 
-import fr.irit.smac.amak.SchedulableExecutionException;
-
 /**
  * A schedulable object can be controlled by a scheduler
  */

@@ -18,7 +18,7 @@ public class MainWindowListener implements WindowListener {
 	/**
 	 * The MainWindow linked to this listener
 	 */
-	private MainWindow mainWindow;
+	private final MainWindow mainWindow;
 
 	/**
 	 * The constructor of the listener

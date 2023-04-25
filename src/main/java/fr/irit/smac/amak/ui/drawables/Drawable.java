@@ -26,7 +26,7 @@ public abstract class Drawable {
 
 	/**
 	 * Compute the width as it must be displayed on screen. Given the zoom factor,
-	 * the width displayed can be different than the real width.
+	 * the width displayed can be different from the real width.
 	 * 
 	 * @return the width
 	 */
@@ -50,7 +50,7 @@ public abstract class Drawable {
 
 	/**
 	 * Compute the height as it must be displayed on screen. Given the zoom factor,
-	 * the height displayed can be different than the real height.
+	 * the height displayed can be different from the real height.
 	 * 
 	 * @return the width
 	 */
@@ -109,7 +109,7 @@ public abstract class Drawable {
 	 */
 	protected VectorialGraphicsPanel vectorialGraphicsPanel;
 	/**
-	 * The order of drawing. An higher layer is drawn on top of the other.
+	 * The order of drawing. A higher layer is drawn on top of the other.
 	 */
 	protected int layer = 0;
 	/**
@@ -128,7 +128,7 @@ public abstract class Drawable {
 	/**
 	 * Getter for the fixed attribute
 	 * 
-	 * @return if the obejct is fixed
+	 * @return if the object is fixed
 	 */
 	public boolean isFixed() {
 		return fixed;
@@ -179,7 +179,7 @@ public abstract class Drawable {
 	}
 
 	/**
-	 * Constructor of the obejct
+	 * Constructor of the object
 	 * 
 	 * @param vectorialGraphicsPanel
 	 *            the VUI on which the object must be drawn
@@ -226,7 +226,7 @@ public abstract class Drawable {
 	 * Is a given coordinate on screen
 	 * 
 	 * @param x
-	 *            the horitontal position
+	 *            the horizontal position
 	 * @param y
 	 *            the vertical position
 	 * @return true if the point is on the screen
@@ -236,7 +236,7 @@ public abstract class Drawable {
 	}
 
 	/**
-	 * Method that must be overrided to draw
+	 * Method that must be overridden to draw
 	 * 
 	 * @param graphics
 	 *            the Graphics2D object
@@ -253,8 +253,7 @@ public abstract class Drawable {
 
 	/**
 	 * Set the associated VUI
-	 * 
-	 * @param vectorialUI
+	 *
 	 */
 	public void setPanel(VectorialGraphicsPanel vectorialUI) {
 		vectorialGraphicsPanel = vectorialUI;
@@ -321,7 +320,6 @@ public abstract class Drawable {
 
 	/**
 	 * 
-	 * @param color
 	 * @return the object for chained methods
 	 */
 	public Drawable setColor(Color color) {
@@ -334,8 +332,6 @@ public abstract class Drawable {
 
 	/**
 	 * 
-	 * @param dx
-	 * @param dy
 	 * @return the object for chained methods
 	 */
 	public Drawable move(double dx, double dy) {
@@ -366,16 +362,14 @@ public abstract class Drawable {
 	}
 
 	/**
-	 * 
-	 * @return
+	 *
 	 */
 	public Drawable hide() {
 		return this.setVisible(false);
 	}
 
 	/**
-	 * 
-	 * @return
+	 *
 	 */
 	public boolean isVisible() {
 		return visible;
@@ -383,7 +377,6 @@ public abstract class Drawable {
 
 	/**
 	 * 
-	 * @param visible
 	 * @return the object for chained methods
 	 */
 	public Drawable setVisible(boolean visible) {

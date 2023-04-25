@@ -1,6 +1,7 @@
 package fr.irit.smac.amak;
 
 import fr.irit.smac.amak.scheduling.Schedulable;
+import fr.irit.smac.amak.scheduling.SchedulableExecutionException;
 import lombok.Getter;
 
 import java.util.*;
@@ -65,7 +66,6 @@ public class Amas<E extends Environment> implements Schedulable {
 		this.onInitialConfiguration();
 		this.executionPolicy = executionPolicy;
 		this.onInitialAgentsCreation();
-
 		addPendingAgents();
 		this.onReady();
 	}

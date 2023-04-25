@@ -1,4 +1,4 @@
-package fr.irit.smac.amak;
+package fr.irit.smac.amak.messaging;
 
 import java.util.Optional;
 import java.util.concurrent.ConcurrentLinkedQueue;

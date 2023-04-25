@@ -1,5 +1,6 @@
 package fr.irit.smac.amak
 
+import fr.irit.smac.amak.scheduling.SchedulableExecutionException
 import spock.lang.Specification
 import spock.lang.Timeout
 

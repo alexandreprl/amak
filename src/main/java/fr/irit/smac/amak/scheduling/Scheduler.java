@@ -1,6 +1,5 @@
 package fr.irit.smac.amak.scheduling;
 
-import fr.irit.smac.amak.SchedulableExecutionException;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -72,7 +71,6 @@ public class Scheduler implements Runnable {
 	 * running
 	 *
 	 * @param i the delay between two cycles
-	 * @return
 	 */
 	public Future<?> startWithSleep(int i) {
 		sleep = i;
@@ -89,7 +87,6 @@ public class Scheduler implements Runnable {
 	/**
 	 * Start (or continue) with no delay between cycles
 	 *
-	 * @return
 	 */
 	public Future<?> start() {
 		return startWithSleep(0);

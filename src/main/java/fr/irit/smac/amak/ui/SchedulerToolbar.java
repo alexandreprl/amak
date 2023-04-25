@@ -16,10 +16,6 @@ import javax.swing.SwingConstants;
  *
  */
 public class SchedulerToolbar extends JToolBar {
-	/**
-	 * Unique ID meant to handle serialization correctly
-	 */
-	private static final long serialVersionUID = 2152445838931621997L;
 
 	/**
 	 * The slider which controls the speed
@@ -29,12 +25,12 @@ public class SchedulerToolbar extends JToolBar {
 	/**
 	 * The scheduler to which the toolbar is associated
 	 */
-	private Scheduler scheduler;
+	private final Scheduler scheduler;
 
 	/**
 	 * The title of the toolbar
 	 */
-	private String title;
+	private final String title;
 
 	/**
 	 * Constructor of the toolbar
@@ -52,26 +48,13 @@ public class SchedulerToolbar extends JToolBar {
 		this.scheduler.addOnChange(s -> {
 			if (s.isRunning()) {
 				switch (s.getSleep()) {
-				case 1000:
-					getSlider().setValue(2);
-					break;
-				case 100:
-					getSlider().setValue(3);
-					break;
-				case 20:
-					getSlider().setValue(4);
-					break;
-				case 10:
-					getSlider().setValue(5);
-					break;
-				case 2:
-					getSlider().setValue(6);
-					break;
-				case 0:
-					getSlider().setValue(7);
-					break;
-				default:
-					getSlider().setValue(1);
+					case 1000 -> getSlider().setValue(2);
+					case 100 -> getSlider().setValue(3);
+					case 20 -> getSlider().setValue(4);
+					case 10 -> getSlider().setValue(5);
+					case 2 -> getSlider().setValue(6);
+					case 0 -> getSlider().setValue(7);
+					default -> getSlider().setValue(1);
 				}
 			} else {
 				getSlider().setValue(1);
@@ -108,31 +91,14 @@ public class SchedulerToolbar extends JToolBar {
 			runController.setPaintLabels(true);
 			runController.addChangeListener(l -> {
 				switch (runController.getValue()) {
-				case 0:
-					scheduler.step();
-					break;
-				case 2:
-					scheduler.startWithSleep(1000);
-					break;
-				case 3:
-					scheduler.startWithSleep(100);
-					break;
-				case 4:
-					scheduler.startWithSleep(20);
-					break;
-				case 5:
-					scheduler.startWithSleep(10);
-					break;
-				case 6:
-					scheduler.startWithSleep(2);
-					break;
-				case 7:
-					scheduler.startWithSleep(0);
-					break;
-				case 1:
-				default:
-					scheduler.stop();
-					break;
+					case 0 -> scheduler.step();
+					case 2 -> scheduler.startWithSleep(1000);
+					case 3 -> scheduler.startWithSleep(100);
+					case 4 -> scheduler.startWithSleep(20);
+					case 5 -> scheduler.startWithSleep(10);
+					case 6 -> scheduler.startWithSleep(2);
+					case 7 -> scheduler.startWithSleep(0);
+					default -> scheduler.stop();
 				}
 			});
 		}

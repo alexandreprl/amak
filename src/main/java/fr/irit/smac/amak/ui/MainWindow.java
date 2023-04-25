@@ -27,28 +27,24 @@ public class MainWindow {
 	/**
 	 * The main frame
 	 */
-	private JFrame mainFrame;
+	private final JFrame mainFrame;
 	/**
 	 * The panel which contains the toolbar
 	 */
-	private JPanel toolbarPanel;
+	private final JPanel toolbarPanel;
 	/**
 	 * The main panel is split in two panels. This allows to dynamically resize
 	 * these two panels.
 	 */
-	private JSplitPane splitPane;
-	/**
-	 * The menu bar of the window
-	 */
-	private JMenuBar menuBar;
+	private final JSplitPane splitPane;
 	/**
 	 * The option menu
 	 */
-	private JMenu optionsMenu;
+	private final JMenu optionsMenu;
 	/**
 	 * The panel in which panels with tab can be added
 	 */
-	private JTabbedPane tabbedPanel;
+	private final JTabbedPane tabbedPanel;
 	/**
 	 * The listener of the window here to detect the closing of the window and
 	 * execute specific actions.
@@ -58,7 +54,7 @@ public class MainWindow {
 	/**
 	 * Lock present to avoid the creation of a MainWindow while another is creating
 	 */
-	private static ReentrantLock instanceLock = new ReentrantLock();
+	private static final ReentrantLock instanceLock = new ReentrantLock();
 
 	/**
 	 * Create the frame.
@@ -79,7 +75,7 @@ public class MainWindow {
 		tabbedPanel = new JTabbedPane();
 		splitPane.setRightComponent(tabbedPanel);
 
-		menuBar = new JMenuBar();
+		JMenuBar menuBar = new JMenuBar();
 		optionsMenu = new JMenu("Options");
 		menuBar.add(optionsMenu);
 		mainFrame.getContentPane().add(menuBar, BorderLayout.NORTH);

@@ -1,5 +1,6 @@
-package fr.irit.smac.amak;
+package fr.irit.smac.amak.messaging;
 
+import fr.irit.smac.amak.Agent;
 import lombok.Getter;
 
 public class Message {
