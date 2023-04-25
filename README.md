@@ -46,9 +46,11 @@ repositories {
 ```
 dependencies {
 
-    // Add the two following lines
+    // Add the 4 following lines
     // AMAK
     implementation 'org.bitbucket.perlesa:amak:v3-SNAPSHOT'
+    // LxPlot
+    implementation 'org.bitbucket.perlesa:lx-plot:main-SNAPSHOT'
     
     ...
 }
@@ -231,6 +233,11 @@ public class Philosopher extends Agent<MyAMAS, Table> {
 		}
 
 		state = nextState;
+	}
+
+	@Override
+	protected void onAgentCycleEnd() {
+		LxPlot.getChart("Eaten Pastas", ChartType.BAR).add(id, eatenPastas);
 	}
 
 	@Override
