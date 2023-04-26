@@ -48,9 +48,9 @@ dependencies {
 
     // Add the 4 following lines
     // AMAK
-    implementation 'org.bitbucket.perlesa:amak:v3-SNAPSHOT'
+    implementation 'com.github.alexandreprl:amak:v3-SNAPSHOT'
     // LxPlot
-    implementation 'org.bitbucket.perlesa:lx-plot:main-SNAPSHOT'
+    implementation 'com.github.alexandreprl:lxplot:main-SNAPSHOT'
     
     ...
 }
