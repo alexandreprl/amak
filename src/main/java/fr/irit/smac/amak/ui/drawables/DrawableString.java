@@ -14,6 +14,8 @@ public class DrawableString extends Drawable {
 
 	@Override
 	public void _onDraw(Graphics2D graphics) {
+		if (text == null)
+			return;
 		graphics.setColor(color);
 		graphics.drawString(text, (int)left(), (int)top());
 	}
