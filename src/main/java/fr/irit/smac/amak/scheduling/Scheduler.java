@@ -150,7 +150,7 @@ public class Scheduler implements Runnable {
 					mustStop |= schedulable.stopCondition();
 				}
 			} while (state == SchedulerState.RUNNING && !mustStop);
-		} catch (InterruptedException | SchedulableExecutionException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		setState(SchedulerState.IDLE);

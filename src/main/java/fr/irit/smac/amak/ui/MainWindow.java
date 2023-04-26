@@ -52,11 +52,6 @@ public class MainWindow {
 	private final MainWindowListener mainWindowListener;
 
 	/**
-	 * Lock present to avoid the creation of a MainWindow while another is creating
-	 */
-	private static final ReentrantLock instanceLock = new ReentrantLock();
-
-	/**
 	 * Create the frame.
 	 */
 	public MainWindow() {
@@ -75,6 +70,14 @@ public class MainWindow {
 		tabbedPanel = new JTabbedPane();
 		splitPane.setRightComponent(tabbedPanel);
 
+		optionsMenu = setupMenu();
+
+		mainFrame.setVisible(true);
+
+	}
+
+	private JMenu setupMenu() {
+		final JMenu optionsMenu;
 		JMenuBar menuBar = new JMenuBar();
 		optionsMenu = new JMenu("Options");
 		menuBar.add(optionsMenu);
@@ -85,9 +88,7 @@ public class MainWindow {
 		optionsMenu.add(menuItem);
 
 		menuBar.add(new JMenu("AMAK v" + Information.VERSION));
-
-		mainFrame.setVisible(true);
-
+		return optionsMenu;
 	}
 
 	/**
@@ -156,18 +157,6 @@ public class MainWindow {
 
 	public void setLeftPanel(JPanel panel) {
 		splitPane.setLeftComponent(panel);
-		mainFrame.pack();
-		mainFrame.setVisible(true);
-	}
-
-	/**
-	 * Set a panel to the right
-	 * 
-	 * @param panel
-	 *            The panel
-	 */
-	public void setRightPanel(JPanel panel) {
-		splitPane.setRightComponent(panel);
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 	}

@@ -198,6 +198,7 @@ public abstract class Drawable {
 		y = dy;
 		this.width = width;
 		this.height = height;
+		this.vectorialGraphicsPanel.add(this);
 	}
 
 	/**
@@ -210,6 +211,9 @@ public abstract class Drawable {
 		if (isVisible() && isOnScreen()) {
 			_onDraw(graphics);
 		}
+	}
+	public void remove() {
+		vectorialGraphicsPanel.remove(this);
 	}
 
 	/**

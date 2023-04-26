@@ -314,6 +314,13 @@ public class VectorialGraphicsPanel extends JPanel {
 		updateCanvas();
 	}
 
+	public void remove(Drawable d) {
+		drawablesLock.lock();
+		drawables.remove(d);
+		drawablesLock.unlock();
+		updateCanvas();
+	}
+
 	/**
 	 * Refresh the canvas
 	 */
@@ -380,40 +387,6 @@ public class VectorialGraphicsPanel extends JPanel {
 	}
 
 	/**
-	 * Create a point and start rendering it
-	 * 
-	 * @param dx
-	 *            the x coordinate
-	 * @param dy
-	 *            the y coordinate
-	 * @return the point object
-	 */
-	public DrawablePoint createPoint(double dx, double dy) {
-		DrawablePoint drawablePoint = new DrawablePoint(this, dx, dy);
-		add(drawablePoint);
-		return drawablePoint;
-	}
-
-	/**
-	 * Create a rectangle and start rendering it
-	 * 
-	 * @param x
-	 *            the x coordinate
-	 * @param y
-	 *            the y coordinate
-	 * @param w
-	 *            the width
-	 * @param h
-	 *            the height
-	 * @return the rectangle object
-	 */
-	public DrawableRectangle createRectangle(double x, double y, double w, double h) {
-		DrawableRectangle d = new DrawableRectangle(this, x, y, w, h);
-		add(d);
-		return d;
-	}
-
-	/**
 	 * Set the default configuration of the view
 	 * 
 	 * @param zoom
@@ -430,39 +403,5 @@ public class VectorialGraphicsPanel extends JPanel {
 		this.defaultZoom = zoom;
 		this.defaultWorldCenterX = worldCenterX;
 		this.defaultWorldCenterY = worldCenterY;
-	}
-
-	/**
-	 * Create an image and start rendering it
-	 * 
-	 * @param dx
-	 *            the x coordinate
-	 * @param dy
-	 *            the y coordinate
-	 * @param filename
-	 *            the filename of the image
-	 * @return the created image
-	 */
-	public DrawableImage createImage(double dx, double dy, String filename) {
-		DrawableImage image = new DrawableImage(this, dx, dy, filename);
-		add(image);
-		return image;
-	}
-
-	/**
-	 * Create a string and start rendering it
-	 * 
-	 * @param dx
-	 *            the x coordinate
-	 * @param dy
-	 *            the y coordinate
-	 * @param text
-	 *            the text to display
-	 * @return the created string
-	 */
-	public DrawableString createString(int dx, int dy, String text) {
-		DrawableString ds = new DrawableString(this, dx, dy, text);
-		add(ds);
-		return ds;
 	}
 }
