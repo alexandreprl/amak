@@ -46,6 +46,8 @@ public class DrawableImage extends Drawable {
 
 	@Override
 	public void _onDraw(Graphics2D graphics) {
+		if (this.image == null)
+			return;
 		AffineTransform identity = new AffineTransform();
 		AffineTransform trans = new AffineTransform();
 		trans.setTransform(identity);
