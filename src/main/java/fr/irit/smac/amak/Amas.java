@@ -53,6 +53,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	/**
 	 * Number of cycles executed by the system
 	 */
+	@Getter
 	protected int cyclesCount;
 
 	/**
@@ -110,6 +111,9 @@ public class Amas<E extends Environment> implements Schedulable {
 		}
 	}
 
+	public <T extends Agent<?, E>> List<T> getAgents(Class<T> tClass) {
+		return (List<T>) agents.stream().filter(a->tClass.isInstance(a)).toList();
+	}
 	/**
 	 * Cycle of the system
 	 */

@@ -6,6 +6,8 @@ This repository contains a framework made to facilitate the development of multi
 
 The previous version of AMAK is still accessible on branch **v2**
 
+An example can be found at : https://github.com/alexandreprl/amak-example-ants
+
 # General #
 
 Amak is a framework aiming at facilitating the development of multi-agent systems.

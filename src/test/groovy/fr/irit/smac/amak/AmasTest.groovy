@@ -28,4 +28,28 @@ class AmasTest extends Specification {
 		where:
 		executionPolicy << [Amas.ExecutionPolicy.ONE_PHASE, Amas.ExecutionPolicy.TWO_PHASES]
 	}
+	def "getAgents"() {
+		given:
+		def amas = new Amas(Mock(Environment), 1, Amas.ExecutionPolicy.ONE_PHASE)
+		new Agent1(amas)
+		new Agent1(amas)
+		new Agent2(amas)
+
+		amas.cycle()
+
+		expect:
+		amas.getAgents(Agent1).size() == 2
+		amas.getAgents(Agent2).size() == 1
+	}
+
+	class Agent1 extends Agent {
+		protected Agent1(Amas amas) {
+			super(amas)
+		}
+	}
+	class Agent2 extends Agent {
+		protected Agent2(Amas amas) {
+			super(amas)
+		}
+	}
 }
