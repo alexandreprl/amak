@@ -62,7 +62,10 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * @param environment Environment of the system
 	 */
 	public Amas(E environment, int allowedSimultaneousAgentsExecution, ExecutionPolicy executionPolicy) {
-		this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(allowedSimultaneousAgentsExecution);
+		if (allowedSimultaneousAgentsExecution>1)
+			this.executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(allowedSimultaneousAgentsExecution);
+		else
+			this.executor = null;
 		this.environment = environment;
 		this.executionPolicy = executionPolicy;
 		this.onInitialConfiguration();
@@ -127,7 +130,7 @@ public class Amas<E extends Environment> implements Schedulable {
 		var caughtExceptions = new ConcurrentLinkedQueue<RuntimeException>();
 		if (executionPolicy == ExecutionPolicy.ONE_PHASE) {
 			for (Agent<?, E> agent : agents) {
-				executor.execute(() -> {
+				Runnable action = () -> {
 					try {
 						agent.cycle();
 					} catch (RuntimeException exception) {
@@ -136,7 +139,11 @@ public class Amas<E extends Environment> implements Schedulable {
 						perceptionPhaseSemaphore.release();
 						decisionAndActionPhasesSemaphore.release();
 					}
-				});
+				};
+				if (executor != null)
+					executor.execute(action);
+				else
+					action.run();
 			}
 			perceptionPhaseSemaphore.acquire(agents.size());
 			decisionAndActionPhasesSemaphore.acquire(agents.size());
@@ -144,7 +151,7 @@ public class Amas<E extends Environment> implements Schedulable {
 				throw new SchedulableExecutionException(caughtExceptions.toArray(new RuntimeException[0]));
 		} else if (executionPolicy == ExecutionPolicy.TWO_PHASES) {
 			for (Agent<?, E> agent : agents) {
-				executor.execute(() -> {
+				Runnable action = () -> {
 					try {
 						agent.phase1();
 					} catch (RuntimeException exception) {
@@ -152,13 +159,17 @@ public class Amas<E extends Environment> implements Schedulable {
 					} finally {
 						perceptionPhaseSemaphore.release();
 					}
-				});
+				};
+				if (executor != null)
+					executor.execute(action);
+				else
+					action.run();
 			}
 			perceptionPhaseSemaphore.acquire(agents.size());
 			if (!caughtExceptions.isEmpty())
 				throw new SchedulableExecutionException(caughtExceptions.toArray(new RuntimeException[0]));
 			for (Agent<?, E> agent : agents) {
-				executor.execute(() -> {
+				Runnable action = () -> {
 					try {
 						agent.phase2();
 					} catch (RuntimeException exception) {
@@ -166,7 +177,11 @@ public class Amas<E extends Environment> implements Schedulable {
 					} finally {
 						decisionAndActionPhasesSemaphore.release();
 					}
-				});
+				};
+				if (executor != null)
+					executor.execute(action);
+				else
+					action.run();
 			}
 			decisionAndActionPhasesSemaphore.acquire(agents.size());
 			if (!caughtExceptions.isEmpty())

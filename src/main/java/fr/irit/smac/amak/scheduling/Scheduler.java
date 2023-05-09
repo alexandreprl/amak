@@ -3,11 +3,9 @@ package fr.irit.smac.amak.scheduling;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.lang.module.ModuleReader;
 import java.util.*;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
+import java.util.concurrent.*;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.Consumer;
 
@@ -53,12 +51,13 @@ public class Scheduler implements Runnable {
 	 */
 	@Setter
 	private Consumer<Scheduler> onStop;
+	private Semaphore runSemaphore = new Semaphore(0);
 
 	/**
-     * Constructor which set the initial state
-     *
-     * @param schedulables the corresponding schedulables
-     */
+	 * Constructor which set the initial state
+	 *
+	 * @param schedulables the corresponding schedulables
+	 */
 	public Scheduler(Schedulable... schedulables) {
 		this(Executors.newSingleThreadExecutor(), schedulables);
 	}
@@ -67,7 +66,7 @@ public class Scheduler implements Runnable {
 	 * Constructor which set the initial state
 	 *
 	 * @param executorService the thread executor for the scheduler
-	 * @param schedulables the corresponding schedulables
+	 * @param schedulables    the corresponding schedulables
 	 */
 	public Scheduler(ExecutorService executorService, Schedulable... schedulables) {
 		for (Schedulable schedulable : schedulables) {
@@ -94,10 +93,20 @@ public class Scheduler implements Runnable {
 		stateLock.unlock();
 		return task;
 	}
+	public void startWithSleepSync(int i) {
+		sleep = i;
+		stateLock.lock();
+		Future<?> task = CompletableFuture.completedFuture(0L);
+		if (state == SchedulerState.IDLE) {
+			setState(SchedulerState.RUNNING);
+		stateLock.unlock();
+			run();
+		}else
+			stateLock.unlock();
+	}
 
 	/**
 	 * Start (or continue) with no delay between cycles
-	 *
 	 */
 	public Future<?> start() {
 		return startWithSleep(0);
@@ -161,6 +170,19 @@ public class Scheduler implements Runnable {
 		treatPendingSchedulables();
 		if (onStop != null)
 			onStop.accept(this);
+
+		runSemaphore.release();
+	}
+
+	/**
+	 * When a scheduler is started, it is executed in a different thread. Use this method if you need to wait for the process to be finished.
+	 */
+	public void waitUntilStop() {
+		try {
+			runSemaphore.acquire();
+		} catch (InterruptedException e) {
+			throw new RuntimeException(e);
+		}
 	}
 
 	private void setState(SchedulerState newState) {
