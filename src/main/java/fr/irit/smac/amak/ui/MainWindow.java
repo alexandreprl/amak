@@ -138,12 +138,22 @@ public class MainWindow {
 
 	/**
 	 * Add a toolBar
-	 * 
+	 *
 	 * @param toolbar
 	 *            The ToolBar.
 	 */
 	public void addToolbar(JToolBar toolbar) {
 		toolbarPanel.add(toolbar);
+		mainFrame.pack();
+		mainFrame.setVisible(true);
+	}
+
+	/**
+	 * Remove all toolbars
+	 *
+	 */
+	public void removeToolbars() {
+		toolbarPanel.removeAll();
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 	}
