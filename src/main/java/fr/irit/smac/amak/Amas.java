@@ -55,6 +55,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 */
 	@Getter
 	protected int cyclesCount;
+	private boolean initialized = false;
 
 	/**
 	 * Constructor of the MAS
@@ -69,9 +70,6 @@ public class Amas<E extends Environment> implements Schedulable {
 		this.environment = environment;
 		this.executionPolicy = executionPolicy;
 		this.onInitialConfiguration();
-		this.onInitialAgentsCreation();
-		addPendingAgents();
-		this.onReady();
 	}
 
 	/**
@@ -121,6 +119,12 @@ public class Amas<E extends Environment> implements Schedulable {
 	 * Cycle of the system
 	 */
 	public final void cycle() throws InterruptedException, SchedulableExecutionException {
+		if (!initialized) {
+			this.onInitialAgentsCreation();
+			addPendingAgents();
+			this.onReady();
+			initialized = true;
+		}
 		cyclesCount++;
 		onSystemCycleBegin();
 

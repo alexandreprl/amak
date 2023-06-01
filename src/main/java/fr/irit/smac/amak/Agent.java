@@ -146,19 +146,19 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	}
 
 	/**
+	 * This method is called before the agent gets destroyed
+	 */
+	@SuppressWarnings("EmptyMethod")
+	protected void onDestroy() {
+		// To be implemented
+	}
+
+	/**
 	 * Called by the framework when all initial agents have been created and are
 	 * almost ready to be started
 	 */
 	protected final void onBeforeReady() {
 		criticality = computeCriticality();
-	}
-
-	/**
-	 * Called before all agents are created
-	 */
-	@SuppressWarnings("EmptyMethod")
-	protected void onInitialization() {
-		// To be implemented
 	}
 
 	/**
@@ -245,6 +245,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * Remove the agent from the system
 	 */
 	public void destroy() {
+		onDestroy();
 		amas.removeAgent(this);
 	}
 

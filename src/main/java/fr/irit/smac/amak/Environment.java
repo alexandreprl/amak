@@ -12,16 +12,7 @@ public abstract class Environment implements Schedulable {
 	 * Random object common to the amas
 	 */
 	private Random random = new Random();
-
-	/**
-	 * Constructor
-	 *
-	 * @param params The parameters to initialize the environment
-	 */
-	protected Environment() {
-		onInitialization();
-		onInitialEntitiesCreation();
-	}
+	private boolean initialized = false;
 
 	/**
 	 * Set the seed for the common random object. This method should be called at
@@ -35,6 +26,10 @@ public abstract class Environment implements Schedulable {
 
 	@Override
 	public final void cycle() {
+		if (!initialized) {
+			onReady();
+			initialized = true;
+		}
 		onCycle();
 	}
 
@@ -56,18 +51,10 @@ public abstract class Environment implements Schedulable {
 	}
 
 	/**
-	 * This method is called during the initialization process of the environment
+	 * This method is called once before the first cycle
 	 */
 	@SuppressWarnings("EmptyMethod")
-	public void onInitialization() {
-	}
-
-	/**
-	 * This method is called after the initialization process of the environment to
-	 * create entities
-	 */
-	@SuppressWarnings("EmptyMethod")
-	public void onInitialEntitiesCreation() {
+	public void onReady() {
 	}
 
 	/**
