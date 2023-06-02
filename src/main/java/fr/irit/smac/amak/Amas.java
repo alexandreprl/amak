@@ -94,7 +94,7 @@ public class Amas<E extends Environment> implements Schedulable {
 	 *
 	 * @param agent the agent to add to the system
 	 */
-	void addAgent(Agent<?, E> agent) {
+	protected void addAgent(Agent<?, E> agent) {
 		synchronized (agentsPendingAddition) {
 			agentsPendingAddition.add(agent);
 		}

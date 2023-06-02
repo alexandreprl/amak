@@ -57,7 +57,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 		this.amas = Objects.requireNonNull(amas);
 		neighborhood = new ArrayList<>();
 		neighborhood.add(this);
-		this.amas.addAgent(this);
+		amas.addAgent(this);
 	}
 
 	/**
@@ -260,6 +260,10 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	@Override
 	public String toString() {
 		return String.format("Agent/%d/", id);
+	}
+
+	public Mailbox getMailbox() {
+		return mailbox;
 	}
 
 	/**
