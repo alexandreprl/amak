@@ -1,5 +1,6 @@
 package fr.irit.smac.amak;
 
+import fr.irit.smac.amak.messaging.Mailbox;
 import lombok.Getter;
 
 import java.util.*;
@@ -40,6 +41,10 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 * Last calculated criticality of the agent
 	 */
 	private double criticality;
+	/**
+	 * The mailbox used to communicate with the agent
+	 */
+	protected final Mailbox mailbox = new Mailbox();
 
 	/**
 	 * The constructor automatically add the agent to the corresponding amas and

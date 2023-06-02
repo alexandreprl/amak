@@ -3,10 +3,10 @@ package fr.irit.smac.amak.messaging
 import fr.irit.smac.amak.Agent
 import spock.lang.Specification
 
-class MailboxTest extends Specification {
+class MailStackTest extends Specification {
 	def "When a mailbox is created, then it should contain no message"() {
 		given:
-		def mailbox = new Mailbox<TestMessage>()
+		def mailbox = new MailStack<TestMessage>()
 
 		expect:
 		mailbox.isEmpty()
@@ -14,7 +14,7 @@ class MailboxTest extends Specification {
 	}
 	def "When trying to retrieve a message on an empty mailbox, then an empty response should be returned"() {
 		given:
-		def mailbox = new Mailbox<TestMessage>()
+		def mailbox = new MailStack<TestMessage>()
 
 		when:
 		def receivedMessage = mailbox.retrieve()
@@ -25,11 +25,11 @@ class MailboxTest extends Specification {
 
 	def "When a message is sent, then the mailbox should contain one message"() {
 		given:
-		def mailbox = new Mailbox<TestMessage>()
+		def mailbox = new MailStack<TestMessage>()
 		def testMessage = new TestMessage(null, 123)
 
 		when:
-		mailbox.send(testMessage)
+		mailbox.receive(testMessage)
 
 		then:
 		!mailbox.isEmpty()
@@ -38,10 +38,10 @@ class MailboxTest extends Specification {
 
 	def "When a message is sent, then the message should be returned"() {
 		given:
-		def mailbox = new Mailbox<TestMessage>()
+		def mailbox = new MailStack<TestMessage>()
 		def sender = Mock(Agent)
 		def testMessage = new TestMessage(sender, 123)
-		mailbox.send(testMessage)
+		mailbox.receive(testMessage)
 
 		when:
 		def receivedMessage = mailbox.retrieve()

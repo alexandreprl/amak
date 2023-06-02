@@ -1,26 +1,26 @@
 package fr.irit.smac.amak.messaging;
 
+import java.util.Map;
 import java.util.Optional;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ConcurrentHashMap;
 
-public class Mailbox<T extends Message> {
-	private final ConcurrentLinkedQueue<T> messages = new ConcurrentLinkedQueue<>();
-
-	public void send(T message) {
-		messages.add(message);
+public class Mailbox {
+	private Map<Class<? extends Message>, MailStack> mailStacks = new ConcurrentHashMap<>();
+	public void receive(Message message) {
+		var mailStack = mailStacks.computeIfAbsent(message.getClass(), messageClass -> new MailStack());
+		mailStack.receive(message);
+	}
+	public<T extends Message> Optional<T> read(Class<T> tClass) {
+		var mailStack = mailStacks.get(tClass);
+		if (mailStack != null)
+			return mailStack.retrieve();
+		return Optional.empty();
 	}
 
-	public boolean isEmpty() {
-		return messages.isEmpty();
-	}
-	public int size() {
-		return messages.size();
-	}
-
-	public Optional<T> retrieve() {
-		var message = messages.poll();
-		if (message == null)
-			return Optional.empty();
-		return Optional.of(message);
+	public boolean hasMessageOfType(Class<? extends Message> messageClass) {
+		var mailStack = mailStacks.get(messageClass);
+		if (mailStack != null)
+			return !mailStack.isEmpty();
+		return false;
 	}
 }
