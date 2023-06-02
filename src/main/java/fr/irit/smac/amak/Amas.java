@@ -69,7 +69,6 @@ public class Amas<E extends Environment> implements Schedulable {
 			this.executor = null;
 		this.environment = environment;
 		this.executionPolicy = executionPolicy;
-		this.onInitialConfiguration();
 	}
 
 	/**
@@ -210,15 +209,6 @@ public class Amas<E extends Environment> implements Schedulable {
 			while (!agentsPendingRemoval.isEmpty())
 				agents.remove(agentsPendingRemoval.poll());
 		}
-	}
-
-	/**
-	 * This method is called at the very beginning of the AMAS creation. Any
-	 * configuration should be made here.
-	 */
-	@SuppressWarnings("EmptyMethod")
-	protected void onInitialConfiguration() {
-		// To be implemented
 	}
 
 	/**
