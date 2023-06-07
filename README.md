@@ -28,13 +28,13 @@ In this quick start example, we will do the first steps aiming at creating an ad
 
 ## Create the gradle project ##
 
-Click on File -> New -> Project
-Enter a name : "Philosopher's dinner"
-Pick the language : Java
-Pick the build system : Gradle
-Pick the JDK : 17 (recommended)
-Pick the Gradle DSL : Groovy
-Click on **Create**
+- Click on File -> New -> Project
+- Enter a name : "Philosopher's dinner"
+- Pick the language : Java
+- Pick the build system : Gradle
+- Pick the JDK : 17 (recommended)
+- Pick the Gradle DSL : Groovy
+- Click on **Create**
 
 ## Set up the Amak framework ##
 
@@ -45,19 +45,18 @@ Click on **Create**
 repositories {
     ...
     // Add the following line
-    maven { url "https://jitpack.io" }
 }
 ```
 
-* Add AMAK to the dependencies
+* Add AMAK and LxPlot to the dependencies
 ```
 dependencies {
 
     // Add the 4 following lines
     // AMAK
-    implementation 'com.github.alexandreprl:amak:v3-SNAPSHOT'
+    implementation 'com.github.alexandreprl:amak:3.1.0'
     // LxPlot
-    implementation 'com.github.alexandreprl:lxplot:main-SNAPSHOT'
+    implementation 'com.github.alexandreprl:lxplot:2.0.0'
     
     ...
 }
@@ -107,15 +106,12 @@ A table is initialized with 10 forks.
 
 ```
 #!Java
+import fr.irit.smac.amak.Environment;
 
 public class Table extends Environment {
-	private Fork[] forks;
+	private final Fork[] forks;
 
 	public Table() {
-	}
-
-	@Override
-	public void onInitialization() {
 		// Set 10 forks on the table
 		forks = new Fork[10];
 		for (int i = 0; i < forks.length; i++)
@@ -138,10 +134,12 @@ During the initialization, we want to create a philosopher per fork and let them
 
 ```
 #!Java
+import fr.irit.smac.amak.Amas;
+import fr.irit.smac.amak.scheduling.Scheduler;
 
 public class MyAMAS extends Amas<Table> {
 	public MyAMAS(Table env) {
-		super(env, 1, ExecutionPolicy.ONE_PHASE);
+		super(env, 1, Amas.ExecutionPolicy.ONE_PHASE);
 	}
 
 	@Override
@@ -174,6 +172,11 @@ Create a class "Philosopher" which extends the class Agent<MyAMAS, Table>.
 
 ```
 #!Java
+import fr.irit.smac.amak.Agent;
+import fr.irit.smac.lxplot.LxPlot;
+import fr.irit.smac.lxplot.commons.ChartType;
+
+import java.util.Random;
 
 public class Philosopher extends Agent<MyAMAS, Table> {
 
