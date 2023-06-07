@@ -1,12 +1,17 @@
-# AMAK Version 3.0 - Major update 2023 #
+# AMAK Version 3 - Major update 2023 #
 
 This repository contains a framework made to facilitate the development of multi-agent system.
 
-**Note: Version 3.0 introduces a lot of breaking changes if you are having trouble migrating your project or creating a new one, do not hesitate to contact me.**
+**Note: Version 3 introduces a lot of breaking changes if you are having trouble migrating your project or creating a new one, do not hesitate to contact me.**
 
 The previous version of AMAK is still accessible on branch **v2**
 
-An example can be found at : https://github.com/alexandreprl/amak-example-ants
+3 examples are available:
+- **Philosopher's dinner**: Follow the quick start section below
+- **Randomly moving ants** at https://github.com/alexandreprl/amak-example-ants
+- **Drone exercise** at https://github.com/alexandreprl/amak-exercise-drone
+
+An article is available at https://www.researchgate.net/publication/325851056_AMAK_-_A_Framework_for_Developing_Robust_and_Open_Adaptive_Multi-agent_Systems
 
 # General #
 
