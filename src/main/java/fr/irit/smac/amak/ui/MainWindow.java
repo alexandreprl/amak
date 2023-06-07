@@ -1,6 +1,8 @@
 package fr.irit.smac.amak.ui;
 
 import fr.irit.smac.amak.Information;
+import fr.irit.smac.amak.scheduling.Schedulable;
+import fr.irit.smac.amak.scheduling.SchedulableExecutionException;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -23,7 +25,7 @@ import javax.swing.JToolBar;
  * toolbar panel and various spaces for panels
  *
  */
-public class MainWindow {
+public class MainWindow implements Schedulable {
 	/**
 	 * The main frame
 	 */
@@ -183,5 +185,28 @@ public class MainWindow {
 		tabbedPanel.addTab(title, panel);
 		mainFrame.pack();
 		mainFrame.setVisible(true);
+	}
+
+	@Override
+	@SuppressWarnings("EmptyMethod")
+	public void cycle() throws InterruptedException, SchedulableExecutionException {
+	}
+
+	@Override
+	@SuppressWarnings("EmptyMethod")
+	public boolean stopCondition() {
+		return false;
+	}
+
+	@Override
+	@SuppressWarnings("EmptyMethod")
+	public void onSchedulingStarts() {
+
+	}
+
+	@Override
+	@SuppressWarnings("EmptyMethod")
+	public void onSchedulingStops() {
+
 	}
 }
