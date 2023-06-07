@@ -16,6 +16,7 @@ public class DrawableImage extends Drawable {
 
 	private BufferedImage image;
 	private static final Map<String, BufferedImage> loadedImages = new HashMap<>();
+	private String lastFilename;
 
 	public DrawableImage(VectorialGraphicsPanel vectorialGraphicsPanel, double dx, double dy, String filename) {
 		super(vectorialGraphicsPanel, dx, dy, 0, 0);
@@ -31,6 +32,9 @@ public class DrawableImage extends Drawable {
 	}
 
 	public void setFilename(String filename) {
+		if (filename.equals(lastFilename))
+			return;
+		lastFilename = filename;
 		try {
 			this.image = loadByFilename(filename);
 		} catch (IOException e) {
