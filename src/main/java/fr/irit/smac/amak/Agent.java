@@ -3,6 +3,7 @@ package fr.irit.smac.amak;
 import fr.irit.smac.amak.messaging.Mailbox;
 import lombok.Getter;
 
+import java.text.MessageFormat;
 import java.util.*;
 import java.util.Map.Entry;
 
@@ -259,7 +260,7 @@ public abstract class Agent<A extends Amas<E>, E extends Environment> {
 	 */
 	@Override
 	public String toString() {
-		return String.format("Agent/%d/", id);
+		return MessageFormat.format("{0}/{1}/", this.getClass().getSimpleName(), id);
 	}
 
 	public Mailbox getMailbox() {
