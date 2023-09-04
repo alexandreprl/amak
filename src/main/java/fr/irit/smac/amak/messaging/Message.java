@@ -3,11 +3,11 @@ package fr.irit.smac.amak.messaging;
 import fr.irit.smac.amak.Agent;
 import lombok.Getter;
 
-public class Message {
+public class Message<SenderType extends Agent> {
 	@Getter
-	private final Agent sender;
+	private final SenderType sender;
 
-	public Message(Agent sender) {
+	public Message(SenderType sender) {
 		this.sender = sender;
 	}
 }
