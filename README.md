@@ -45,6 +45,7 @@ In this quick start example, we will do the first steps aiming at creating an ad
 repositories {
     ...
     // Add the following line
+    maven { url "https://jitpack.io" }
 }
 ```
 
