@@ -6,10 +6,11 @@ This repository contains a framework made to facilitate the development of multi
 
 The previous version of AMAK is still accessible on branch **v2**
 
-3 examples are available:
+4 examples/exercises are available:
 - **Philosopher's dinner**: Follow the quick start section below
 - **Randomly moving ants** at https://github.com/alexandreprl/amak-example-ants
 - **Drone exercise** at https://github.com/alexandreprl/amak-exercise-drone
+- **Transporter robots** at https://github.com/alexandreprl/amak-exercise-transporter-robots
 
 An article is available at https://www.researchgate.net/publication/325851056_AMAK_-_A_Framework_for_Developing_Robust_and_Open_Adaptive_Multi-agent_Systems
 
@@ -29,7 +30,7 @@ In this quick start example, we will do the first steps aiming at creating an ad
 ## Create the gradle project ##
 
 - Click on File -> New -> Project
-- Enter a name : "Philosopher's dinner"
+- Enter a name : "Name of your project"
 - Pick the language : Java
 - Pick the build system : Gradle
 - Pick the JDK : 17 (recommended)
@@ -69,58 +70,20 @@ dependencies {
 
 In order to work, the Amak framework needs a type of environment, a type of agent and a type of multi-agent system.
 
-### Create the resource Fork ###
-
-Create the resource Fork. A fork can be taken or released by a philosopher.
-
-
-```
-#!Java
-
-public class Fork {
-	private Philosopher takenBy;
-
-	public synchronized boolean tryTake(Philosopher asker) {
-		if (takenBy != null)
-			return false;
-		takenBy = asker;
-		return true;
-	}
-
-	public synchronized void release(Philosopher asker) {
-		if (takenBy == asker) {
-			takenBy = null;
-		}
-	}
-
-	public synchronized boolean owned(Philosopher asker) {
-		return takenBy == asker;
-	}
-}
-```
-
 
 ### Create your first environment ###
 
-Create a new class named "Table" which extends the abstract class "Environment".
-A table is initialized with 10 forks.
+Create a new class named "MyEnvironment" which extends the abstract class "Environment".
+
 
 ```
 #!Java
 import fr.irit.smac.amak.Environment;
 
-public class Table extends Environment {
-	private final Fork[] forks;
+public class MyEnvironment extends Environment {
 
-	public Table() {
-		// Set 10 forks on the table
-		forks = new Fork[10];
-		for (int i = 0; i < forks.length; i++)
-			forks[i] = new Fork();
-	}
-
-	public Fork[] getForks() {
-		return forks;
+	public MyEnvironment() {
+		// Setup your environment here
 	}
 }
 ```
@@ -128,47 +91,26 @@ public class Table extends Environment {
 ### Create your multi-agent system ###
 
 Let's call the multi-agent system "MyAMAS".
-Create a class "MyAMAS" which extends the abstract class `Amas<Table>`.
-
-During the initialization, we want to create a philosopher per fork and let them know their neighbors.
-
+Create a class "MyAMAS" which extends the abstract class `Amas<MyEnvironment>`.
 
 ```
 #!Java
 import fr.irit.smac.amak.Amas;
 import fr.irit.smac.amak.scheduling.Scheduler;
 
-public class MyAMAS extends Amas<Table> {
-	public MyAMAS(Table env) {
+public class MyAMAS extends Amas<MyEnvironment> {
+	public MyAMAS(MyEnvironment env) {
 		super(env, 1, Amas.ExecutionPolicy.ONE_PHASE);
 	}
 
 	@Override
 	protected void onInitialAgentsCreation() {
-		Philosopher[] p = new Philosopher[getEnvironment().getForks().length];
-		//Create one agent per fork
-		for (int i = 0; i < getEnvironment().getForks().length - 1; i++) {
-			p[i] = new Philosopher(i, this, getEnvironment().getForks()[i], getEnvironment().getForks()[i + 1]);
-		}
-
-		//Let the last philosopher takes the first fork (round table)
-		p[getEnvironment().getForks().length - 1] = new Philosopher(getEnvironment().getForks().length - 1, this, getEnvironment().getForks()[getEnvironment().getForks().length - 1], getEnvironment().getForks()[0]);
-
-
-		//Add neighborhood
-		for (int i = 1; i < p.length; i++) {
-			p[i].addNeighbor(p[i - 1]);
-			p[i - 1].addNeighbor(p[i]);
-		}
-		p[0].addNeighbor(p[p.length - 1]);
-		p[p.length - 1].addNeighbor(p[0]);
+		// Instantiate your agents here
 	}
 }
 ```
 
 ### Create your agent ###
-
-Create a class "Philosopher" which extends the class Agent<MyAMAS, Table>.
 
 
 ```
@@ -179,81 +121,20 @@ import fr.irit.smac.lxplot.commons.ChartType;
 
 import java.util.Random;
 
-public class Philosopher extends Agent<MyAMAS, Table> {
+public class MyAgent extends Agent<MyAMAS, MyEnvironment> {
 
-	private Fork left;
-	private Fork right;
-	private double hungerDuration;
-	private double eatenPastas;
-	private int id;
-
-	public enum State {
-		THINK, HUNGRY, EATING
-	}
-
-	private State state = State.THINK;
-
-	public Philosopher(int id, MyAMAS amas, Fork left, Fork right) {
+	public MyAgent(MyAMAS amas) {
 		super(amas);
-		this.id = id;
-		this.left = left;
-		this.right = right;
 	}
 
 	@Override
 	protected void onPerceive() {
-		// Nothing goes here as the perception of neighbors criticality is already made
-		// by the framework
+	    // Perceive the environment and other agents here
 	}
 
 	@Override
 	protected void onDecideAndAct() {
-		State nextState = state;
-		switch (state) {
-			case EATING:
-				eatenPastas++;
-				if (new Random().nextInt(101) > 50) {
-					left.release(this);
-					right.release(this);
-					nextState = State.THINK;
-				}
-				break;
-			case HUNGRY:
-				hungerDuration++;
-				if (getMostCriticalNeighbor(true) == this) {
-					if (left.tryTake(this) && right.tryTake(this))
-						nextState = State.EATING;
-					else {
-						left.release(this);
-						right.release(this);
-					}
-				} else {
-					left.release(this);
-					right.release(this);
-				}
-				break;
-			case THINK:
-				if (new Random().nextInt(101) > 50) {
-					hungerDuration = 0;
-					nextState = State.HUNGRY;
-				}
-				break;
-			default:
-				break;
-
-		}
-
-		state = nextState;
-	}
-
-	@Override
-	protected void onAgentCycleEnd() {
-		LxPlot.getChart("Eaten Pastas", ChartType.BAR).add(id, eatenPastas);
-	}
-
-	@Override
-	protected double computeCriticality() {
-		return hungerDuration;
+	    // Decide and act here
 	}
 }
 ```
@@ -261,14 +142,14 @@ public class Philosopher extends Agent<MyAMAS, Table> {
 
 ### Launch your system ###
 
-In any class, create the environment and then the multi-agent system and launch it.
+In any class, create the environment, the multi-agent system and a scheduler and run the main.
 
 
 ```
 #!Java
 
 public static void main(String[] args) {
-	var env = new Table();
+	var env = new MyEnvironment();
 	var myAmas = new MyAMAS(env);
 	var scheduler = new Scheduler(myAmas, env);
 	scheduler.start();
