@@ -1,5 +1,7 @@
 # AMAK Version 3 - Major update 2023 #
 
+[![DOI](https://zenodo.org/badge/632796095.svg)](https://doi.org/10.5281/zenodo.14054179)
+
 This repository contains a framework made to facilitate the development of multi-agent system.
 
 **Note: Version 3 introduces a lot of breaking changes if you are having trouble migrating your project or creating a new one, do not hesitate to contact me.**
