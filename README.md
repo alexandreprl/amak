@@ -13,6 +13,7 @@ The previous version of AMAK is still accessible on branch **v2**
 - **Randomly moving ants** at https://github.com/alexandreprl/amak-example-ants
 - **Drone exercise** at https://github.com/alexandreprl/amak-exercise-drone
 - **Transporter robots** at https://github.com/alexandreprl/amak-exercise-transporter-robots
+- **Color Cubes** at https://github.com/alexandreprl/amak-exercise-color-cubes-game
 
 An article is available at https://www.researchgate.net/publication/325851056_AMAK_-_A_Framework_for_Developing_Robust_and_Open_Adaptive_Multi-agent_Systems
 
