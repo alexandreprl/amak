@@ -8,8 +8,8 @@ This repository contains a framework made to facilitate the development of multi
 
 The previous version of AMAK is still accessible on branch **v2**
 
-4 examples/exercises are available:
-- **Philosopher's dinner**: Follow the quick start section below
+Available examples/exercises:
+- **Philosopher's dinner** at https://github.com/alexandreprl/amak-exercise-philosophers-dinner
 - **Randomly moving ants** at https://github.com/alexandreprl/amak-example-ants
 - **Drone exercise** at https://github.com/alexandreprl/amak-exercise-drone
 - **Transporter robots** at https://github.com/alexandreprl/amak-exercise-transporter-robots
@@ -28,7 +28,7 @@ All of these methods are called at the right time by the scheduler, you only hav
 
 # Quick start (with IntelliJ IDEA)#
 
-In this quick start example, we will do the first steps aiming at creating an adaptive multi-agent system to solve the [philosopher's dinner problem](https://en.wikipedia.org/wiki/Dining_philosophers_problem).
+In this quick start example, we will do the first steps aiming at creating an adaptive multi-agent system.
 
 ## Create the gradle project ##
 
